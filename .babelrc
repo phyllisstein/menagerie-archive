@@ -1,0 +1,73 @@
+{
+  "presets": [
+    ["@babel/env", {
+      "corejs": {
+        "proposals": true,
+        "version": 2
+      },
+      "targets": {
+        "node": "current"
+      },
+      "useBuiltIns": "usage"
+    }],
+    "@babel/react",
+    "@babel/typescript"
+  ],
+  "plugins": [
+    ["@babel/proposal-decorators", {
+      "legacy": true
+    }],
+    ["@babel/proposal-class-properties", {
+      "loose": true
+    }],
+    "@babel/proposal-do-expressions",
+    "@babel/proposal-export-default-from",
+    "@babel/proposal-export-namespace-from",
+    "@babel/proposal-function-bind",
+    "@babel/proposal-logical-assignment-operators",
+    "@babel/proposal-nullish-coalescing-operator",
+    "@babel/proposal-numeric-separator",
+    "@babel/proposal-optional-catch-binding",
+    "@babel/proposal-optional-chaining",
+    ["@babel/proposal-pipeline-operator", {
+      "proposal": "smart"
+    }],
+    "@babel/proposal-throw-expressions",
+    "@babel/syntax-dynamic-import",
+    ["inline-react-svg", {
+      "svgo": {
+        "plugins": [
+          { "cleanupAttrs": true },
+          { "cleanupListOfValues": true },
+          { "cleanupNumericValues": true },
+          { "collapseGroups": true },
+          { "convertPathData": true },
+          { "convertShapeToPath": true },
+          { "convertTransform": true },
+          { "mergePaths": true },
+          { "removeComments": true },
+          { "removeDoctype": true },
+          { "removeEditorsNSData": true },
+          { "removeEmptyAttrs": true },
+          { "removeEmptyContainers": true },
+          { "removeEmptyText": true },
+          { "removeHiddenElems": true },
+          { "removeMetadata": true },
+          { "removeNonInheritableGroupAttrs": true },
+          { "removeRasterImages": true },
+          { "removeScriptElement": true },
+          { "removeUnknownsAndDefaults": true },
+          { "removeUnusedNS": true },
+          { "removeUselessDefs": true },
+          { "removeUselessStrokeAndFill": true },
+          { "removeXMLNS": true },
+          { "removeXMLProcInst": true }
+        ]
+      }
+    }],
+    "lodash",
+    ["ramda", {
+      "useES": true
+    }]
+  ]
+}
