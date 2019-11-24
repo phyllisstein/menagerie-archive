@@ -6,6 +6,7 @@ const webpack = require('webpack')
 
 const BABEL_OPTIONS = {
   babelrc: false,
+  cacheDirectory: true,
   plugins: [
     ['@babel/proposal-decorators', {
       legacy: true,
@@ -183,6 +184,18 @@ client
     { contextRegExp: /moment/, resourceRegExp: /^\.\/locale$/ },
   ])
 
+client
+  .merge({
+    cache: {
+      buildDependencies: {
+        config: [
+          __filename,
+        ],
+      },
+      type: 'filesystem',
+    },
+  })
+
 server
   .name('server')
   .context(path.resolve('./src'))
@@ -269,5 +282,18 @@ server
       nodeExternals(),
     ],
   )
+
+server
+  .merge({
+    cache: {
+      buildDependencies: {
+        config: [
+          __filename,
+        ],
+      },
+      type: 'filesystem',
+    },
+  })
+
 
 module.exports = { client, server }
