@@ -1,5 +1,6 @@
 const { client } = require('./common')
 const CopyPlugin = require('copy-webpack-plugin')
+const HTMLPlugin = require('html-webpack-plugin')
 const merge = require('merge-deep')
 
 client
@@ -31,20 +32,16 @@ client.module
         ),
       )
 
-client.resolve
-  .unsafeCache(false)
-  .alias
-    .set('react-dom', 'vendor/react-dom')
+client.resolve.alias
+  .set('react-dom', 'vendor/react-dom')
 
 client.output
   .publicPath('/')
 
 client
   .plugin('html')
-    .use(CopyPlugin, [
-      [
-        { from: 'index.html', to: 'index.html' },
-      ],
+    .use(HTMLPlugin, [
+      { hash: true },
     ])
 
 module.exports = client.toConfig()
