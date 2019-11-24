@@ -1,1 +1,0 @@
-export { Impress } from './impress'
