@@ -1,0 +1,11 @@
+#!/bin/bash
+
+while true; do
+  if yarn install --cache-dir=/var/cache/yarn; then
+    break
+  else
+    sleep 15
+  fi
+done
+
+exec node "$@"

@@ -30,13 +30,13 @@
     ],
     "module": "esnext",
     "moduleResolution": "node",
+    "noEmit": true,
     "noImplicitReturns": true,
     "noResolve": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "plugins": [
       {
-        "name": "typescript-styled-plugin",
         "lint": {
           "boxModel": "warning",
           "duplicateProperties": "error",
@@ -47,14 +47,20 @@
           "importStatement": "warning",
           "vendorPrefix": "error",
           "zeroUnits": "error"
-        }
+        },
+        "name": "typescript-styled-plugin"
       }
     ],
     "removeComments": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
     "strict": true,
     "suppressImplicitAnyIndexErrors": true,
     "target": "esnext"
   },
+  "exclude": [
+    "node_modules"
+  ],
   "include": [
     "src/**/*.ts",
     "src/**/*.tsx",
