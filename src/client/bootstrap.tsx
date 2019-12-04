@@ -1,8 +1,9 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
 
 import 'vendor/reset.css'
+import pAll from 'p-all'
 
-(async () => {
+const loadGSAP = async (): Promise<void> => {
   const { gsap } = await import('gsap')
 
   // Complex: 375ms
@@ -15,12 +16,18 @@ import 'vendor/reset.css'
   gsap.registerEase('material-swift-ease-in-out', gsap.parseEase('.35,0,.25,1')) // 500ms
   gsap.registerEase('material-swift-ease-out', gsap.parseEase('.25,.8,.25,1')) // 400ms
   gsap.registerEase('material-swift-ease-in', gsap.parseEase('.55,0,.55,.2')) // 300ms
-})()
+}
 
-;(async () => {
-  const { App } = await import('./app')
-  const React = await import('react')
-  const ReactDOM = await import('react-dom')
+const renderApp = async (): Promise<void> => {
+  const [
+    { App },
+    React,
+    ReactDOM,
+  ] = await pAll([
+    () => import('app'),
+    () => import('react'),
+    () => import('react-dom'),
+  ])
 
   let main = document.querySelector('main')
   if (!main) {
@@ -38,4 +45,8 @@ import 'vendor/reset.css'
       reactRoot.render(<App />)
     })
   }
-})()
+}
+
+const bootstrap = (): Promise<void[]> => Promise.all([loadGSAP(), renderApp()])
+
+export default bootstrap
