@@ -1,9 +1,7 @@
 {
   "compilerOptions": {
-    "allowJs": true,
     "allowSyntheticDefaultImports": true,
-    "baseUrl": "./src",
-    "checkJs": true,
+    "baseUrl": ".",
     "diagnostics": true,
     "downlevelIteration": true,
     "emitDecoratorMetadata": true,
@@ -31,10 +29,17 @@
     "module": "esnext",
     "moduleResolution": "node",
     "noEmit": true,
+    "noImplicitAny": true,
     "noImplicitReturns": true,
-    "noResolve": true,
+    "noResolve": false,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
+    "paths": {
+      "*": [
+        "*",
+        "src/*"
+      ]
+    },
     "plugins": [
       {
         "lint": {
@@ -53,6 +58,7 @@
     ],
     "removeComments": true,
     "resolveJsonModule": true,
+    "rootDir": "src",
     "skipLibCheck": true,
     "strict": true,
     "suppressImplicitAnyIndexErrors": true,
@@ -62,8 +68,8 @@
     "node_modules"
   ],
   "include": [
-    "src/**/*.ts",
-    "src/**/*.tsx",
-    "src/**/*.mdx"
+    "./src/**/*.ts",
+    "./src/**/*.tsx",
+    "./src/**/*.mdx"
   ]
 }
