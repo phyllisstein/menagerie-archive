@@ -13,7 +13,7 @@ v8.setFlagsFromString('--max-old-space-size=8192')
 
 const {
   PORT = '80',
-  VIRTUAL_HOST = 'talk.danielsh.test',
+  VIRTUAL_HOST = 'aneveningwith.danielsh.here',
 } = process.env
 
 const OPTIONS = {

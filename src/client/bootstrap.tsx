@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
 
-import 'vendor/reset.css'
+import 'normalize.css'
 import pAll from 'p-all'
 
 const loadGSAP = async (): Promise<void> => {
@@ -21,10 +21,12 @@ const loadGSAP = async (): Promise<void> => {
 const renderApp = async (): Promise<void> => {
   const [
     { App },
+    { BrowserRouter },
     React,
     ReactDOM,
   ] = await pAll([
     () => import('app'),
+    () => import('react-router-dom'),
     () => import('react'),
     () => import('react-dom'),
   ])
@@ -36,13 +38,21 @@ const renderApp = async (): Promise<void> => {
   }
 
   const reactRoot = ReactDOM.createRoot(main)
-  reactRoot.render(<App />)
+  reactRoot.render(
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>,
+  )
 
   if (module.hot) {
     module.hot.accept('app', () => {
       const { App } = require('app')
 
-      reactRoot.render(<App />)
+      reactRoot.render(
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>,
+      )
     })
   }
 }
