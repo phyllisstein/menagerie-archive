@@ -1,5 +1,5 @@
 module.exports = api => {
-  api.cache.never()
+  api.cache.forever()
 
   const presets = [
     ['@babel/env', {

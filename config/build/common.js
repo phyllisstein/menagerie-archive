@@ -66,17 +66,6 @@ const BABEL_OPTIONS = {
     'react-loadable/babel',
   ],
   presets: [
-    ['@babel/env', {
-      corejs: {
-        proposals: true,
-        version: 3,
-      },
-      modules: false,
-      targets: {
-        browsers: ['last 2 major versions'],
-      },
-      useBuiltIns: 'usage',
-    }],
     '@babel/typescript',
   ],
 }
@@ -109,17 +98,39 @@ client.module
       .end()
     .use('babel')
       .loader('babel-loader')
-      .options(BABEL_OPTIONS)
-
-client.module
-  .rule('fonts')
-    .test(/\.(woff2?)$/)
-    .include
-      .add(/vendor\/fonts/)
-      .end()
-    .use('file')
-      .loader('file-loader')
-      .options({ name: 'fonts/[name].[ext]' })
+      .options(
+        merge(
+          BABEL_OPTIONS,
+          {
+            plugins: [
+              ['module:fast-async', {
+                compiler: {
+                  lazyThenables: true,
+                  parser: {
+                    sourceType: 'module',
+                  },
+                  promises: true,
+                  wrapAwait: true,
+                },
+                useRuntimeModule: true,
+              }],
+            ],
+            presets: [
+              ['@babel/env', {
+                corejs: {
+                  proposals: true,
+                  version: 3,
+                },
+                modules: false,
+                targets: {
+                  browsers: ['last 2 major versions'],
+                },
+                useBuiltIns: 'usage',
+              }],
+            ],
+          },
+        ),
+      )
 
 client.module
   .rule('style-raw')
@@ -137,24 +148,38 @@ client.module
       .loader('css-loader')
 
 client.module
+  .rule('fonts')
+    .test(/\.(woff2?)$/)
+    .use('url')
+      .loader('url-loader')
+      .options({
+        limit: 8192,
+        name: 'fonts/[name].[hash]',
+      })
+
+client.module
   .rule('images')
     .test(/\.(jpe?g|png|webp|ico)$/)
-    .use('file')
+    .use('url')
       .loader('url-loader')
-      .options({ limit: 2048, name: 'img/[name].[ext]' })
+      .options({
+        limit: 8192,
+        name: 'images/[name].[hash]',
+      })
 
 client.module
   .rule('videos')
     .test(/\.(mp4|webm)$/)
-    .use('file')
-      .loader('file-loader')
-  .options({ name: 'video/[name].[ext]' })
+    .use('url')
+      .loader('url-loader')
+      .options({
+        limit: 8192,
+        name: 'videos/[name].[hash]',
+      })
+
 
 client.resolve
   .enforceExtension(false)
-  .alias
-    .set('gsap', 'vendor/gsap')
-    .end()
   .extensions
     .add('.ts')
     .add('.tsx')
@@ -166,6 +191,7 @@ client.resolve
     .end()
   .modules
     .add(path.resolve('src'))
+    .add(path.resolve('vendor'))
     .add(path.resolve('node_modules'))
     .end()
 
@@ -183,18 +209,6 @@ client
   .use(webpack.IgnorePlugin, [
     { contextRegExp: /moment/, resourceRegExp: /^\.\/locale$/ },
   ])
-
-client
-  .merge({
-    cache: {
-      buildDependencies: {
-        config: [
-          __filename,
-        ],
-      },
-      type: 'filesystem',
-    },
-  })
 
 server
   .name('server')
@@ -220,27 +234,62 @@ server.module
       .end()
     .use('babel')
       .loader('babel-loader')
-      .options(BABEL_OPTIONS)
+      .options(
+        merge(
+          BABEL_OPTIONS,
+          {
+            presets: [
+              ['@babel/env', {
+                corejs: {
+                  proposals: true,
+                  version: 3,
+                },
+                modules: true,
+                targets: {
+                  node: 'current',
+                },
+                useBuiltIns: 'usage',
+              }],
+            ],
+          },
+        ),
+      )
+
+server.module
+  .rule('fonts')
+    .test(/\.(woff2?)$/)
+    .use('url')
+      .loader('url-loader')
+      .options({
+        emitFile: false,
+        limit: 8192,
+        name: 'fonts/[name].[hash]',
+      })
 
 server.module
   .rule('images')
     .test(/\.(jpe?g|png|webp|ico)$/)
-    .use('file')
+    .use('url')
       .loader('url-loader')
-      .options({ emitFile: false, limit: 2048, name: 'img/[name].[ext]' })
+      .options({
+        emitFile: false,
+        limit: 8192,
+        name: 'images/[name].[hash]',
+      })
 
 server.module
   .rule('videos')
     .test(/\.(mp4|webm)$/)
-    .use('file')
-      .loader('file-loader')
-      .options({ emitFile: false, name: 'video/[name].[ext]' })
+    .use('url')
+      .loader('url-loader')
+      .options({
+        emitFile: false,
+        limit: 8192,
+        name: 'videos/[name].[hash]',
+      })
 
 server.resolve
   .enforceExtension(false)
-  .alias
-    .set('gsap', 'vendor/gsap')
-    .end()
   .extensions
     .add('.ts')
     .add('.tsx')
@@ -252,6 +301,7 @@ server.resolve
     .end()
   .modules
     .add(path.resolve('src'))
+    .add(path.resolve('vendor'))
     .add(path.resolve('node_modules'))
     .end()
 
@@ -282,18 +332,5 @@ server
       nodeExternals(),
     ],
   )
-
-server
-  .merge({
-    cache: {
-      buildDependencies: {
-        config: [
-          __filename,
-        ],
-      },
-      type: 'filesystem',
-    },
-  })
-
 
 module.exports = { client, server }

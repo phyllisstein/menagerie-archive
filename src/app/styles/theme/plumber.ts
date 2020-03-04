@@ -1,9 +1,9 @@
 import _ from 'lodash'
 import { css } from 'styled-components'
 import { stripUnit } from 'polished'
+import { unitless } from './scale'
 
-interface GetPlumberOpts {
-  baseline: Baseline
+interface PlumberBaseOpts {
   fontSize?: number
   gridHeight?: string
   leadingBottom?: number
@@ -12,7 +12,15 @@ interface GetPlumberOpts {
   useBaselineOrigin?: boolean
 }
 
-interface PlumberBoxOpts {
+export interface GetPlumberOpts extends PlumberBaseOpts {
+  baseline: Baseline
+}
+
+export interface PlumberOpts extends PlumberBaseOpts {
+  baseline?: Baseline
+}
+
+export interface PlumberBoxOpts {
   border?: readonly [string, string]
   gridHeight?: string
   margin?: readonly [number, number]
@@ -30,8 +38,8 @@ const round = _.partial(_.round, _.partial.placeholder, 3)
 const getValueAndUnit = _.partial(stripUnit, _.partial.placeholder, true)
 
 const getBaselineCorrection = ({ baseline, fontSize, lineHeight }: { baseline: number, fontSize: number, lineHeight: number }) => {
-  const baselineFromBottom = ((lineHeight - fontSize) / 2) + (fontSize * baseline)
-  const correctedBaseline = round(baselineFromBottom)
+  const baselineFromBottom = (lineHeight - fontSize) / 2 + fontSize * baseline
+  const correctedBaseline = _.round(baselineFromBottom)
   const baselineDifference = correctedBaseline - baselineFromBottom
 
   return {
@@ -57,8 +65,10 @@ const getPlumber = ({
     leadingTop = LEADING_TOP,
     lineHeight = LINE_HEIGHT,
     useBaselineOrigin = USE_BASELINE_ORIGIN,
-  } = {}) {
+  }: PlumberOpts = {}) {
     const [gridHeightValue, gridHeightUnit] = getValueAndUnit(gridHeight)
+    fontSize = unitless(fontSize)
+    lineHeight = unitless(lineHeight)
 
     const { baselineDifference, correctedBaseline } = getBaselineCorrection({ baseline, fontSize, lineHeight })
 
@@ -76,12 +86,13 @@ const getPlumber = ({
     const marginBottom = round((leadingBottom + shift - 1) * gridHeightValue)
 
     return css`
+      margin-top: ${ marginTop }${ gridHeightUnit };
+      margin-bottom: ${ marginBottom }${ gridHeightUnit };
+      padding-top: ${ paddingTop }${ gridHeightUnit };
+      padding-bottom: ${ paddingBottom }${ gridHeightUnit };
+
       font-size: ${ fontSize }${ gridHeightUnit };
       line-height: ${ lineHeight }${ gridHeightUnit };
-      margin-bottom: ${ marginBottom }${ gridHeightUnit };
-      margin-top: ${ marginTop }${ gridHeightUnit };
-      padding-bottom: ${ paddingBottom }${ gridHeightUnit };
-      padding-top: ${ paddingTop }${ gridHeightUnit };
     `
   }
 
@@ -98,10 +109,10 @@ const getPlumber = ({
     const [borderTop, borderBottom] = border
 
     return css`
-      margin-bottom: ${ marginBottom }${ gridHeightUnit };
       margin-top: ${ marginTop }${ gridHeightUnit };
-      padding-bottom: calc(${ paddingBottom }${ gridHeightUnit } - ${ borderBottom });
+      margin-bottom: ${ marginBottom }${ gridHeightUnit };
       padding-top: calc(${ paddingTop }${ gridHeightUnit } - ${ borderTop });
+      padding-bottom: calc(${ paddingBottom }${ gridHeightUnit } - ${ borderBottom });
     `
   }
 
