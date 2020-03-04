@@ -12,6 +12,6 @@ export const js = {
 }
 
 type JSColors = typeof js
-type CSSColors = { [c in keyof JSColors]: Color }
+type CSSColors = { [c in keyof JSColors]: string }
 
 export const css: CSSColors = R.map(R.invoker(0, 'css'), js)

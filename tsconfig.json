@@ -2,7 +2,6 @@
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
     "baseUrl": ".",
-    "diagnostics": true,
     "downlevelIteration": true,
     "emitDecoratorMetadata": true,
     "esModuleInterop": true,
@@ -10,7 +9,7 @@
     "forceConsistentCasingInFileNames": true,
     "importHelpers": true,
     "incremental": true,
-    "isolatedModules": true,
+    "isolatedModules": false,
     "jsx": "preserve",
     "lib": [
       "es5",
@@ -28,7 +27,6 @@
     ],
     "module": "esnext",
     "moduleResolution": "node",
-    "noEmit": true,
     "noImplicitAny": true,
     "noImplicitReturns": true,
     "noResolve": false,
@@ -40,27 +38,12 @@
         "src/*"
       ]
     },
-    "plugins": [
-      {
-        "lint": {
-          "boxModel": "warning",
-          "duplicateProperties": "error",
-          "emptyRules": "warning",
-          "float": "warning",
-          "idSelector": "warning",
-          "ieHack": "error",
-          "importStatement": "warning",
-          "vendorPrefix": "error",
-          "zeroUnits": "error"
-        },
-        "name": "typescript-styled-plugin"
-      }
-    ],
     "removeComments": true,
     "resolveJsonModule": true,
     "rootDir": "src",
     "skipLibCheck": true,
     "strict": true,
+    "strictNullChecks": false,
     "suppressImplicitAnyIndexErrors": true,
     "target": "esnext"
   },
@@ -68,8 +51,13 @@
     "node_modules"
   ],
   "include": [
+    "./content/**/*.mdx",
     "./src/**/*.ts",
     "./src/**/*.tsx",
-    "./src/**/*.mdx"
+    "./vendor/**/*.ts"
+  ],
+  "typeRoots": [
+    "./node_modules/@types",
+    "./vendor/types"
   ]
 }

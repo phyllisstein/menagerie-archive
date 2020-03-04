@@ -1,21 +1,20 @@
-import { Fonts, Globals, theme } from 'app/styles'
-import { Route, Switch } from 'react-router'
-import { Docker } from './routes'
-import React from 'react'
+import { GuardianEgyptian, GuardianSans, PragmataPro } from 'app/styles/fonts'
+import React, { FunctionComponent } from 'react'
+import { Body } from 'app/styles/global'
+import { Router } from './routes'
+import theme from 'app/styles/theme'
 import { ThemeProvider } from 'styled-components'
 
-export const App = () => (
+export const App: FunctionComponent = () => (
   <ThemeProvider theme={ theme }>
     <>
-      <Fonts.GuardianEgyptian />
-      <Fonts.GuardianSans />
-      <Fonts.PragmataPro />
-      <Globals.Body />
-      <Switch>
-        <Route path='/docker/*'>
-          <Docker />
-        </Route>
-      </Switch>
+      <GuardianEgyptian />
+      <GuardianSans />
+      <PragmataPro />
+
+      <Body />
+
+      <Router />
     </>
   </ThemeProvider>
 )
