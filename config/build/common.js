@@ -154,7 +154,7 @@ client.module
       .loader('url-loader')
       .options({
         limit: 8192,
-        name: 'fonts/[name].[hash]',
+        name: 'fonts/[hash].[ext]',
       })
 
 client.module
@@ -164,7 +164,7 @@ client.module
       .loader('url-loader')
       .options({
         limit: 8192,
-        name: 'images/[name].[hash]',
+        name: 'images/[hash].[ext]',
       })
 
 client.module
@@ -174,7 +174,7 @@ client.module
       .loader('url-loader')
       .options({
         limit: 8192,
-        name: 'videos/[name].[hash]',
+        name: 'videos/[hash].[ext]',
       })
 
 
@@ -263,7 +263,7 @@ server.module
       .options({
         emitFile: false,
         limit: 8192,
-        name: 'fonts/[name].[hash]',
+        name: 'fonts/[hash].[ext]',
       })
 
 server.module
@@ -274,7 +274,7 @@ server.module
       .options({
         emitFile: false,
         limit: 8192,
-        name: 'images/[name].[hash]',
+        name: 'images/[hash].[ext]',
       })
 
 server.module
@@ -285,7 +285,7 @@ server.module
       .options({
         emitFile: false,
         limit: 8192,
-        name: 'videos/[name].[hash]',
+        name: 'videos/[hash].[ext]',
       })
 
 server.resolve
