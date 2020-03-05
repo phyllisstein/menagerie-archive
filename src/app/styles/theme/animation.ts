@@ -18,12 +18,13 @@ export enum AnimationDuration {
 interface AnimationOpts {
   curve?: AnimationCurve
   duration?: AnimationDuration
-  property?: keyof StandardPropertiesHyphen | 'all'
+  properties?: Array<keyof StandardPropertiesHyphen | 'all'> | keyof StandardPropertiesHyphen | 'all'
 }
 
-export function animation({ curve = AnimationCurve.Standard, duration = AnimationDuration.Entering, property = 'all' }: AnimationOpts = {}) {
+export function animation({ curve = AnimationCurve.Standard, duration = AnimationDuration.Entering, properties = ['all'] }: AnimationOpts = {}) {
   const durationMS = animation.duration[duration]
   const curveBezier = animation.curve[curve]
+  const property = Array.isArray(properties) ? properties.join(',') : properties
 
   return css`
     transition: ${ property } ${ durationMS }ms ${ curveBezier };
