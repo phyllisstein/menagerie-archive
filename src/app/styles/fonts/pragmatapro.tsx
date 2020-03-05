@@ -7,8 +7,8 @@ export const PragmataPro = createGlobalStyle`
     font-weight: 400;
     font-style: normal;
     src:
-      url('${ require('fonts/pragmatapro/PragmataProLiga-Regular.woff2') }') format('woff2'),
-      url('${ require('fonts/pragmatapro/PragmataProLiga-Regular.woff') }') format('woff');
+      url('${ require('fonts/pragmatapro/PragmataProLiga-Regular.woff2').default }') format('woff2'),
+      url('${ require('fonts/pragmatapro/PragmataProLiga-Regular.woff').default }') format('woff');
   }
 
   @font-face {
@@ -17,8 +17,8 @@ export const PragmataPro = createGlobalStyle`
     font-weight: 400;
     font-style: italic;
     src:
-      url('${ require('fonts/pragmatapro/PragmataProLiga-Italic.woff2') }') format('woff2'),
-      url('${ require('fonts/pragmatapro/PragmataProLiga-Italic.woff') }') format('woff');
+      url('${ require('fonts/pragmatapro/PragmataProLiga-Italic.woff2').default }') format('woff2'),
+      url('${ require('fonts/pragmatapro/PragmataProLiga-Italic.woff').default }') format('woff');
   }
 
   @font-face {
@@ -27,8 +27,8 @@ export const PragmataPro = createGlobalStyle`
     font-weight: 700;
     font-style: normal;
     src:
-      url('${ require('fonts/pragmatapro/PragmataProLiga-Bold.woff2') }') format('woff2'),
-      url('${ require('fonts/pragmatapro/PragmataProLiga-Bold.woff') }') format('woff');
+      url('${ require('fonts/pragmatapro/PragmataProLiga-Bold.woff2').default }') format('woff2'),
+      url('${ require('fonts/pragmatapro/PragmataProLiga-Bold.woff').default }') format('woff');
   }
 
   @font-face {
@@ -37,7 +37,7 @@ export const PragmataPro = createGlobalStyle`
     font-weight: 700;
     font-style: italic;
     src:
-      url('${ require('fonts/pragmatapro/PragmataProLiga-BoldItalic.woff2') }') format('woff2'),
-      url('${ require('fonts/pragmatapro/PragmataProLiga-BoldItalic.woff') }') format('woff');
+      url('${ require('fonts/pragmatapro/PragmataProLiga-BoldItalic.woff2').default }') format('woff2'),
+      url('${ require('fonts/pragmatapro/PragmataProLiga-BoldItalic.woff').default }') format('woff');
   }
 `
