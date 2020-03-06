@@ -1,7 +1,14 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
 
 import 'normalize.css'
-import pAll from 'p-all'
+
+const loadCSS = async (): Promise<void> => {
+  await Promise.all([
+    import('fonts/guardian-egyptian/index.css'),
+    import('fonts/guardian-sans/index.css'),
+    import('fonts/pragmatapro/index.css'),
+  ])
+}
 
 const loadGSAP = async (): Promise<void> => {
   const { gsap } = await import('gsap')
@@ -24,20 +31,16 @@ const renderApp = async (): Promise<void> => {
     { BrowserRouter },
     React,
     ReactDOM,
-  ] = await pAll([
-    () => import('app'),
-    () => import('react-router-dom'),
-    () => import('react'),
-    () => import('react-dom'),
+  ] = await Promise.all([
+    import('app'),
+    import('react-router-dom'),
+    import('react'),
+    import('react-dom'),
   ])
 
-  let main = document.querySelector('main')
-  if (!main) {
-    main = document.createElement('main')
-    document.body.appendChild(main)
-  }
-
+  const main = document.querySelector('main')
   const reactRoot = ReactDOM.createRoot(main)
+
   reactRoot.render(
     <BrowserRouter>
       <App />
@@ -57,6 +60,6 @@ const renderApp = async (): Promise<void> => {
   }
 }
 
-const bootstrap = (): Promise<void[]> => Promise.all([loadGSAP(), renderApp()])
+const bootstrap = (): Promise<void[]> => Promise.all([loadCSS(), loadGSAP(), renderApp()])
 
 export default bootstrap

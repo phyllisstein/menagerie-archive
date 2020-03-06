@@ -9,7 +9,6 @@ extends:
   - eslint:recommended
   - plugin:@typescript-eslint/eslint-recommended
   - plugin:@typescript-eslint/recommended
-  - plugin:@typescript-eslint/recommended-requiring-type-checking
   - plugin:ramda/recommended
   - plugin:react/recommended
   - standard
@@ -36,7 +35,6 @@ parserOptions:
     jsx: true
   extraFileExtensions:
     - .js
-  project: ./tsconfig.json
 plugins:
   - '@typescript-eslint'
   - babel
@@ -102,14 +100,12 @@ rules:
       ignoreRestArgs: true
   '@typescript-eslint/no-extra-parens': warn
   '@typescript-eslint/no-extraneous-class': warn
-  '@typescript-eslint/no-floating-promises':
-    - error
-    - ignoreVoid: true
+  '@typescript-eslint/no-floating-promises': 'off' # Needs types.
   '@typescript-eslint/no-for-in-array': warn
   '@typescript-eslint/no-inferrable-types': 'off'
   '@typescript-eslint/no-magic-numbers': 'off'
   '@typescript-eslint/no-misused-new': error
-  '@typescript-eslint/no-misused-promises': error
+  '@typescript-eslint/no-misused-promises': 'off' # Needs types.
   '@typescript-eslint/no-namespace':
     - error
     - allowDefinitionFiles: true
@@ -120,12 +116,10 @@ rules:
     - warn
     - allowDestructuring: true
   '@typescript-eslint/no-type-alias': 'off'
-  '@typescript-eslint/no-unnecessary-condition':
-    - warn
-    - ignoreRhs: true
+  '@typescript-eslint/no-unnecessary-condition': 'off' # Needs types.
   '@typescript-eslint/no-unnecessary-qualifier': 'off'
   '@typescript-eslint/no-unnecessary-type-arguments': 'off'
-  '@typescript-eslint/no-unnecessary-type-assertion': warn
+  '@typescript-eslint/no-unnecessary-type-assertion': 'off' # Needs types.
   '@typescript-eslint/no-untyped-public-signature': error
   '@typescript-eslint/no-unused-expressions':
     - error
@@ -147,20 +141,20 @@ rules:
   '@typescript-eslint/no-var-requires': 'off'
   '@typescript-eslint/prefer-for-of': warn
   '@typescript-eslint/prefer-function-type': 'off'
-  '@typescript-eslint/prefer-includes': warn
+  '@typescript-eslint/prefer-includes': 'off' # Needs types.
   '@typescript-eslint/prefer-namespace-keyword': 'off'
-  '@typescript-eslint/prefer-readonly': warn
-  '@typescript-eslint/prefer-regexp-exec': warn
-  '@typescript-eslint/prefer-string-starts-ends-with': warn
+  '@typescript-eslint/prefer-readonly': 'off' # Needs types.
+  '@typescript-eslint/prefer-regexp-exec': 'off' # Needs types.
+  '@typescript-eslint/prefer-string-starts-ends-with': 'off' # Needs types.
   '@typescript-eslint/promise-function-async': 'off'
   '@typescript-eslint/quotes':
     - warn
     - single
     - allowTemplateLiterals: true
       avoidEscape: true
-  '@typescript-eslint/require-array-sort-compare': warn
-  '@typescript-eslint/require-await': warn
-  '@typescript-eslint/restrict-plus-operands': error
+  '@typescript-eslint/require-array-sort-compare': 'off' # Needs types.
+  '@typescript-eslint/require-await': 'off' # Needs types.
+  '@typescript-eslint/restrict-plus-operands': 'off' # Needs types.
   '@typescript-eslint/restrict-template-expressions': 'off'
   '@typescript-eslint/semi':
     - error
@@ -179,7 +173,7 @@ rules:
       types: never
   '@typescript-eslint/type-annotation-spacing': error
   '@typescript-eslint/typedef': 'off'
-  '@typescript-eslint/unbound-method': error
+  '@typescript-eslint/unbound-method': 'off' # Needs types.
   '@typescript-eslint/unified-signatures': warn
 
   react/button-has-type: warn

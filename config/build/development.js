@@ -2,15 +2,12 @@ const { client } = require('./common')
 const CopyPlugin = require('copy-webpack-plugin')
 const HTMLPlugin = require('html-webpack-plugin')
 const merge = require('merge-deep')
-const ReactRefreshPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
+const ReactRefreshPlugin = require('@webhotelier/webpack-fast-refresh')
 const webpack = require('webpack')
 
 client
+  .mode('development')
   .devtool('cheap-module-source-map')
-
-client
-  .entry('main')
-    .prepend('react-hot-loader/patch')
 
 client.module
   .rule('babel')
@@ -35,13 +32,18 @@ client.module
         ),
       )
 
+client.module
+  .rule('style')
+    .use('mini-css-extract')
+      .tap(options => merge(options, { hmr: true, reloadAll: true }))
+
 client.output
   .publicPath('/')
 
 client
   .plugin('html')
     .use(HTMLPlugin, [
-      { hash: true },
+      { hash: true, template: 'index.ejs' },
     ])
 
 client
@@ -50,11 +52,6 @@ client
 
 client
   .plugin('fast-refresh')
-    .use(ReactRefreshPlugin, [
-      { disableRefreshCheck: true },
-    ])
-
-client.resolve.alias
-  .set('react', require.resolve('react/cjs/react.development.js'))
+    .use(ReactRefreshPlugin)
 
 module.exports = client.toConfig()
