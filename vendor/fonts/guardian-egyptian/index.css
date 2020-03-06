@@ -1,0 +1,159 @@
+@font-face {
+  font-display: fallback;
+  font-family: 'Guardian Egyptian';
+  font-style: normal;
+  font-weight: 100;
+  src:
+    url('GuardianEgyptian-Hairline.woff2') format('woff2'),
+    url('GuardianEgyptian-Hairline.woff') format('woff');
+}
+
+@font-face {
+  font-display: fallback;
+  font-family: 'Guardian Egyptian';
+  font-style: italic;
+  font-weight: 100;
+  src:
+    url('GuardianEgyptian-HairlineItalic.woff2') format('woff2'),
+    url('GuardianEgyptian-HairlineItalic.woff') format('woff');
+}
+
+@font-face {
+  font-display: fallback;
+  font-family: 'Guardian Egyptian';
+  font-style: normal;
+  font-weight: 200;
+  src:
+    url('GuardianEgyptian-Thin.woff2') format('woff2'),
+    url('GuardianEgyptian-Thin.woff') format('woff');
+}
+
+@font-face {
+  font-display: fallback;
+  font-family: 'Guardian Egyptian';
+  font-style: italic;
+  font-weight: 200;
+  src:
+    url('GuardianEgyptian-ThinItalic.woff2') format('woff2'),
+    url('GuardianEgyptian-ThinItalic.woff') format('woff');
+}
+
+@font-face {
+  font-display: fallback;
+  font-family: 'Guardian Egyptian';
+  font-style: normal;
+  font-weight: 300;
+  src:
+    url('GuardianEgyptian-Light.woff2') format('woff2'),
+    url('GuardianEgyptian-Light.woff') format('woff');
+}
+
+@font-face {
+  font-display: fallback;
+  font-family: 'Guardian Egyptian';
+  font-style: italic;
+  font-weight: 300;
+  src:
+    url('GuardianEgyptian-LightItalic.woff2') format('woff2'),
+    url('GuardianEgyptian-LightItalic.woff') format('woff');
+}
+
+@font-face {
+  font-display: fallback;
+  font-family: 'Guardian Egyptian';
+  font-style: normal;
+  font-weight: 400;
+  src:
+    url('GuardianEgyptian-Regular.woff2') format('woff2'),
+    url('GuardianEgyptian-Regular.woff') format('woff');
+}
+
+@font-face {
+  font-display: fallback;
+  font-family: 'Guardian Egyptian';
+  font-style: italic;
+  font-weight: 400;
+  src:
+    url('GuardianEgyptian-RegularItalic.woff2') format('woff2'),
+    url('GuardianEgyptian-RegularItalic.woff') format('woff');
+}
+
+@font-face {
+  font-display: fallback;
+  font-family: 'Guardian Egyptian';
+  font-style: normal;
+  font-weight: 500;
+  src:
+    url('GuardianEgyptian-Medium.woff2') format('woff2'),
+    url('GuardianEgyptian-Medium.woff') format('woff');
+}
+
+@font-face {
+  font-display: fallback;
+  font-family: 'Guardian Egyptian';
+  font-style: italic;
+  font-weight: 500;
+  src:
+    url('GuardianEgyptian-MediumItalic.woff2') format('woff2'),
+    url('GuardianEgyptian-MediumItalic.woff') format('woff');
+}
+
+@font-face {
+  font-display: fallback;
+  font-family: 'Guardian Egyptian';
+  font-style: normal;
+  font-weight: 600;
+  src:
+    url('GuardianEgyptian-Semibold.woff2') format('woff2'),
+    url('GuardianEgyptian-Semibold.woff') format('woff');
+}
+
+@font-face {
+  font-display: fallback;
+  font-family: 'Guardian Egyptian';
+  font-style: italic;
+  font-weight: 600;
+  src:
+    url('GuardianEgyptian-SemiboldItalic.woff2') format('woff2'),
+    url('GuardianEgyptian-SemiboldItalic.woff') format('woff');
+}
+
+@font-face {
+  font-display: fallback;
+  font-family: 'Guardian Egyptian';
+  font-style: normal;
+  font-weight: 700;
+  src:
+    url('GuardianEgyptian-Bold.woff2') format('woff2'),
+    url('GuardianEgyptian-Bold.woff') format('woff');
+}
+
+@font-face {
+  font-display: fallback;
+  font-family: 'Guardian Egyptian';
+  font-style: italic;
+  font-weight: 700;
+  src:
+    url('GuardianEgyptian-BoldItalic.woff2') format('woff2'),
+    url('GuardianEgyptian-BoldItalic.woff') format('woff');
+}
+
+@font-face {
+  font-display: fallback;
+  font-family: 'Guardian Egyptian';
+  font-style: normal;
+  font-weight: 800;
+  src:
+    url('GuardianEgyptian-Black.woff2') format('woff2'),
+    url('GuardianEgyptian-Black.woff') format('woff');
+}
+
+@font-face {
+  font-display: fallback;
+  font-family: 'Guardian Egyptian';
+  font-style: italic;
+  font-weight: 800;
+  src:
+    url('GuardianEgyptian-BlackItalic.woff2') format('woff2'),
+    url('GuardianEgyptian-BlackItalic.woff') format('woff');
+}

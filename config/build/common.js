@@ -1,5 +1,6 @@
 const Config = require('webpack-chain')
 const merge = require('merge-deep')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const nodeExternals = require('webpack-node-externals')
 const path = require('path')
 const webpack = require('webpack')
@@ -76,7 +77,6 @@ const server = new Config()
 client
   .name('client')
   .context(path.resolve('./src'))
-  .mode('development')
   .target('web')
 
 client
@@ -91,9 +91,9 @@ client.output
 
 client.module
   .rule('babel')
-    .test(/\.(j|t)sx?$/)
+    .test(/\.(j|mj|t)sx?$/)
     .exclude
-      .add(/(node_modules\/(?!@fortawesome))/)
+      .add(/node_modules/)
       .add(/vendor/)
       .end()
     .use('babel')
@@ -133,15 +133,12 @@ client.module
       )
 
 client.module
-  .rule('style-raw')
+  .rule('style')
     .test(/\.css$/)
-    .use('style')
-      .loader('style-loader')
+    .use('mini-css-extract')
+      .loader(MiniCssExtractPlugin.loader)
       .options({
-        insert: element => {
-          var head = document.querySelector('head')
-          head.insertBefore(element, head.firstElementChild)
-        },
+        esModule: true,
       })
       .end()
     .use('css')
@@ -150,32 +147,27 @@ client.module
 client.module
   .rule('fonts')
     .test(/\.(woff2?)$/)
-    .use('url')
-      .loader('url-loader')
-      .options({
-        limit: 8192,
-        name: 'fonts/[hash].[ext]',
-      })
+    .set('type', 'asset')
+    .set('generator', {
+      filename: 'fonts/[hash].[ext]',
+    })
+
 
 client.module
   .rule('images')
     .test(/\.(jpe?g|png|webp|ico)$/)
-    .use('url')
-      .loader('url-loader')
-      .options({
-        limit: 8192,
-        name: 'images/[hash].[ext]',
-      })
+    .set('type', 'asset')
+    .set('generator', {
+      filename: 'images/[hash].[ext]',
+    })
 
 client.module
   .rule('videos')
     .test(/\.(mp4|webm)$/)
-    .use('url')
-      .loader('url-loader')
-      .options({
-        limit: 8192,
-        name: 'videos/[hash].[ext]',
-      })
+    .set('type', 'asset')
+    .set('generator', {
+      filename: 'videos/[hash].[ext]',
+    })
 
 
 client.resolve
@@ -210,6 +202,17 @@ client
     { contextRegExp: /moment/, resourceRegExp: /^\.\/locale$/ },
   ])
 
+client
+  .plugin('mini-css-extract')
+  .use(MiniCssExtractPlugin, [
+    { chunkFilename: 'css/[contenthash].css', filename: 'css/[contenthash].css' },
+  ])
+
+client
+  .set('experiments', {
+    asset: true,
+  })
+
 server
   .name('server')
   .context(path.resolve('./src'))
@@ -227,9 +230,9 @@ server.output
 
 server.module
   .rule('babel')
-    .test(/\.(j|t)sx?$/)
+    .test(/\.(j|mj|t)sx?$/)
     .exclude
-      .add(/(node_modules\/(?!@fortawesome))/)
+      .add(/node_modules/)
       .add(/vendor/)
       .end()
     .use('babel')
@@ -258,35 +261,27 @@ server.module
 server.module
   .rule('fonts')
     .test(/\.(woff2?)$/)
-    .use('url')
-      .loader('url-loader')
-      .options({
-        emitFile: false,
-        limit: 8192,
-        name: 'fonts/[hash].[ext]',
-      })
+    .set('type', 'asset')
+    .set('generator', {
+      filename: 'fonts/[hash].[ext]',
+    })
+
 
 server.module
   .rule('images')
     .test(/\.(jpe?g|png|webp|ico)$/)
-    .use('url')
-      .loader('url-loader')
-      .options({
-        emitFile: false,
-        limit: 8192,
-        name: 'images/[hash].[ext]',
-      })
+    .set('type', 'asset')
+    .set('generator', {
+      filename: 'images/[hash].[ext]',
+    })
 
 server.module
   .rule('videos')
     .test(/\.(mp4|webm)$/)
-    .use('url')
-      .loader('url-loader')
-      .options({
-        emitFile: false,
-        limit: 8192,
-        name: 'videos/[hash].[ext]',
-      })
+    .set('type', 'asset')
+    .set('generator', {
+      filename: 'videos/[hash].[ext]',
+    })
 
 server.resolve
   .enforceExtension(false)
@@ -332,5 +327,10 @@ server
       nodeExternals(),
     ],
   )
+
+server
+  .set('experiments', {
+    asset: true,
+  })
 
 module.exports = { client, server }

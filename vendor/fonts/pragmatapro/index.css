@@ -1,0 +1,39 @@
+@font-face {
+  font-display: fallback;
+  font-family: 'PragmataPro';
+  font-weight: 400;
+  font-style: normal;
+  src:
+    url('PragmataProLiga-Regular.woff2') format('woff2'),
+    url('PragmataProLiga-Regular.woff') format('woff');
+}
+
+@font-face {
+  font-display: fallback;
+  font-family: 'PragmataPro';
+  font-weight: 400;
+  font-style: italic;
+  src:
+    url('PragmataProLiga-Italic.woff2') format('woff2'),
+    url('PragmataProLiga-Italic.woff') format('woff');
+}
+
+@font-face {
+  font-display: fallback;
+  font-family: 'PragmataPro';
+  font-weight: 700;
+  font-style: normal;
+  src:
+    url('PragmataProLiga-Bold.woff2') format('woff2'),
+    url('PragmataProLiga-Bold.woff') format('woff');
+}
+
+@font-face {
+  font-display: fallback;
+  font-family: 'PragmataPro';
+  font-weight: 700;
+  font-style: italic;
+  src:
+    url('PragmataProLiga-BoldItalic.woff2') format('woff2'),
+    url('PragmataProLiga-BoldItalic.woff') format('woff');
+}
