@@ -41,6 +41,12 @@ client.output
   .publicPath('/')
 
 client
+  .plugin('define')
+  .tap(([options]) => [
+    merge(options, { __DEV__: JSON.stringify(true) }),
+  ])
+
+client
   .plugin('html')
     .use(HTMLPlugin, [
       { hash: true, template: 'index.ejs' },

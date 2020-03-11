@@ -29,13 +29,9 @@ const renderApp = async (): Promise<void> => {
   const [
     { App },
     { BrowserRouter },
-    React,
-    ReactDOM,
   ] = await Promise.all([
     import('app'),
     import('react-router-dom'),
-    import('react'),
-    import('react-dom'),
   ])
 
   const main = document.querySelector('main')
@@ -48,8 +44,8 @@ const renderApp = async (): Promise<void> => {
   )
 
   if (module.hot) {
-    module.hot.accept('app', () => {
-      const { App } = require('app')
+    module.hot.accept('app', async () => {
+      const { App } = await import('app')
 
       reactRoot.render(
         <BrowserRouter>

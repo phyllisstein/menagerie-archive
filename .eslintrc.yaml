@@ -17,6 +17,8 @@ extends:
 globals:
   __DEV__: false
   __SSR__: false
+  React: false
+  ReactDOM: false
 ignorePatterns:
   - '**/vendor/'
   - '**/node_modules/'
@@ -87,7 +89,24 @@ rules:
     - multiline:
         delimiter: none
   '@typescript-eslint/member-naming': 'off'
-  '@typescript-eslint/member-ordering': error
+  '@typescript-eslint/member-ordering':
+    - warn
+    - default: [
+        signature,
+        public-abstract-field, protected-abstract-field, private-abstract-field,
+        public-abstract-method, protected-abstract-method, private-abstract-method,
+        public-static-field, protected-static-field, private-static-field,
+        public-static-method, protected-static-method, private-static-method,
+        public-instance-field, protected-instance-field, private-instance-field,
+        public-field, protected-field, private-field,
+        abstract-field, static-field, instance-field,
+        abstract-method, static-method,
+        field,
+        constructor,
+        public-instance-method, protected-instance-method, private-instance-method,
+        public-method, protected-method, private-method,
+        instance-method, method
+      ]
   '@typescript-eslint/no-array-constructor': error
   '@typescript-eslint/no-dynamic-delete': warn
   '@typescript-eslint/no-empty-function': warn
