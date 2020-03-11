@@ -32,6 +32,7 @@
     "bezier-easing": "^2.1.0",
     "chroma-js": "^2.1.0",
     "common-tags": "^1.8.0",
+    "consolidated-events": "^2.0.2",
     "core-js": "^3.6.4",
     "cross-fetch": "^3.0.4",
     "csstype": "^2.6.9",
