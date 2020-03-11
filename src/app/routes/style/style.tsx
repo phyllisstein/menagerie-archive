@@ -1,16 +1,24 @@
-import { FunctionComponent, useState } from 'react'
+import { useNavigate, useParams } from 'react-router'
+import { FunctionComponent } from 'react'
 import { Impress } from 'app/components/impress'
 import { Step } from './style-styles'
 
+export interface StyleParams {
+  step: string
+}
+
 export const Style: FunctionComponent = () => {
-  const [step, setStep] = useState(1)
+  const navigate = useNavigate()
+  const params = useParams<StyleParams>()
+
+  const step = Number.parseInt(params.step, 10)
 
   return (
     <div>
-      <button type='button' onClick={ () => setStep(s => s + 1) }>
+      <button type='button' onClick={ () => navigate(`../${ step + 1 }`) }>
         Next
       </button>
-      <button type='button' onClick={ () => setStep(s => s - 1) }>
+      <button type='button' onClick={ () => navigate(`../${ step - 1 }`) }>
         Previous
       </button>
       <Impress height={ 768 } step={ step } width={ 1024 }>
