@@ -1,9 +1,13 @@
 import { Body, Canvas, Root } from './impress-styles'
-import { Children, cloneElement, FunctionComponent, useMemo, useRef, useState } from 'react'
+import { Children, cloneElement, FunctionComponent, useEffect, useMemo, useRef, useState } from 'react'
 import { config, to, useSpring } from 'react-spring'
+import _ from 'lodash'
+import { addEventListener } from 'consolidated-events'
+import { canUseDOM } from 'exenv'
 import { oneLine } from 'common-tags'
 import R from 'ramda'
 import { standardEase } from 'app/lib/ease'
+import { useNavigate } from 'react-router'
 
 export interface ImpressProps {
   delay?: number
@@ -55,11 +59,42 @@ const clamp = (min: number, max: number, i: number): number => {
 
 const clampRotation = R.partial(clamp, [0, 360])
 
+const getWindowScale = (height: number, width: number, scaleConstraints: Scale): number => {
+  if (!canUseDOM) {
+    return 1
+  }
+
+  const scaleHeight = window.innerHeight / height
+  const scaleWidth = window.innerWidth / width
+  const scaleWindow = scaleHeight > scaleWidth ? scaleWidth : scaleHeight
+
+  if (scaleConstraints.max != null && scaleWindow > scaleConstraints.max) {
+    return scaleConstraints.max
+  }
+
+  if (scaleConstraints.min != null && scaleWindow < scaleConstraints.min) {
+    return scaleConstraints.min
+  }
+
+  return scaleWindow
+}
+
 export const Impress: FunctionComponent<ImpressProps> = ({ children, delay = 350, height, perspective = 1000, scale: scaleConstraints = {}, spring: springConfig = config.default, step, width }) => {
   const [position, setPosition] = useState<Coordinates>({ x: 0, y: 0, z: 0 })
   const [rotation, setRotation] = useState<Coordinates>({ x: 0, y: 0, z: 0 })
   const [scale, setScale] = useState(1)
   const lastScale = useRef(scale)
+  const childCount = Children.count(children)
+
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    if (step < 1) {
+      navigate(`../${ childCount }`)
+    } else if (step > childCount) {
+      navigate('../1')
+    }
+  })
 
   const positionedSteps = useMemo(() => {
     const cachedPosition: Coordinates = { x: 0, y: 0, z: 0 }
@@ -141,60 +176,63 @@ export const Impress: FunctionComponent<ImpressProps> = ({ children, delay = 350
     })
   }, [children, step])
 
-  const windowScale = useMemo(() => {
-    const scaleHeight = window.innerHeight / height
-    const scaleWidth = window.innerWidth / width
-    const scaleWindow = scaleHeight > scaleWidth ? scaleWidth : scaleHeight
+  const initialWindowScale = getWindowScale(height, width, scaleConstraints)
 
-    if (scaleConstraints.max != null && scaleWindow > scaleConstraints.max) {
-      return scaleConstraints.max
-    }
-
-    if (scaleConstraints.min != null && scaleWindow < scaleConstraints.min) {
-      return scaleConstraints.min
-    }
-
-    return scaleWindow
-  }, [height, scaleConstraints.max, scaleConstraints.min, width])
-
-  const targetPosition = R.map(R.multiply(-1), position) as Coordinates
-  const targetRotation = R.map(R.multiply(-1), rotation) as Coordinates
-
-  const targetScale = 1 / scale
-  const zoom = targetScale >= lastScale.current
-  lastScale.current = targetScale
-
-  const rootAnimation = useSpring({
+  const [rootAnimation, setRootAnimation] = useSpring(() => ({
     config: {
       ...springConfig,
       easing: standardEase,
     },
-    delay: zoom ? delay : 0,
     from: {
-      perspective: perspective / windowScale,
-      scale: windowScale,
+      perspective: perspective / initialWindowScale,
+      scale: initialWindowScale,
     },
-    to: {
-      perspective: perspective / targetScale,
-      scale: targetScale,
-    },
-  })
+  }))
 
-  const canvasAnimation = useSpring({
+  const [canvasAnimation, setCanvasAnimation] = useSpring(() => ({
     config: {
       ...springConfig,
       easing: standardEase,
     },
-    delay: zoom ? 0 : delay,
     from: {
       position: [0, 0, 0],
       rotation: [0, 0, 0],
     },
-    to: {
-      position: [targetPosition.x, targetPosition.y, targetPosition.z],
-      rotation: [targetRotation.x, targetRotation.y, targetRotation.z],
-    },
-  })
+  }))
+
+  useEffect(() => {
+    const animate = () => {
+      const windowScale = getWindowScale(height, width, scaleConstraints)
+
+      const targetPosition = R.map(R.multiply(-1), position) as Coordinates
+      const targetRotation = R.map(R.multiply(-1), rotation) as Coordinates
+
+      let targetScale = 1 / scale
+      const zoom = targetScale >= lastScale.current
+      lastScale.current = targetScale
+      targetScale *= windowScale
+
+      setRootAnimation({
+        delay: zoom ? delay : 0,
+        to: {
+          perspective: perspective / targetScale,
+          scale: targetScale,
+        },
+      })
+
+      setCanvasAnimation({
+        delay: zoom ? 0 : delay,
+        to: {
+          position: [targetPosition.x, targetPosition.y, targetPosition.z],
+          rotation: [targetRotation.x, targetRotation.y, targetRotation.z],
+        },
+      })
+    }
+
+    animate()
+
+    return addEventListener(window, 'resize', _.debounce(animate, 50), { passive: true })
+  }, [delay, height, perspective, position, rotation, scale, scaleConstraints, setCanvasAnimation, setRootAnimation, width])
 
   return (
     <>
