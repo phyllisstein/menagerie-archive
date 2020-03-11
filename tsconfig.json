@@ -24,7 +24,6 @@
     "noImplicitReturns": true,
     "noImplicitThis": true,
     "resolveJsonModule": true,
-    "rootDir": "src",
     "skipLibCheck": true,
     "strict": true,
     "target": "esnext"

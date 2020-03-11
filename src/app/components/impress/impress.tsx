@@ -1,6 +1,6 @@
 import { Body, Canvas, Root } from './impress-styles'
+import { Children, FunctionComponent, useMemo, useState } from 'react'
 import { config, to, useSpring } from 'react-spring'
-import React, { Children, FunctionComponent, useMemo, useState } from 'react'
 import { oneLine } from 'common-tags'
 import R from 'ramda'
 import { swiftOutEase } from 'app/lib/ease'
