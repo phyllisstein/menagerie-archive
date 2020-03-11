@@ -29,9 +29,11 @@ const renderApp = async (): Promise<void> => {
   const [
     { App },
     { BrowserRouter },
+    { HelmetProvider },
   ] = await Promise.all([
     import('app'),
     import('react-router-dom'),
+    import('react-helmet-async'),
   ])
 
   const main = document.querySelector('main')
@@ -39,7 +41,9 @@ const renderApp = async (): Promise<void> => {
 
   reactRoot.render(
     <BrowserRouter>
-      <App />
+      <HelmetProvider>
+        <App />
+      </HelmetProvider>
     </BrowserRouter>,
   )
 
@@ -49,7 +53,9 @@ const renderApp = async (): Promise<void> => {
 
       reactRoot.render(
         <BrowserRouter>
-          <App />
+          <HelmetProvider>
+            <App />
+          </HelmetProvider>
         </BrowserRouter>,
       )
     })
