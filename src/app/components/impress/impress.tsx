@@ -1,9 +1,9 @@
 import { Body, Canvas, Root } from './impress-styles'
-import { Children, FunctionComponent, useMemo, useState } from 'react'
+import { Children, cloneElement, FunctionComponent, useMemo, useRef, useState } from 'react'
 import { config, to, useSpring } from 'react-spring'
 import { oneLine } from 'common-tags'
 import R from 'ramda'
-import { swiftOutEase } from 'app/lib/ease'
+import { standardEase } from 'app/lib/ease'
 
 export interface ImpressProps {
   delay?: number
@@ -41,26 +41,27 @@ export interface Coordinates {
   z?: number
 }
 
-const clamp = (min: number, max: number, i: number) => {
+const clamp = (min: number, max: number, i: number): number => {
   if (i > max) {
-    return i - max
+    return clamp(min, max, i - max)
   }
 
   if (i < min) {
-    return i + min
+    return clamp(min, max, i + max)
   }
 
   return i
 }
 
-const clampRotation = R.partial(clamp, [-360, 360])
+const clampRotation = R.partial(clamp, [0, 360])
 
-export const Impress: FunctionComponent<ImpressProps> = ({ children, delay = 625, height, perspective = 1000, scale: scaleConstraints = {}, spring: springConfig = config.slow, step, width }) => {
+export const Impress: FunctionComponent<ImpressProps> = ({ children, delay = 350, height, perspective = 1000, scale: scaleConstraints = {}, spring: springConfig = config.default, step, width }) => {
   const [position, setPosition] = useState<Coordinates>({ x: 0, y: 0, z: 0 })
   const [rotation, setRotation] = useState<Coordinates>({ x: 0, y: 0, z: 0 })
   const [scale, setScale] = useState(1)
+  const lastScale = useRef(scale)
 
-  const activeSteps = useMemo(() => {
+  const positionedSteps = useMemo(() => {
     const cachedPosition: Coordinates = { x: 0, y: 0, z: 0 }
     const cachedRotation: Coordinates = { x: 0, y: 0, z: 0 }
     let cachedScale = 1
@@ -78,14 +79,14 @@ export const Impress: FunctionComponent<ImpressProps> = ({ children, delay = 625
         ...props
       } = (child.props as StepProps)
 
-      if (currentPosition == null) {
+      if (currentPosition == null && relativePosition != null) {
         cachedPosition.x = cachedPosition.x + (relativePosition?.x ?? 0)
         cachedPosition.y = cachedPosition.y + (relativePosition?.y ?? 0)
         cachedPosition.z = cachedPosition.z + (relativePosition?.z ?? 0)
       } else {
-        cachedPosition.x = currentPosition.x ?? 0
-        cachedPosition.y = currentPosition.y ?? 0
-        cachedPosition.z = currentPosition.z ?? 0
+        cachedPosition.x = currentPosition?.x ?? 0
+        cachedPosition.y = currentPosition?.y ?? 0
+        cachedPosition.z = currentPosition?.z ?? 0
       }
 
       if (typeof currentRotation === 'number') {
@@ -96,20 +97,20 @@ export const Impress: FunctionComponent<ImpressProps> = ({ children, delay = 625
         cachedRotation.x = 0
         cachedRotation.y = 0
         cachedRotation.z = clampRotation((cachedRotation.z ?? 0) + relativeRotation)
-      } else if (currentRotation == null) {
+      } else if (currentRotation == null && relativeRotation != null) {
         cachedRotation.x = clampRotation((cachedRotation.x ?? 0) + (relativeRotation?.x ?? 0))
         cachedRotation.y = clampRotation((cachedRotation.y ?? 0) + (relativeRotation?.y ?? 0))
         cachedRotation.z = clampRotation((cachedRotation.z ?? 0) + (relativeRotation?.z ?? 0))
       } else {
-        cachedRotation.x = currentRotation.x ?? 0
-        cachedRotation.y = currentRotation.y ?? 0
-        cachedRotation.z = currentRotation.z ?? 0
+        cachedRotation.x = currentRotation?.x ?? 0
+        cachedRotation.y = currentRotation?.y ?? 0
+        cachedRotation.z = currentRotation?.z ?? 0
       }
 
-      if (currentScale != null) {
-        cachedScale = currentScale
+      if (currentScale == null && relativeScale != null) {
+        cachedScale = (cachedScale ?? 1) * relativeScale
       } else {
-        cachedScale = (cachedScale ?? 1) * (relativeScale ?? 1)
+        cachedScale = currentScale ?? 1
       }
 
       if (isCurrent) {
@@ -133,8 +134,7 @@ export const Impress: FunctionComponent<ImpressProps> = ({ children, delay = 625
         transformStyle: 'preserve-3d',
       }
 
-      return React.cloneElement(child, {
-        ...props,
+      return cloneElement(child, {
         active: isCurrent,
         style,
       })
@@ -159,13 +159,15 @@ export const Impress: FunctionComponent<ImpressProps> = ({ children, delay = 625
 
   const targetPosition = R.map(R.multiply(-1), position) as Coordinates
   const targetRotation = R.map(R.multiply(-1), rotation) as Coordinates
+
   const targetScale = 1 / scale
-  const zoom = targetScale >= scale
+  const zoom = targetScale >= lastScale.current
+  lastScale.current = targetScale
 
   const rootAnimation = useSpring({
     config: {
       ...springConfig,
-      easing: swiftOutEase,
+      easing: standardEase,
     },
     delay: zoom ? delay : 0,
     from: {
@@ -181,7 +183,7 @@ export const Impress: FunctionComponent<ImpressProps> = ({ children, delay = 625
   const canvasAnimation = useSpring({
     config: {
       ...springConfig,
-      easing: swiftOutEase,
+      easing: standardEase,
     },
     delay: zoom ? 0 : delay,
     from: {
@@ -214,7 +216,7 @@ export const Impress: FunctionComponent<ImpressProps> = ({ children, delay = 625
               `,
             ),
           }}>
-          { activeSteps }
+          { positionedSteps }
         </Canvas>
       </Root>
     </>
