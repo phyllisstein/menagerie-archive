@@ -191,8 +191,16 @@ client
   .plugin('define')
   .use(webpack.DefinePlugin, [
     {
-      __DEV__: JSON.stringify(true),
       __SSR__: JSON.stringify(false),
+    },
+  ])
+
+client
+  .plugin('provide')
+  .use(webpack.ProvidePlugin, [
+    {
+      React: 'react',
+      ReactDOM: 'react-dom',
     },
   ])
 
@@ -304,8 +312,16 @@ server
   .plugin('define')
   .use(webpack.DefinePlugin, [
     {
-      __DEV__: JSON.stringify(true),
       __SSR__: JSON.stringify(false),
+    },
+  ])
+
+server
+  .plugin('provide')
+  .use(webpack.ProvidePlugin, [
+    {
+      React: 'react',
+      ReactDOM: 'react-dom',
     },
   ])
 

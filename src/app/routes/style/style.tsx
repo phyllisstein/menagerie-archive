@@ -1,5 +1,5 @@
-import React, { FunctionComponent, useState } from 'react'
-import { Impress} from 'app/components/impress'
+import { FunctionComponent, useState } from 'react'
+import { Impress } from 'app/components/impress'
 import { Step } from './style-styles'
 
 export const Style: FunctionComponent = () => {
