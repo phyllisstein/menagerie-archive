@@ -12,7 +12,10 @@ module.exports = api => {
       },
       useBuiltIns: 'usage',
     }],
-    '@babel/react',
+    ['@babel/react'. {
+      runtime: 'automatic',
+      useBuiltIns: true,
+    }],
     '@babel/typescript',
   ]
 

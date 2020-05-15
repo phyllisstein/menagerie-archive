@@ -37,26 +37,27 @@ const renderApp = async (): Promise<void> => {
   ])
 
   const main = document.querySelector('main')
-  const reactRoot = ReactDOM.createRoot(main)
 
-  reactRoot.render(
+  ReactDOM.render(
     <BrowserRouter>
       <HelmetProvider>
         <App />
       </HelmetProvider>
     </BrowserRouter>,
+    main,
   )
 
   if (module.hot) {
-    module.hot.accept('app', async () => {
-      const { App } = await import('app')
+    module.hot.accept('app', () => {
+      const { App } = require('app')
 
-      reactRoot.render(
+      ReactDOM.render(
         <BrowserRouter>
           <HelmetProvider>
             <App />
           </HelmetProvider>
         </BrowserRouter>,
+        main,
       )
     })
   }
