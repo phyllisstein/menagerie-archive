@@ -1,4 +1,4 @@
-import { Redirect, Route, Routes } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import avatarFB from 'assets/avatar-fb.jpg'
 import avatarTW from 'assets/avatar-tw.jpg'
 import { Body } from 'app/styles/global'
@@ -52,7 +52,7 @@ export const App: FunctionComponent = () => {
           <link href={ faviconPNG } rel='icon' sizes='192x192' />
         </Helmet>
         <Routes>
-          <Redirect from='style' to='style/1' />
+          <Route element={ <Style /> } path='style' />
           <Route element={ <Style /> } path='style/:step' />
         </Routes>
       </>

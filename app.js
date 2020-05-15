@@ -12,8 +12,8 @@ process.on('unhandledRejection', err => {
 v8.setFlagsFromString('--max-old-space-size=8192')
 
 const {
-  PORT = '80',
-  VIRTUAL_HOST = 'aneveningwith.danielsh.here',
+  PORT = '9280',
+  VIRTUAL_HOST = 'talk.danielsh.here',
 } = process.env
 
 const OPTIONS = {
@@ -32,10 +32,11 @@ const OPTIONS = {
   serveIndex: true,
   sockHost: VIRTUAL_HOST,
   sockPort: Number.parseInt(PORT, 10),
-  stats: 'minimal',
+  stats: 'none',
   watchOptions: {
     ignored: [
       '.git',
+      'dist',
       'node_modules',
     ],
   },

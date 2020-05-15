@@ -67,6 +67,11 @@ const BABEL_OPTIONS = {
     'react-loadable/babel',
   ],
   presets: [
+    ['@babel/react', {
+      development: true,
+      runtime: 'automatic',
+      useBuiltIns: true,
+    }],
     '@babel/typescript',
   ],
 }
@@ -86,7 +91,7 @@ client
 client.output
   .chunkFilename('js/[name].js')
   .filename('js/[name].js')
-  .path(path.resolve('build', 'public'))
+  .path(path.resolve('dist', 'public'))
   .publicPath('/')
 
 client.module
