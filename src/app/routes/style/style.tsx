@@ -11,14 +11,22 @@ export const Style: FunctionComponent = () => {
   const navigate = useNavigate()
   const params = useParams<StyleParams>()
 
-  const step = Number.parseInt(params.step, 10)
+  const step = params.step
+    ? Number.parseInt(params.step, 10)
+    : 1
+  const next = params.step
+    ? `../${ step + 1 }`
+    : `${ step + 1 }`
+  const previous = params.step
+    ? `../${ step - 1 }`
+    : `${ step - 1 }`
 
   return (
     <div>
-      <button type='button' onClick={ () => navigate(`../${ step + 1 }`) }>
+      <button type='button' onClick={ () => navigate(next) }>
         Next
       </button>
-      <button type='button' onClick={ () => navigate(`../${ step - 1 }`) }>
+      <button type='button' onClick={ () => navigate(previous) }>
         Previous
       </button>
       <Impress height={ 768 } step={ step } width={ 1024 }>

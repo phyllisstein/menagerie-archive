@@ -1,5 +1,6 @@
 const { client } = require('./common')
 const CopyPlugin = require('copy-webpack-plugin')
+const ErrorOverlayPlugin = require('@webhotelier/webpack-fast-refresh/error-overlay')
 const HTMLPlugin = require('html-webpack-plugin')
 const merge = require('merge-deep')
 const ReactRefreshPlugin = require('@webhotelier/webpack-fast-refresh')
@@ -8,6 +9,13 @@ const webpack = require('webpack')
 client
   .mode('development')
   .devtool('cheap-module-source-map')
+
+client.output
+  .publicPath('/')
+
+client
+  .entry('main')
+    .prepend('@webhotelier/webpack-fast-refresh/runtime')
 
 client.module
   .rule('babel')
@@ -22,23 +30,23 @@ client.module
                 displayName: true,
               }],
             ],
-            presets: [
-              ['@babel/react', {
-                development: true,
-                useBuiltIns: true,
-              }],
-            ],
           },
         ),
       )
+      .end()
+    .use('fast-refresh')
+      .after('babel')
+      .loader('@webhotelier/webpack-fast-refresh/loader')
 
 client.module
   .rule('style')
     .use('mini-css-extract')
       .tap(options => merge(options, { hmr: true, reloadAll: true }))
 
-client.output
-  .publicPath('/')
+// client.resolve.alias
+//   .set('react', 'vendor/react')
+//   .set('react-dom', 'vendor/react-dom')
+//   .set('react/jsx-dev-runtime', 'vendor/react/jsx-dev-runtime')
 
 client
   .plugin('define')
@@ -59,5 +67,14 @@ client
 client
   .plugin('fast-refresh')
     .use(ReactRefreshPlugin)
+
+client
+  .plugin('error-overlay')
+    .use(ErrorOverlayPlugin)
+
+client
+  .set('cache', {
+    type: 'filesystem',
+  })
 
 module.exports = client.toConfig()
