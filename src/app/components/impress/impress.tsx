@@ -1,12 +1,12 @@
 import { Body, Canvas, Root } from './impress-styles'
 import { Children, cloneElement, FunctionComponent, useEffect, useMemo, useRef, useState } from 'react'
-import { config, to, useSpring } from 'react-spring'
+import { config, interpolate, useSpring } from 'react-spring'
 import _ from 'lodash'
 import { addEventListener } from 'consolidated-events'
 import { canUseDOM } from 'exenv'
+import { decelerationEase } from 'app/lib/ease'
 import { oneLine } from 'common-tags'
 import R from 'ramda'
-import { standardEase } from 'app/lib/ease'
 import { useNavigate } from 'react-router'
 
 export interface ImpressProps {
@@ -79,7 +79,7 @@ const getWindowScale = (height: number, width: number, scaleConstraints: Scale):
   return scaleWindow
 }
 
-export const Impress: FunctionComponent<ImpressProps> = ({ children, delay = 350, height, perspective = 1000, scale: scaleConstraints = {}, spring: springConfig = config.default, step, width }) => {
+export const Impress: FunctionComponent<ImpressProps> = ({ children, delay = 350, height, perspective = 1000, scale: scaleConstraints = {}, spring: springConfig = config.gentle, step, width }) => {
   const [position, setPosition] = useState<Coordinates>({ x: 0, y: 0, z: 0 })
   const [rotation, setRotation] = useState<Coordinates>({ x: 0, y: 0, z: 0 })
   const [scale, setScale] = useState(1)
@@ -181,7 +181,7 @@ export const Impress: FunctionComponent<ImpressProps> = ({ children, delay = 350
   const [rootAnimation, setRootAnimation] = useSpring(() => ({
     config: {
       ...springConfig,
-      easing: standardEase,
+      easing: decelerationEase,
     },
     from: {
       perspective: perspective / initialWindowScale,
@@ -192,7 +192,7 @@ export const Impress: FunctionComponent<ImpressProps> = ({ children, delay = 350
   const [canvasAnimation, setCanvasAnimation] = useSpring(() => ({
     config: {
       ...springConfig,
-      easing: standardEase,
+      easing: decelerationEase,
     },
     from: {
       position: [0, 0, 0],
@@ -240,11 +240,11 @@ export const Impress: FunctionComponent<ImpressProps> = ({ children, delay = 350
       <Root
         style={{
           perspective: rootAnimation.perspective,
-          transform: to(rootAnimation.scale, s => `scale(${ s })`),
+          transform: rootAnimation.scale.interpolate(s => `scale(${ s })`),
         }}>
         <Canvas
           style={{
-            transform: to(
+            transform: interpolate(
               [canvasAnimation.position, canvasAnimation.rotation],
               ([x, y, z], [rotateX, rotateY, rotateZ]) => oneLine`
                 rotateZ(${ rotateZ }deg)
