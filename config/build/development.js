@@ -1,4 +1,4 @@
-const { client } = require('./common')
+const {client} = require('./common')
 const CopyPlugin = require('copy-webpack-plugin')
 const ErrorOverlayPlugin = require('@webhotelier/webpack-fast-refresh/error-overlay')
 const HTMLPlugin = require('html-webpack-plugin')
@@ -21,17 +21,17 @@ client.module
   .rule('babel')
     .use('babel')
       .tap(options =>
-        merge(
-          options,
-          {
-            plugins: [
-              'react-refresh/babel',
-              ['styled-components', {
-                displayName: true,
-              }],
-            ],
-          },
-        ),
+          merge(
+              options,
+              {
+                  plugins: [
+                      'react-refresh/babel',
+                      ['styled-components', {
+                          displayName: true,
+                      }],
+                  ],
+              },
+          ),
       )
       .end()
     .use('fast-refresh')
@@ -41,23 +41,18 @@ client.module
 client.module
   .rule('style')
     .use('mini-css-extract')
-      .tap(options => merge(options, { hmr: true, reloadAll: true }))
-
-// client.resolve.alias
-//   .set('react', 'vendor/react')
-//   .set('react-dom', 'vendor/react-dom')
-//   .set('react/jsx-dev-runtime', 'vendor/react/jsx-dev-runtime')
+      .tap(options => merge(options, {hmr: true, reloadAll: true}))
 
 client
   .plugin('define')
   .tap(([options]) => [
-    merge(options, { __DEV__: JSON.stringify(true) }),
+      merge(options, {__DEV__: JSON.stringify(true)}),
   ])
 
 client
   .plugin('html')
     .use(HTMLPlugin, [
-      { hash: true, template: 'index.ejs' },
+        {hash: true, template: 'index.ejs'},
     ])
 
 client
@@ -74,7 +69,7 @@ client
 
 client
   .set('cache', {
-    type: 'filesystem',
+      type: 'filesystem',
   })
 
 module.exports = client.toConfig()

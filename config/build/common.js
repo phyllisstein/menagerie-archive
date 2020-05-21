@@ -6,74 +6,148 @@ const path = require('path')
 const webpack = require('webpack')
 
 const BABEL_OPTIONS = {
-  babelrc: false,
-  cacheDirectory: true,
-  plugins: [
-    ['@babel/proposal-decorators', {
-      legacy: true,
-    }],
-    ['@babel/proposal-class-properties', {
-      loose: true,
-    }],
-    '@babel/proposal-do-expressions',
-    '@babel/proposal-export-default-from',
-    '@babel/proposal-export-namespace-from',
-    '@babel/proposal-function-bind',
-    '@babel/proposal-logical-assignment-operators',
-    '@babel/proposal-nullish-coalescing-operator',
-    '@babel/proposal-numeric-separator',
-    '@babel/proposal-optional-catch-binding',
-    '@babel/proposal-optional-chaining',
-    ['@babel/proposal-pipeline-operator', {
-      proposal: 'smart',
-    }],
-    '@babel/proposal-throw-expressions',
-    '@babel/syntax-dynamic-import',
-    ['inline-react-svg', {
-      svgo: {
-        plugins: [
-          { cleanupAttrs: true },
-          { cleanupListOfValues: true },
-          { cleanupNumericValues: true },
-          { collapseGroups: true },
-          { convertPathData: true },
-          { convertShapeToPath: true },
-          { convertTransform: true },
-          { mergePaths: true },
-          { removeComments: true },
-          { removeDoctype: true },
-          { removeEditorsNSData: true },
-          { removeEmptyAttrs: true },
-          { removeEmptyContainers: true },
-          { removeEmptyText: true },
-          { removeHiddenElems: true },
-          { removeMetadata: true },
-          { removeNonInheritableGroupAttrs: true },
-          { removeRasterImages: true },
-          { removeScriptElement: true },
-          { removeUnknownsAndDefaults: true },
-          { removeUnusedNS: true },
-          { removeUselessDefs: true },
-          { removeUselessStrokeAndFill: true },
-          { removeXMLNS: true },
-          { removeXMLProcInst: true },
+    babelrc: false,
+    cacheDirectory: true,
+    presets: [
+        [
+            '@babel/react',
+            {
+                development: true,
+                runtime: 'automatic',
+                useBuiltIns: true,
+            },
         ],
-      },
-    }],
-    'lodash',
-    ['ramda', {
-      useES: true,
-    }],
-    'react-loadable/babel',
-  ],
-  presets: [
-    ['@babel/react', {
-      development: true,
-      runtime: 'automatic',
-      useBuiltIns: true,
-    }],
-    '@babel/typescript',
-  ],
+    ],
+    plugins: [
+        '@babel/external-helpers',
+        '@babel/proposal-async-generator-functions',
+        [
+            '@babel/proposal-decorators',
+            {
+                decoratorsBeforeExport: false,
+                legacy: false,
+            },
+        ],
+        '@babel/proposal-class-properties',
+        '@babel/proposal-do-expressions',
+        '@babel/proposal-export-default-from',
+        '@babel/proposal-export-namespace-from',
+        '@babel/proposal-function-bind',
+        '@babel/proposal-function-sent',
+        '@babel/proposal-logical-assignment-operators',
+        '@babel/proposal-nullish-coalescing-operator',
+        '@babel/proposal-numeric-separator',
+        '@babel/proposal-optional-catch-binding',
+        '@babel/proposal-optional-chaining',
+        '@babel/proposal-partial-application',
+        [
+            '@babel/proposal-pipeline-operator',
+            {
+                proposal: 'smart',
+            },
+        ],
+        '@babel/proposal-private-methods',
+        '@babel/proposal-throw-expressions',
+        '@babel/proposal-unicode-property-regex',
+        '@babel/syntax-dynamic-import',
+        ['@babel/transform-regenerator', {
+            async: false,
+            asyncGenerators: true,
+            generators: true,
+        }],
+        [
+            'inline-react-svg',
+            {
+                svgo: {
+                    plugins: [
+                        {
+                            cleanupAttrs: true,
+                        },
+                        {
+                            cleanupListOfValues: true,
+                        },
+                        {
+                            cleanupNumericValues: true,
+                        },
+                        {
+                            collapseGroups: true,
+                        },
+                        {
+                            convertPathData: true,
+                        },
+                        {
+                            convertShapeToPath: true,
+                        },
+                        {
+                            convertTransform: true,
+                        },
+                        {
+                            mergePaths: true,
+                        },
+                        {
+                            removeComments: true,
+                        },
+                        {
+                            removeDoctype: true,
+                        },
+                        {
+                            removeEditorsNSData: true,
+                        },
+                        {
+                            removeEmptyAttrs: true,
+                        },
+                        {
+                            removeEmptyContainers: true,
+                        },
+                        {
+                            removeEmptyText: true,
+                        },
+                        {
+                            removeHiddenElems: true,
+                        },
+                        {
+                            removeMetadata: true,
+                        },
+                        {
+                            removeNonInheritableGroupAttrs: true,
+                        },
+                        {
+                            removeRasterImages: true,
+                        },
+                        {
+                            removeScriptElement: true,
+                        },
+                        {
+                            removeUnknownsAndDefaults: true,
+                        },
+                        {
+                            removeUnusedNS: true,
+                        },
+                        {
+                            removeUselessDefs: true,
+                        },
+                        {
+                            removeUselessStrokeAndFill: true,
+                        },
+                        {
+                            removeXMLNS: true,
+                        },
+                        {
+                            removeXMLProcInst: true,
+                        },
+                    ],
+                },
+            },
+        ],
+        'lodash',
+        [
+            'ramda',
+            {
+                useES: true,
+            },
+        ],
+        'react-loadable/babel',
+    ],
 }
 
 const client = new Config()
@@ -104,37 +178,51 @@ client.module
     .use('babel')
       .loader('babel-loader')
       .options(
-        merge(
-          BABEL_OPTIONS,
-          {
-            plugins: [
-              ['module:fast-async', {
-                compiler: {
-                  lazyThenables: true,
-                  parser: {
-                    sourceType: 'module',
-                  },
-                  promises: true,
-                  wrapAwait: true,
-                },
-                useRuntimeModule: true,
-              }],
-            ],
-            presets: [
-              ['@babel/env', {
-                corejs: {
-                  proposals: true,
-                  version: 3,
-                },
-                modules: false,
-                targets: {
-                  browsers: ['last 2 major versions'],
-                },
-                useBuiltIns: 'usage',
-              }],
-            ],
-          },
-        ),
+          merge(
+              BABEL_OPTIONS,
+              {
+                  presets: [
+                      ['@babel/env', {
+                          corejs: {
+                              proposals: true,
+                              version: 3,
+                          },
+                          exclude: [
+                              'transform-async-to-generator',
+                              'transform-regenerator',
+                          ],
+                          modules: false,
+                          targets: {
+                              browsers: ['last 2 major versions', 'not dead', 'not ie'],
+                          },
+                          useBuiltIns: 'usage',
+                      }],
+                  ],
+                  plugins: [
+                      ['@babel/transform-runtime', {
+                          absoluteRuntime: true,
+                          corejs: {
+                              proposals: true,
+                              version: 3,
+                          },
+                          useESModules: true,
+                      }],
+                      ['module:fast-async', {
+                          compiler: {
+                              es6target: true,
+                              lazyThenables: true,
+                              parser: {
+                                  sourceType: 'module',
+                              },
+                              promises: true,
+                              sourceMap: true,
+                              wrapAwait: true,
+                          },
+                          useRuntimeModule: true,
+                      }],
+                  ],
+              },
+          ),
       )
 
 client.module
@@ -143,7 +231,7 @@ client.module
     .use('mini-css-extract')
       .loader(MiniCssExtractPlugin.loader)
       .options({
-        esModule: true,
+          esModule: true,
       })
       .end()
     .use('css')
@@ -154,16 +242,15 @@ client.module
     .test(/\.(woff2?)$/)
     .set('type', 'asset')
     .set('generator', {
-      filename: 'fonts/[hash].[ext]',
+        filename: 'fonts/[hash].[ext]',
     })
-
 
 client.module
   .rule('images')
     .test(/\.(jpe?g|png|webp|ico)$/)
     .set('type', 'asset')
     .set('generator', {
-      filename: 'images/[hash].[ext]',
+        filename: 'images/[hash].[ext]',
     })
 
 client.module
@@ -171,9 +258,8 @@ client.module
     .test(/\.(mp4|webm)$/)
     .set('type', 'asset')
     .set('generator', {
-      filename: 'videos/[hash].[ext]',
+        filename: 'videos/[hash].[ext]',
     })
-
 
 client.resolve
   .enforceExtension(false)
@@ -195,35 +281,35 @@ client.resolve
 client
   .plugin('define')
   .use(webpack.DefinePlugin, [
-    {
-      __SSR__: JSON.stringify(false),
-    },
+      {
+          __SSR__: JSON.stringify(false),
+      },
   ])
 
 client
   .plugin('provide')
   .use(webpack.ProvidePlugin, [
-    {
-      React: 'react',
-      ReactDOM: 'react-dom',
-    },
+      {
+          React: 'react',
+          ReactDOM: 'react-dom',
+      },
   ])
 
 client
   .plugin('ignore-moment')
   .use(webpack.IgnorePlugin, [
-    { contextRegExp: /moment/, resourceRegExp: /^\.\/locale$/ },
+      {contextRegExp: /moment/, resourceRegExp: /^\.\/locale$/},
   ])
 
 client
   .plugin('mini-css-extract')
   .use(MiniCssExtractPlugin, [
-    { chunkFilename: 'css/[contenthash].css', filename: 'css/[contenthash].css' },
+      {chunkFilename: 'css/[contenthash].css', filename: 'css/[contenthash].css'},
   ])
 
 client
   .set('experiments', {
-    asset: true,
+      asset: true,
   })
 
 server
@@ -251,24 +337,51 @@ server.module
     .use('babel')
       .loader('babel-loader')
       .options(
-        merge(
-          BABEL_OPTIONS,
-          {
-            presets: [
-              ['@babel/env', {
-                corejs: {
-                  proposals: true,
-                  version: 3,
-                },
-                modules: true,
-                targets: {
-                  node: 'current',
-                },
-                useBuiltIns: 'usage',
-              }],
-            ],
-          },
-        ),
+          merge(
+              BABEL_OPTIONS,
+              {
+                  presets: [
+                      ['@babel/env', {
+                          corejs: {
+                              proposals: true,
+                              version: 3,
+                          },
+                          exclude: [
+                              'transform-async-to-generator',
+                              'transform-regenerator',
+                          ],
+                          modules: 'commonjs',
+                          targets: {
+                              node: 'current',
+                          },
+                          useBuiltIns: 'usage',
+                      }],
+                  ],
+                  plugins: [
+                      ['@babel/transform-runtime', {
+                          absoluteRuntime: true,
+                          corejs: {
+                              proposals: true,
+                              version: 3,
+                          },
+                          useESModules: false,
+                      }],
+                      ['module:fast-async', {
+                          compiler: {
+                              engine: true,
+                              es6target: true,
+                              lazyThenables: true,
+                              parser: {
+                                  sourceType: 'module',
+                              },
+                              sourceMap: true,
+                              wrapAwait: true,
+                          },
+                          useRuntimeModule: true,
+                      }],
+                  ],
+              },
+          ),
       )
 
 server.module
@@ -276,16 +389,15 @@ server.module
     .test(/\.(woff2?)$/)
     .set('type', 'asset')
     .set('generator', {
-      filename: 'fonts/[hash].[ext]',
+        filename: 'fonts/[hash].[ext]',
     })
-
 
 server.module
   .rule('images')
     .test(/\.(jpe?g|png|webp|ico)$/)
     .set('type', 'asset')
     .set('generator', {
-      filename: 'images/[hash].[ext]',
+        filename: 'images/[hash].[ext]',
     })
 
 server.module
@@ -293,7 +405,7 @@ server.module
     .test(/\.(mp4|webm)$/)
     .set('type', 'asset')
     .set('generator', {
-      filename: 'videos/[hash].[ext]',
+        filename: 'videos/[hash].[ext]',
     })
 
 server.resolve
@@ -316,42 +428,42 @@ server.resolve
 server
   .plugin('define')
   .use(webpack.DefinePlugin, [
-    {
-      __SSR__: JSON.stringify(false),
-    },
+      {
+          __SSR__: JSON.stringify(false),
+      },
   ])
 
 server
   .plugin('provide')
   .use(webpack.ProvidePlugin, [
-    {
-      React: 'react',
-      ReactDOM: 'react-dom',
-    },
+      {
+          React: 'react',
+          ReactDOM: 'react-dom',
+      },
   ])
 
 server
   .plugin('ignore-moment')
   .use(webpack.IgnorePlugin, [
-    { contextRegExp: /moment/, resourceRegExp: /^\.\/locale$/ },
+      {contextRegExp: /moment/, resourceRegExp: /^\.\/locale$/},
   ])
 
 server
   .externals(
-    [
-      (_context, request, callback) => {
-        if (/stats\.json$/.test(request)) {
-          return callback(null, `commonjs ${ request }`)
-        }
-        callback()
-      },
-      nodeExternals(),
-    ],
+      [
+          (_context, request, callback) => {
+              if (/stats\.json$/.test(request)) {
+                  return callback(null, `commonjs ${request}`)
+              }
+              callback()
+          },
+          nodeExternals(),
+      ],
   )
 
 server
   .set('experiments', {
-    asset: true,
+      asset: true,
   })
 
-module.exports = { client, server }
+module.exports = {client, server}
