@@ -5,13 +5,16 @@ extends:
 plugins:
     - stylelint-order
     - stylelint-config-rational-order/plugin
-processors:
-    - stylelint-processor-styled-components
+    - stylelint-no-unsupported-browser-features
 rules:
     order/properties-order:
         - []
         - unspecified: bottom
           emptyLineMinimumPropertyThreshold: 4
+
+    plugin/no-unsupported-browser-features:
+        - true
+        - severity: warning
 
     plugin/rational-order:
         - true
@@ -25,7 +28,4 @@ rules:
     indentation: 4
     no-eol-whitespace: null
     no-missing-end-of-source-newline: null
-    value-keyword-case:
-        - lower
-        - ignoreProperties:
-            - dummyValue
+    value-keyword-case: null

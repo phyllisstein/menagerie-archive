@@ -1,15 +1,10 @@
 import { useNavigate, useParams } from 'react-router'
-import { FunctionComponent } from 'react'
 import { Impress } from 'app/components/impress'
 import { Step } from './style-styles'
 
-export interface StyleParams {
-  step: string
-}
-
-export const Style: FunctionComponent = () => {
+export const Style = () => {
     const navigate = useNavigate()
-    const params = useParams<StyleParams>()
+    const params = useParams()
 
     const step = params.step
         ? Number.parseInt(params.step, 10)

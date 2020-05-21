@@ -13,8 +13,13 @@ const SITE_NAME = 'An Evening With Daniel P. Shannon'
 const DESCRIPTION = 'Talks and performances.'
 
 const KEYWORDS = [
+    'digital media',
+    'software',
+    'software architecture',
+    'software engineering',
     'talks',
     'tech talks',
+    'web development',
 ]
 
 export const App = () => {
