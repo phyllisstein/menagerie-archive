@@ -1,4 +1,3 @@
-import 'styled-components'
 import * as elevation from './elevation'
 import * as palette from './palette'
 import * as plumber from './plumber'
@@ -8,19 +7,13 @@ import * as typeface from './typeface'
 import { animation } from './animation'
 
 const theme = {
-  animation,
-  elevation,
-  palette,
-  plumber,
-  responsive,
-  scale,
-  typeface,
-}
-
-export type Theme = typeof theme
-
-declare module 'styled-components' {
-  export interface DefaultTheme extends Theme {}
+    animation,
+    elevation,
+    palette,
+    plumber,
+    responsive,
+    scale,
+    typeface,
 }
 
 export default theme
