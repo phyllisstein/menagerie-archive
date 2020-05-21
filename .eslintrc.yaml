@@ -1,365 +1,151 @@
 ---
 env:
-  browser: true
-  commonjs: true
-  es6: true
-  node: true
-  shared-node-browser: true
+    browser: true
+    commonjs: true
+    es6: true
+    node: true
+    shared-node-browser: true
 extends:
-  - eslint:recommended
-  - plugin:@typescript-eslint/eslint-recommended
-  - plugin:@typescript-eslint/recommended
-  - plugin:ramda/recommended
-  - plugin:react/recommended
-  - standard
-  - standard-jsx
-  - standard-react
+    - eslint:recommended
+    - plugin:ramda/recommended
+    - plugin:react/recommended
+    - standard
+    - standard-jsx
+    - standard-react
 globals:
-  __DEV__: false
-  __SSR__: false
-  React: false
-  ReactDOM: false
+    __DEV__: false
+    __SSR__: false
+    React: false
+    ReactDOM: false
 ignorePatterns:
-  - '**/vendor/'
-  - '**/node_modules/'
-  - 'build/'
+    - '**/vendor/'
+    - '**/node_modules/'
+    - 'build/**'
 overrides:
-  - files: config/**/*.js
-    rules:
-      indent:
-        - warn
-        - 2
-        - MemberExpression: 'off'
-      sort-keys: 'off'
-parser: '@typescript-eslint/parser'
+    - files: config/**/*.js
+      rules:
+          indent:
+              - error
+              - 4
+              - MemberExpression: 'off'
+          sort-keys: 'off'
+parser: babel-eslint
 parserOptions:
-  ecmaFeatures:
-    jsx: true
-  extraFileExtensions:
-    - .js
+    babelOptions:
+        configFile: ./.babelrc.js
+    ecmaFeatures:
+        jsx: true
+        globalReturn: false
 plugins:
-  - '@typescript-eslint'
-  - babel
-  - ramda
-  - react
-  - react-hooks
+    - babel
+    - ramda
+    - react
+    - react-hooks
 settings:
-  react:
-    linkComponents:
-      - linkAttribute: to
-        name: Link
-    version: detect
+    react:
+        linkComponents:
+            - linkAttribute: to
+              name: Link
+        version: detect
 rules:
-  '@typescript-eslint/adjacent-overload-signatures': warn
-  '@typescript-eslint/array-type':
-    - warn
-    - default: array-simple
-  '@typescript-eslint/await-thenable': 'off'
-  '@typescript-eslint/ban-ts-ignore': error
-  '@typescript-eslint/camelcase':
-    - warn
-    - allow: [^UNSAFE_]
-      # genericType: always
-      ignoreDestructuring: true
-      properties: always
-  '@typescript-eslint/class-name-casing': warn
-  '@typescript-eslint/consistent-type-assertions':
-    - warn
-    - assertionStyle: as
-      objectLiteralTypeAssertions: allow-as-parameter
-  '@typescript-eslint/consistent-type-definitions': 'off'
-  '@typescript-eslint/explicit-function-return-type': 'off'
-  '@typescript-eslint/explicit-member-accessibility':
-    - warn
-    - accessibility: explicit
-      overrides:
-        constructors: no-public
-  '@typescript-eslint/func-call-spacing':
-    - error
-    - never
-  '@typescript-eslint/generic-type-naming': 'off'
-  '@typescript-eslint/indent':
-    - error
-    - 2
-  '@typescript-eslint/interface-name-prefix':
-    - error
-    - prefixWithI: never
-  '@typescript-eslint/member-delimiter-style':
-    - error
-    - multiline:
-        delimiter: none
-  '@typescript-eslint/member-naming': 'off'
-  '@typescript-eslint/member-ordering':
-    - warn
-    - default: [
-        signature,
-        public-abstract-field, protected-abstract-field, private-abstract-field,
-        public-abstract-method, protected-abstract-method, private-abstract-method,
-        public-static-field, protected-static-field, private-static-field,
-        public-static-method, protected-static-method, private-static-method,
-        public-instance-field, protected-instance-field, private-instance-field,
-        public-field, protected-field, private-field,
-        abstract-field, static-field, instance-field,
-        abstract-method, static-method,
-        field,
-        constructor,
-        public-instance-method, protected-instance-method, private-instance-method,
-        public-method, protected-method, private-method,
-        instance-method, method
-      ]
-  '@typescript-eslint/no-array-constructor': error
-  '@typescript-eslint/no-dynamic-delete': warn
-  '@typescript-eslint/no-empty-function': warn
-  '@typescript-eslint/no-empty-interface':
-    - warn
-    - allowSingleExtends: true
-  '@typescript-eslint/no-explicit-any':
-    - warn
-    - fixToUnknown: true
-      ignoreRestArgs: true
-  '@typescript-eslint/no-extra-parens': warn
-  '@typescript-eslint/no-extraneous-class': warn
-  '@typescript-eslint/no-floating-promises': 'off' # Needs types.
-  '@typescript-eslint/no-for-in-array': warn
-  '@typescript-eslint/no-inferrable-types': 'off'
-  '@typescript-eslint/no-magic-numbers': 'off'
-  '@typescript-eslint/no-misused-new': error
-  '@typescript-eslint/no-misused-promises': 'off' # Needs types.
-  '@typescript-eslint/no-namespace':
-    - error
-    - allowDefinitionFiles: true
-  '@typescript-eslint/no-non-null-assertion': warn
-  '@typescript-eslint/no-parameter-properties': 'off'
-  '@typescript-eslint/no-require-imports': 'off'
-  '@typescript-eslint/no-this-alias':
-    - warn
-    - allowDestructuring: true
-  '@typescript-eslint/no-type-alias': 'off'
-  '@typescript-eslint/no-unnecessary-condition': 'off' # Needs types.
-  '@typescript-eslint/no-unnecessary-qualifier': 'off'
-  '@typescript-eslint/no-unnecessary-type-arguments': 'off'
-  '@typescript-eslint/no-unnecessary-type-assertion': 'off' # Needs types.
-  '@typescript-eslint/no-untyped-public-signature': error
-  '@typescript-eslint/no-unused-expressions':
-    - error
-    - allowShortCircuit: true
-      allowTernary: true
-  '@typescript-eslint/no-unused-vars':
-    - error
-    - args: all
-      argsIgnorePattern: ^_
-      caughtErrors: all
-      caughtErrorsIgnorePattern: ^_
-      ignoreRestSiblings: true
-      varsIgnorePattern: ^_.+
-  '@typescript-eslint/no-use-before-define':
-    - error
-    - functions: false
-      variables: false
-  '@typescript-eslint/no-useless-constructor': warn
-  '@typescript-eslint/no-var-requires': 'off'
-  '@typescript-eslint/prefer-for-of': warn
-  '@typescript-eslint/prefer-function-type': 'off'
-  '@typescript-eslint/prefer-includes': 'off' # Needs types.
-  '@typescript-eslint/prefer-namespace-keyword': 'off'
-  '@typescript-eslint/prefer-readonly': 'off' # Needs types.
-  '@typescript-eslint/prefer-regexp-exec': 'off' # Needs types.
-  '@typescript-eslint/prefer-string-starts-ends-with': 'off' # Needs types.
-  '@typescript-eslint/promise-function-async': 'off'
-  '@typescript-eslint/quotes':
-    - warn
-    - single
-    - allowTemplateLiterals: true
-      avoidEscape: true
-  '@typescript-eslint/require-array-sort-compare': 'off' # Needs types.
-  '@typescript-eslint/require-await': 'off' # Needs types.
-  '@typescript-eslint/restrict-plus-operands': 'off' # Needs types.
-  '@typescript-eslint/restrict-template-expressions': 'off'
-  '@typescript-eslint/semi':
-    - error
-    - never
-    - beforeStatementContinuationChars: never
-  '@typescript-eslint/space-before-function-paren':
-    - warn
-    - anonymous: never
-      asyncArrow: always
-      named: never
-  '@typescript-eslint/strict-boolean-expressions': 'off'
-  '@typescript-eslint/triple-slash-reference':
-    - error
-    - lib: never
-      path: never
-      types: never
-  '@typescript-eslint/type-annotation-spacing': error
-  '@typescript-eslint/typedef': 'off'
-  '@typescript-eslint/unbound-method': 'off' # Needs types.
-  '@typescript-eslint/unified-signatures': warn
+    arrow-parens:
+        - error
+        - as-needed
+        - requireForBlockBody: false
+    comma-dangle:
+        - error
+        - arrays: always-multiline
+          exports: always-multiline
+          functions: always-multiline
+          imports: always-multiline
+          objects: always-multiline
 
-  react/button-has-type: warn
-  react/destructuring-assignment:
-    - warn
-    - always
-  react/display-name: 'off'
-  react/jsx-boolean-value:
-    - error
-    - never
-  react/jsx-child-element-spacing: warn
-  react/jsx-closing-bracket-location:
-    - warn
-    - after-props
-  react/jsx-closing-tag-location: error
-  react/jsx-curly-brace-presence: warn
-  react/jsx-curly-spacing:
-    - warn
-    - children: true
-      spacing:
-        objectLiterals: never
-      when: always
-  react/jsx-equals-spacing:
-    - error
-    - never
-  react/jsx-filename-extension:
-    - error
-    - extensions:
-        - .tsx
-  react/jsx-first-prop-new-line:
-    - error
-    - multiline
-  react/jsx-fragments:
-    - warn
-    - syntax
-  react/jsx-handler-names:
-    - warn
-    - eventHandlerPrefix: handle
-      eventHandlerPropPrefix: on
-  react/jsx-indent-props:
-    - error
-    - 2
-  react/jsx-indent:
-    - error
-    - 2
-    - checkAttributes: true
-  react/jsx-key:
-    - error
-    - checkFragmentShorthand: true
-  react/jsx-no-bind: 'off'
-  react/jsx-no-comment-textnodes: error
-  react/jsx-no-duplicate-props:
-    - error
-    - ignoreCase: true
-  react/jsx-no-target-blank: warn
-  react/jsx-no-undef:
-    - error
-    - allowGlobals: true
-  react/jsx-pascal-case:
-    - error
-    - allowAllCaps: true
-  react/jsx-props-no-multi-spaces: warn
-  react/jsx-sort-default-props:
-    - warn
-    - ignoreCase: true
-  react/jsx-sort-props:
-    - warn
-    - callbacksLast: true
-      ignoreCase: true
-      reservedFirst: false
-      shorthandFirst: true
-  react/jsx-tag-spacing:
-    - warn
-    - closingSlash: never
-      beforeSelfClosing: always
-      afterOpening: never
-  react/jsx-uses-react: error
-  react/jsx-uses-vars: error
-  react/jsx-wrap-multilines: 'off'
-  react/no-access-state-in-setstate: warn
-  react/no-array-index-key: warn
-  react/no-children-prop: error
-  react/no-danger-with-children: error
-  react/no-deprecated: warn
-  react/no-direct-mutation-state: error
-  react/no-find-dom-node: 'off'
-  react/no-is-mounted: error
-  react/no-multi-comp: error
-  react/no-redundant-should-component-update: warn
-  react/no-render-return-value: warn
-  react/no-string-refs: error
-  react/no-this-in-sfc: error
-  react/no-typos: warn
-  react/no-unescaped-entities: warn
-  react/no-unused-prop-types: error
-  react/no-unused-state: error
-  react/prop-types: 'off'
-  react/react-in-jsx-scope: error
-  react/require-render-return: 'off'
-  react/self-closing-comp:
-    - warn
-    - component: true
-      html: true
-  react/sort-comp:
-    - warn
-    - order:
-        - static-variables
-        - static-methods
-        - instance-variables
-        - instance-methods
-        - everything-else
-        - render
-  react/sort-prop-types: warn
-  react/style-prop-object: error
-  react/void-dom-elements-no-children: error
+    camelcase: 'off'
+    babel/camelcase:
+        - error
+        - ignoreDestructuring: false
+          properties: always
 
-  react-hooks/rules-of-hooks: error
-  react-hooks/exhaustive-deps: warn
+    eol-last: 'off'
+    indent:
+        - error
+        - 4
+    jsx-quotes:
+        - error
+        - prefer-single
 
-  arrow-parens:
-    - warn
-    - as-needed
-    - requireForBlockBody: false
-  comma-dangle:
-    - warn
-    - arrays: always-multiline
-      exports: always-multiline
-      functions: always-multiline
-      imports: always-multiline
-      objects: always-multiline
-  eol-last: 'off'
-  func-call-spacing: 'off'
-  indent: 'off'
-  jsx-quotes:
-    - warn
-    - prefer-single
-  new-cap:
-    - warn
-    - capIsNew: false
-      newIsCap: true
-  no-empty-function: 'off'
-  no-extra-parens: 'off'
-  no-invalid-this: warn
-  no-multiple-empty-lines: 'off'
-  no-return-assign: 'off'
-  no-trailing-spaces: 'off'
-  no-unused-expressions: 'off'
-  no-unused-vars: 'off'
-  no-use-before-define: 'off'
-  no-useless-constructor: 'off'
-  object-curly-spacing: 'off'
-  quote-props:
-    - warn
-    - consistent-as-needed
-  quotes: 'off'
-  require-await: 'off'
-  semi: 'off'
-  sort-imports:
-    - warn
-    - ignoreCase: true
-  sort-keys:
-    - warn
-    - asc
-    - caseSensitive: false
-      natural: true
-  space-before-function-paren: 'off'
-  template-curly-spacing:
-    - warn
-    - always
-  valid-typeof: error
+    new-cap: 'off'
+    babel/new-cap:
+        - error
+        - capIsNew: false
+          newIsCap: true
+
+    no-trailing-spaces: 'off'
+    no-unused-expressions: 'off'
+    babel/no-unused-expressions:
+        - error
+        - allowShortCircuit: true
+          allowTernary: true
+
+    object-curly-spacing: 'off'
+    babel/object-curly-spacing:
+        - error
+        - always
+
+    quotes: 'off'
+    babel/quotes:
+        - error
+        - single
+        - allowTemplateLiterals: true
+          avoidEscape: true
+
+    semi: 'off'
+    babel/semi:
+        - error
+        - never
+
+    sort-imports:
+        - error
+        - ignoreCase: true
+    sort-keys:
+        - error
+        - asc
+        - caseSensitive: false
+          natural: true
+    template-curly-spacing:
+        - error
+        - always
+
+    react/jsx-closing-bracket-location:
+        - error
+        - nonEmpty: after-props
+          selfClosing: after-props
+    react/jsx-curly-newline:
+        - error
+        - multiline: require
+          singleline: forbid
+    react/jsx-curly-spacing:
+        - error
+        - attributes: true
+          children: true
+          spacing:
+            objectLiterals: never
+          when: always
+    react/jsx-indent:
+        - error
+        - 4
+        - checkAttributes: true
+          indentLogicalExpressions: true
+    react/jsx-indent-props:
+        - error
+        - 4
+    react/prop-types: 'off'
+    react/sort-comp:
+        - error
+        - order:
+              - static-variables
+              - static-methods
+              - instance-variables
+              - instance-methods
+              - everything-else
+              - render
