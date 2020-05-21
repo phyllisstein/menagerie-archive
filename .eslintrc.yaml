@@ -21,14 +21,6 @@ ignorePatterns:
     - '**/vendor/'
     - '**/node_modules/'
     - 'build/**'
-overrides:
-    - files: config/**/*.js
-      rules:
-          indent:
-              - error
-              - 4
-              - MemberExpression: 'off'
-          sort-keys: 'off'
 parser: babel-eslint
 parserOptions:
     babelOptions:
@@ -129,7 +121,7 @@ rules:
         - attributes: true
           children: true
           spacing:
-            objectLiterals: never
+              objectLiterals: never
           when: always
     react/jsx-indent:
         - error

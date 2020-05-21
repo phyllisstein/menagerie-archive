@@ -4,9 +4,9 @@ import { config, interpolate, useSpring } from 'react-spring'
 import _ from 'lodash'
 import { addEventListener } from 'consolidated-events'
 import { canUseDOM } from 'exenv'
-import { decelerationEase } from 'app/lib/ease'
 import { oneLine } from 'common-tags'
 import R from 'ramda'
+import { swiftOut } from 'app/styles/ease'
 import { useNavigate } from 'react-router'
 
 const clamp = (min, max, i) => {
@@ -145,7 +145,7 @@ export const Impress = ({ children, delay = 350, height, perspective = 1000, sca
     const [rootAnimation, setRootAnimation] = useSpring(() => ({
         config: {
             ...springConfig,
-            easing: decelerationEase,
+            easing: swiftOut,
         },
         from: {
             perspective: perspective / initialWindowScale,
@@ -156,7 +156,7 @@ export const Impress = ({ children, delay = 350, height, perspective = 1000, sca
     const [canvasAnimation, setCanvasAnimation] = useSpring(() => ({
         config: {
             ...springConfig,
-            easing: decelerationEase,
+            easing: swiftOut,
         },
         from: {
             position: [0, 0, 0],
