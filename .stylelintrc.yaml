@@ -1,31 +1,31 @@
 extends:
-    - stylelint-config-recommended
-    - stylelint-config-standard
-    - stylelint-config-styled-components
+  - stylelint-config-recommended
+  - stylelint-config-standard
+  - stylelint-config-styled-components
 plugins:
-    - stylelint-order
-    - stylelint-config-rational-order/plugin
-    - stylelint-no-unsupported-browser-features
+  - stylelint-order
+  - stylelint-config-rational-order/plugin
+  - stylelint-no-unsupported-browser-features
 rules:
-    order/properties-order:
-        - []
-        - unspecified: bottom
-          emptyLineMinimumPropertyThreshold: 4
+  order/properties-order:
+    - []
+    - unspecified: bottom
+      emptyLineMinimumPropertyThreshold: 4
 
-    plugin/no-unsupported-browser-features:
-        - true
-        - severity: warning
+  plugin/no-unsupported-browser-features:
+    - true
+    - severity: warning
 
-    plugin/rational-order:
-        - true
-        - empty-line-between-groups: threshold
-          empty-lines-within-groups: false
+  plugin/rational-order:
+    - true
+    - empty-line-between-groups: threshold
+      empty-lines-within-groups: false
 
-    block-no-empty: null
-    color-hex-case: upper
-    declaration-empty-line-before: null
-    font-family-no-missing-generic-family-keyword: null
-    indentation: 4
-    no-eol-whitespace: null
-    no-missing-end-of-source-newline: null
-    value-keyword-case: null
+  block-no-empty: null
+  color-hex-case: upper
+  declaration-empty-line-before: null
+  font-family-no-missing-generic-family-keyword: null
+  indentation: 4
+  no-eol-whitespace: null
+  no-missing-end-of-source-newline: null
+  value-keyword-case: null
