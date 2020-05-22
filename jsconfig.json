@@ -1,15 +1,9 @@
 {
   "allowSyntheticDefaultImports": true,
-  "baseUrl": ".",
+  "baseUrl": "./src",
   "checkJs": true,
   "experimentalDecorators": true,
   "module": "esnext",
   "moduleResolution": "node",
-  "paths": {
-    "*": [
-      "*",
-      "src/*"
-    ]
-  },
   "target": "esnext"
 }
