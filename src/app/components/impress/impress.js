@@ -201,27 +201,19 @@ export const Impress = ({ children, delay = 350, height, perspective = 1000, sca
     return (
         <>
             <Body />
-            <Root
-                style={
-                    {
-                        perspective: rootAnimation.perspective,
-                        transform: rootAnimation.scale.interpolate(s => `scale(${ s })`),
-                    }
-                }>
+            <Root style={{ perspective: rootAnimation.perspective, transform: rootAnimation.scale.interpolate(s => `scale(${ s })`) }}>
                 <Canvas
-                    style={
-                        {
-                            transform: interpolate(
-                                [canvasAnimation.position, canvasAnimation.rotation],
-                                ([x, y, z], [rotateX, rotateY, rotateZ]) => oneLine`
-                rotateZ(${ rotateZ }deg)
-                rotateY(${ rotateY }deg)
-                rotateX(${ rotateX }deg)
-                translate3d(${ x }px, ${ y }px, ${ z }px)
-              `,
-                            ),
-                        }
-                    }>
+                    style={{
+                        transform: interpolate(
+                            [canvasAnimation.position, canvasAnimation.rotation],
+                            ([x, y, z], [rotateX, rotateY, rotateZ]) =>
+                                oneLine`
+                                    rotateZ(${ rotateZ }deg)
+                                    rotateY(${ rotateY }deg)
+                                    rotateX(${ rotateX }deg)
+                                    translate3d(${ x }px, ${ y }px, ${ z }px)
+                                `),
+                    }}>
                     { positionedSteps }
                 </Canvas>
             </Root>
