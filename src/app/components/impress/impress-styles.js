@@ -1,5 +1,5 @@
 import styled, { createGlobalStyle } from 'styled-components'
-import { animated } from 'react-spring'
+import { motion } from 'framer-motion'
 
 export const Body = createGlobalStyle`
     body {
@@ -8,7 +8,7 @@ export const Body = createGlobalStyle`
     }
 `
 
-export const Canvas = styled(animated.div)`
+export const Canvas = styled(motion.div)`
     position: absolute;
 
     transform-origin: top left;
@@ -17,7 +17,7 @@ export const Canvas = styled(animated.div)`
     will-change: transform;
 `
 
-export const Root = styled(animated.div)`
+export const Root = styled(motion.div)`
     position: absolute;
     top: 50%;
     left: 50%;
