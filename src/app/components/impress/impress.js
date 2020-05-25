@@ -1,12 +1,8 @@
 import { Body, Canvas, Root } from './impress-styles'
 import { Children, cloneElement, useEffect, useMemo, useRef, useState } from 'react'
-import { config, interpolate, useSpring } from 'react-spring'
-import _ from 'lodash'
-import { addEventListener } from 'consolidated-events'
 import { canUseDOM } from 'exenv'
 import { oneLine } from 'common-tags'
 import R from 'ramda'
-import { swiftOut } from 'app/styles/ease'
 import { useNavigate } from 'react-router'
 
 const clamp = (min, max, i) => {
@@ -43,7 +39,7 @@ const getWindowScale = (height, width, scaleConstraints) => {
     return scaleWindow
 }
 
-export const Impress = ({ children, delay = 350, height, perspective = 1000, scale: scaleConstraints = {}, spring: springConfig = config.molasses, step, width }) => {
+export const Impress = ({ children, delay = 350, height, perspective = 1000, scale: scaleConstraints = {}, step, width }) => {
     const [position, setPosition] = useState({ x: 0, y: 0, z: 0 })
     const [rotation, setRotation] = useState({ x: 0, y: 0, z: 0 })
     const [scale, setScale] = useState(1)
@@ -143,78 +139,56 @@ export const Impress = ({ children, delay = 350, height, perspective = 1000, sca
 
     const initialWindowScale = getWindowScale(height, width, scaleConstraints)
 
-    const [rootAnimation, setRootAnimation] = useSpring(() => ({
-        config: {
-            ...springConfig,
-            easing: swiftOut,
-        },
-        from: {
-            perspective: perspective / initialWindowScale,
-            scale: initialWindowScale,
-        },
-    }))
+    const targetPosition = R.map(R.multiply(-1), position)
+    const targetRotation = R.map(R.multiply(-1), rotation)
 
-    const [canvasAnimation, setCanvasAnimation] = useSpring(() => ({
-        config: {
-            ...springConfig,
-            easing: swiftOut,
-        },
-        from: {
-            position: [0, 0, 0],
-            rotation: [0, 0, 0],
-        },
-    }))
-
-    useEffect(() => {
-        const animate = () => {
-            const windowScale = getWindowScale(height, width, scaleConstraints)
-
-            const targetPosition = R.map(R.multiply(-1), position)
-            const targetRotation = R.map(R.multiply(-1), rotation)
-
-            let targetScale = 1 / scale
-            const zoom = targetScale >= lastScale.current
-            lastScale.current = targetScale
-            targetScale *= windowScale
-
-            setRootAnimation({
-                delay: zoom ? delay : 0,
-                to: {
-                    perspective: perspective / targetScale,
-                    scale: targetScale,
-                },
-            })
-
-            setCanvasAnimation({
-                delay: zoom ? 0 : delay,
-                to: {
-                    position: [targetPosition.x, targetPosition.y, targetPosition.z],
-                    rotation: [targetRotation.x, targetRotation.y, targetRotation.z],
-                },
-            })
-        }
-
-        animate()
-
-        return addEventListener(window, 'resize', _.debounce(animate, 50), { passive: true })
-    }, [delay, height, perspective, position, rotation, scale, scaleConstraints, setCanvasAnimation, setRootAnimation, width])
+    const windowScale = getWindowScale(height, width, scaleConstraints)
+    let targetScale = 1 / scale
+    const zoom = targetScale >= lastScale.current
+    lastScale.current = targetScale
+    targetScale *= windowScale
 
     return (
         <>
             <Body />
-            <Root style={{ perspective: rootAnimation.perspective, transform: rootAnimation.scale.interpolate(s => `scale(${ s })`) }}>
+            <Root
+                animate={{
+                    perspective: perspective / targetScale,
+                    scale: targetScale,
+                }}
+                initial={{
+                    perspective: perspective / initialWindowScale,
+                    scale: initialWindowScale,
+                }}
+                transition={{
+                    delay: zoom ? 0.5 : 0,
+                    duration: 1,
+                    ease: [0.4, 0, 0.2, 1],
+                    type: 'tween',
+                }}>
                 <Canvas
-                    style={{
-                        transform: interpolate(
-                            [canvasAnimation.position, canvasAnimation.rotation],
-                            ([x, y, z], [rotateX, rotateY, rotateZ]) =>
-                                oneLine`
-                                    rotateZ(${ rotateZ }deg)
-                                    rotateY(${ rotateY }deg)
-                                    rotateX(${ rotateX }deg)
-                                    translate3d(${ x }px, ${ y }px, ${ z }px)
-                                `,
-                        ),
+                    animate={{
+                        rotateX: targetRotation.x,
+                        rotateY: targetRotation.y,
+                        rotateZ: targetRotation.z,
+                        x: targetPosition.x,
+                        y: targetPosition.y,
+                        z: targetPosition.z,
+                    }}
+                    initial={{
+                        rotateX: 0,
+                        rotateY: 0,
+                        rotateZ: 0,
+                        x: 0,
+                        y: 0,
+                        z: 0,
+                    }}
+                    transformTemplate={ ({ rotateX, rotateY, rotateZ, x, y, z }) => `translate3d(${ x }, ${ y }, ${ z }) rotateZ(${ rotateZ }) rotateY(${ rotateY }) rotateX(${ rotateX })` }
+                    transition={{
+                        delay: zoom ? 0 : 0.5,
+                        duration: 1,
+                        ease: [0.4, 0, 0.2, 1],
+                        type: 'tween',
                     }}>
                     { positionedSteps }
                 </Canvas>
