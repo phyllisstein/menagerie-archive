@@ -11,7 +11,7 @@ process.on('unhandledRejection', err => {
 })
 
 let {
-    PORT = '9280',
+    PORT = '80',
     VIRTUAL_HOST = 'talk.danielsh.here',
 } = process.env
 
@@ -45,7 +45,7 @@ if (typeof PhusionPassenger !== 'undefined') {
     PhusionPassenger.configure({ autoinstall: false })
 
     PORT = 'passenger'
-    OPTIONS.public = VIRTUAL_HOST
+    OPTIONS.public = `${ VIRTUAL_HOST }:80`
     OPTIONS.port = 80
     OPTIONS.sockPort = 80
 }
