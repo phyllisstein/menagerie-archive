@@ -43,7 +43,7 @@ const getWindowScale = (height, width, scaleConstraints) => {
     return scaleWindow
 }
 
-export const Impress = ({ children, delay = 350, height, perspective = 1000, scale: scaleConstraints = {}, spring: springConfig = config.gentle, step, width }) => {
+export const Impress = ({ children, delay = 350, height, perspective = 1000, scale: scaleConstraints = {}, spring: springConfig = config.molasses, step, width }) => {
     const [position, setPosition] = useState({ x: 0, y: 0, z: 0 })
     const [rotation, setRotation] = useState({ x: 0, y: 0, z: 0 })
     const [scale, setScale] = useState(1)
@@ -119,13 +119,14 @@ export const Impress = ({ children, delay = 350, height, perspective = 1000, sca
             }
 
             const transform = oneLine`
-        translate(-50%, -50%)
-        translate3d(${ cachedPosition.x }px, ${ cachedPosition.y }px, ${ cachedPosition.z }px)
-        rotateX(${ cachedRotation.x }deg)
-        rotateY(${ cachedRotation.y }deg)
-        rotateZ(${ cachedRotation.z }deg)
-        scale(${ cachedScale })
-      `
+                translate(-50%, -50%)
+                translate3d(${ cachedPosition.x }px, ${ cachedPosition.y }px, ${ cachedPosition.z }px)
+                rotateX(${ cachedRotation.x }deg)
+                rotateY(${ cachedRotation.y }deg)
+                rotateZ(${ cachedRotation.z }deg)
+                scale(${ cachedScale })
+            `
+
             const style = {
                 ...props.style,
                 position: 'absolute',
@@ -212,7 +213,8 @@ export const Impress = ({ children, delay = 350, height, perspective = 1000, sca
                                     rotateY(${ rotateY }deg)
                                     rotateX(${ rotateX }deg)
                                     translate3d(${ x }px, ${ y }px, ${ z }px)
-                                `),
+                                `,
+                        ),
                     }}>
                     { positionedSteps }
                 </Canvas>
