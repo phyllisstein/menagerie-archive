@@ -9,6 +9,7 @@ extends:
   - eslint:recommended
   - plugin:ramda/recommended
   - plugin:react/recommended
+  - plugin:react-hooks/recommended
   - standard
   - standard-jsx
   - standard-react
