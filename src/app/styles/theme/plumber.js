@@ -1,6 +1,6 @@
 import _ from 'lodash'
 import { css } from 'styled-components'
-import { stripUnit } from 'polished'
+import { getValueAndUnit } from 'polished'
 import { unitless } from './scale'
 
 const BASELINE = {
@@ -10,8 +10,6 @@ const BASELINE = {
 }
 
 const round = _.partial(_.round, _.partial.placeholder, 3)
-
-const getValueAndUnit = _.partial(stripUnit, _.partial.placeholder, true)
 
 const getBaselineCorrection = ({ baseline, fontSize, lineHeight }) => {
     const baselineFromBottom = (lineHeight - fontSize) / 2 + fontSize * baseline
