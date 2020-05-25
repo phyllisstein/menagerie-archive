@@ -15,6 +15,10 @@ client.output
 client
     .entry('main')
         .prepend('@webhotelier/webpack-fast-refresh/runtime')
+        .end()
+    .entry('impress-demo')
+        .prepend('@webhotelier/webpack-fast-refresh/runtime')
+        .end()
 
 client.module
     .rule('babel')
@@ -44,6 +48,12 @@ client.module
         .use('mini-css-extract')
             .tap(options => merge(options, { hmr: true, reloadAll: true }))
 
+client.module
+    .rule('pug')
+        .test(/\.pug$/)
+        .use('pug')
+            .loader('pug-loader')
+
 client
     .plugin('define')
     .tap(([options]) => [
@@ -53,7 +63,24 @@ client
 client
     .plugin('html-main')
         .use(HTMLPlugin, [
-            { hash: true, template: 'index.ejs' },
+            {
+                chunks: ['main'],
+                filename: 'index.html',
+                hash: true,
+                scriptLoading: 'defer',
+                template: 'index.pug',
+            },
+        ])
+
+client
+    .plugin('html-impress-demo')
+        .use(HTMLPlugin, [
+            {
+                chunks: ['impress-demo'],
+                filename: 'impress-demo.html',
+                hash: true,
+                template: 'impress-demo/index.pug',
+            },
         ])
 
 client

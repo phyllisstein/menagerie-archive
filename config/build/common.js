@@ -65,6 +65,9 @@ client
 client
     .entry('main')
         .add('./client')
+        .end()
+    .entry('impress-demo')
+        .add('./impress-demo')
 
 client.output
     .chunkFilename('js/[name].js')
@@ -97,7 +100,12 @@ client.module
                                 ],
                                 modules: false,
                                 targets: {
-                                    browsers: ['last 2 major versions', 'not dead', 'not ie > 0'],
+                                    browsers: [
+                                        'last 2 major versions',
+                                        '> 5% in US',
+                                        'not dead',
+                                        'not ie > 0',
+                                    ],
                                 },
                                 useBuiltIns: 'usage',
                             }],
