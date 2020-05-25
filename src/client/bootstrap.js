@@ -35,27 +35,26 @@ const renderApp = async () => {
     ])
 
     const main = document.querySelector('main')
+    const reactRoot = ReactDOM.unstable_createRoot(main)
 
-    ReactDOM.render(
+    reactRoot.render(
         <BrowserRouter>
             <HelmetProvider>
                 <App />
             </HelmetProvider>
         </BrowserRouter>,
-        main,
     )
 
     if (module.hot) {
         module.hot.accept('app', () => {
             const {App} = require('app')
 
-            ReactDOM.render(
+            reactRoot.render(
                 <BrowserRouter>
                     <HelmetProvider>
                         <App />
-                  </HelmetProvider>
-              </BrowserRouter>,
-                main,
+                    </HelmetProvider>
+                </BrowserRouter>,
             )
         })
     }
