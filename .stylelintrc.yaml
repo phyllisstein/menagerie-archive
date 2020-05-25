@@ -5,16 +5,11 @@ extends:
 plugins:
   - stylelint-order
   - stylelint-config-rational-order/plugin
-  - stylelint-no-unsupported-browser-features
 rules:
   order/properties-order:
     - []
     - unspecified: bottom
       emptyLineMinimumPropertyThreshold: 4
-
-  plugin/no-unsupported-browser-features:
-    - true
-    - severity: warning
 
   plugin/rational-order:
     - true
