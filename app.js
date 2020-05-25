@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 
+/* global PhusionPassenger:false */
+
 const config = require('./config/build/development')
-const v8 = require('v8')
 const webpack = require('webpack')
 const WebpackDevServer = require('webpack-dev-server')
 
@@ -9,9 +10,7 @@ process.on('unhandledRejection', err => {
     throw new Error(err)
 })
 
-v8.setFlagsFromString('--max-old-space-size=8192')
-
-const {
+let {
     PORT = '9280',
     VIRTUAL_HOST = 'talk.danielsh.here',
 } = process.env
@@ -21,7 +20,6 @@ const OPTIONS = {
     host: '0.0.0.0',
     hot: true,
     index: 'index.html',
-    injectClient: true,
     injectHot: true,
     overlay: {
         errors: true,
@@ -33,6 +31,7 @@ const OPTIONS = {
     sockHost: VIRTUAL_HOST,
     sockPort: Number.parseInt(PORT, 10),
     stats: 'none',
+    transportMode: 'ws',
     watchOptions: {
         ignored: [
             '.git',
@@ -40,6 +39,15 @@ const OPTIONS = {
             'node_modules',
         ],
     },
+}
+
+if (typeof PhusionPassenger !== 'undefined') {
+    PhusionPassenger.configure({ autoinstall: false })
+
+    PORT = 'passenger'
+    OPTIONS.public = VIRTUAL_HOST
+    OPTIONS.port = 80
+    OPTIONS.sockPort = 80
 }
 
 WebpackDevServer.addDevServerEntrypoints(config, OPTIONS)
