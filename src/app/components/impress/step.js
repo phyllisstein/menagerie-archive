@@ -35,7 +35,7 @@ export const Step = ({ active, children, position = {}, relative, rotation = {},
             rotation: { ...nextRotation },
             scale: nextScale,
         })
-    }, [position.x, position.y, position.z, rotation.x, rotation.y, rotation.z, previousAnimation.position.x, previousAnimation.position.y, previousAnimation.position.z, previousAnimation.rotation.x, previousAnimation.rotation.y, previousAnimation.rotation.z, previousAnimation.scale])
+    }, [position.x, position.y, position.z, rotation.x, rotation.y, rotation.z, previousAnimation.position.x, previousAnimation.position.y, previousAnimation.position.z, previousAnimation.rotation.x, previousAnimation.rotation.y, previousAnimation.rotation.z, previousAnimation.scale, relative])
 
     const transform = oneLine`
         translate(-50%, -50%)
