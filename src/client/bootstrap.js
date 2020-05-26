@@ -2,9 +2,9 @@ import 'normalize.css'
 
 const loadCSS = async () => {
     await Promise.all([
-        import('fonts/guardian-egyptian/index.css'),
-        import('fonts/guardian-sans/index.css'),
-        import('fonts/pragmatapro/index.css'),
+        import('fonts/miller-text/index.css'),
+        import('fonts/miller-display/index.css'),
+        import('fonts/egyptienne/index.css'),
     ])
 }
 
