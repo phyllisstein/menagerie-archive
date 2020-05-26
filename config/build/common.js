@@ -49,6 +49,90 @@ const BABEL_OPTIONS = {
             asyncGenerators: true,
             generators: true,
         }],
+        [
+            'inline-react-svg',
+            {
+                svgo: {
+                    plugins: [
+                        {
+                            cleanupAttrs: true,
+                        },
+                        {
+                            cleanupListOfValues: true,
+                        },
+                        {
+                            cleanupNumericValues: true,
+                        },
+                        {
+                            collapseGroups: true,
+                        },
+                        {
+                            convertPathData: true,
+                        },
+                        {
+                            convertShapeToPath: true,
+                        },
+                        {
+                            convertTransform: true,
+                        },
+                        {
+                            mergePaths: true,
+                        },
+                        {
+                            removeComments: true,
+                        },
+                        {
+                            removeDoctype: true,
+                        },
+                        {
+                            removeEditorsNSData: true,
+                        },
+                        {
+                            removeEmptyAttrs: true,
+                        },
+                        {
+                            removeEmptyContainers: true,
+                        },
+                        {
+                            removeEmptyText: true,
+                        },
+                        {
+                            removeHiddenElems: true,
+                        },
+                        {
+                            removeMetadata: true,
+                        },
+                        {
+                            removeNonInheritableGroupAttrs: true,
+                        },
+                        {
+                            removeRasterImages: true,
+                        },
+                        {
+                            removeScriptElement: true,
+                        },
+                        {
+                            removeUnknownsAndDefaults: true,
+                        },
+                        {
+                            removeUnusedNS: true,
+                        },
+                        {
+                            removeUselessDefs: true,
+                        },
+                        {
+                            removeUselessStrokeAndFill: true,
+                        },
+                        {
+                            removeXMLNS: true,
+                        },
+                        {
+                            removeXMLProcInst: true,
+                        },
+                    ],
+                },
+            },
+        ],
         'lodash',
         ['ramda', {
             useES: true,
@@ -146,7 +230,7 @@ client.module
     .test(/\.(woff2?)$/)
     .set('type', 'asset')
     .set('generator', {
-        filename: 'fonts/[hash].[ext]',
+        filename: 'fonts/[name].[hash][ext]',
     })
 
 client.module
@@ -154,7 +238,7 @@ client.module
     .test(/\.(jpe?g|png|webp|ico)$/)
     .set('type', 'asset')
     .set('generator', {
-        filename: 'images/[hash].[ext]',
+        filename: 'images/[name].[hash][ext]',
     })
 
 client.module
@@ -162,7 +246,7 @@ client.module
     .test(/\.(mp4|webm)$/)
     .set('type', 'asset')
     .set('generator', {
-        filename: 'videos/[hash].[ext]',
+        filename: 'videos/[name].[hash][ext]',
     })
 
 client.resolve
@@ -285,7 +369,7 @@ server.module
     .test(/\.(woff2?)$/)
     .set('type', 'asset')
     .set('generator', {
-        filename: 'fonts/[hash].[ext]',
+        filename: 'fonts/[name].[hash][ext]',
     })
 
 server.module
@@ -293,7 +377,7 @@ server.module
     .test(/\.(jpe?g|png|webp|ico)$/)
     .set('type', 'asset')
     .set('generator', {
-        filename: 'images/[hash].[ext]',
+        filename: 'images/[name].[hash][ext]',
     })
 
 server.module
@@ -301,7 +385,7 @@ server.module
     .test(/\.(mp4|webm)$/)
     .set('type', 'asset')
     .set('generator', {
-        filename: 'videos/[hash].[ext]',
+        filename: 'videos/[name].[hash][ext]',
     })
 
 server.resolve

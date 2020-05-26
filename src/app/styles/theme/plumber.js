@@ -4,9 +4,9 @@ import { getValueAndUnit } from 'polished'
 import { unitless } from './scale'
 
 const BASELINE = {
-    GUARDIAN_EGYPTIAN: 0.21,
-    GUARDIAN_SANS: 0.21,
-    PRAGMATAPRO: 0.128,
+    EGYPTIENNE: 0.18,
+    MILLER_DISPLAY: 0.183,
+    MILLER_TEXT: 0.183,
 }
 
 const round = _.partial(_.round, _.partial.placeholder, 3)
@@ -93,6 +93,6 @@ const getPlumber = ({
     return plumber
 }
 
-export const primary = getPlumber({ baseline: BASELINE.GUARDIAN_SANS })
-export const accent = getPlumber({ baseline: BASELINE.GUARDIAN_EGYPTIAN })
-export const mono = getPlumber({ baseline: BASELINE.PRAGMATAPRO })
+export const primary = getPlumber({ baseline: BASELINE.MILLER_TEXT })
+export const accent = getPlumber({ baseline: BASELINE.EGYPTIENNE })
+export const hed = getPlumber({ baseline: BASELINE.MILLER_DISPLAY })

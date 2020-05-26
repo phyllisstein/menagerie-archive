@@ -1,0 +1,9 @@
+@font-face {
+    font-display: fallback;
+    font-family: 'Egyptienne';
+    font-style: normal;
+    font-weight: 700;
+    src:
+        url('EgyptienneLT-BoldCondensed.woff2') format('woff2'),
+        url('EgyptienneLT-BoldCondensed.woff') format('woff');
+}

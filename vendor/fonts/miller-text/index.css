@@ -1,0 +1,39 @@
+@font-face {
+    font-display: fallback;
+    font-family: 'Miller Text';
+    font-style: normal;
+    font-weight: 400;
+    src:
+        url('MillerText-Roman.woff2') format('woff2'),
+        url('MillerText-Roman.woff') format('woff');
+}
+
+@font-face {
+    font-display: fallback;
+    font-family: 'Miller Text';
+    font-style: italic;
+    font-weight: 400;
+    src:
+        url('MillerText-Italic.woff2') format('woff2'),
+        url('MillerText-Italic.woff') format('woff');
+}
+
+@font-face {
+    font-display: fallback;
+    font-family: 'Miller Text';
+    font-style: normal;
+    font-weight: 700;
+    src:
+        url('MillerText-Bold.woff2') format('woff2'),
+        url('MillerText-Bold.woff') format('woff');
+}
+
+@font-face {
+    font-display: fallback;
+    font-family: 'Miller Text';
+    font-style: italic;
+    font-weight: 700;
+    src:
+        url('MillerText-BoldItalic.woff2') format('woff2'),
+        url('MillerText-BoldItalic.woff') format('woff');
+}

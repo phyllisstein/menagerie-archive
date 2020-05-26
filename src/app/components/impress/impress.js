@@ -1,5 +1,6 @@
 import { Body, Canvas, Root } from './impress-styles'
-import { Children, cloneElement, useEffect } from 'react'
+import { Children, cloneElement, useEffect, useState } from 'react'
+import { addEventListener } from 'consolidated-events'
 import { canUseDOM } from 'exenv'
 import { impress } from 'app/state'
 import R from 'ramda'
@@ -28,6 +29,7 @@ const getWindowScale = (height, width, scaleConstraints) => {
 
 export const Impress = ({ children, height, perspective = 1000, scale: scaleConstraints = {}, step, width }) => {
     const childCount = Children.count(children)
+    const [scale, setScale] = useState(() => getWindowScale(height, width, scaleConstraints))
 
     const navigate = useNavigate()
 
@@ -46,18 +48,26 @@ export const Impress = ({ children, height, perspective = 1000, scale: scaleCons
         })
     })
 
-    const initialWindowScale = getWindowScale(height, width, scaleConstraints)
-
     const previousAnimation = useRecoilValue(impress.animation(step - 1))
     const currentAnimation = useRecoilValue(impress.animation(step))
 
     const targetPosition = R.map(R.multiply(-1), currentAnimation.position)
     const targetRotation = R.map(R.multiply(-1), currentAnimation.rotation)
 
-    const windowScale = getWindowScale(height, width, scaleConstraints)
+    useEffect(() => {
+        const getScale = () => {
+            const nextScale = getWindowScale(height, width, scaleConstraints)
+            if (nextScale !== scale) {
+                setScale(nextScale)
+            }
+        }
+        getScale()
+        return addEventListener(window, 'resize', getScale, { passive: true })
+    })
+
     let targetScale = 1 / currentAnimation.scale
     const zoom = targetScale >= previousAnimation.scale
-    targetScale *= windowScale
+    targetScale *= scale
 
     return (
         <>
@@ -68,8 +78,8 @@ export const Impress = ({ children, height, perspective = 1000, scale: scaleCons
                     scale: targetScale,
                 }}
                 initial={{
-                    perspective: perspective / initialWindowScale,
-                    scale: initialWindowScale,
+                    perspective: perspective / scale,
+                    scale: scale,
                 }}
                 transition={{
                     delay: zoom ? 0.5 : 0,
