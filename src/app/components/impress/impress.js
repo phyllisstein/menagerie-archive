@@ -1,25 +1,10 @@
 import { Body, Canvas, Root } from './impress-styles'
-import { Children, cloneElement, useEffect, useMemo, useRef, useState } from 'react'
+import { Children, cloneElement, useEffect } from 'react'
 import { canUseDOM } from 'exenv'
 import { impress } from 'app/state'
-import { oneLine } from 'common-tags'
 import R from 'ramda'
 import { useNavigate } from 'react-router'
 import { useRecoilValue } from 'recoil'
-
-const clamp = (min, max, i) => {
-    if (i > max) {
-        return clamp(min, max, i - max)
-    }
-
-    if (i < min) {
-        return clamp(min, max, i + max)
-    }
-
-    return i
-}
-
-const clampRotation = R.partial(clamp, [0, 360])
 
 const getWindowScale = (height, width, scaleConstraints) => {
     if (!canUseDOM) {
@@ -41,7 +26,7 @@ const getWindowScale = (height, width, scaleConstraints) => {
     return scaleWindow
 }
 
-export const Impress = ({ children, delay = 350, height, perspective = 1000, scale: scaleConstraints = {}, step, width }) => {
+export const Impress = ({ children, height, perspective = 1000, scale: scaleConstraints = {}, step, width }) => {
     const childCount = Children.count(children)
 
     const navigate = useNavigate()
