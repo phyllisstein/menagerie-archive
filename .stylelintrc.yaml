@@ -5,11 +5,14 @@ extends:
 plugins:
   - stylelint-order
   - stylelint-config-rational-order/plugin
+  - stylelint-no-unsupported-browser-features
 rules:
   order/properties-order:
     - []
     - unspecified: bottom
       emptyLineMinimumPropertyThreshold: 4
+
+  plugin/no-unsupported-browser-features: true
 
   plugin/rational-order:
     - true
@@ -20,7 +23,7 @@ rules:
   color-hex-case: upper
   declaration-empty-line-before: null
   font-family-no-missing-generic-family-keyword: null
-  indentation: 4
+  indentation: 2
   no-eol-whitespace: null
   no-missing-end-of-source-newline: null
   value-keyword-case: null

@@ -1,9 +1,0 @@
-{
-  "allowSyntheticDefaultImports": true,
-  "baseUrl": "./src",
-  "checkJs": true,
-  "experimentalDecorators": true,
-  "module": "esnext",
-  "moduleResolution": "node",
-  "target": "esnext"
-}
