@@ -2,22 +2,20 @@
 env:
   browser: true
   commonjs: true
-  es6: true
+  es2020: true
   node: true
   shared-node-browser: true
 extends:
-  - eslint:recommended
-  - plugin:ramda/recommended
-  - plugin:react/recommended
-  - plugin:react-hooks/recommended
-  - standard
+  - standard-with-typescript
   - standard-jsx
-  - standard-react
+  - prettier
+  - plugin:prettier/recommended
+  - prettier-standard/prettier-file
+  - plugin:jsx-a11y/recommended
+  - plugin:react-hooks/recommended
 globals:
   __DEV__: false
   __SSR__: false
-  React: false
-  ReactDOM: false
 ignorePatterns:
   - '**/vendor/'
   - '**/node_modules/'
@@ -27,21 +25,22 @@ overrides:
     rules:
       indent:
         - error
-        - 4
+        - 2
         - MemberExpression: 'off'
       sort-keys: 'off'
-parser: babel-eslint
+parser: '@typescript-eslint/parser'
 parserOptions:
-  babelOptions:
-    configFile: ./.babelrc.js
   ecmaFeatures:
     jsx: true
     globalReturn: false
+  ecmaVersion: 2020
+  projectFile: ./tsconfig.json
+  sourceType: module
 plugins:
-  - babel
   - ramda
   - react
   - react-hooks
+  - '@typescript-eslint'
 settings:
   react:
     linkComponents:
@@ -70,7 +69,7 @@ rules:
   eol-last: 'off'
   indent:
     - error
-    - 4
+    - 2
   jsx-quotes:
     - error
     - prefer-single
@@ -131,12 +130,12 @@ rules:
       when: always
   react/jsx-indent:
     - error
-    - 4
+    - 2
     - checkAttributes: true
       indentLogicalExpressions: true
   react/jsx-indent-props:
     - error
-    - 4
+    - 2
   react/prop-types: 'off'
   react/sort-comp:
     - error
