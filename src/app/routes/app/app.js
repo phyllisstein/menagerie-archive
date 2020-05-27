@@ -4,8 +4,8 @@ import avatarTW from 'assets/avatar-tw.jpg'
 import { Body } from 'app/styles/global'
 import faviconPNG from 'assets/favicon.png'
 import { Helmet } from 'react-helmet-async'
+import loadable from '@loadable/component'
 import { RecoilRoot } from 'recoil'
-import { Style } from '../style'
 import theme from 'app/styles/theme'
 import { ThemeProvider } from 'styled-components'
 
@@ -22,6 +22,11 @@ const KEYWORDS = [
     'tech talks',
     'web development',
 ]
+
+const AsyncRoute = loadable(async props => {
+    const mod = await import(`app/routes/${ props.name }`)
+    return mod.default
+})
 
 export const App = () => {
     return (
@@ -58,8 +63,8 @@ export const App = () => {
                         <link href={ faviconPNG } rel='icon' sizes='192x192' />
                     </Helmet>
                     <Routes>
-                        <Route element={ <Style /> } path='style' />
-                        <Route element={ <Style /> } path='style/:step' />
+                        <Route element={ <AsyncRoute name='style' /> } path='style' />
+                        <Route element={ <AsyncRoute name='style' /> } path='style/:step' />
                     </Routes>
                 </>
             </ThemeProvider>

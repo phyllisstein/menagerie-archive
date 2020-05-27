@@ -1,4 +1,5 @@
 const Config = require('webpack-chain')
+const LoadablePlugin = require('@loadable/webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const merge = require('merge-deep')
 const nodeExternals = require('webpack-node-externals')
@@ -137,7 +138,7 @@ const BABEL_OPTIONS = {
         ['ramda', {
             useES: true,
         }],
-        'react-loadable/babel',
+        '@loadable/babel-plugin',
     ],
 }
 
@@ -296,6 +297,10 @@ client
     ])
 
 client
+    .plugin('loadable')
+        .use(LoadablePlugin)
+
+client
     .set('experiments', {
         asset: true,
     })
@@ -427,6 +432,10 @@ server
     .use(webpack.IgnorePlugin, [
         { contextRegExp: /moment/, resourceRegExp: /^\.\/locale$/ },
     ])
+
+server
+    .plugin('loadable')
+        .use(LoadablePlugin)
 
 server
     .externals(
