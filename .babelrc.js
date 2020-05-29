@@ -35,7 +35,6 @@ module.exports = api => {
   ]
 
   const plugins = [
-    '@babel/external-helpers',
     '@babel/proposal-async-generator-functions',
     [
       '@babel/proposal-decorators',

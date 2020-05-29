@@ -13,22 +13,31 @@ const BABEL_OPTIONS = {
   babelrc: false,
   cacheDirectory: true,
   presets: [
-    ['@babel/react', {
-      development: true,
-      runtime: 'automatic',
-      useBuiltIns: true,
-    }],
-    ['@babel/typescript', {
-      allowDeclareFields: true,
-      onlyRemoveTypeImports: true,
-    }],
+    [
+      '@babel/react',
+      {
+        development: true,
+        runtime: 'automatic',
+        useBuiltIns: true,
+      },
+    ],
+    [
+      '@babel/typescript',
+      {
+        allowDeclareFields: true,
+        onlyRemoveTypeImports: true,
+      },
+    ],
   ],
   plugins: [
     '@babel/proposal-async-generator-functions',
-    ['@babel/proposal-decorators', {
-      decoratorsBeforeExport: false,
-      legacy: false,
-    }],
+    [
+      '@babel/proposal-decorators',
+      {
+        decoratorsBeforeExport: false,
+        legacy: false,
+      },
+    ],
     '@babel/proposal-class-properties',
     '@babel/proposal-do-expressions',
     '@babel/proposal-export-default-from',
@@ -41,18 +50,24 @@ const BABEL_OPTIONS = {
     '@babel/proposal-optional-catch-binding',
     '@babel/proposal-optional-chaining',
     '@babel/plugin-proposal-partial-application',
-    ['@babel/proposal-pipeline-operator', {
-      proposal: 'smart',
-    }],
+    [
+      '@babel/proposal-pipeline-operator',
+      {
+        proposal: 'smart',
+      },
+    ],
     '@babel/proposal-private-methods',
     '@babel/proposal-throw-expressions',
     '@babel/proposal-unicode-property-regex',
     '@babel/syntax-dynamic-import',
-    ['@babel/transform-regenerator', {
-      async: false,
-      asyncGenerators: true,
-      generators: true,
-    }],
+    [
+      '@babel/transform-regenerator',
+      {
+        async: false,
+        asyncGenerators: true,
+        generators: true,
+      },
+    ],
     [
       'inline-react-svg',
       {
@@ -138,24 +153,24 @@ const BABEL_OPTIONS = {
       },
     ],
     'lodash',
-    ['ramda', {
-      useES: true,
-    }],
+    [
+      'ramda',
+      {
+        useES: true,
+      },
+    ],
     '@loadable/babel-plugin',
   ],
 }
 
-client
-  .name('client')
-  .context(path.resolve('./src'))
-  .target('web')
+client.name('client').context(path.resolve('./src')).target('web')
 
 client
   .entry('main')
-    .add('./client')
-    .end()
+  .add('./client')
+  .end()
   .entry('impress-demo')
-    .add('./impress-demo')
+  .add('./impress-demo')
 
 client.output
   .chunkFilename('js/[name].js')
@@ -166,56 +181,55 @@ client.output
 client.module
   .rule('babel')
   .test(/\.(j|mj|t)sx?$/)
-  .exclude
-    .add(/node_modules/)
-    .add(/vendor/)
-    .end()
+  .exclude.add(/node_modules/)
+  .add(/vendor/)
+  .end()
   .use('babel')
-    .loader('babel-loader')
-      .options(
-        merge(
-          BABEL_OPTIONS,
+  .loader('babel-loader')
+  .options(
+    merge(BABEL_OPTIONS, {
+      presets: [
+        [
+          '@babel/env',
           {
-            presets: [
-              ['@babel/env', {
-                corejs: {
-                  proposals: true,
-                  version: 3,
-                },
-                exclude: [
-                  'transform-async-to-generator',
-                  'transform-regenerator',
-                ],
-                modules: false,
-                targets: {
-                  browsers: [
-                    'last 2 major versions',
-                    '> 5% in US',
-                    'not dead',
-                    'not ie > 0',
-                  ],
-                },
-                useBuiltIns: 'usage',
-              }],
-            ],
-            plugins: [
-              ['module:fast-async', {
-                compiler: {
-                  es6target: true,
-                  lazyThenables: true,
-                  parser: {
-                    sourceType: 'module',
-                  },
-                  promises: true,
-                  sourceMap: true,
-                  wrapAwait: true,
-                },
-                useRuntimeModule: true,
-              }],
-            ],
+            corejs: {
+              proposals: true,
+              version: 3,
+            },
+            exclude: ['transform-async-to-generator', 'transform-regenerator'],
+            modules: false,
+            targets: {
+              browsers: [
+                'last 2 major versions',
+                '> 5% in US',
+                'not dead',
+                'not ie > 0',
+              ],
+            },
+            useBuiltIns: 'usage',
           },
-        ),
-      )
+        ],
+      ],
+      plugins: [
+        [
+          'module:fast-async',
+          {
+            compiler: {
+              es6target: true,
+              lazyThenables: true,
+              parser: {
+                sourceType: 'module',
+              },
+              promises: true,
+              sourceMap: true,
+              wrapAwait: true,
+            },
+            useRuntimeModule: true,
+          },
+        ],
+      ],
+    }),
+  )
 
 client.module
   .rule('style')
@@ -255,8 +269,7 @@ client.module
 
 client.resolve
   .enforceExtension(false)
-  .extensions
-  .add('.ts')
+  .extensions.add('.ts')
   .add('.tsx')
   .add('.wasm')
   .add('.mjs')
@@ -264,58 +277,45 @@ client.resolve
   .add('.jsx')
   .add('.json')
   .end()
-  .modules
-  .add(path.resolve('src'))
+  .modules.add(path.resolve('src'))
   .add(path.resolve('vendor'))
   .add(path.resolve('node_modules'))
   .end()
 
-client
-  .plugin('define')
-  .use(webpack.DefinePlugin, [
-    {
-      __SSR__: JSON.stringify(false),
-    },
-  ])
+client.plugin('define').use(webpack.DefinePlugin, [
+  {
+    __SSR__: JSON.stringify(false),
+  },
+])
 
-client
-  .plugin('provide')
-  .use(webpack.ProvidePlugin, [
-    {
-      React: 'react',
-      ReactDOM: 'react-dom',
-    },
-  ])
+client.plugin('provide').use(webpack.ProvidePlugin, [
+  {
+    React: 'react',
+    ReactDOM: 'react-dom',
+  },
+])
 
 client
   .plugin('ignore-moment')
   .use(webpack.IgnorePlugin, [
-    { contextRegExp: /moment/, resourceRegExp: /^\.\/locale$/ },
+    {contextRegExp: /moment/, resourceRegExp: /^\.\/locale$/},
   ])
 
 client
   .plugin('mini-css-extract')
   .use(MiniCssExtractPlugin, [
-    { chunkFilename: 'css/[contenthash].css', filename: 'css/[contenthash].css' },
+    {chunkFilename: 'css/[contenthash].css', filename: 'css/[contenthash].css'},
   ])
 
-client
-  .plugin('loadable')
-    .use(LoadablePlugin)
+client.plugin('loadable').use(LoadablePlugin)
 
-client
-  .set('experiments', {
-    asset: true,
-  })
+client.set('experiments', {
+  asset: true,
+})
 
-server
-  .name('server')
-  .context(path.resolve('./src'))
-  .target('node')
+server.name('server').context(path.resolve('./src')).target('node')
 
-server
-  .entry('main')
-  .add('./server')
+server.entry('main').add('./server')
 
 server.output
   .filename('app.js')
@@ -326,35 +326,34 @@ server.output
 server.module
   .rule('babel')
   .test(/\.(j|mj|t)sx?$/)
-  .exclude
-  .add(/node_modules/)
+  .exclude.add(/node_modules/)
   .add(/vendor/)
   .end()
   .use('babel')
   .loader('babel-loader')
   .options(
-    merge(
-      BABEL_OPTIONS,
-      {
-        presets: [
-          ['@babel/env', {
+    merge(BABEL_OPTIONS, {
+      presets: [
+        [
+          '@babel/env',
+          {
             corejs: {
               proposals: true,
               version: 3,
             },
-            exclude: [
-              'transform-async-to-generator',
-              'transform-regenerator',
-            ],
+            exclude: ['transform-async-to-generator', 'transform-regenerator'],
             modules: 'commonjs',
             targets: {
               node: 'current',
             },
             useBuiltIns: 'usage',
-          }],
+          },
         ],
-        plugins: [
-          ['module:fast-async', {
+      ],
+      plugins: [
+        [
+          'module:fast-async',
+          {
             compiler: {
               engine: true,
               es6target: true,
@@ -366,10 +365,10 @@ server.module
               wrapAwait: true,
             },
             useRuntimeModule: true,
-          }],
+          },
         ],
-      },
-    ),
+      ],
+    }),
   )
 
 server.module
@@ -398,8 +397,7 @@ server.module
 
 server.resolve
   .enforceExtension(false)
-  .extensions
-  .add('.ts')
+  .extensions.add('.ts')
   .add('.tsx')
   .add('.wasm')
   .add('.mjs')
@@ -407,55 +405,44 @@ server.resolve
   .add('.jsx')
   .add('.json')
   .end()
-  .modules
-  .add(path.resolve('src'))
+  .modules.add(path.resolve('src'))
   .add(path.resolve('vendor'))
   .add(path.resolve('node_modules'))
   .end()
 
-server
-  .plugin('define')
-  .use(webpack.DefinePlugin, [
-    {
-      __SSR__: JSON.stringify(false),
-    },
-  ])
+server.plugin('define').use(webpack.DefinePlugin, [
+  {
+    __SSR__: JSON.stringify(false),
+  },
+])
 
-server
-  .plugin('provide')
-  .use(webpack.ProvidePlugin, [
-    {
-      React: 'react',
-      ReactDOM: 'react-dom',
-    },
-  ])
+server.plugin('provide').use(webpack.ProvidePlugin, [
+  {
+    React: 'react',
+    ReactDOM: 'react-dom',
+  },
+])
 
 server
   .plugin('ignore-moment')
   .use(webpack.IgnorePlugin, [
-    { contextRegExp: /moment/, resourceRegExp: /^\.\/locale$/ },
+    {contextRegExp: /moment/, resourceRegExp: /^\.\/locale$/},
   ])
 
-server
-  .plugin('loadable')
-    .use(LoadablePlugin)
+server.plugin('loadable').use(LoadablePlugin)
 
-server
-  .externals(
-    [
-      (_context, request, callback) => {
-        if (/stats\.json$/.test(request)) {
-          return callback(null, `commonjs ${ request }`)
-        }
-        callback()
-      },
-      nodeExternals(),
-    ],
-  )
+server.externals([
+  (_context, request, callback) => {
+    if (/stats\.json$/.test(request)) {
+      return callback(null, `commonjs ${request}`)
+    }
+    callback()
+  },
+  nodeExternals(),
+])
 
-server
-  .set('experiments', {
-    asset: true,
-  })
+server.set('experiments', {
+  asset: true,
+})
 
-module.exports = { client, server }
+module.exports = {client, server}

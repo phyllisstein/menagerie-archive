@@ -1,13 +1,36 @@
-import { Body, Canvas, Root } from './impress-styles'
-import { Children, cloneElement, useEffect, useState } from 'react'
-import { addEventListener } from 'consolidated-events'
-import { canUseDOM } from 'exenv'
-import { impress } from 'app/state'
+import {impress} from 'app/state'
+import {addEventListener} from 'consolidated-events'
+import {canUseDOM} from 'exenv'
 import R from 'ramda'
-import { useNavigate } from 'react-router'
-import { useRecoilValue } from 'recoil'
+import React, {
+  Children,
+  cloneElement,
+  FunctionComponent,
+  useEffect,
+  useState,
+} from 'react'
+import {useNavigate} from 'react-router'
+import {useRecoilValue} from 'recoil'
+import {Body, Canvas, Root} from './impress-styles'
 
-const getWindowScale = (height, width, scaleConstraints) => {
+export interface ScaleConstraints {
+  max?: number
+  min?: number
+}
+
+export interface ImpressProps {
+  height: number
+  perspective?: number
+  scale?: ScaleConstraints
+  step: number
+  width: number
+}
+
+const getWindowScale = (
+  height: number,
+  width: number,
+  scaleConstraints: ScaleConstraints = {},
+): number => {
   if (!canUseDOM) {
     return 1
   }
@@ -27,19 +50,28 @@ const getWindowScale = (height, width, scaleConstraints) => {
   return scaleWindow
 }
 
-export const Impress = ({ children, height, perspective = 1000, scale: scaleConstraints = {}, step, width }) => {
+export const Impress: FunctionComponent<ImpressProps> = ({
+  children,
+  height,
+  perspective = 1000,
+  scale: scaleConstraints = {},
+  step,
+  width,
+}) => {
   const childCount = Children.count(children)
-  const [scale, setScale] = useState(() => getWindowScale(height, width, scaleConstraints))
+  const [scale, setScale] = useState(() =>
+    getWindowScale(height, width, scaleConstraints),
+  )
 
   const navigate = useNavigate()
 
   useEffect(() => {
     if (step < 1) {
-      navigate(`../${ childCount }`)
+      navigate(`../${childCount}`)
     } else if (step > childCount) {
       navigate('../1')
     }
-  })
+  }, [step])
 
   const steppedChildren = Children.map(children, (child, index) => {
     return cloneElement(child, {
@@ -61,8 +93,10 @@ export const Impress = ({ children, height, perspective = 1000, scale: scaleCons
         setScale(nextScale)
       }
     }
+
     getScale()
-    return addEventListener(window, 'resize', getScale, { passive: true })
+
+    return addEventListener(window, 'resize', getScale, {passive: true})
   })
 
   let targetScale = 1 / currentAnimation.scale
@@ -104,14 +138,16 @@ export const Impress = ({ children, height, perspective = 1000, scale: scaleCons
             y: 0,
             z: 0,
           }}
-          transformTemplate={ ({ rotateX, rotateY, rotateZ, x, y, z }) => `translate3d(${ x }, ${ y }, ${ z }) rotateZ(${ rotateZ }) rotateY(${ rotateY }) rotateX(${ rotateX })` }
+          transformTemplate={({rotateX, rotateY, rotateZ, x, y, z}) =>
+            `translate3d(${x}, ${y}, ${z}) rotateZ(${rotateZ}) rotateY(${rotateY}) rotateX(${rotateX})`
+          }
           transition={{
             delay: zoom ? 0 : 0.5,
             duration: 1,
             ease: [0.4, 0, 0.2, 1],
             type: 'tween',
           }}>
-          { steppedChildren }
+          {steppedChildren}
         </Canvas>
       </Root>
     </>

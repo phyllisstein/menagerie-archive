@@ -1,12 +1,16 @@
-import { css } from 'styled-components'
+import {css, ThemedCssFunction} from 'styled-components'
 
-export function animation ({ curve = animation.curve.standard, duration = animation.duration.entering, properties = ['all'] } = {}) {
+export function animation({
+  curve = animation.curve.standard,
+  duration = animation.duration.entering,
+  properties = ['all'],
+} = {}): ThemedCssFunction {
   const durationMS = animation.duration[duration]
   const curveBezier = animation.curve[curve]
   const property = Array.isArray(properties) ? properties.join(',') : properties
 
   return css`
-    transition: ${ property } ${ durationMS }ms ${ curveBezier };
+    transition: ${property} ${durationMS}ms ${curveBezier};
   `
 }
 
