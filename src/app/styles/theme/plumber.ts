@@ -1,7 +1,7 @@
 import _ from 'lodash'
-import { css } from 'styled-components'
-import { getValueAndUnit } from 'polished'
-import { unitless } from './scale'
+import {getValueAndUnit} from 'polished'
+import {css} from 'styled-components'
+import {unitless} from './scale'
 
 const BASELINE = {
   EGYPTIENNE: 0.18,
@@ -11,7 +11,7 @@ const BASELINE = {
 
 const round = _.partial(_.round, _.partial.placeholder, 3)
 
-const getBaselineCorrection = ({ baseline, fontSize, lineHeight }) => {
+const getBaselineCorrection = ({baseline, fontSize, lineHeight}) => {
   const baselineFromBottom = (lineHeight - fontSize) / 2 + fontSize * baseline
   const correctedBaseline = _.round(baselineFromBottom)
   const baselineDifference = correctedBaseline - baselineFromBottom
@@ -31,7 +31,7 @@ const getPlumber = ({
   lineHeight: LINE_HEIGHT = 3,
   useBaselineOrigin: USE_BASELINE_ORIGIN = false,
 }) => {
-  function plumber ({
+  function plumber({
     baseline = B,
     fontSize = FONT_SIZE,
     gridHeight = GRID_HEIGHT,
@@ -44,7 +44,11 @@ const getPlumber = ({
     fontSize = unitless(fontSize)
     lineHeight = unitless(lineHeight)
 
-    const { baselineDifference, correctedBaseline } = getBaselineCorrection({ baseline, fontSize, lineHeight })
+    const {baselineDifference, correctedBaseline} = getBaselineCorrection({
+      baseline,
+      fontSize,
+      lineHeight,
+    })
 
     if (useBaselineOrigin) {
       leadingTop -= lineHeight - correctedBaseline
@@ -56,17 +60,19 @@ const getPlumber = ({
     fontSize = round(fontSize * gridHeightValue)
     const marginTop = round((leadingTop - shift) * gridHeightValue)
     const paddingTop = round((shift - baselineDifference) * gridHeightValue)
-    const paddingBottom = round((1 - shift + baselineDifference) * gridHeightValue)
+    const paddingBottom = round(
+      (1 - shift + baselineDifference) * gridHeightValue,
+    )
     const marginBottom = round((leadingBottom + shift - 1) * gridHeightValue)
 
     return css`
-      margin-top: ${ marginTop }${ gridHeightUnit };
-      margin-bottom: ${ marginBottom }${ gridHeightUnit };
-      padding-top: ${ paddingTop }${ gridHeightUnit };
-      padding-bottom: ${ paddingBottom }${ gridHeightUnit };
+      margin-top: ${marginTop} ${gridHeightUnit};
+      margin-bottom: ${marginBottom} ${gridHeightUnit};
+      padding-top: ${paddingTop} ${gridHeightUnit};
+      padding-bottom: ${paddingBottom} ${gridHeightUnit};
 
-      font-size: ${ fontSize }${ gridHeightUnit };
-      line-height: ${ lineHeight }${ gridHeightUnit };
+      font-size: ${fontSize} ${gridHeightUnit};
+      line-height: ${lineHeight} ${gridHeightUnit};
     `
   }
 
@@ -78,21 +84,27 @@ const getPlumber = ({
   }) {
     const [gridHeightValue, gridHeightUnit] = getValueAndUnit(gridHeight)
 
-    const [marginTop, marginBottom] = margin.map(m => round(m * gridHeightValue))
-    const [paddingTop, paddingBottom] = padding.map(p => round(p * gridHeightValue))
+    const [marginTop, marginBottom] = margin.map(m =>
+      round(m * gridHeightValue),
+    )
+    const [paddingTop, paddingBottom] = padding.map(p =>
+      round(p * gridHeightValue),
+    )
     const [borderTop, borderBottom] = border
 
     return css`
-      margin-top: ${ marginTop }${ gridHeightUnit };
-      margin-bottom: ${ marginBottom }${ gridHeightUnit };
-      padding-top: calc(${ paddingTop }${ gridHeightUnit } - ${ borderTop });
-      padding-bottom: calc(${ paddingBottom }${ gridHeightUnit } - ${ borderBottom });
+      margin-top: ${marginTop} ${gridHeightUnit};
+      margin-bottom: ${marginBottom} ${gridHeightUnit};
+      padding-top: calc(${paddingTop} ${gridHeightUnit} - ${borderTop});
+      padding-bottom: calc(
+        ${paddingBottom} ${gridHeightUnit} - ${borderBottom}
+      );
     `
   }
 
   return plumber
 }
 
-export const primary = getPlumber({ baseline: BASELINE.MILLER_TEXT })
-export const accent = getPlumber({ baseline: BASELINE.EGYPTIENNE })
-export const hed = getPlumber({ baseline: BASELINE.MILLER_DISPLAY })
+export const primary = getPlumber({baseline: BASELINE.MILLER_TEXT})
+export const accent = getPlumber({baseline: BASELINE.EGYPTIENNE})
+export const hed = getPlumber({baseline: BASELINE.MILLER_DISPLAY})

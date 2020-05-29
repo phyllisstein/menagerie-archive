@@ -1,20 +1,28 @@
 import {Impress, Step} from 'app/components/impress'
+import React, {useCallback, useEffect} from 'react'
 import {useNavigate, useParams} from 'react-router'
 
-export const Style = () => {
+export const COVIDCover = () => {
   const navigate = useNavigate()
   const params = useParams()
 
   const step = params.step ? Number.parseInt(params.step, 10) : 1
-  const next = params.step ? `../${step + 1}` : `${step + 1}`
-  const previous = params.step ? `../${step - 1}` : `${step - 1}`
+
+  useEffect(() => {
+    if (!step) {
+      navigate('1')
+    }
+  }, [step])
+
+  const next = useCallback(() => navigate(`../${step + 1}`), [step])
+  const previous = useCallback(() => navigate(`../${step - 1}`), [step])
 
   return (
-    <div>
-      <button type='button' onClick={() => navigate(next)}>
+    <>
+      <button type='button' onClick={next}>
         Next
       </button>
-      <button type='button' onClick={() => navigate(previous)}>
+      <button type='button' onClick={previous}>
         Previous
       </button>
       <Impress height={768} step={step} width={1024}>
@@ -31,6 +39,6 @@ export const Style = () => {
           <h1>Four</h1>
         </Step>
       </Impress>
-    </div>
+    </>
   )
 }

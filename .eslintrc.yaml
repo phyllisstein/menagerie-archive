@@ -1,4 +1,5 @@
 ---
+root: true
 env:
   browser: true
   commonjs: true
@@ -6,13 +7,12 @@ env:
   node: true
   shared-node-browser: true
 extends:
-  - standard-with-typescript
-  - standard-jsx
-  - prettier
-  - plugin:prettier/recommended
-  - prettier-standard/prettier-file
   - plugin:jsx-a11y/recommended
+  - plugin:ramda/recommended
   - plugin:react-hooks/recommended
+  - standard-jsx
+  - standard-with-typescript
+  - prettier
 globals:
   __DEV__: false
   __SSR__: false
@@ -34,9 +34,10 @@ parserOptions:
     jsx: true
     globalReturn: false
   ecmaVersion: 2020
-  projectFile: ./tsconfig.json
+  project: ./tsconfig.json
   sourceType: module
 plugins:
+  - prettier
   - ramda
   - react
   - react-hooks
@@ -48,95 +49,18 @@ settings:
         name: Link
     version: detect
 rules:
-  arrow-parens:
+  '@typescript-eslint/naming-convention':
     - error
-    - as-needed
-    - requireForBlockBody: false
-  comma-dangle:
-    - error
-    - arrays: always-multiline
-      exports: always-multiline
-      functions: always-multiline
-      imports: always-multiline
-      objects: always-multiline
+    - custom:
+        match: false
+        regex: '^I[A-Z]'
+      format: [PascalCase]
+      selector: interface
 
-  camelcase: 'off'
-  babel/camelcase:
+  prettier/prettier:
     - error
-    - ignoreDestructuring: false
-      properties: always
+    - usePrettierrc: true
 
-  eol-last: 'off'
-  indent:
-    - error
-    - 2
-  jsx-quotes:
-    - error
-    - prefer-single
-
-  new-cap: 'off'
-  babel/new-cap:
-    - error
-    - capIsNew: false
-      newIsCap: true
-
-  no-trailing-spaces: 'off'
-  no-unused-expressions: 'off'
-  babel/no-unused-expressions:
-    - error
-    - allowShortCircuit: true
-      allowTernary: true
-
-  object-curly-spacing: 'off'
-  babel/object-curly-spacing:
-    - error
-    - always
-
-  quotes: 'off'
-  babel/quotes:
-    - error
-    - single
-    - allowTemplateLiterals: true
-      avoidEscape: true
-
-  semi: 'off'
-  babel/semi:
-    - error
-    - never
-
-  sort-imports:
-    - error
-    - ignoreCase: true
-  sort-keys:
-    - error
-    - asc
-    - caseSensitive: false
-      natural: true
-  template-curly-spacing:
-    - error
-    - always
-
-  react/jsx-closing-bracket-location:
-    - error
-    - nonEmpty: after-props
-      selfClosing: after-props
-  react/jsx-curly-newline: 'off'
-  react/jsx-curly-spacing:
-    - error
-    - attributes: true
-      children: true
-      spacing:
-        objectLiterals: never
-      when: always
-  react/jsx-indent:
-    - error
-    - 2
-    - checkAttributes: true
-      indentLogicalExpressions: true
-  react/jsx-indent-props:
-    - error
-    - 2
-  react/prop-types: 'off'
   react/sort-comp:
     - error
     - order:

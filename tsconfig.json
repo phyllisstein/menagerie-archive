@@ -24,26 +24,23 @@
     "noImplicitReturns": true,
     "noImplicitThis": true,
     "paths": {
-      "*": [
-        "*",
-        "src/*",
-        "vendor/*",
-      ]
+      "*": ["*", "src/*", "vendor/*"]
     },
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
     "target": "esnext"
   },
-  "exclude": [
-    "node_modules"
-  ],
+  "exclude": ["node_modules"],
   "include": [
-    "./src/**/*.ts",
-    "./src/**/*.tsx"
+    ".*.ts",
+    ".*.tsx",
+    ".*.js",
+    ".*.jsx",
+    "./**/*.ts",
+    "./**/*.tsx",
+    "./**/*.js",
+    "./**/*.jsx"
   ],
-  "typeRoots": [
-    "./node_modules/@types",
-    "./vendor/types"
-  ]
+  "typeRoots": ["./node_modules/@types", "./vendor/types"]
 }
