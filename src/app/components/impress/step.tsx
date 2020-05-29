@@ -1,9 +1,24 @@
-import { useRecoilState, useRecoilValue } from 'recoil'
+import {impress} from 'app/state'
+import {oneLine} from 'common-tags'
 import _ from 'lodash'
-import { impress } from 'app/state'
-import { oneLine } from 'common-tags'
-import { Root } from './step-styles'
-import { useEffect } from 'react'
+import React, {FunctionComponent, useEffect} from 'react'
+import {useRecoilState, useRecoilValue} from 'recoil'
+import {Root} from './step-styles'
+
+export interface StepCoordinates {
+  x?: number
+  y?: number
+  z?: number
+}
+
+export interface StepProps {
+  active?: boolean
+  position?: StepCoordinates
+  relative?: boolean
+  rotation?: StepCoordinates
+  scale?: number
+  step?: number
+}
 
 const DEFAULTS = {
   x: 0,
@@ -11,13 +26,23 @@ const DEFAULTS = {
   z: 0,
 }
 
-export const Step = ({ active, children, position = {}, relative, rotation = {}, scale = 1, step }) => {
-  const [currentAnimation, setCurrentAnimation] = useRecoilState(impress.animation(step))
+export const Step: FunctionComponent<StepProps> = ({
+  active,
+  children,
+  position = {},
+  relative,
+  rotation = {},
+  scale = 1,
+  step,
+}) => {
+  const [currentAnimation, setCurrentAnimation] = useRecoilState(
+    impress.animation(step),
+  )
   const previousAnimation = useRecoilValue(impress.animation(step - 1))
 
   useEffect(() => {
-    const nextPosition = _.defaults({ ...position }, DEFAULTS)
-    const nextRotation = _.defaults({ ...rotation }, DEFAULTS)
+    const nextPosition = _.defaults({...position}, DEFAULTS)
+    const nextRotation = _.defaults({...rotation}, DEFAULTS)
     let nextScale = scale
 
     if (relative) {
@@ -31,24 +56,41 @@ export const Step = ({ active, children, position = {}, relative, rotation = {},
     }
 
     setCurrentAnimation({
-      position: { ...nextPosition },
-      rotation: { ...nextRotation },
+      position: {...nextPosition},
+      rotation: {...nextRotation},
       scale: nextScale,
     })
-  }, [position.x, position.y, position.z, rotation.x, rotation.y, rotation.z, previousAnimation.position.x, previousAnimation.position.y, previousAnimation.position.z, previousAnimation.rotation.x, previousAnimation.rotation.y, previousAnimation.rotation.z, previousAnimation.scale, relative])
+  }, [
+    position.x,
+    position.y,
+    position.z,
+    rotation.x,
+    rotation.y,
+    rotation.z,
+    previousAnimation.position.x,
+    previousAnimation.position.y,
+    previousAnimation.position.z,
+    previousAnimation.rotation.x,
+    previousAnimation.rotation.y,
+    previousAnimation.rotation.z,
+    previousAnimation.scale,
+    relative,
+  ])
 
   const transform = oneLine`
     translate(-50%, -50%)
-    translate3d(${ currentAnimation.position.x }px, ${ currentAnimation.position.y }px, ${ currentAnimation.position.z }px)
-    rotateX(${ currentAnimation.rotation.x }deg)
-    rotateY(${ currentAnimation.rotation.y }deg)
-    rotateZ(${ currentAnimation.rotation.z }deg)
-    scale(${ currentAnimation.scale })
+    translate3d(${currentAnimation.position.x}px, ${currentAnimation.position.y}px, ${currentAnimation.position.z}px)
+    rotateX(${currentAnimation.rotation.x}deg)
+    rotateY(${currentAnimation.rotation.y}deg)
+    rotateZ(${currentAnimation.rotation.z}deg)
+    scale(${currentAnimation.scale})
   `
 
   return (
-    <Root animate={{ opacity: active ? 1 : 0.3 }} style={{ position: 'absolute', transform, transformStyle: 'preserve-3d' }}>
-      { children }
+    <Root
+      animate={{opacity: active ? 1 : 0.3}}
+      style={{position: 'absolute', transform, transformStyle: 'preserve-3d'}}>
+      {children}
     </Root>
   )
 }
