@@ -1,10 +1,17 @@
-import { DIRECTION_HORIZONTAL, HammerInput, Swipe } from 'hammerjs'
+import { DIRECTION_HORIZONTAL, Input, Swipe } from 'hammerjs'
+import { useEffect } from 'react'
 import { useHammer } from './use-hammer'
 
-type SwipeCallback = (ev: HammerInput) => void
+type SwipeCallback = (ev: Input) => void
 
 export const useSwipe = (handler: SwipeCallback): void => {
   const mc = useHammer()
+
   mc.add(new Swipe({ direction: DIRECTION_HORIZONTAL }))
-  mc.on('swipe', handler)
+
+  useEffect(() => {
+    mc.on('swipe', handler)
+
+    return () => mc.off('swipe', handler)
+  }, [handler])
 }

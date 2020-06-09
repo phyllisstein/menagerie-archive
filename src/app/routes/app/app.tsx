@@ -73,6 +73,8 @@ export const App: FunctionComponent = () => {
           <Routes>
             <Route element={ <AsyncRoute name='style' /> } path='style' />
             <Route element={ <AsyncRoute name='style' /> } path='style/:step' />
+            <Route element={ <AsyncRoute name='approval-matrix' /> } path='matrix' />
+            <Route element={ <AsyncRoute name='approval-matrix' /> } path='matrix/:step' />
           </Routes>
         </>
       </ThemeProvider>

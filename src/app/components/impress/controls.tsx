@@ -12,11 +12,11 @@ export const Controls: FunctionComponent = () => {
 
   useSwipe(ev => {
     if (ev.direction === DIRECTION_LEFT) {
-      previous()
+      next()
     }
 
     if (ev.direction === DIRECTION_RIGHT) {
-      next()
+      previous()
     }
   })
 

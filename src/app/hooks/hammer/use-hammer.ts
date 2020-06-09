@@ -1,24 +1,16 @@
 import { HammerManager, Manager } from 'hammerjs'
-import { useLayoutEffect, useMemo } from 'react'
-import { canUseDOM } from 'exenv'
+import { useEffect, useRef } from 'react'
 
 export const useHammer = (target?: EventTarget): HammerManager => {
-  const mc = useMemo(() => {
-    if (!canUseDOM) {
-      return new Manager()
-    }
+  const mc = useRef(new Manager(target ?? document.body, {
+    recognizers: [],
+  }))
 
-    const manager = new Manager(target ?? document.body, {
-      enable: false,
-    })
+  useEffect(() => {
+    mc.current.set({ enable: true })
 
-    return manager
-  }, [canUseDOM])
+    return () => mc.current.destroy()
+  }, [''])
 
-  useLayoutEffect(() => {
-    mc.set({ enable: true })
-    return mc.destroy
-  }, [mc])
-
-  return mc
+  return mc.current
 }
