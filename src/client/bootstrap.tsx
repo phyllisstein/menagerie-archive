@@ -10,9 +10,9 @@ const loadCSS = async () => {
 
 const renderApp = async () => {
   const [
-    {default: App},
-    {BrowserRouter},
-    {HelmetProvider},
+    { default: App },
+    { BrowserRouter },
+    { HelmetProvider },
   ] = await Promise.all([
     import('app'),
     import('react-router-dom'),
@@ -32,7 +32,7 @@ const renderApp = async () => {
 
   if (module.hot) {
     module.hot.accept('app', () => {
-      const {App} = require('app')
+      const { App } = require('app')
 
       reactRoot.render(
         <BrowserRouter>

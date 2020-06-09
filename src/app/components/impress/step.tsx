@@ -1,9 +1,10 @@
-import {impress} from 'app/state'
-import {oneLine} from 'common-tags'
+import React, { FunctionComponent, useMemo } from 'react'
+import { useRecoilState, useRecoilValue } from 'recoil'
 import _ from 'lodash'
-import React, {FunctionComponent, useMemo} from 'react'
-import {useRecoilState, useRecoilValue} from 'recoil'
-import {Root} from './step-styles'
+import { impress } from 'app/state'
+import { oneLine } from 'common-tags'
+import { Root } from './step-styles'
+import { useStep } from './use-step'
 
 export interface StepCoordinates {
   x?: number
@@ -12,7 +13,6 @@ export interface StepCoordinates {
 }
 
 export interface StepProps {
-  active?: boolean
   position?: StepCoordinates
   relative?: boolean
   rotation?: StepCoordinates
@@ -40,9 +40,11 @@ export const Step: FunctionComponent<StepProps> = ({
   )
   const previousAnimation = useRecoilValue(impress.animation(step - 1))
 
+  const [currentStep] = useStep()
+
   useMemo(() => {
-    const nextPosition = _.defaults({...position}, DEFAULTS)
-    const nextRotation = _.defaults({...rotation}, DEFAULTS)
+    const nextPosition = _.defaults({ ...position }, DEFAULTS)
+    const nextRotation = _.defaults({ ...rotation }, DEFAULTS)
     let nextScale = scale
 
     if (relative) {
@@ -56,8 +58,8 @@ export const Step: FunctionComponent<StepProps> = ({
     }
 
     setCurrentAnimation({
-      position: {...nextPosition},
-      rotation: {...nextRotation},
+      position: { ...nextPosition },
+      rotation: { ...nextRotation },
       scale: nextScale,
     })
   }, [
@@ -79,18 +81,18 @@ export const Step: FunctionComponent<StepProps> = ({
 
   const transform = oneLine`
     translate(-50%, -50%)
-    translate3d(${currentAnimation.position.x}px, ${currentAnimation.position.y}px, ${currentAnimation.position.z}px)
-    rotateX(${currentAnimation.rotation.x}deg)
-    rotateY(${currentAnimation.rotation.y}deg)
-    rotateZ(${currentAnimation.rotation.z}deg)
-    scale(${currentAnimation.scale})
+    translate3d(${ currentAnimation.position.x }px, ${ currentAnimation.position.y }px, ${ currentAnimation.position.z }px)
+    rotateX(${ currentAnimation.rotation.x }deg)
+    rotateY(${ currentAnimation.rotation.y }deg)
+    rotateZ(${ currentAnimation.rotation.z }deg)
+    scale(${ currentAnimation.scale })
   `
 
   return (
     <Root
-      animate={{opacity: active ? 1 : 0.3}}
-      style={{position: 'absolute', transform, transformStyle: 'preserve-3d'}}>
-      {children}
+      animate={{ opacity: step === currentStep ? 1 : 0.3 }}
+      style={{ position: 'absolute', transform, transformStyle: 'preserve-3d' }}>
+      { children }
     </Root>
   )
 }

@@ -1,5 +1,5 @@
-import {useCallback, useEffect} from 'react'
-import {useNavigate, useParams} from 'react-router'
+import { useCallback, useEffect } from 'react'
+import { useNavigate, useParams } from 'react-router'
 
 interface StepParams {
   step?: string
@@ -27,5 +27,5 @@ export const useStep = (max?: number): [number, () => void, () => void] => {
   const next = useCallback(() => navigate(nextPath), [nextPath])
   const previous = useCallback(() => navigate(previousPath), [previousPath])
 
-  return [step, next, previous]
+  return [step, previous, next]
 }

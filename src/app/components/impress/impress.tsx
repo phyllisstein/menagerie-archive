@@ -1,17 +1,19 @@
-import {impress} from 'app/state'
-import {addEventListener} from 'consolidated-events'
-import {canUseDOM} from 'exenv'
-import R from 'ramda'
+import { Body, Canvas, Root } from './impress-styles'
 import React, {
   Children,
   cloneElement,
   FunctionComponent,
   useEffect,
-  useRef,
+  useMemo,
+  useState,
 } from 'react'
-import {useRecoilValue} from 'recoil'
-import {Body, Canvas, Root} from './impress-styles'
-import {useStep} from './use-step'
+import { addEventListener } from 'consolidated-events'
+import { canUseDOM } from 'exenv'
+import { Controls } from './controls'
+import { impress } from 'app/state'
+import R from 'ramda'
+import { useRecoilValue } from 'recoil'
+import { useStep } from './use-step'
 
 export interface ScaleConstraints {
   max?: number
@@ -57,16 +59,17 @@ export const Impress: FunctionComponent<ImpressProps> = ({
   width,
 }) => {
   const childCount = Children.count(children)
-  const windowScale = useRef(getWindowScale(height, width, scaleConstraints))
+  const [windowScale, setWindowScale] = useState(() => getWindowScale(height, width, scaleConstraints))
 
   const [step] = useStep(childCount)
 
-  const steppedChildren = Children.map(children, (child, index) => {
-    return cloneElement(child, {
-      active: index + 1 === step,
-      step: index + 1,
+  const steppedChildren = useMemo(() => {
+    return Children.map(children, (child, index) => {
+      return cloneElement(child, {
+        step: index + 1,
+      })
     })
-  })
+  }, [childCount])
 
   const currentAnimation = useRecoilValue(impress.animation(step))
 
@@ -76,19 +79,19 @@ export const Impress: FunctionComponent<ImpressProps> = ({
   useEffect(() => {
     const getScale = (): void => {
       const nextScale = getWindowScale(height, width, scaleConstraints)
-      if (nextScale !== windowScale.current) {
-        windowScale.current = nextScale
+      if (nextScale !== windowScale) {
+        setWindowScale(nextScale)
       }
     }
 
     getScale()
 
-    return addEventListener(window, 'resize', getScale, {passive: true})
+    return addEventListener(window, 'resize', getScale, { passive: true })
   })
 
   let targetScale = 1 / currentAnimation.scale
   const zoom = useRecoilValue(impress.shouldZoom(step))
-  targetScale *= windowScale.current
+  targetScale *= windowScale
 
   return (
     <>
@@ -99,8 +102,8 @@ export const Impress: FunctionComponent<ImpressProps> = ({
           scale: targetScale,
         }}
         initial={{
-          perspective: perspective / windowScale.current,
-          scale: windowScale.current,
+          perspective: perspective / windowScale,
+          scale: windowScale,
         }}
         transition={{
           delay: zoom ? 0.5 : 0,
@@ -125,7 +128,7 @@ export const Impress: FunctionComponent<ImpressProps> = ({
             y: 0,
             z: 0,
           }}
-          transformTemplate={({rotateX, rotateY, rotateZ, x, y, z}) =>
+          transformTemplate={({ rotateX, rotateY, rotateZ, x, y, z }) =>
             `translate3d(${x}, ${y}, ${z}) rotateZ(${rotateZ}) rotateY(${rotateY}) rotateX(${rotateX})`
           }
           transition={{
@@ -137,6 +140,7 @@ export const Impress: FunctionComponent<ImpressProps> = ({
           {steppedChildren}
         </Canvas>
       </Root>
+      <Controls />
     </>
   )
 }
