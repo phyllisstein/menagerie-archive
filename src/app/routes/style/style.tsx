@@ -1,23 +1,18 @@
-import {Impress, Step} from 'app/components/impress'
-import {useNavigate, useParams} from 'react-router'
+import {Impress, Step, useStep} from 'app/components/impress'
+import React, {FunctionComponent} from 'react'
 
-export const Style = () => {
-  const navigate = useNavigate()
-  const params = useParams()
-
-  const step = params.step ? Number.parseInt(params.step, 10) : 1
-  const next = params.step ? `../${step + 1}` : `${step + 1}`
-  const previous = params.step ? `../${step - 1}` : `${step - 1}`
+export const Style: FunctionComponent = () => {
+  const [, next, previous] = useStep()
 
   return (
     <div>
-      <button type='button' onClick={() => navigate(next)}>
+      <button type='button' onClick={next}>
         Next
       </button>
-      <button type='button' onClick={() => navigate(previous)}>
+      <button type='button' onClick={previous}>
         Previous
       </button>
-      <Impress height={768} step={step} width={1024}>
+      <Impress height={768} width={1024}>
         <Step>
           <h1>One</h1>
         </Step>

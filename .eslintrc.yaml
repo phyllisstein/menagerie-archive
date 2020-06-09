@@ -61,6 +61,8 @@ rules:
     - error
     - usePrettierrc: true
 
+  react/jsx-closing-bracket-location: 'off'
+  react/jsx-curly-newline: 'off'
   react/sort-comp:
     - error
     - order:

@@ -7,11 +7,11 @@ import React, {
   cloneElement,
   FunctionComponent,
   useEffect,
-  useState,
+  useRef,
 } from 'react'
-import {useNavigate} from 'react-router'
 import {useRecoilValue} from 'recoil'
 import {Body, Canvas, Root} from './impress-styles'
+import {useStep} from './use-step'
 
 export interface ScaleConstraints {
   max?: number
@@ -22,7 +22,6 @@ export interface ImpressProps {
   height: number
   perspective?: number
   scale?: ScaleConstraints
-  step: number
   width: number
 }
 
@@ -55,23 +54,12 @@ export const Impress: FunctionComponent<ImpressProps> = ({
   height,
   perspective = 1000,
   scale: scaleConstraints = {},
-  step,
   width,
 }) => {
   const childCount = Children.count(children)
-  const [scale, setScale] = useState(() =>
-    getWindowScale(height, width, scaleConstraints),
-  )
+  const windowScale = useRef(getWindowScale(height, width, scaleConstraints))
 
-  const navigate = useNavigate()
-
-  useEffect(() => {
-    if (step < 1) {
-      navigate(`../${childCount}`)
-    } else if (step > childCount) {
-      navigate('../1')
-    }
-  }, [step])
+  const [step] = useStep(childCount)
 
   const steppedChildren = Children.map(children, (child, index) => {
     return cloneElement(child, {
@@ -80,17 +68,16 @@ export const Impress: FunctionComponent<ImpressProps> = ({
     })
   })
 
-  const previousAnimation = useRecoilValue(impress.animation(step - 1))
   const currentAnimation = useRecoilValue(impress.animation(step))
 
   const targetPosition = R.map(R.multiply(-1), currentAnimation.position)
   const targetRotation = R.map(R.multiply(-1), currentAnimation.rotation)
 
   useEffect(() => {
-    const getScale = () => {
+    const getScale = (): void => {
       const nextScale = getWindowScale(height, width, scaleConstraints)
-      if (nextScale !== scale) {
-        setScale(nextScale)
+      if (nextScale !== windowScale.current) {
+        windowScale.current = nextScale
       }
     }
 
@@ -100,8 +87,8 @@ export const Impress: FunctionComponent<ImpressProps> = ({
   })
 
   let targetScale = 1 / currentAnimation.scale
-  const zoom = targetScale >= previousAnimation.scale
-  targetScale *= scale
+  const zoom = useRecoilValue(impress.shouldZoom(step))
+  targetScale *= windowScale.current
 
   return (
     <>
@@ -112,8 +99,8 @@ export const Impress: FunctionComponent<ImpressProps> = ({
           scale: targetScale,
         }}
         initial={{
-          perspective: perspective / scale,
-          scale: scale,
+          perspective: perspective / windowScale.current,
+          scale: windowScale.current,
         }}
         transition={{
           delay: zoom ? 0.5 : 0,

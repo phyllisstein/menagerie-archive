@@ -1,7 +1,7 @@
 import {impress} from 'app/state'
 import {oneLine} from 'common-tags'
 import _ from 'lodash'
-import React, {FunctionComponent, useEffect} from 'react'
+import React, {FunctionComponent, useMemo} from 'react'
 import {useRecoilState, useRecoilValue} from 'recoil'
 import {Root} from './step-styles'
 
@@ -27,10 +27,10 @@ const DEFAULTS = {
 }
 
 export const Step: FunctionComponent<StepProps> = ({
-  active,
+  active = false,
   children,
   position = {},
-  relative,
+  relative = false,
   rotation = {},
   scale = 1,
   step,
@@ -40,7 +40,7 @@ export const Step: FunctionComponent<StepProps> = ({
   )
   const previousAnimation = useRecoilValue(impress.animation(step - 1))
 
-  useEffect(() => {
+  useMemo(() => {
     const nextPosition = _.defaults({...position}, DEFAULTS)
     const nextRotation = _.defaults({...rotation}, DEFAULTS)
     let nextScale = scale
