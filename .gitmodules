@@ -1,0 +1,3 @@
+[submodule "vendor/Recoil"]
+	path = vendor/Recoil
+	url = https://github.com/facebookexperimental/Recoil.git
