@@ -4,7 +4,7 @@ import _ from 'lodash'
 import { impress } from 'app/state'
 import { oneLine } from 'common-tags'
 import { Root } from './step-styles'
-import { useStep } from './use-step'
+import { useStep } from 'app/hooks/impress'
 
 export interface StepCoordinates {
   x?: number
@@ -20,14 +20,13 @@ export interface StepProps {
   step?: number
 }
 
-const DEFAULTS = {
+const COORDINATE_DEFAULTS = {
   x: 0,
   y: 0,
   z: 0,
 }
 
 export const Step: FunctionComponent<StepProps> = ({
-  active = false,
   children,
   position = {},
   relative = false,
@@ -43,8 +42,8 @@ export const Step: FunctionComponent<StepProps> = ({
   const [currentStep] = useStep()
 
   useMemo(() => {
-    const nextPosition = _.defaults({ ...position }, DEFAULTS)
-    const nextRotation = _.defaults({ ...rotation }, DEFAULTS)
+    const nextPosition = _.defaults({ ...position }, COORDINATE_DEFAULTS)
+    const nextRotation = _.defaults({ ...rotation }, COORDINATE_DEFAULTS)
     let nextScale = scale
 
     if (relative) {
@@ -91,7 +90,7 @@ export const Step: FunctionComponent<StepProps> = ({
   return (
     <Root
       animate={{ opacity: step === currentStep ? 1 : 0.3 }}
-      style={{ position: 'absolute', transform, transformStyle: 'preserve-3d' }}>
+      style={{ transform }}>
       { children }
     </Root>
   )

@@ -6,6 +6,10 @@ plugins:
   - stylelint-order
   - stylelint-config-rational-order/plugin
   - stylelint-no-unsupported-browser-features
+ignoreFiles:
+  - 'node_modules/**/*'
+  - 'dist/**/*'
+  - '**/*.d.ts'
 rules:
   order/properties-order:
     - []

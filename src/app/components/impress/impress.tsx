@@ -2,18 +2,21 @@ import { Body, Canvas, Root } from './impress-styles'
 import React, {
   Children,
   cloneElement,
+  ComponentType,
   FunctionComponent,
   useEffect,
-  useMemo,
   useState,
 } from 'react'
 import { addEventListener } from 'consolidated-events'
 import { canUseDOM } from 'exenv'
 import { Controls } from './controls'
+import DeepWeakMap from 'deep-weak-map'
 import { impress } from 'app/state'
+import mem from 'mem'
 import R from 'ramda'
+import { Step } from './step'
 import { useRecoilValue } from 'recoil'
-import { useStep } from './use-step'
+import { useStep } from 'app/hooks/impress'
 
 export interface ScaleConstraints {
   max?: number
@@ -51,6 +54,16 @@ const getWindowScale = (
   return scaleWindow
 }
 
+const getSteppedChildren = mem((childArray: ComponentType[]) => {
+  return childArray
+    .filter(c => c.type === Step)
+    .map((child, index) => {
+      return cloneElement(child, {
+        step: index + 1,
+      })
+    })
+}, { cache: new DeepWeakMap(), cacheKey: R.identity })
+
 export const Impress: FunctionComponent<ImpressProps> = ({
   children,
   height,
@@ -63,13 +76,8 @@ export const Impress: FunctionComponent<ImpressProps> = ({
 
   const [step] = useStep(childCount)
 
-  const steppedChildren = useMemo(() => {
-    return Children.map(children, (child, index) => {
-      return cloneElement(child, {
-        step: index + 1,
-      })
-    })
-  }, [childCount])
+  const childArray = Children.toArray(children)
+  const steppedChildren = getSteppedChildren(childArray)
 
   const currentAnimation = useRecoilValue(impress.animation(step))
 
@@ -90,7 +98,7 @@ export const Impress: FunctionComponent<ImpressProps> = ({
   })
 
   let targetScale = 1 / currentAnimation.scale
-  const zoom = useRecoilValue(impress.shouldZoom(step))
+  const zoom = useRecoilValue<boolean>(impress.shouldZoom(step))
   targetScale *= windowScale
 
   return (
@@ -128,8 +136,8 @@ export const Impress: FunctionComponent<ImpressProps> = ({
             y: 0,
             z: 0,
           }}
-          transformTemplate={({ rotateX, rotateY, rotateZ, x, y, z }) =>
-            `translate3d(${x}, ${y}, ${z}) rotateZ(${rotateZ}) rotateY(${rotateY}) rotateX(${rotateX})`
+          transformTemplate={ ({ rotateX, rotateY, rotateZ, x, y, z }) =>
+            `translate3d(${ x }, ${ y }, ${ z }) rotateZ(${ rotateZ }) rotateY(${ rotateY }) rotateX(${ rotateX })`
           }
           transition={{
             delay: zoom ? 0 : 0.5,
@@ -137,7 +145,7 @@ export const Impress: FunctionComponent<ImpressProps> = ({
             ease: [0.4, 0, 0.2, 1],
             type: 'tween',
           }}>
-          {steppedChildren}
+          { steppedChildren }
         </Canvas>
       </Root>
       <Controls />

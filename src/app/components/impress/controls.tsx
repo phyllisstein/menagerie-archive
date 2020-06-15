@@ -5,7 +5,7 @@ import React, { FunctionComponent, useMemo } from 'react'
 import { useSwipe, useTap } from 'app/hooks/hammer'
 import { Button } from '../button'
 import { canUseDOM } from 'exenv'
-import { useStep } from './use-step'
+import { useStep } from 'app/hooks/impress'
 
 export const Controls: FunctionComponent = () => {
   const [, previous, next] = useStep()

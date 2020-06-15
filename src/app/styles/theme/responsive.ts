@@ -1,5 +1,5 @@
-import {css} from 'styled-components'
-import {pxToRem} from 'styled-media-query'
+import { css } from 'styled-components'
+import { pxToRem } from 'styled-media-query'
 
 const breakpoints = pxToRem(
   {
@@ -13,21 +13,19 @@ const breakpoints = pxToRem(
 )
 
 export const between = (start, end, style) => css`
-  @media screen and (min-width: ${breakpoints[
-      start
-    ]}) and (max-width: ${breakpoints[end]}) {
-    ${style}
+  @media screen and (min-width: ${ breakpoints[start] }) and (max-width: ${ breakpoints[end] }) {
+    ${ style }
   }
 `
 
 export const greaterThan = (breakpoint, style) => css`
-  @media screen and (min-width: ${breakpoints[breakpoint]}) {
-    ${style}
+  @media screen and (min-width: ${ breakpoints[breakpoint] }) {
+    ${ style }
   }
 `
 
 export const lessThan = (breakpoint, style) => css`
-  @media screen and (max-width: ${breakpoints[breakpoint]}) {
-    ${style}
+  @media screen and (max-width: ${ breakpoints[breakpoint] }) {
+    ${ style }
   }
 `
