@@ -34,7 +34,7 @@
     "deep-weak-map": "^1.0.2",
     "exenv": "^1.2.2",
     "fast-async": "7.x",
-    "framer-motion": "^2.0.0-beta.74",
+    "framer-motion": "^2.0.0-beta.76",
     "gsap": "^3.3.3",
     "hammerjs": "^2.0.8",
     "history": "^5.0.0",
@@ -58,7 +58,8 @@
     "recoil": "github:facebookexperimental/Recoil#master",
     "regenerator-runtime": "^0.13.5",
     "styled-components": "^5.1.1",
-    "styled-media-query": "^2.1.2"
+    "styled-media-query": "^2.1.2",
+    "use-memo-one": "^1.1.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.10.1",
@@ -95,7 +96,7 @@
     "@hot-loader/react-dom": "^16.13.0",
     "@loadable/babel-plugin": "^5.12.0",
     "@loadable/webpack-plugin": "^5.12.0",
-    "@pmmmwh/react-refresh-webpack-plugin": "^0.4.0-beta.4",
+    "@pmmmwh/react-refresh-webpack-plugin": "^0.4.0-beta.5",
     "@types/babel__core": "^7.1.8",
     "@types/babel__plugin-transform-runtime": "^7.9.0",
     "@types/babel__preset-env": "^7.9.0",
@@ -130,8 +131,8 @@
     "@types/webpack-env": "^1.15.2",
     "@types/webpack-hot-middleware": "^2.25.3",
     "@types/webpack-node-externals": "^1.7.1",
-    "@typescript-eslint/eslint-plugin": "^3.2.0",
-    "@typescript-eslint/parser": "^3.2.0",
+    "@typescript-eslint/eslint-plugin": "^3.3.0",
+    "@typescript-eslint/parser": "^3.3.0",
     "@webhotelier/webpack-fast-refresh": "^5.0.1",
     "@webpack-cli/serve": "^1.0.1-alpha.5",
     "babel-eslint": "^11.0.0-beta.2",

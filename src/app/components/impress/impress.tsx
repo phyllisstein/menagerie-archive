@@ -2,19 +2,18 @@ import { Body, Canvas, Root } from './impress-styles'
 import React, {
   Children,
   cloneElement,
-  ComponentType,
   FunctionComponent,
+  ReactChildren,
   useEffect,
   useState,
 } from 'react'
 import { addEventListener } from 'consolidated-events'
 import { canUseDOM } from 'exenv'
 import { Controls } from './controls'
-import DeepWeakMap from 'deep-weak-map'
 import { impress } from 'app/state'
-import mem from 'mem'
 import R from 'ramda'
 import { Step } from './step'
+import { useMem } from 'app/hooks/optimization'
 import { useRecoilValue } from 'recoil'
 import { useStep } from 'app/hooks/impress'
 
@@ -54,16 +53,6 @@ const getWindowScale = (
   return scaleWindow
 }
 
-const getSteppedChildren = mem((childArray: ComponentType[]) => {
-  return childArray
-    .filter(c => c.type === Step)
-    .map((child, index) => {
-      return cloneElement(child, {
-        step: index + 1,
-      })
-    })
-}, { cache: new DeepWeakMap(), cacheKey: R.identity })
-
 export const Impress: FunctionComponent<ImpressProps> = ({
   children,
   height,
@@ -71,13 +60,41 @@ export const Impress: FunctionComponent<ImpressProps> = ({
   scale: scaleConstraints = {},
   width,
 }) => {
-  const childCount = Children.count(children)
   const [windowScale, setWindowScale] = useState(() => getWindowScale(height, width, scaleConstraints))
 
-  const [step] = useStep(childCount)
+  const getSteppedChildren = useMem((c: ReactChildren) => {
+    console.debug('Reticulating splines...')
 
-  const childArray = Children.toArray(children)
-  const steppedChildren = getSteppedChildren(childArray)
+    const childArray = Children.toArray(c)
+
+    let stepCount = 0
+
+    return childArray
+      .reduce((acc, child, index) => {
+        if (child.type === Step) {
+          stepCount += 1
+          const nextChild = cloneElement(child, {
+            step: stepCount,
+          })
+          acc.push(nextChild)
+        } else {
+          acc.push(child)
+        }
+
+        return acc
+      }, [])
+  })
+
+  const getStepCount = useMem((c: ReactChildren) => {
+    const childArray = Children.toArray(children)
+
+    return childArray
+      .filter(c => c.type === Step)
+      .length
+  })
+
+  const steppedChildren = getSteppedChildren(children)
+  const [step] = useStep(getStepCount(children))
 
   const currentAnimation = useRecoilValue(impress.animation(step))
 
