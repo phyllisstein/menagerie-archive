@@ -1,4 +1,4 @@
-import {atom, atomFamily, selectorFamily} from 'recoil'
+import { atom, atomFamily, selectorFamily } from 'recoil'
 
 export const animation = atomFamily({
   default: {
@@ -19,9 +19,9 @@ export const animation = atomFamily({
 
 export const shouldZoom = selectorFamily({
   key: 'impress/scale-up',
-  get: step => ({get}) => {
-    const {scale: currentScale} = get(animation(step))
-    const {scale: previousScale} = get(animation(step - 1))
+  get: step => ({ get }) => {
+    const { scale: currentScale } = get(animation(step))
+    const { scale: previousScale } = step > 1 ? get(animation(step - 1)) : 1
     return 1 / currentScale >= previousScale
   },
 })
