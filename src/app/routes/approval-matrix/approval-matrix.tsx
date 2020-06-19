@@ -5,13 +5,13 @@ export const ApprovalMatrix: FunctionComponent = () => {
   return (
     <>
       <Impress height={ 768 } width={ 768 }>
-        <Layout position={{ z: 2048 }} scale={ 2 }>
-          <h1>One (Layout)</h1>
+        <Layout>
+          <div style={{ backgroundColor: '#000', display: 'block', height: 2, width: 768 }} />
         </Layout>
         <Step position={{ z: 1024 }} scale={ 2 }>
           <h1>One (Step)</h1>
         </Step>
-        <Layout position={{ x: 1024, z: -1024 }} scale={ 0.5 }>
+        <Layout>
           <h1>Two (Layout)</h1>
         </Layout>
         <Step position={{ x: 1024 }}>

@@ -9,7 +9,6 @@ env:
 extends:
   - plugin:jsx-a11y/recommended
   - plugin:ramda/recommended
-  - plugin:react-hooks/recommended
   - standard-jsx
   - standard-with-typescript
 globals:
@@ -73,6 +72,11 @@ rules:
         - everything-else
         - render
 
+  react-hooks/rules-of-hooks: error
+  react-hooks/exhaustive-deps:
+    - warn
+    - additionalHooks: 'RecoilCallback'
+
   comma-dangle:
     - error
     - always-multiline
@@ -85,6 +89,11 @@ rules:
   sort-imports:
     - error
     - ignoreCase: true
+  sort-keys:
+    - error
+    - asc
+    - caseSensitive: true
+      natural: true
   template-curly-spacing:
     - warn
     - always
