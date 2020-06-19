@@ -1,10 +1,11 @@
-import {motion} from 'framer-motion'
-import styled, {createGlobalStyle} from 'styled-components'
+import styled, { createGlobalStyle } from 'styled-components'
+import { motion } from 'framer-motion'
 
 export const Body = createGlobalStyle`
   body {
-    height: 100%;
+    height: 100vh;
     overflow: hidden;
+    width: 100vw;
   }
 `
 

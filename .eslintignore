@@ -1,3 +1,5 @@
-coverage
-dist
-vendor
+**/.yarn/**
+**/vendor/**
+**/dist/**
+**/public/**
+**/node_modules/**
