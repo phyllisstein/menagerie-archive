@@ -9,10 +9,8 @@ env:
 extends:
   - plugin:jsx-a11y/recommended
   - plugin:ramda/recommended
-  - plugin:react-hooks/recommended
   - standard-jsx
   - standard-with-typescript
-  - prettier
 globals:
   __DEV__: false
   __SSR__: false
@@ -37,7 +35,6 @@ parserOptions:
   project: ./tsconfig.json
   sourceType: module
 plugins:
-  - prettier
   - ramda
   - react
   - react-hooks
@@ -57,10 +54,14 @@ rules:
       format: [PascalCase]
       selector: interface
 
-  prettier/prettier:
+  react/jsx-closing-bracket-location: 'off'
+  react/jsx-curly-newline: 'off'
+  react/jsx-curly-spacing:
     - error
-    - usePrettierrc: true
-
+    - children: true
+      spacing:
+        objectLiterals: never
+      when: always
   react/sort-comp:
     - error
     - order:
@@ -70,3 +71,29 @@ rules:
         - instance-methods
         - everything-else
         - render
+
+  react-hooks/rules-of-hooks: error
+  react-hooks/exhaustive-deps:
+    - warn
+    - additionalHooks: 'RecoilCallback'
+
+  comma-dangle:
+    - error
+    - always-multiline
+  eol-last: 'off'
+  no-multiple-empty-lines:
+    - warn
+    - max: 2
+      maxBOF: 0
+  no-trailing-spaces: 'off'
+  sort-imports:
+    - error
+    - ignoreCase: true
+  sort-keys:
+    - error
+    - asc
+    - caseSensitive: true
+      natural: true
+  template-curly-spacing:
+    - warn
+    - always

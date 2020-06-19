@@ -1,8 +1,8 @@
-import {css, ThemedCssFunction} from 'styled-components'
+import { css, ThemedCssFunction } from 'styled-components'
 
-export function animation({
-  curve = animation.curve.standard,
-  duration = animation.duration.entering,
+export function animation ({
+  curve = 'standard',
+  duration = 'entering',
   properties = ['all'],
 } = {}): ThemedCssFunction {
   const durationMS = animation.duration[duration]

@@ -195,7 +195,11 @@ module.exports = api => {
   ]
 
   return {
-    plugins,
+    ignore: [
+      /node_modules/,
+      /vendor/,
+    ],
     presets,
+    plugins,
   }
 }

@@ -192,25 +192,39 @@ client.module
         [
           '@babel/env',
           {
-            corejs: {
-              proposals: true,
-              version: 3,
-            },
             exclude: ['transform-async-to-generator', 'transform-regenerator'],
             modules: false,
             targets: {
               browsers: [
-                'last 2 major versions',
-                '> 5% in US',
-                'not dead',
-                'not ie > 0',
+                'last 2 major versions and > 5% in US and not dead and not ie > 0',
               ],
             },
-            useBuiltIns: 'usage',
           },
         ],
       ],
       plugins: [
+        [
+          'polyfill-corejs3',
+          {
+            method: 'entry-global',
+            targets: {
+              browsers: [
+                'last 2 major versions and > 5% in US and not dead and not ie > 0',
+              ],
+            },
+          },
+        ],
+        [
+          'polyfill-regenerator',
+          {
+            method: 'usage-pure',
+            targets: {
+              browsers: [
+                'last 2 major versions and > 5% in US and not dead and not ie > 0',
+              ],
+            },
+          },
+        ],
         [
           'module:fast-async',
           {
@@ -337,21 +351,34 @@ server.module
         [
           '@babel/env',
           {
-            corejs: {
-              proposals: true,
-              version: 3,
-            },
             exclude: ['transform-async-to-generator', 'transform-regenerator'],
             modules: 'commonjs',
             targets: {
               node: 'current',
             },
-            useBuiltIns: 'usage',
           },
         ],
       ],
       plugins: [
         [
+          [
+            'polyfill-corejs3',
+            {
+              method: 'entry-global',
+              targets: {
+                node: 'current',
+              },
+            },
+          ],
+          [
+            'polyfill-regenerator',
+            {
+              method: 'usage-pure',
+              targets: {
+                node: 'current',
+              },
+            },
+          ],
           'module:fast-async',
           {
             compiler: {

@@ -1,11 +1,5 @@
 {
   "typescript.tsdk": "node_modules/typescript/lib",
-  "stylelint.customSyntax": "/Users/daniel/Code/Personal/an-evening-with/node_modules/postcss-styled",
+  // "stylelint.customSyntax": "/Users/daniel/Code/Personal/an-evening-with/node_modules/postcss-styled",
   "stylelint.enable": true,
-  "prettier.configPath": ".prettierrc.js",
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true,
-    "source.fixAll.stylelint": true,
-  },
-  "debug.node.autoAttach": "off",
 }
