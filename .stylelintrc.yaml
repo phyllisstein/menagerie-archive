@@ -6,6 +6,10 @@ plugins:
   - stylelint-order
   - stylelint-config-rational-order/plugin
   - stylelint-no-unsupported-browser-features
+ignoreFiles:
+  - 'node_modules/**/*'
+  - 'dist/**/*'
+  - '**/*.d.ts'
 rules:
   order/properties-order:
     - []
@@ -14,7 +18,7 @@ rules:
 
   plugin/no-unsupported-browser-features:
     - true
-    - browsers: ['last 2 major versions', '> 1% in US', 'not dead', 'not IE > 0']
+    - browsers: ['last 2 major versions and >1% in US and not dead and not IE > 0']
 
   plugin/rational-order:
     - true

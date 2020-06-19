@@ -6,6 +6,13 @@ export const js = {
   faded: chroma('#767676'),
   teaser: chroma('#949494'),
   text: chroma('#000').alpha(0.87),
+  white: chroma('#f9fafb'),
 }
 
 export const css = R.map(R.invoker(0, 'css'), js)
+
+export type JS = typeof js
+
+export type CSS = {
+  [k in keyof JS]: string
+}
