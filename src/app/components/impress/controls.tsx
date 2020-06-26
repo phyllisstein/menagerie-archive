@@ -26,7 +26,7 @@ export const Controls: FunctionComponent = () => {
     }
 
     return Math.round(window.innerWidth / 4)
-  }, [canUseDOM])
+  }, [])
 
   const rightQuarterStart = useMemo(() => {
     if (!canUseDOM) {
@@ -34,7 +34,7 @@ export const Controls: FunctionComponent = () => {
     }
 
     return Math.round(window.innerWidth - window.innerWidth / 4)
-  }, [canUseDOM])
+  }, [])
 
   useTap(ev => {
     if (ev.center.x <= leftQuarterEnd) {

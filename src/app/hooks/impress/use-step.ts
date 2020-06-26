@@ -16,13 +16,13 @@ export const useStep = (max?: number): [number, () => void, () => void] => {
     } else if (max != null && step > max) {
       navigate('../1')
     } else if (max != null && step < 1) {
-      navigate(`../${max}`)
+      navigate(`../${ max }`)
     }
   }, [params.step, step])
 
-  const nextPath = params.step != null ? `../${step + 1}` : `${step}`
+  const nextPath = params.step != null ? `../${ step + 1 }` : `${ step }`
   const previousPath =
-    params.step != null ? `../${step - 1}` : `../'${max ?? ''}`
+    params.step != null ? `../${ step - 1 }` : `../'${ max ?? '' }`
 
   const next = useCallback(() => navigate(nextPath), [nextPath])
   const previous = useCallback(() => navigate(previousPath), [previousPath])

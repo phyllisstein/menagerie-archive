@@ -1,4 +1,4 @@
-import {createGlobalStyle} from 'styled-components'
+import { createGlobalStyle } from 'styled-components'
 
 export const Body = createGlobalStyle`
   *,
@@ -13,7 +13,7 @@ export const Body = createGlobalStyle`
   html {
     box-sizing: border-box;
 
-    color: ${({theme}) => theme.palette.css.text};
+    color: ${ ({ theme }) => theme.palette.css.text };
     font: 65%/1.5 sans-serif;
     font-feature-settings: 'kern', 'liga';
     font-kerning: normal;
@@ -21,8 +21,8 @@ export const Body = createGlobalStyle`
   }
 
   body {
-    ${({theme}) => theme.typeface.primary()}
+    ${ ({ theme }) => theme.typeface.primary() }
 
-    color: ${({theme}) => theme.palette.css.text};
+    color: ${ ({ theme }) => theme.palette.css.text };
   }
 `

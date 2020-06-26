@@ -76,7 +76,7 @@ export const Step: FunctionComponent<StepProps> = ({
     previousAnimation.rotation.z,
     previousAnimation.scale,
     relative,
-  ])
+  ], [])
 
   const transform = oneLine`
     translate(-50%, -50%)
