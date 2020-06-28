@@ -16,7 +16,6 @@ const BABEL_OPTIONS = {
     [
       '@babel/react',
       {
-        development: true,
         runtime: 'automatic',
         useBuiltIns: true,
       },

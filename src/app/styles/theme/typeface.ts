@@ -1,4 +1,4 @@
-import {css} from 'styled-components'
+import { css } from 'styled-components'
 import {
   accent as plumberAccent,
   hed as plumberHed,
@@ -6,8 +6,8 @@ import {
 } from './plumber'
 
 export const accent = (plumberOpts = {}) => css`
-  ${accentFamily}
-  ${plumberAccent(plumberOpts)}
+  ${ accentFamily }
+  ${ plumberAccent(plumberOpts) }
 `
 
 export const accentFamily = css`
@@ -16,8 +16,8 @@ export const accentFamily = css`
 `
 
 export const hed = (plumberOpts = {}) => css`
-  ${hedFamily}
-  ${plumberHed(plumberOpts)}
+  ${ hedFamily }
+  ${ plumberHed(plumberOpts) }
 `
 
 export const hedFamily = css`
@@ -26,8 +26,8 @@ export const hedFamily = css`
 `
 
 export const primary = (plumberOpts = {}) => css`
-  ${primaryFamily}
-  ${plumberPrimary(plumberOpts)}
+  ${ primaryFamily }
+  ${ plumberPrimary(plumberOpts) }
 `
 
 export const primaryFamily = css`

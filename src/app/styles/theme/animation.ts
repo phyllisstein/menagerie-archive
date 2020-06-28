@@ -10,7 +10,7 @@ export function animation ({
   const property = Array.isArray(properties) ? properties.join(',') : properties
 
   return css`
-    transition: ${property} ${durationMS}ms ${curveBezier};
+    transition: ${ property } ${ durationMS }ms ${ curveBezier };
   `
 }
 
