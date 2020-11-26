@@ -1,14 +1,13 @@
 import { DIRECTION_LEFT, DIRECTION_RIGHT } from 'hammerjs'
 import { faChevronsLeft, faChevronsRight } from '@fortawesome/pro-duotone-svg-icons'
-import { FunctionComponent, useMemo } from 'react'
 import { Icon, Root } from './controls-styles'
 import { useSwipe, useTap } from 'app/hooks/hammer'
 import { Button } from '../button'
 import { canUseDOM } from 'exenv'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { useMemo } from 'react'
 import { useStep } from 'app/hooks/impress'
 
-export const Controls: FunctionComponent = () => {
+export const Controls = () => {
     const [, previous, next] = useStep()
 
     useSwipe(ev => {

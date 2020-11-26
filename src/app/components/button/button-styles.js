@@ -1,10 +1,6 @@
 import styled from 'styled-components'
 
-interface StyledButtonProps {
-    themeColor?: string
-}
-
-export const Root = styled.button<StyledButtonProps>`
+export const Root = styled.button`
     ${ ({ theme }) => theme.animation({ properties: ['background-color'] }) }
 
     border-radius: 5px;
@@ -20,8 +16,7 @@ export const Root = styled.button<StyledButtonProps>`
     text-align: center;
 
     &:hover {
-        background-color: ${ ({ theme, themeColor }) =>
-        theme.palette.js[themeColor].set('hsl.h', '+15').darken(1).css() };
+        background-color: ${ ({ theme, themeColor }) => theme.palette.js[themeColor].set('hsl.h', '+15').darken(1).css() };
         outline: 0;
     }
 `

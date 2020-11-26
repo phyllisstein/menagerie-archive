@@ -1,4 +1,4 @@
-const loadCSS = async (): Promise<void> => {
+const loadCSS = async () => {
     await Promise.all([
         import('normalize.css'),
         import('fonts/miller-text/index.css'),
@@ -7,8 +7,13 @@ const loadCSS = async (): Promise<void> => {
     ])
 }
 
-const renderApp = async (): Promise<void> => {
-    const [{ default: App }, { BrowserRouter }, { HelmetProvider }, { default: ReactDOM }] = await Promise.all([
+const renderApp = async () => {
+    const [
+        { default: App },
+        { BrowserRouter },
+        { HelmetProvider },
+        { default: ReactDOM }
+    ] = await Promise.all([
         import('app'),
         import('react-router-dom'),
         import('react-helmet-async'),
@@ -42,6 +47,6 @@ const renderApp = async (): Promise<void> => {
     }
 }
 
-const bootstrap = async (): Promise<unknown> => await Promise.all([loadCSS(), renderApp()])
+const bootstrap = async () => await Promise.all([loadCSS(), renderApp()])
 
 export default bootstrap

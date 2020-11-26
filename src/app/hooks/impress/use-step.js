@@ -1,13 +1,9 @@
 import { useCallback, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router'
 
-interface StepParams {
-    step?: string
-}
-
-export const useStep = (max?: number): [number, () => void, () => void] => {
+export const useStep = max => {
     const navigate = useNavigate()
-    const params = useParams() as StepParams
+    const params = useParams()
     const step = params.step != null ? Number.parseInt(params.step) : 1
 
     useEffect(() => {

@@ -1,24 +1,10 @@
-import { FunctionComponent, useEffect } from 'react'
 import _ from 'lodash'
 import { impress } from 'app/state'
 import { oneLine } from 'common-tags'
 import { Root } from './step-styles'
+import { useEffect } from 'react'
 import { useRecoilState } from 'recoil'
 import { useStep } from 'app/hooks/impress'
-
-export interface StepCoordinates {
-    x?: number
-    y?: number
-    z?: number
-}
-
-export interface StepProps {
-    position?: StepCoordinates
-    relative?: boolean
-    rotation?: StepCoordinates
-    scale?: number
-    step?: number
-}
 
 const COORDINATE_DEFAULTS = {
     x: 0,
@@ -26,7 +12,7 @@ const COORDINATE_DEFAULTS = {
     z: 0,
 }
 
-export const Step: FunctionComponent<StepProps> = ({
+export const Step = ({
     children,
     position = {},
     relative = false,
@@ -52,13 +38,13 @@ export const Step: FunctionComponent<StepProps> = ({
     }
 
     const transform = oneLine`
-    translate(-50%, -50%)
-    translate3d(${ nextPosition.x }px, ${ nextPosition.y }px, ${ nextPosition.z }px)
-    rotateX(${ nextRotation.x }deg)
-    rotateY(${ nextRotation.y }deg)
-    rotateZ(${ nextRotation.z }deg)
-    scale(${ nextScale })
-  `
+        translate(-50%, -50%)
+        translate3d(${ nextPosition.x }px, ${ nextPosition.y }px, ${ nextPosition.z }px)
+        rotateX(${ nextRotation.x }deg)
+        rotateY(${ nextRotation.y }deg)
+        rotateZ(${ nextRotation.z }deg)
+        scale(${ nextScale })
+    `
 
     useEffect(() => {
         setCurrentAndPreviousAnimation({
@@ -72,7 +58,7 @@ export const Step: FunctionComponent<StepProps> = ({
 
     return (
         <Root animate={{ opacity: step === currentStep ? 1 : 0.3 }} style={{ transform }}>
-            {children}
+            { children }
         </Root>
     )
 }

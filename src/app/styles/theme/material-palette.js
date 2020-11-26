@@ -260,10 +260,4 @@ export const js = {
     blueGray900: chroma('#263238'),
 }
 
-export type MaterialJSPalette = typeof js
-
-export type MaterialCSSPalette = {
-    [K in keyof MaterialJSPalette]: string
-}
-
-export const css = R.map(R.invoker(0, 'css'), js) as MaterialCSSPalette
+export const css = R.map(R.invoker(0, 'css'), js)

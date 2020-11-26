@@ -1,5 +1,5 @@
 import { Body, Canvas, Root } from './impress-styles'
-import { FunctionComponent, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useStep, useSteppedChildren } from 'app/hooks/impress'
 import { addEventListener } from 'consolidated-events'
 import { canUseDOM } from 'exenv'
@@ -7,19 +7,7 @@ import { impress } from 'app/state'
 import R from 'ramda'
 import { useRecoilValue } from 'recoil'
 
-export interface ScaleConstraints {
-    max?: number
-    min?: number
-}
-
-export interface ImpressProps {
-    height: number
-    perspective?: number
-    scale?: ScaleConstraints
-    width: number
-}
-
-const getWindowScale = (height: number, width: number, scaleConstraints: ScaleConstraints = {}): number => {
+const getWindowScale = (height, width, scaleConstraints = {}) => {
     if (!canUseDOM) {
         return 1
     }
@@ -39,7 +27,7 @@ const getWindowScale = (height: number, width: number, scaleConstraints: ScaleCo
     return scaleWindow
 }
 
-export const Impress: FunctionComponent<ImpressProps> = ({
+export const Impress = ({
     children,
     height,
     perspective = 1000,
@@ -56,7 +44,7 @@ export const Impress: FunctionComponent<ImpressProps> = ({
     const targetRotation = R.map(R.multiply(-1), currentAnimation.rotation)
 
     useEffect(() => {
-        const getScale = (): void => {
+        const getScale = () => {
             const nextScale = getWindowScale(height, width, scaleConstraints)
             if (nextScale !== windowScale) {
                 setWindowScale(nextScale)
@@ -69,7 +57,7 @@ export const Impress: FunctionComponent<ImpressProps> = ({
     })
 
     let targetScale = 1 / currentAnimation.scale
-    const zoom = useRecoilValue<boolean>(impress.shouldZoom(step))
+    const zoom = useRecoilValue(impress.shouldZoom(step))
     targetScale *= windowScale
 
     return (

@@ -10,7 +10,7 @@ extends:
   - plugin:jsx-a11y/recommended
   - plugin:ramda/recommended
   - standard-jsx
-  - standard-with-typescript
+  - standard
 globals:
   __DEV__: false
   __SSR__: false
@@ -26,15 +26,15 @@ overrides:
         - 4
         - MemberExpression: 'off'
       sort-keys: 'off'
-parser: '@typescript-eslint/parser'
+parser: babel-eslint
 parserOptions:
   ecmaFeatures:
     jsx: true
     globalReturn: false
   ecmaVersion: 2020
-  project: ./tsconfig.json
   sourceType: module
 plugins:
+  - '@babel'
   - jsx-a11y
   - prettier
   - ramda
@@ -42,7 +42,6 @@ plugins:
   - react-hooks
   - sort-destructure-keys
   - standard
-  - '@typescript-eslint'
 settings:
   react:
     linkComponents:
@@ -50,19 +49,19 @@ settings:
         name: Link
     version: detect
 rules:
+  '@babel/object-curly-spacing':
+    - warn
+    - always
+    - objectsInObjects: false
+  '@babel/no-unused-expressions':
+    - warn
+    - allowShortCircuit: true
+      allowTaggedTemplates: true
+      allowTernary: true
+
   prettier/prettier:
     - warn
     - usePrettierrc: true
-  '@typescript-eslint/indent':
-    - warn
-    - 4
-  '@typescript-eslint/naming-convention':
-    - error
-    - custom:
-        match: false
-        regex: '^I[A-Z]'
-      format: [PascalCase]
-      selector: interface
 
   react/jsx-closing-bracket-location: 'off'
   react/jsx-curly-newline: 'off'
@@ -103,12 +102,15 @@ rules:
     - error
     - always-multiline
   eol-last: 'off'
-  indent: 'off'
+  indent:
+    - warn
+    - 4
   no-multiple-empty-lines:
     - warn
     - max: 2
       maxBOF: 0
   no-trailing-spaces: 'off'
+  no-unused-expressions: 'off'
   sort-imports:
     - error
     - ignoreCase: true

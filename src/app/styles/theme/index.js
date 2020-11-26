@@ -1,3 +1,4 @@
+import * as easing from './ease'
 import * as elevation from './elevation'
 import * as materialPalette from './material-palette'
 import * as palette from './palette'
@@ -7,10 +8,10 @@ import * as scale from './scale'
 import * as spectrumPalette from './spectrum-palette'
 import * as typeface from './typeface'
 import { animation } from './animation'
-import { DefaultTheme } from 'styled-components'
 
-const theme: DefaultTheme = {
+const theme = {
     animation,
+    easing,
     elevation,
     materialPalette,
     palette,
@@ -20,8 +21,5 @@ const theme: DefaultTheme = {
     spectrumPalette,
     typeface,
 }
-
-type Theme = typeof theme
-export { Theme }
 
 export default theme

@@ -4,9 +4,7 @@ import avatarFB from 'assets/avatar-fb.jpg'
 import avatarTW from 'assets/avatar-tw.jpg'
 import { Body } from 'app/styles/global'
 import faviconPNG from 'assets/favicon.png'
-import { FunctionComponent } from 'react'
 import { Helmet } from 'react-helmet-async'
-import loadable from '@loadable/component'
 import { RecoilRoot } from 'recoil'
 import theme from 'app/styles/theme'
 import { ThemeProvider } from 'styled-components'
@@ -25,22 +23,13 @@ const KEYWORDS = [
     'web development',
 ]
 
-interface AsyncRouteProps {
-    name: string
-}
-
-const AsyncRoute = loadable<AsyncRouteProps>(async props => {
-    const mod = await import(`app/routes/${props.name}`)
-    return mod.default
-})
-
-export const App: FunctionComponent = () => {
+export const App = () => {
     return (
         <RecoilRoot>
-            <ThemeProvider theme={theme}>
+            <ThemeProvider theme={ theme }>
                 <>
                     <Body />
-                    <Helmet defaultTitle={SITE_NAME} titleTemplate={`%s | ${SITE_NAME}`}>
+                    <Helmet defaultTitle={ SITE_NAME } titleTemplate={ `%s | ${SITE_NAME}` }>
                         <html lang='en' />
 
                         <meta charSet='utf-8' />

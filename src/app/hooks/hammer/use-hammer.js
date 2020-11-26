@@ -1,7 +1,7 @@
-import { HammerManager, Manager } from 'hammerjs'
 import { useEffect, useRef } from 'react'
+import { Manager } from 'hammerjs'
 
-export const useHammer = (target?: EventTarget): HammerManager => {
+export const useHammer = target => {
     const mc = useRef(
         new Manager(target ?? document.body, {
             recognizers: [],

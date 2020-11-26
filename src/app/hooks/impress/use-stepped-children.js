@@ -1,9 +1,9 @@
-import { Children, cloneElement, ReactChildren } from 'react'
+import { Children, cloneElement } from 'react'
 import { Step } from 'app/components/impress'
 import { useMem } from '../optimization'
 
-export const useSteppedChildren = (children: ReactChildren): [ReactChildren[], number] => {
-    const getSteppedChildren = useMem((c: ReactChildren) => {
+export const useSteppedChildren = children => {
+    const getSteppedChildren = useMem(c => {
         const childArray = Children.toArray(c)
 
         let stepCount = 0
@@ -24,7 +24,7 @@ export const useSteppedChildren = (children: ReactChildren): [ReactChildren[], n
         }, [])
     })
 
-    const getStepCount = useMem((c: ReactChildren) => {
+    const getStepCount = useMem(c => {
         const childArray = Children.toArray(children)
 
         return childArray.filter(child => child.type === Step).length

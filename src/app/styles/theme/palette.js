@@ -9,10 +9,4 @@ export const js = {
     white: chroma('#f9fafb'),
 }
 
-export type JSPalette = typeof js
-
-export type CSSPalette = {
-    [k in keyof JSPalette]: string
-}
-
-export const css = R.map(R.invoker(0, 'css'), js) as CSSPalette
+export const css = R.map(R.invoker(0, 'css'), js)

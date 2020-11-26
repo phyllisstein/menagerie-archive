@@ -3,11 +3,11 @@
         "allowSyntheticDefaultImports": true,
         "alwaysStrict": true,
         "baseUrl": "./",
-        "diagnostics": false,
-        "emitDecoratorMetadata": true,
+        "checkJs": true,
         "esModuleInterop": true,
         "experimentalDecorators": true,
         "jsx": "preserve",
+        "module": "esnext",
         "moduleResolution": "node",
         "paths": {
             "*": [
@@ -16,11 +16,7 @@
                 "./vendor/*"
             ]
         },
-        "strict": true,
-        "typeRoots": [
-            "node_modules/@types",
-            "src/@types"
-        ]
+        "target": "esnext"
     },
     "include": [
         "config/**/*",

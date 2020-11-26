@@ -1,6 +1,6 @@
-import { css, ThemedCssFunction } from 'styled-components'
+import { css } from 'styled-components'
 
-export function animation ({ curve = 'standard', duration = 'entering', properties = ['all'] } = {}): ThemedCssFunction {
+export function animation ({ curve = 'standard', duration = 'entering', properties = ['all'] } = {}) {
     const durationMS = animation.duration[duration]
     const curveBezier = animation.curve[curve]
     const property = Array.isArray(properties) ? properties.join(',') : properties

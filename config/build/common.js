@@ -20,13 +20,6 @@ const BABEL_OPTIONS = {
                 useBuiltIns: true,
             },
         ],
-        [
-            '@babel/typescript',
-            {
-                allowDeclareFields: true,
-                onlyRemoveTypeImports: true,
-            },
-        ],
     ],
     plugins: [
         '@babel/proposal-async-generator-functions',

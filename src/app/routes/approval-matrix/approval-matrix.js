@@ -1,7 +1,6 @@
 import { Impress, Layout, Step } from 'app/components/impress'
-import { FunctionComponent } from 'react'
 
-export const ApprovalMatrix: FunctionComponent = () => {
+export const ApprovalMatrix = () => {
     return (
         <>
             <Impress height={ 768 } width={ 768 }>

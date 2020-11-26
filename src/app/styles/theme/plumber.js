@@ -1,6 +1,6 @@
 import _ from 'lodash'
-import { getValueAndUnit } from 'polished'
 import { css } from 'styled-components'
+import { getValueAndUnit } from 'polished'
 import { unitless } from './scale'
 
 const BASELINE = {

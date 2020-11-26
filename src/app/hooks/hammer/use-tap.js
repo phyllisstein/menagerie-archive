@@ -1,10 +1,8 @@
-import { Input, Tap } from 'hammerjs'
+import { Tap } from 'hammerjs'
 import { useEffect } from 'react'
 import { useHammer } from './use-hammer'
 
-type TapCallback = (ev: Input) => void
-
-export const useTap = (handler: TapCallback): void => {
+export const useTap = handler => {
     const mc = useHammer()
 
     mc.add(new Tap())
