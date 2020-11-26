@@ -29,7 +29,7 @@ rules:
   color-hex-case: upper
   declaration-empty-line-before: null
   font-family-no-missing-generic-family-keyword: null
-  indentation: 2
+  indentation: 4
   no-eol-whitespace: null
   no-missing-end-of-source-newline: null
   value-keyword-case: null

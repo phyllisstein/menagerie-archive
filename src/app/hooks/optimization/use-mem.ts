@@ -6,6 +6,6 @@ import R from 'ramda'
 type UseMem = (cb: Function<any>) => typeof mem
 
 export const useMem: UseMem = (cb: Function<T>) => {
-  const cache = useRef(new DeepWeakMap())
-  return useCallback(mem(cb, { cache: cache.current, cacheKey: R.identity }), [cb])
+    const cache = useRef(new DeepWeakMap())
+    return useCallback(mem(cb, { cache: cache.current, cacheKey: R.identity }), [cb])
 }
