@@ -22,8 +22,8 @@ overrides:
   - files: config/**/*.js
     rules:
       indent:
-        - error
-        - 2
+        - warn
+        - 4
         - MemberExpression: 'off'
       sort-keys: 'off'
 parser: '@typescript-eslint/parser'
@@ -35,9 +35,12 @@ parserOptions:
   project: ./tsconfig.json
   sourceType: module
 plugins:
+  - jsx-a11y
+  - prettier
   - ramda
   - react
   - react-hooks
+  - standard
   - '@typescript-eslint'
 settings:
   react:
@@ -46,6 +49,12 @@ settings:
         name: Link
     version: detect
 rules:
+  prettier/prettier:
+    - warn
+    - usePrettierrc: true
+  '@typescript-eslint/indent':
+    - warn
+    - 4
   '@typescript-eslint/naming-convention':
     - error
     - custom:
@@ -62,6 +71,14 @@ rules:
       spacing:
         objectLiterals: never
       when: always
+  react/jsx-indent:
+    - warn
+    - 4
+    - checkAttributes: true
+      indentLogicalExpressions: true
+  react/jsx-indent-props:
+    - warn
+    - 4
   react/sort-comp:
     - error
     - order:
@@ -81,6 +98,7 @@ rules:
     - error
     - always-multiline
   eol-last: 'off'
+  indent: 'off'
   no-multiple-empty-lines:
     - warn
     - max: 2

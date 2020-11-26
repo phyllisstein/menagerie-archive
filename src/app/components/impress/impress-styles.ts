@@ -10,21 +10,21 @@ export const Body = createGlobalStyle`
 `
 
 export const Canvas = styled(motion.div)`
-  position: absolute;
+    position: absolute;
 
-  transform-origin: top left;
-  transform-style: preserve-3d;
+    transform-origin: top left;
+    transform-style: preserve-3d;
 
-  will-change: transform;
+    will-change: transform;
 `
 
 export const Root = styled(motion.div)`
-  position: absolute;
-  top: 50%;
-  left: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
 
-  transform-origin: top left;
-  transform-style: preserve-3d;
+    transform-origin: top left;
+    transform-style: preserve-3d;
 
-  will-change: perspective, transform;
+    will-change: perspective, transform;
 `

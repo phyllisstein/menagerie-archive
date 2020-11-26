@@ -1,29 +1,30 @@
 {
-  "compilerOptions": {
-    "allowSyntheticDefaultImports": true,
-    "alwaysStrict": true,
-    "baseUrl": "./",
-    "diagnostics": false,
-    "emitDecoratorMetadata": true,
-    "esModuleInterop": true,
-    "experimentalDecorators": true,
-    "jsx": "preserve",
-    "moduleResolution": "node",
-    "paths": {
-      "*": [
-        "*",
-        "./src/*",
-        "./vendor/*"
-      ]
+    "compilerOptions": {
+        "allowSyntheticDefaultImports": true,
+        "alwaysStrict": true,
+        "baseUrl": "./",
+        "diagnostics": false,
+        "emitDecoratorMetadata": true,
+        "esModuleInterop": true,
+        "experimentalDecorators": true,
+        "jsx": "preserve",
+        "moduleResolution": "node",
+        "paths": {
+            "*": [
+                "*",
+                "./src/*",
+                "./vendor/*"
+            ]
+        },
+        "strict": true,
+        "typeRoots": [
+            "node_modules/@types",
+            "src/@types"
+        ]
     },
-    "strict": true,
-    "typeRoots": [
-      "node_modules/@types",
-      "vendor/@types"
+    "include": [
+        "config/**/*",
+        "src/**/*",
+        "vendor/**/*"
     ]
-  },
-  "include": [
-    "src/**/*",
-    "vendor/**/*"
-  ]
 }
