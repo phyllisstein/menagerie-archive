@@ -1,6 +1,6 @@
 const Config = require('webpack-chain')
 const LoadablePlugin = require('@loadable/webpack-plugin')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+// const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const merge = require('merge-deep')
 const nodeExternals = require('webpack-node-externals')
 const path = require('path')
@@ -247,11 +247,8 @@ client.module
 client.module
   .rule('style')
   .test(/\.css$/)
-  .use('mini-css-extract')
-  .loader(MiniCssExtractPlugin.loader)
-  .options({
-    esModule: true,
-  })
+  .use('style')
+  .loader('style-loader')
   .end()
   .use('css')
   .loader('css-loader')
@@ -301,24 +298,11 @@ client.plugin('define').use(webpack.DefinePlugin, [
   },
 ])
 
-client.plugin('provide').use(webpack.ProvidePlugin, [
-  {
-    React: 'react',
-    ReactDOM: 'react-dom',
-  },
-])
-
-client
-  .plugin('ignore-moment')
-  .use(webpack.IgnorePlugin, [
-    {contextRegExp: /moment/, resourceRegExp: /^\.\/locale$/},
-  ])
-
-client
-  .plugin('mini-css-extract')
-  .use(MiniCssExtractPlugin, [
-    {chunkFilename: 'css/[contenthash].css', filename: 'css/[contenthash].css'},
-  ])
+// client
+//   .plugin('mini-css-extract')
+//   .use(MiniCssExtractPlugin, [
+//     {chunkFilename: 'css/[contenthash].css', filename: 'css/[contenthash].css'},
+//   ])
 
 client.plugin('loadable').use(LoadablePlugin)
 
@@ -441,19 +425,6 @@ server.plugin('define').use(webpack.DefinePlugin, [
     __SSR__: JSON.stringify(false),
   },
 ])
-
-server.plugin('provide').use(webpack.ProvidePlugin, [
-  {
-    React: 'react',
-    ReactDOM: 'react-dom',
-  },
-])
-
-server
-  .plugin('ignore-moment')
-  .use(webpack.IgnorePlugin, [
-    {contextRegExp: /moment/, resourceRegExp: /^\.\/locale$/},
-  ])
 
 server.plugin('loadable').use(LoadablePlugin)
 

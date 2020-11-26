@@ -1,21 +1,12 @@
-const {client} = require('./common')
-const ErrorOverlayPlugin = require('@webhotelier/webpack-fast-refresh/error-overlay')
+const { client } = require('./common')
 const HTMLPlugin = require('html-webpack-plugin')
 const merge = require('merge-deep')
-const ReactRefreshPlugin = require('@webhotelier/webpack-fast-refresh')
+const ReactRefreshPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
 const webpack = require('webpack')
 
 client.mode('development').devtool('cheap-module-source-map')
 
 client.output.publicPath('/')
-
-client
-  .entry('main')
-  .prepend('@webhotelier/webpack-fast-refresh/runtime')
-  .end()
-  .entry('impress-demo')
-  .prepend('@webhotelier/webpack-fast-refresh/runtime')
-  .end()
 
 client.module
   .rule('babel')
@@ -36,20 +27,6 @@ client.module
     }),
   )
   .end()
-  .use('fast-refresh')
-  .after('babel')
-  .loader('@webhotelier/webpack-fast-refresh/loader')
-
-client.module
-  .rule('style')
-  .use('mini-css-extract')
-  .tap(options => merge(options, {hmr: true, reloadAll: true}))
-
-client.module
-  .rule('pug')
-  .test(/\.pug$/)
-  .use('pug')
-  .loader('pug-loader')
 
 client
   .plugin('define')
@@ -61,7 +38,7 @@ client.plugin('html-main').use(HTMLPlugin, [
     filename: 'index.html',
     hash: true,
     scriptLoading: 'defer',
-    template: 'index.pug',
+    template: './index.html',
   },
 ])
 
@@ -70,7 +47,7 @@ client.plugin('html-impress-demo').use(HTMLPlugin, [
     chunks: ['impress-demo'],
     filename: 'impress-demo.html',
     hash: true,
-    template: 'impress-demo/index.pug',
+    template: './impress-demo/index.html',
   },
 ])
 
@@ -78,10 +55,29 @@ client.plugin('hmr').use(webpack.HotModuleReplacementPlugin)
 
 client.plugin('fast-refresh').use(ReactRefreshPlugin)
 
-client.plugin('error-overlay').use(ErrorOverlayPlugin)
-
 client.set('cache', {
   type: 'filesystem',
+})
+
+client.merge({
+  snapshot: {
+    buildDependencies: {
+      hash: false,
+      timestamp: true,
+    },
+    module: {
+      hash: false,
+      timestamp: true,
+    },
+    resolve: {
+      hash: false,
+      timestamp: true,
+    },
+    resolveBuildDependencies: {
+      hash: false,
+      timestamp: true,
+    },
+  },
 })
 
 module.exports = client.toConfig()

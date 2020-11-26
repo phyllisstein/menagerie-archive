@@ -1,5 +1,5 @@
-import React, { FunctionComponent } from 'react'
 import _ from 'lodash'
+import { FunctionComponent } from 'react'
 import { oneLine } from 'common-tags'
 import { Root } from './layout-styles'
 
