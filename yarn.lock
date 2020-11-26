@@ -1199,6 +1199,63 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
+"@fortawesome/fontawesome-common-types@^0.2.33-alpha1":
+  version "0.2.33-alpha1"
+  resolved "https://npm-proxy.fury.io/phyllisstein/~/up/ver_K8i5d/fortawesome-fontawesome-common-types-0.2.33-alpha1.tgz#5d76ded08c9c7a56088880cb8a677a35592cf3e5"
+  integrity sha1-XXbe0IycelYIiIDLimd6NVks8+U=
+
+"@fortawesome/fontawesome-pro@^6.0.0-alpha1":
+  version "6.0.0-alpha1"
+  resolved "https://npm-proxy.fury.io/phyllisstein/~/up/ver_tdzlS/fortawesome-fontawesome-pro-6.0.0-alpha1.tgz#7ed8fca8f4806febdc42789a6f98bc31d70da681"
+  integrity sha1-ftj8qPSAb+vcQniab5i8MdcNpoE=
+
+"@fortawesome/fontawesome-svg-core@^1.2.33-alpha1":
+  version "1.2.33-alpha1"
+  resolved "https://npm-proxy.fury.io/phyllisstein/~/up/ver_1hzZbw/fortawesome-fontawesome-svg-core-1.2.33-alpha1.tgz#ea9dc549d336b46ed6c2b982f43e231fd1e7c3e5"
+  integrity sha1-6p3FSdM2tG7WwrmC9D4jH9Hnw+U=
+  dependencies:
+    "@fortawesome/fontawesome-common-types" "^0.2.33-alpha1"
+
+"@fortawesome/pro-duotone-svg-icons@^6.0.0-alpha1":
+  version "6.0.0-alpha1"
+  resolved "https://npm-proxy.fury.io/phyllisstein/~/up/ver_3V8PG/fortawesome-pro-duotone-svg-icons-6.0.0-alpha1.tgz#b46dedb13c786307343664eba90270729816b33d"
+  integrity sha1-tG3tsTx4Ywc0NmTrqQJwcpgWsz0=
+  dependencies:
+    "@fortawesome/fontawesome-common-types" "^0.2.33-alpha1"
+
+"@fortawesome/pro-light-svg-icons@^6.0.0-alpha1":
+  version "6.0.0-alpha1"
+  resolved "https://npm-proxy.fury.io/phyllisstein/~/up/ver_1GPUVk/fortawesome-pro-light-svg-icons-6.0.0-alpha1.tgz#d52de82fc55fa797ef35ea811fef1ff2e343e88e"
+  integrity sha1-1S3oL8Vfp5fvNeqBH+8f8uND6I4=
+  dependencies:
+    "@fortawesome/fontawesome-common-types" "^0.2.33-alpha1"
+
+"@fortawesome/pro-regular-svg-icons@^6.0.0-alpha1":
+  version "6.0.0-alpha1"
+  resolved "https://npm-proxy.fury.io/phyllisstein/~/up/ver_2gyoND/fortawesome-pro-regular-svg-icons-6.0.0-alpha1.tgz#5878cc730ae2c2feffb517d5e018864591004972"
+  integrity sha1-WHjMcwriwv7/tRfV4BiGRZEASXI=
+  dependencies:
+    "@fortawesome/fontawesome-common-types" "^0.2.33-alpha1"
+
+"@fortawesome/pro-solid-svg-icons@^6.0.0-alpha1":
+  version "6.0.0-alpha1"
+  resolved "https://npm-proxy.fury.io/phyllisstein/~/up/ver_1Rh5ND/fortawesome-pro-solid-svg-icons-6.0.0-alpha1.tgz#56606d39e983cb5c51272d6553e27da58b0fe018"
+  integrity sha1-VmBtOemDy1xRJy1lU+J9pYsP4Bg=
+  dependencies:
+    "@fortawesome/fontawesome-common-types" "^0.2.33-alpha1"
+
+"@fortawesome/pro-thin-svg-icons@^6.0.0-alpha1":
+  version "6.0.0-alpha1"
+  resolved "https://npm-proxy.fury.io/phyllisstein/~/up/ver_19pBlJ/fortawesome-pro-thin-svg-icons-6.0.0-alpha1.tgz#7ccbe3a6c67ea0fe3613ed70217c939a72d6bc8c"
+  integrity sha1-fMvjpsZ+oP42E+1wIXyTmnLWvIw=
+
+"@fortawesome/react-fontawesome@^0.1.13":
+  version "0.1.13"
+  resolved "https://registry.yarnpkg.com/@fortawesome/react-fontawesome/-/react-fontawesome-0.1.13.tgz#ce9654bf4e537108014ec022f2423dbe8114fd62"
+  integrity sha512-/HrLnIft5Ks2511Pz6TxHBIctC9QalVscAC64sufQ4sJH/sXaQlG3uR9LCu6VpEwkBemgcBLrz/QPNP/ddbjDg==
+  dependencies:
+    prop-types "^15.7.2"
+
 "@graphql-typed-document-node/core@^3.0.0":
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/@graphql-typed-document-node/core/-/core-3.1.0.tgz#0eee6373e11418bfe0b5638f654df7a4ca6a3950"
@@ -1251,16 +1308,6 @@
   integrity sha512-md9Nm6o+OjWJH6RgHcYsbko36YDKG2zuM19rFYkQsktdfq+JnbwOCp3hVhZM7L8V1M4MP3uJfmxKh6QGOnk4+w==
   dependencies:
     make-dir "^3.0.2"
-
-"@mdi/js@^5.8.55":
-  version "5.8.55"
-  resolved "https://registry.yarnpkg.com/@mdi/js/-/js-5.8.55.tgz#630bc5fafd8b1d2f6e63489a9ab170177559e41b"
-  integrity sha512-2bvln56SW6V/nSDC/0/NTu1bMF/CgSyZox8mcWbAPWElBN3UYIrukKDUckEER8ifr8X2YJl1RLKQqi7T7qLzmg==
-
-"@mdi/react@^1.4.0":
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/@mdi/react/-/react-1.4.0.tgz#7f6bad1bd8801226d0e5bad91659b215ce68a93f"
-  integrity sha512-OUH9RhfDJPhybQL3owwrSDIXz2yVKXg5lYeOZjyRCiT9wqywNK0FeYyDByOwNIZnnIQoQYmuSrMv+pOX0Uqkmw==
 
 "@nicolo-ribaudo/chokidar-2@2.1.8-no-fsevents":
   version "2.1.8-no-fsevents"
@@ -1906,6 +1953,11 @@
   resolved "https://registry.yarnpkg.com/@types/parse-json/-/parse-json-4.0.0.tgz#2f8bb441434d163b35fb8ffdccd7138927ffb8c0"
   integrity sha512-//oorEZjL6sbPcKUaCdIGlIUeH26mgzimjBB77G6XRgnDl/L5wOnpyBGRe/Mmf5CVW3PwEBE1NjiMZ/ssFh4wA==
 
+"@types/prettier-package-json@^2.1.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@types/prettier-package-json/-/prettier-package-json-2.1.0.tgz#519f894db58335a7e3d69592df7a7bf180d352b9"
+  integrity sha512-zclgP76us7ldohAPPLvFuFkioGiEsAjCPcc1zwxcYLVbpgV0Oe3nYa1AY/lpkBvPIBk+jistSROBQlqm2M9Ltg==
+
 "@types/prettier@^2.1.5":
   version "2.1.5"
   resolved "https://registry.yarnpkg.com/@types/prettier/-/prettier-2.1.5.tgz#b6ab3bba29e16b821d84e09ecfaded462b816b00"
@@ -1937,6 +1989,13 @@
   version "17.0.0"
   resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-17.0.0.tgz#b3b691eb956c4b3401777ee67b900cb28415d95a"
   integrity sha512-lUqY7OlkF/RbNtD5nIq7ot8NquXrdFrjSOR6+w9a9RFQevGi1oZO1dcJbXMeONAPKtZ2UrZOEJ5UOCVsxbLk/g==
+  dependencies:
+    "@types/react" "*"
+
+"@types/react-is@^17.0.0":
+  version "17.0.0"
+  resolved "https://registry.yarnpkg.com/@types/react-is/-/react-is-17.0.0.tgz#6b60190ae60591ae0c83d6f3854e61e08f5a7976"
+  integrity sha512-A0DQ1YWZ0RG2+PV7neAotNCIh8gZ3z7tQnDJyS2xRPDNtAtSPcJ9YyfMP8be36Ha0kQRzbZCrrTMznA4blqO5g==
   dependencies:
     "@types/react" "*"
 

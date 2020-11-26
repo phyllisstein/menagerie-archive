@@ -40,6 +40,7 @@ plugins:
   - ramda
   - react
   - react-hooks
+  - sort-destructure-keys
   - standard
   - '@typescript-eslint'
 settings:
@@ -93,6 +94,10 @@ rules:
   react-hooks/exhaustive-deps:
     - warn
     - additionalHooks: 'RecoilCallback'
+
+  sort-destructure-keys/sort-destructure-keys:
+    - warn
+    - caseSensitive: false
 
   comma-dangle:
     - error
