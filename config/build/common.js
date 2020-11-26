@@ -203,6 +203,7 @@ client.resolve
     .add('.json')
     .end()
     .modules.add(path.resolve('src'))
+    .add(path.resolve('vendor'))
     .add(path.resolve('node_modules'))
     .end()
 
@@ -329,6 +330,7 @@ server.resolve
     .add('.json')
     .end()
     .modules.add(path.resolve('src'))
+    .add(path.resolve('vendor'))
     .add(path.resolve('node_modules'))
     .end()
 

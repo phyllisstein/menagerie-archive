@@ -1,9 +1,9 @@
 const loadCSS = async (): Promise<void> => {
     await Promise.all([
         import('normalize.css'),
-        import('app/styles/fonts/miller-text/index.css'),
-        import('app/styles/fonts/miller-display/index.css'),
-        import('app/styles/fonts/egyptienne/index.css'),
+        import('fonts/miller-text/index.css'),
+        import('fonts/miller-display/index.css'),
+        import('fonts/egyptienne/index.css'),
     ])
 }
 
