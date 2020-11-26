@@ -1,7 +1,7 @@
 import { DIRECTION_LEFT, DIRECTION_RIGHT } from 'hammerjs'
+import { FunctionComponent, useMemo } from 'react'
 import { Icon, Root } from './controls-styles'
 import { mdiChevronLeft, mdiChevronRight } from '@mdi/js'
-import React, { FunctionComponent, useMemo } from 'react'
 import { useSwipe, useTap } from 'app/hooks/hammer'
 import { Button } from '../button'
 import { canUseDOM } from 'exenv'

@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect } from 'react'
+import { FunctionComponent, useEffect } from 'react'
 import _ from 'lodash'
 import { impress } from 'app/state'
 import { oneLine } from 'common-tags'

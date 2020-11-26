@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useRef } from 'react'
+import { FunctionComponent, useRef } from 'react'
 import { scaleLinear } from 'd3'
 
 export const Axes: FunctionComponent = () => {

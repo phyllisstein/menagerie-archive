@@ -1,5 +1,5 @@
 import { Impress, Layout, Step } from 'app/components/impress'
-import React, { FunctionComponent } from 'react'
+import { FunctionComponent } from 'react'
 
 export const ApprovalMatrix: FunctionComponent = () => {
   return (

@@ -1,5 +1,5 @@
 import { Body, Canvas, Root } from './impress-styles'
-import React, {
+import {
   FunctionComponent,
   useEffect,
   useState,

@@ -1,5 +1,5 @@
-import React, { FunctionComponent } from 'react'
 import type { CSS } from 'app/styles/theme/palette'
+import { FunctionComponent } from 'react'
 import { Root } from './button-styles'
 
 interface ButtonProps {

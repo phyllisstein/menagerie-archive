@@ -2,45 +2,28 @@
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
     "alwaysStrict": true,
-    "baseUrl": ".",
+    "baseUrl": "./",
+    "diagnostics": false,
+    "emitDecoratorMetadata": true,
+    "esModuleInterop": true,
     "experimentalDecorators": true,
-    "incremental": true,
     "jsx": "preserve",
-    "lib": [
-      "es5",
-      "es2015",
-      "es2016",
-      "es2017",
-      "es2018",
-      "es2019",
-      "es2020",
-      "esnext",
-      "dom",
-      "dom.iterable"
-    ],
-    "module": "esnext",
     "moduleResolution": "node",
-    "noImplicitAny": true,
-    "noImplicitReturns": true,
-    "noImplicitThis": true,
     "paths": {
-      "*": ["*", "src/*", "vendor/*"]
+      "*": [
+        "*",
+        "./src/*",
+        "./vendor/*"
+      ]
     },
-    "resolveJsonModule": true,
-    "skipLibCheck": true,
     "strict": true,
-    "target": "esnext"
+    "typeRoots": [
+      "node_modules/@types",
+      "vendor/@types"
+    ]
   },
-  "exclude": ["node_modules"],
   "include": [
-    ".*.ts",
-    ".*.tsx",
-    ".*.js",
-    ".*.jsx",
-    "./**/*.ts",
-    "./**/*.tsx",
-    "./**/*.js",
-    "./**/*.jsx"
-  ],
-  "typeRoots": ["./node_modules/@types", "./vendor/types"]
+    "src/**/*",
+    "vendor/**/*"
+  ]
 }
