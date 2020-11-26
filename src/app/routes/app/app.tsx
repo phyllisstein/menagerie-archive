@@ -1,4 +1,5 @@
 import { Route, Routes } from 'react-router-dom'
+import ApprovalMatrix from 'app/routes/approval-matrix'
 import avatarFB from 'assets/avatar-fb.jpg'
 import avatarTW from 'assets/avatar-tw.jpg'
 import { Body } from 'app/styles/global'
@@ -71,10 +72,8 @@ export const App: FunctionComponent = () => {
                         <link href={ faviconPNG } rel='icon' sizes='192x192' />
                     </Helmet>
                     <Routes>
-                        <Route element={ <AsyncRoute name='style' /> } path='style' />
-                        <Route element={ <AsyncRoute name='style' /> } path='style/:step' />
-                        <Route element={ <AsyncRoute name='approval-matrix' /> } path='matrix' />
-                        <Route element={ <AsyncRoute name='approval-matrix' /> } path='matrix/:step' />
+                        <Route element={ <ApprovalMatrix /> } path='matrix' />
+                        <Route element={ <ApprovalMatrix /> } path='matrix/:step' />
                     </Routes>
                 </>
             </ThemeProvider>

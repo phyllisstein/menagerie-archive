@@ -38,7 +38,7 @@ export const currentAndPreviousAnimation = selectorFamily({
         const previous = get(animation(step - 1))
         return { current, previous }
     },
-    key: 'impress:currentAndPreviousAnimation',
+    key: 'impress:current-and-previous-animation',
     set: step => ({ get, set }, newValue) => {
         if (newValue.current != null) {
             set(animation(step), newValue.current)
@@ -52,7 +52,7 @@ export const currentAndPreviousAnimation = selectorFamily({
 
 export const overviewScale = atom({
     default: 1,
-    key: 'impress:overviewScale',
+    key: 'impress:overview-scale',
 })
 
 export const shouldZoom = selectorFamily({
@@ -60,7 +60,7 @@ export const shouldZoom = selectorFamily({
         const { current, previous } = get(currentAndPreviousAnimation(step))
         return 1 / current.scale > previous.scale
     },
-    key: 'impress:scaleUp',
+    key: 'impress:scale-up',
 })
 
 export const step = atom({

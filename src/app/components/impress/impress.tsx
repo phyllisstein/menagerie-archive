@@ -3,7 +3,6 @@ import { FunctionComponent, useEffect, useState } from 'react'
 import { useStep, useSteppedChildren } from 'app/hooks/impress'
 import { addEventListener } from 'consolidated-events'
 import { canUseDOM } from 'exenv'
-import { Controls } from './controls'
 import { impress } from 'app/state'
 import R from 'ramda'
 import { useRecoilValue } from 'recoil'
@@ -109,7 +108,7 @@ export const Impress: FunctionComponent<ImpressProps> = ({
                         z: 0,
                     }}
                     transformTemplate={({ rotateX, rotateY, rotateZ, x, y, z }) =>
-                        `translate3d(${x}, ${y}, ${z}) rotateZ(${rotateZ}) rotateY(${rotateY}) rotateX(${rotateX})`
+                        `translate3d(${ x }, ${ y }, ${ z }) rotateZ(${ rotateZ }) rotateY(${ rotateY }) rotateX(${ rotateX })`
                     }
                     transition={{
                         delay: zoom ? 0 : 0.5,
@@ -117,10 +116,9 @@ export const Impress: FunctionComponent<ImpressProps> = ({
                         ease: [0.4, 0, 0.2, 1],
                         type: 'tween',
                     }}>
-                    {steppedChildren}
+                    { steppedChildren }
                 </Canvas>
             </Root>
-            <Controls />
         </>
     )
 }

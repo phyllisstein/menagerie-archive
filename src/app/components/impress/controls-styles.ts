@@ -1,10 +1,8 @@
-import IconBase from '@mdi/react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import styled from 'styled-components'
 
-export const Icon = styled(IconBase)`
-    display: block;
-    height: 24px;
-    width: 24px;
+export const Icon = styled(FontAwesomeIcon)`
+    font-size: ${ ({ theme }) => theme.scale.css(3) };
 `
 
 export const Root = styled.div`

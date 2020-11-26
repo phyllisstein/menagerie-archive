@@ -1,10 +1,11 @@
 import { DIRECTION_LEFT, DIRECTION_RIGHT } from 'hammerjs'
+import { faChevronsLeft, faChevronsRight } from '@fortawesome/pro-duotone-svg-icons'
 import { FunctionComponent, useMemo } from 'react'
 import { Icon, Root } from './controls-styles'
-import { mdiChevronLeft, mdiChevronRight } from '@mdi/js'
 import { useSwipe, useTap } from 'app/hooks/hammer'
 import { Button } from '../button'
 import { canUseDOM } from 'exenv'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useStep } from 'app/hooks/impress'
 
 export const Controls: FunctionComponent = () => {
@@ -49,10 +50,10 @@ export const Controls: FunctionComponent = () => {
     return (
         <Root>
             <Button onClick={ previous }>
-                <Icon path={ mdiChevronLeft } />
+                <Icon icon={ faChevronsLeft } />
             </Button>
             <Button onClick={ next }>
-                <Icon path={ mdiChevronRight } />
+                <Icon icon={ faChevronsRight } />
             </Button>
         </Root>
     )

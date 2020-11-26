@@ -8,7 +8,7 @@ export const ApprovalMatrix: FunctionComponent = () => {
                 <Layout>
                     <div style={{ backgroundColor: '#000', display: 'block', height: 2, width: 768 }} />
                 </Layout>
-                <Step position={{ z: 1024 }} scale={2}>
+                <Step position={{ z: 1024 }} scale={ 2 }>
                     <h1>One (Step)</h1>
                 </Step>
                 <Layout>

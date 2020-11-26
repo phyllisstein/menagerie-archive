@@ -7,7 +7,7 @@ interface ButtonProps {
     color?: keyof CSSPalette
 }
 
-export const Button: FunctionComponent<ButtonProps> = ({ children, className, color = 'accent', ...props }) => {
+export const Button: FunctionComponent<ButtonProps> = ({ children, className, color = 'faded', ...props }) => {
     return (
         <Root className={ className } themeColor={ color } { ...props }>
             { children }
