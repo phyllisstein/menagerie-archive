@@ -58,7 +58,7 @@ export const overviewScale = atom({
 export const shouldZoom = selectorFamily({
     get: step => ({ get }) => {
         const { current, previous } = get(currentAndPreviousAnimation(step))
-        return 1 / current.scale > previous.scale
+        return current.scale > previous.scale
     },
     key: 'impress:scale-up',
 })
