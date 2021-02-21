@@ -73,12 +73,7 @@ const BABEL_OPTIONS = {
 
 client.name('client').context(path.resolve('./src')).target('web')
 
-client
-    .entry('main')
-    .add('./client')
-    .end()
-    .entry('impress-demo')
-    .add('./impress-demo')
+client.entry('main').add('./client').end()
 
 client.output
     .chunkFilename('js/[name].js')
@@ -99,7 +94,10 @@ client.module
                 [
                     '@babel/env',
                     {
-                        exclude: ['transform-async-to-generator', 'transform-regenerator'],
+                        exclude: [
+                            'transform-async-to-generator',
+                            'transform-regenerator',
+                        ],
                         modules: false,
                         targets: {
                             browsers: [
@@ -241,7 +239,10 @@ server.module
                 [
                     '@babel/env',
                     {
-                        exclude: ['transform-async-to-generator', 'transform-regenerator'],
+                        exclude: [
+                            'transform-async-to-generator',
+                            'transform-regenerator',
+                        ],
                         modules: 'commonjs',
                         targets: {
                             node: 'current',

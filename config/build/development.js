@@ -32,22 +32,13 @@ client
     .plugin('define')
     .tap(([options]) => [merge(options, { __DEV__: JSON.stringify(true) })])
 
-client.plugin('html-main').use(HTMLPlugin, [
+client.plugin('html').use(HTMLPlugin, [
     {
         chunks: ['main'],
         filename: 'index.html',
         hash: true,
         scriptLoading: 'defer',
         template: './index.html',
-    },
-])
-
-client.plugin('html-impress-demo').use(HTMLPlugin, [
-    {
-        chunks: ['impress-demo'],
-        filename: 'impress-demo.html',
-        hash: true,
-        template: './impress-demo/index.html',
     },
 ])
 
