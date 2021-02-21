@@ -34,7 +34,9 @@ export const Impress = ({
     scale: scaleConstraints = {},
     width,
 }) => {
-    const [windowScale, setWindowScale] = useState(() => getWindowScale(height, width, scaleConstraints))
+    const [windowScale, setWindowScale] = useState(() =>
+        getWindowScale(height, width, scaleConstraints),
+    )
     const [steppedChildren, stepCount] = useSteppedChildren(children)
     const [step] = useStep(stepCount)
 
@@ -95,9 +97,15 @@ export const Impress = ({
                         y: 0,
                         z: 0,
                     }}
-                    transformTemplate={({ rotateX, rotateY, rotateZ, x, y, z }) =>
-                        `translate3d(${ x }, ${ y }, ${ z }) rotateZ(${ rotateZ }) rotateY(${ rotateY }) rotateX(${ rotateX })`
-                    }
+                    transformTemplate={ ({
+                        rotateX,
+                        rotateY,
+                        rotateZ,
+                        x,
+                        y,
+                        z,
+                    }) =>
+                        `translate3d(${ x }, ${ y }, ${ z }) rotateZ(${ rotateZ }) rotateY(${ rotateY }) rotateX(${ rotateX })` }
                     transition={{
                         delay: zoom ? 0 : 0.5,
                         duration: 1,

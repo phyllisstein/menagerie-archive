@@ -7,11 +7,13 @@ export const Icon = styled(FontAwesomeIcon)`
 
 export const Root = styled.div`
     position: fixed;
-    right: 0;
-    bottom: 0;
+    top: 0;
+    left: 50%;
 
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
+
+    transform: translateX(-50%);
 `
