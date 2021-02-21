@@ -10,7 +10,7 @@ process.on('unhandledRejection', err => {
     throw new Error(err)
 })
 
-let {PORT = '80', VIRTUAL_HOST = 'talk.danielsh.here'} = process.env
+let { PORT = '9090', VIRTUAL_HOST = 'localhost' } = process.env
 
 const OPTIONS = {
     historyApiFallback: true,
@@ -23,7 +23,7 @@ const OPTIONS = {
         warnings: false,
     },
     port: Number.parseInt(PORT, 10),
-    public: `${VIRTUAL_HOST}:${PORT}`,
+    public: `${ VIRTUAL_HOST }:${ PORT }`,
     serveIndex: true,
     sockHost: VIRTUAL_HOST,
     sockPort: Number.parseInt(PORT, 10),
@@ -35,10 +35,10 @@ const OPTIONS = {
 }
 
 if (typeof PhusionPassenger !== 'undefined') {
-    PhusionPassenger.configure({autoinstall: false})
+    PhusionPassenger.configure({ autoinstall: false })
 
     PORT = 'passenger'
-    OPTIONS.public = `${VIRTUAL_HOST}:80`
+    OPTIONS.public = `${ VIRTUAL_HOST }:80`
     OPTIONS.port = 80
     OPTIONS.sockPort = 80
 }
@@ -50,5 +50,5 @@ const compiler = webpack(config)
 const server = new WebpackDevServer(compiler, OPTIONS)
 
 server.listen(PORT, () => {
-    console.log(`Server listening on port: ${PORT}!`)
+    console.log(`Server listening on port: ${ PORT }!`)
 })
