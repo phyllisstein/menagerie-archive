@@ -1,5 +1,5 @@
 import { Body, Canvas, Root } from './impress-styles'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useStep, useSteppedChildren } from 'app/hooks/impress'
 import { addEventListener } from 'consolidated-events'
 import { canUseDOM } from 'exenv'
@@ -39,9 +39,10 @@ export const Impress = ({
     )
     const [steppedChildren, stepCount] = useSteppedChildren(children)
     const [step] = useStep(stepCount)
+    const previousScale = useRef()
 
-    const { current, previous } = useRecoilValue(
-        impress.currentAndPreviousAnimation(step),
+    const current = useRecoilValue(
+        impress.animation(step),
     )
 
     const targetPosition = R.map(R.multiply(-1), current.position)
@@ -61,14 +62,9 @@ export const Impress = ({
     })
 
     const targetScale = (1 / current.scale) * windowScale
-    const zoom = useRecoilValue(impress.shouldZoom(step))
+    const zoom = targetScale <= previousScale.current
+    previousScale.current = targetScale
     const perspective = perspectiveBase / targetScale
-
-    console.log({
-        current,
-        previous,
-        zoom,
-    })
 
     return (
         <>
@@ -83,10 +79,9 @@ export const Impress = ({
                     scale: windowScale,
                 }}
                 transition={{
-                    delay: zoom ? 0 : 0.5,
+                    delay: zoom ? 0 : 0.2,
                     duration: 1,
-                    ease: 'easeInOut',
-                    type: 'tween',
+                    type: 'spring',
                 }}>
                 <Canvas
                     animate={{
@@ -115,10 +110,9 @@ export const Impress = ({
                     }) =>
                         `translate3d(${ x }, ${ y }, ${ z }) rotateZ(${ rotateZ }) rotateY(${ rotateY }) rotateX(${ rotateX })` }
                     transition={{
-                        delay: zoom ? 0.5 : 0,
+                        delay: zoom ? 0.2 : 0,
                         duration: 1,
-                        ease: 'easeInOut',
-                        type: 'tween',
+                        type: 'spring',
                     }}>
                     { steppedChildren }
                 </Canvas>

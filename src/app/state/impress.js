@@ -19,20 +19,6 @@ export const animation = atomFamily({
     key: 'impress:animation',
 })
 
-export const canvasMinMax = atom({
-    default: {
-        maxScale: 1,
-        maxX: 0,
-        maxY: 0,
-        maxZ: 0,
-        minScale: 1,
-        minX: 0,
-        minY: 0,
-        minZ: 0,
-    },
-    key: 'impress:canvas-min-max',
-})
-
 export const currentAndPreviousAnimation = selectorFamily({
     get: step => ({ get }) => {
         const current = get(animation(step))
@@ -49,18 +35,4 @@ export const currentAndPreviousAnimation = selectorFamily({
             set(animation(step - 1), newValue.previous)
         }
     },
-})
-
-export const overviewScale = atom({
-    default: 1,
-    key: 'impress:overview-scale',
-})
-
-export const shouldZoom = selectorFamily({
-    get: step => ({ get }) => {
-        const { current, previous } = get(currentAndPreviousAnimation(step))
-        console.log({ current, previous })
-        return current.scale >= previous.scale
-    },
-    key: 'impress:scale-up',
 })

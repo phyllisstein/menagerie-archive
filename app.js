@@ -43,10 +43,7 @@ if (typeof PhusionPassenger !== 'undefined') {
     OPTIONS.sockPort = 80
 }
 
-WebpackDevServer.addDevServerEntrypoints(config, OPTIONS)
-
 const compiler = webpack(config)
-
 const server = new WebpackDevServer(compiler, OPTIONS)
 
 server.listen(PORT, () => {
