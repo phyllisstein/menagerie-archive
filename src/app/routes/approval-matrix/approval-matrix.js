@@ -4,7 +4,7 @@ import { StepWrapper } from './approval-matrix-styles'
 export const ApprovalMatrix = () => {
     return (
         <>
-            <Impress height={ 768 } width={ 768 }>
+            <Impress height={ 768 } width={ 1024 }>
                 <Step>
                     <StepWrapper>
                         <h1>One</h1>

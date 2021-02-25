@@ -30,7 +30,7 @@ const getWindowScale = (height, width, scaleConstraints = {}) => {
 export const Impress = ({
     children,
     height,
-    perspective = 1000,
+    perspective: perspectiveBase = 1000,
     scale: scaleConstraints = {},
     width,
 }) => {
@@ -40,10 +40,12 @@ export const Impress = ({
     const [steppedChildren, stepCount] = useSteppedChildren(children)
     const [step] = useStep(stepCount)
 
-    const currentAnimation = useRecoilValue(impress.animation(step))
+    const { current, previous } = useRecoilValue(
+        impress.currentAndPreviousAnimation(step),
+    )
 
-    const targetPosition = R.map(R.multiply(-1), currentAnimation.position)
-    const targetRotation = R.map(R.multiply(-1), currentAnimation.rotation)
+    const targetPosition = R.map(R.multiply(-1), current.position)
+    const targetRotation = R.map(R.multiply(-1), current.rotation)
 
     useEffect(() => {
         const getScale = () => {
@@ -58,26 +60,32 @@ export const Impress = ({
         return addEventListener(window, 'resize', getScale, { passive: true })
     })
 
-    let targetScale = 1 / currentAnimation.scale
+    const targetScale = (1 / current.scale) * windowScale
     const zoom = useRecoilValue(impress.shouldZoom(step))
-    targetScale *= windowScale
+    const perspective = perspectiveBase / targetScale
+
+    console.log({
+        current,
+        previous,
+        zoom,
+    })
 
     return (
         <>
             <Body />
             <Root
                 animate={{
-                    perspective: perspective / targetScale,
+                    perspective,
                     scale: targetScale,
                 }}
                 initial={{
-                    perspective: perspective / windowScale,
+                    perspective: perspectiveBase,
                     scale: windowScale,
                 }}
                 transition={{
-                    delay: zoom ? 0.5 : 0,
+                    delay: zoom ? 0 : 0.5,
                     duration: 1,
-                    ease: [0.4, 0, 0.2, 1],
+                    ease: 'easeInOut',
                     type: 'tween',
                 }}>
                 <Canvas
@@ -107,9 +115,9 @@ export const Impress = ({
                     }) =>
                         `translate3d(${ x }, ${ y }, ${ z }) rotateZ(${ rotateZ }) rotateY(${ rotateY }) rotateX(${ rotateX })` }
                     transition={{
-                        delay: zoom ? 0 : 0.5,
+                        delay: zoom ? 0.5 : 0,
                         duration: 1,
-                        ease: [0.4, 0, 0.2, 1],
+                        ease: 'easeInOut',
                         type: 'tween',
                     }}>
                     { steppedChildren }

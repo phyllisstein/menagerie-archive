@@ -27,7 +27,6 @@ const KEYWORDS = [
 export const App = () => {
     return (
         <RecoilRoot>
-            <DebugObserver />
             <ThemeProvider theme={ theme }>
                 <>
                     <Body />

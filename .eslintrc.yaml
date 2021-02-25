@@ -133,6 +133,7 @@ rules:
         - argsIgnorePattern: '^_'
           varsIgnorePattern: '^_'
     object-curly-spacing: 'off'
+    prefer-const: error
     prefer-rest-params: error
     radix: error
     semi:
