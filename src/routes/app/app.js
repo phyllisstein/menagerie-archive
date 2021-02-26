@@ -1,3 +1,4 @@
+import { AdobeClean, Egyptienne, MillerDisplay, MillerText } from 'fonts'
 import { Route, Routes } from 'react-router-dom'
 import { ApprovalMatrix } from 'routes/approval-matrix'
 import avatarFB from 'assets/avatar-fb.jpg'
@@ -28,7 +29,11 @@ export const App = () => {
         <RecoilRoot>
             <ThemeProvider theme={ theme }>
                 <>
-                    <Body />
+                    <AdobeClean/>
+                    <Egyptienne/>
+                    <MillerDisplay/>
+                    <MillerText/>
+                    <Body/>
                     <Helmet
                         defaultTitle={ SITE_NAME }
                         titleTemplate={ `%s | ${ SITE_NAME }` }>
