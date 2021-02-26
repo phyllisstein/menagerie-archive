@@ -1,8 +1,9 @@
+import { useCallback, useEffect } from 'react'
 import _ from 'lodash'
 import { impress } from 'app/state'
 import { oneLine } from 'common-tags'
 import { Root } from './step-styles'
-import { useEffect } from 'react'
+import { useNavigate } from 'react-router'
 import { useRecoilState } from 'recoil'
 import { useStep } from 'app/hooks/impress'
 
@@ -58,10 +59,19 @@ export const Step = ({
         })
     }, [transform])
 
+    const navigate = useNavigate()
+    const jumpToStep = useCallback(() => {
+        navigate(`../${ step }`)
+    }, [step])
+
     return (
         <Root
             animate={{ opacity: step === currentStep ? 1 : 0.3 }}
-            style={{ transform }}>
+            style={{
+                pointerEvents: step === currentStep ? 'none' : 'auto',
+                transform,
+            }}
+            onClick={ jumpToStep }>
             { children }
         </Root>
     )
