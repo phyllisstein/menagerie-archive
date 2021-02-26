@@ -44,11 +44,13 @@ const getPlumber = ({
         fontSize = unitless(fontSize)
         lineHeight = unitless(lineHeight)
 
-        const { baselineDifference, correctedBaseline } = getBaselineCorrection({
-            baseline,
-            fontSize,
-            lineHeight,
-        })
+        const { baselineDifference, correctedBaseline } = getBaselineCorrection(
+            {
+                baseline,
+                fontSize,
+                lineHeight,
+            },
+        )
 
         if (useBaselineOrigin) {
             leadingTop -= lineHeight - correctedBaseline
@@ -60,8 +62,12 @@ const getPlumber = ({
         fontSize = round(fontSize * gridHeightValue)
         const marginTop = round((leadingTop - shift) * gridHeightValue)
         const paddingTop = round((shift - baselineDifference) * gridHeightValue)
-        const paddingBottom = round((1 - shift + baselineDifference) * gridHeightValue)
-        const marginBottom = round((leadingBottom + shift - 1) * gridHeightValue)
+        const paddingBottom = round(
+            (1 - shift + baselineDifference) * gridHeightValue,
+        )
+        const marginBottom = round(
+            (leadingBottom + shift - 1) * gridHeightValue,
+        )
 
         return css`
             margin-top: ${ marginTop }${ gridHeightUnit };
@@ -74,18 +80,29 @@ const getPlumber = ({
         `
     }
 
-    plumber.box = function ({ border = ['0px', '0px'], gridHeight = GRID_HEIGHT, margin = [0, 0], padding = [0, 0] }) {
+    plumber.box = function ({
+        border = ['0px', '0px'],
+        gridHeight = GRID_HEIGHT,
+        margin = [0, 0],
+        padding = [0, 0],
+    }) {
         const [gridHeightValue, gridHeightUnit] = getValueAndUnit(gridHeight)
 
-        const [marginTop, marginBottom] = margin.map(m => round(m * gridHeightValue))
-        const [paddingTop, paddingBottom] = padding.map(p => round(p * gridHeightValue))
+        const [marginTop, marginBottom] = margin.map(m =>
+            round(m * gridHeightValue),
+        )
+        const [paddingTop, paddingBottom] = padding.map(p =>
+            round(p * gridHeightValue),
+        )
         const [borderTop, borderBottom] = border
 
         return css`
             margin-top: ${ marginTop }${ gridHeightUnit };
             margin-bottom: ${ marginBottom }${ gridHeightUnit };
             padding-top: calc(${ paddingTop }${ gridHeightUnit } - ${ borderTop });
-            padding-bottom: calc(${ paddingBottom }${ gridHeightUnit } - ${ borderBottom });
+            padding-bottom: calc(
+                ${ paddingBottom }${ gridHeightUnit } - ${ borderBottom }
+            );
         `
     }
 

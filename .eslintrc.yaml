@@ -82,7 +82,7 @@ rules:
           shorthandFirst: true
     react/jsx-tag-spacing:
         - warn
-        - beforeSelfClosing: always
+        - beforeSelfClosing: never
     react/prop-types: 'off'
     react/react-in-jsx-scope: 'off'
     react/sort-comp:
@@ -133,7 +133,7 @@ rules:
         - argsIgnorePattern: '^_'
           varsIgnorePattern: '^_'
     object-curly-spacing: 'off'
-    prefer-const: error
+    prefer-const: warn
     prefer-rest-params: error
     radix: error
     semi:

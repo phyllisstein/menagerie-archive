@@ -13,7 +13,9 @@ const breakpoints = pxToRem(
 )
 
 export const between = (start, end, style) => css`
-    @media screen and (min-width: ${ breakpoints[start] }) and (max-width: ${ breakpoints[end] }) {
+    @media screen and (min-width: ${ breakpoints[
+    start
+    ] }) and (max-width: ${ breakpoints[end] }) {
         ${ style }
     }
 `

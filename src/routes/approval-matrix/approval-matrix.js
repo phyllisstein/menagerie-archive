@@ -36,7 +36,7 @@ export const ApprovalMatrix = () => {
                     </StepWrapper>
                 </Step>
             </Impress>
-            <Controls />
+            <Controls/>
         </>
     )
 }

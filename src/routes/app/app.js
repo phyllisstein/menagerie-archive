@@ -29,46 +29,46 @@ export const App = () => {
         <RecoilRoot>
             <ThemeProvider theme={ theme }>
                 <>
-                    <Body />
+                    <Body/>
                     <Helmet
                         defaultTitle={ SITE_NAME }
                         titleTemplate={ `%s | ${ SITE_NAME }` }>
-                        <html lang='en' />
+                        <html lang='en'/>
 
-                        <meta charSet='utf-8' />
+                        <meta charSet='utf-8'/>
                         <meta
                             content='width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no, user-scalable=no'
-                            name='viewport' />
+                            name='viewport'/>
 
                         { /* Common Metadata */ }
-                        <meta content={ DESCRIPTION } name='description' />
-                        <meta content={ KEYWORDS.join(',') } name='keywords' />
+                        <meta content={ DESCRIPTION } name='description'/>
+                        <meta content={ KEYWORDS.join(',') } name='keywords'/>
 
                         { /* Facebook OpenGraph */ }
-                        <meta content={ DESCRIPTION } property='og:description' />
-                        <meta content={ avatarFB } property='og:image' />
-                        <meta content='en_US' property='og:locale' />
-                        <meta content={ SITE_NAME } property='og:site_name' />
-                        <meta content='website' property='og:type' />
+                        <meta content={ DESCRIPTION } property='og:description'/>
+                        <meta content={ avatarFB } property='og:image'/>
+                        <meta content='en_US' property='og:locale'/>
+                        <meta content={ SITE_NAME } property='og:site_name'/>
+                        <meta content='website' property='og:type'/>
 
                         { /* Twitter Cards */ }
-                        <meta content='summary' name='twitter:card' />
+                        <meta content='summary' name='twitter:card'/>
                         <meta
                             content={ DESCRIPTION }
-                            property='twitter:description' />
-                        <meta content='on' name='twitter:dnt' />
-                        <meta content={ avatarTW } property='twitter:image' />
-                        <meta content='@phyllisstein' name='twitter:site' />
-                        <meta content={ SITE_NAME } property='twitter:title' />
+                            property='twitter:description'/>
+                        <meta content='on' name='twitter:dnt'/>
+                        <meta content={ avatarTW } property='twitter:image'/>
+                        <meta content='@phyllisstein' name='twitter:site'/>
+                        <meta content={ SITE_NAME } property='twitter:title'/>
 
                         { /* Favicon */ }
-                        <link href={ faviconPNG } rel='icon' sizes='192x192' />
+                        <link href={ faviconPNG } rel='icon' sizes='192x192'/>
                     </Helmet>
                     <Routes>
-                        <Route element={ <ApprovalMatrix /> } path='matrix' />
+                        <Route element={ <ApprovalMatrix/> } path='matrix'/>
                         <Route
-                            element={ <ApprovalMatrix /> }
-                            path='matrix/:step' />
+                            element={ <ApprovalMatrix/> }
+                            path='matrix/:step'/>
                     </Routes>
                 </>
             </ThemeProvider>

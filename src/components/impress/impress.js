@@ -66,7 +66,7 @@ export const Impress = ({
 
     return (
         <>
-            <Body />
+            <Body/>
             <Root
                 animate={{
                     perspective,

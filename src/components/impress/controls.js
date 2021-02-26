@@ -52,10 +52,10 @@ export const Controls = () => {
     return (
         <Root>
             <Button onClick={ previous }>
-                <Icon icon={ faChevronsLeft } />
+                <Icon icon={ faChevronsLeft }/>
             </Button>
             <Button onClick={ next }>
-                <Icon icon={ faChevronsRight } />
+                <Icon icon={ faChevronsRight }/>
             </Button>
         </Root>
     )
