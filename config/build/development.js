@@ -4,7 +4,9 @@ const merge = require('merge-deep')
 const ReactRefreshPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
 const webpack = require('webpack')
 
-client.mode('development').devtool('cheap-module-source-map')
+const enableWDYR = process.env.WHY_DID_YOU_RENDER != null
+
+client.mode('development').devtool('source-map')
 
 client.output.publicPath('/')
 
@@ -13,6 +15,19 @@ client.module
     .use('babel')
     .tap(options =>
         merge(options, {
+            presets: [
+                [
+                    '@babel/react',
+                    {
+                        development: true,
+                        importSource: enableWDYR
+                            ? '@welldone-software/why-did-you-render'
+                            : 'react',
+                        runtime: 'automatic',
+                        useBuiltIns: true,
+                    },
+                ],
+            ],
             plugins: [
                 'react-refresh/babel',
                 [
@@ -27,6 +42,10 @@ client.module
         }),
     )
     .end()
+
+if (enableWDYR) {
+    client.entry('main').prepend('./client/wdyr')
+}
 
 client
     .plugin('define')

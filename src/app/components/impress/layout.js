@@ -8,7 +8,12 @@ const COORDINATE_DEFAULTS = {
     z: 0,
 }
 
-export const Layout = ({ children, position = {}, rotation = {}, scale = 1 }) => {
+export const Layout = ({
+    children,
+    position = {},
+    rotation = {},
+    scale = 1,
+}) => {
     const positionWithDefaults = _.defaults(position, COORDINATE_DEFAULTS)
     const rotationWithDefaults = _.defaults(rotation, COORDINATE_DEFAULTS)
 

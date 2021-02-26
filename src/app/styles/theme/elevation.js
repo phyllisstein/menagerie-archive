@@ -96,7 +96,7 @@ const clampLevel = R.clamp(1, 25)
 
 const dropSpread = R.pipe(R.split(' '), R.dropLast(1), R.join(' '))
 
-export function box (level = 1) {
+export function box(level = 1) {
     level = clampLevel(level)
 
     const umbra = SHADOWS.UMBRA[level]
@@ -104,7 +104,8 @@ export function box (level = 1) {
     const ambient = SHADOWS.AMBIENT[level]
 
     return css`
-        box-shadow: ${ umbra } ${ BLACK.UMBRA }, ${ penumbra } ${ BLACK.PENUMBRA }, ${ ambient } ${ BLACK.AMBIENT };
+        box-shadow: ${ umbra } ${ BLACK.UMBRA }, ${ penumbra } ${ BLACK.PENUMBRA },
+            ${ ambient } ${ BLACK.AMBIENT };
     `
 }
 
@@ -113,7 +114,7 @@ box.animation = animation({
     property: 'box-shadow',
 })
 
-export function text (level = 1) {
+export function text(level = 1) {
     level = clampLevel(level)
 
     const umbra = dropSpread(SHADOWS.UMBRA[level])
@@ -121,7 +122,8 @@ export function text (level = 1) {
     const ambient = dropSpread(SHADOWS.AMBIENT[level])
 
     return css`
-        text-shadow: ${ umbra } ${ BLACK.UMBRA }, ${ penumbra } ${ BLACK.PENUMBRA }, ${ ambient } ${ BLACK.AMBIENT };
+        text-shadow: ${ umbra } ${ BLACK.UMBRA }, ${ penumbra } ${ BLACK.PENUMBRA },
+            ${ ambient } ${ BLACK.AMBIENT };
     `
 }
 

@@ -509,6 +509,7 @@
           // and the scaling is delayed, but when we are zooming out we start
           // with scaling down and move and rotation are delayed.
           var zoomin = target.scale >= currentState.scale;
+          console.log({ target: target.scale, current: currentState.scale, zoomin })
 
           duration = lib.util.toNumber( duration, config.transitionDuration );
           var delay = ( duration / 2 );

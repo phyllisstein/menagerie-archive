@@ -39,14 +39,13 @@ export const Impress = ({
     )
     const [steppedChildren, stepCount] = useSteppedChildren(children)
     const [step] = useStep(stepCount)
-    const previousScale = useRef()
+    const previousScale = useRef(1)
 
-    const current = useRecoilValue(
-        impress.animation(step),
-    )
+    const current = useRecoilValue(impress.animation(step))
 
     const targetPosition = R.map(R.multiply(-1), current.position)
     const targetRotation = R.map(R.multiply(-1), current.rotation)
+    const targetScale = 1 / current.scale
 
     useEffect(() => {
         const getScale = () => {
@@ -59,12 +58,11 @@ export const Impress = ({
         getScale()
 
         return addEventListener(window, 'resize', getScale, { passive: true })
-    })
+    }, [])
 
-    const targetScale = (1 / current.scale) * windowScale
-    const zoom = targetScale <= previousScale.current
+    const zoom = targetScale >= previousScale.current
     previousScale.current = targetScale
-    const perspective = perspectiveBase / targetScale
+    const perspective = (perspectiveBase / targetScale) * windowScale
 
     return (
         <>
@@ -79,9 +77,9 @@ export const Impress = ({
                     scale: windowScale,
                 }}
                 transition={{
-                    delay: zoom ? 0 : 0.2,
+                    delay: zoom ? 0.5 : 0,
                     duration: 1,
-                    type: 'spring',
+                    type: 'tween',
                 }}>
                 <Canvas
                     animate={{
@@ -110,9 +108,9 @@ export const Impress = ({
                     }) =>
                         `translate3d(${ x }, ${ y }, ${ z }) rotateZ(${ rotateZ }) rotateY(${ rotateY }) rotateX(${ rotateX })` }
                     transition={{
-                        delay: zoom ? 0.2 : 0,
+                        delay: zoom ? 0 : 0.5,
                         duration: 1,
-                        type: 'spring',
+                        type: 'tween',
                     }}>
                     { steppedChildren }
                 </Canvas>

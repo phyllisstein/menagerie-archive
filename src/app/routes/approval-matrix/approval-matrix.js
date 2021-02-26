@@ -1,4 +1,4 @@
-import { Controls, Impress, Layout, Step } from 'app/components/impress'
+import { Controls, Impress, Step } from 'app/components/impress'
 import { StepWrapper } from './approval-matrix-styles'
 
 export const ApprovalMatrix = () => {

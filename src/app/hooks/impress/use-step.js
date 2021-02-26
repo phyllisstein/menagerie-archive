@@ -8,16 +8,16 @@ export const useStep = max => {
 
     useEffect(() => {
         if (params.step == null) {
-            navigate('1')
+            navigate('1', { replace: true })
         } else if (max != null && step > max) {
             navigate('../1')
         } else if (max != null && step < 1) {
             navigate(`../${ max }`)
         }
-    }, [params.step, step])
+    }, [params.step, step, max])
 
     const nextPath = params.step == null ? `${ step + 1 }` : `../${ step + 1 }`
-    const previousPath = params.step == null ? `${ step - 1}` : `../${ step - 1 }`
+    const previousPath = params.step == null ? `${ step - 1 }` : `../${ step - 1 }`
 
     const next = useCallback(() => navigate(nextPath), [nextPath])
     const previous = useCallback(() => navigate(previousPath), [previousPath])

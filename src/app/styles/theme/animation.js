@@ -1,9 +1,15 @@
 import { css } from 'styled-components'
 
-export function animation ({ curve = 'standard', duration = 'entering', properties = ['all'] } = {}) {
+export function animation({
+    curve = 'standard',
+    duration = 'entering',
+    properties = ['all'],
+} = {}) {
     const durationMS = animation.duration[duration]
     const curveBezier = animation.curve[curve]
-    const property = Array.isArray(properties) ? properties.join(',') : properties
+    const property = Array.isArray(properties)
+        ? properties.join(',')
+        : properties
 
     return css`
         transition: ${ property } ${ durationMS }ms ${ curveBezier };

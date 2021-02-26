@@ -12,15 +12,7 @@ const server = new Config()
 const BABEL_OPTIONS = {
     babelrc: false,
     cacheDirectory: true,
-    presets: [
-        [
-            '@babel/react',
-            {
-                runtime: 'automatic',
-                useBuiltIns: true,
-            },
-        ],
-    ],
+    presets: [],
     plugins: [
         '@babel/proposal-async-generator-functions',
         [

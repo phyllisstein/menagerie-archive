@@ -20,7 +20,9 @@ export const Step = ({
     scale = 1,
     step,
 }) => {
-    const [{ previous }, setCurrentAndPreviousAnimation] = useRecoilState(impress.currentAndPreviousAnimation(step))
+    const [{ previous }, setCurrentAndPreviousAnimation] = useRecoilState(
+        impress.currentAndPreviousAnimation(step),
+    )
     const [currentStep] = useStep()
 
     const nextPosition = _.defaults({ ...position }, COORDINATE_DEFAULTS)
@@ -57,7 +59,9 @@ export const Step = ({
     }, [transform])
 
     return (
-        <Root animate={{ opacity: step === currentStep ? 1 : 0.3 }} style={{ transform }}>
+        <Root
+            animate={{ opacity: step === currentStep ? 1 : 0.3 }}
+            style={{ transform }}>
             { children }
         </Root>
     )

@@ -2446,6 +2446,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@welldone-software/why-did-you-render@npm:^6.0.5":
+  version: 6.0.5
+  resolution: "@welldone-software/why-did-you-render@npm:6.0.5"
+  dependencies:
+    lodash: ^4
+  peerDependencies:
+    react: ^16 || ^17
+  checksum: 7616b704a28e09f611e86330b9f87b4e27a881b7df995eea28c2cbdadf856ee1cec99d3cd52a1bd024c01cf9d965accb7dccd77c3fbd4821261063802e5db90b
+  languageName: node
+  linkType: hard
+
 "@wry/context@npm:^0.5.2":
   version: 0.5.4
   resolution: "@wry/context@npm:0.5.4"
@@ -2675,6 +2686,7 @@ __metadata:
     "@loadable/webpack-plugin": ^5.14.2
     "@pmmmwh/react-refresh-webpack-plugin": ^0.4.3
     "@webpack-cli/serve": ^1.3.0
+    "@welldone-software/why-did-you-render": ^6.0.5
     babel-eslint: ^10.1.0
     babel-loader: ^8.2.2
     babel-plugin-graphql-tag: ^3.2.0
@@ -8819,7 +8831,7 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"lodash@npm:^4.11.1, lodash@npm:^4.13.1, lodash@npm:^4.17.10, lodash@npm:^4.17.11, lodash@npm:^4.17.12, lodash@npm:^4.17.14, lodash@npm:^4.17.15, lodash@npm:^4.17.19, lodash@npm:^4.17.20, lodash@npm:^4.17.21, lodash@npm:^4.17.4":
+"lodash@npm:^4, lodash@npm:^4.11.1, lodash@npm:^4.13.1, lodash@npm:^4.17.10, lodash@npm:^4.17.11, lodash@npm:^4.17.12, lodash@npm:^4.17.14, lodash@npm:^4.17.15, lodash@npm:^4.17.19, lodash@npm:^4.17.20, lodash@npm:^4.17.21, lodash@npm:^4.17.4":
   version: 4.17.21
   resolution: "lodash@npm:4.17.21"
   checksum: 4983720b9abca930a4a46f18db163d7dad8dd00dbed6db0cc7b499b33b717cce69f80928b27bbb1ff2cbd3b19d251ee90669a8b5ea466072ca81c2ebe91e7468

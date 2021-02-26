@@ -1,5 +1,8 @@
 import { DIRECTION_LEFT, DIRECTION_RIGHT } from 'hammerjs'
-import { faChevronsLeft, faChevronsRight } from '@fortawesome/pro-duotone-svg-icons'
+import {
+    faChevronsLeft,
+    faChevronsRight,
+} from '@fortawesome/pro-duotone-svg-icons'
 import { Icon, Root } from './controls-styles'
 import { useSwipe, useTap } from 'app/hooks/hammer'
 import { Button } from '../button'

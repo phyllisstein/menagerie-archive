@@ -5,5 +5,8 @@ import R from 'ramda'
 
 export const useMem = cb => {
     const cache = useRef(new DeepWeakMap())
-    return useCallback(mem(cb, { cache: cache.current, cacheKey: R.identity }), [cb])
+    return useCallback(
+        mem(cb, { cache: cache.current, cacheKey: R.identity }),
+        [cb],
+    )
 }

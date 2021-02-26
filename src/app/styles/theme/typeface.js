@@ -1,4 +1,8 @@
-import { accent as plumberAccent, hed as plumberHed, primary as plumberPrimary } from './plumber'
+import {
+    accent as plumberAccent,
+    hed as plumberHed,
+    primary as plumberPrimary,
+} from './plumber'
 import { css } from 'styled-components'
 
 export const accent = (plumberOpts = {}) => css`
@@ -7,7 +11,8 @@ export const accent = (plumberOpts = {}) => css`
 `
 
 export const accentFamily = css`
-    font-family: 'Egyptienne', Georgia, Garamond, 'Times New Roman', 'Times', serif;
+    font-family: 'Egyptienne', Georgia, Garamond, 'Times New Roman', 'Times',
+        serif;
 `
 
 export const hed = (plumberOpts = {}) => css`
@@ -16,7 +21,8 @@ export const hed = (plumberOpts = {}) => css`
 `
 
 export const hedFamily = css`
-    font-family: 'Miller Display', Georgia, Garamond, 'Times New Roman', 'Times', serif;
+    font-family: 'Miller Display', Georgia, Garamond, 'Times New Roman', 'Times',
+        serif;
 `
 
 export const primary = (plumberOpts = {}) => css`
@@ -25,5 +31,6 @@ export const primary = (plumberOpts = {}) => css`
 `
 
 export const primaryFamily = css`
-    font-family: 'Miller Text', Georgia, Garamond, 'Times New Roman', 'Times', serif;
+    font-family: 'Miller Text', Georgia, Garamond, 'Times New Roman', 'Times',
+        serif;
 `

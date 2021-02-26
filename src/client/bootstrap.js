@@ -12,7 +12,7 @@ const renderApp = async () => {
         { default: App },
         { BrowserRouter },
         { HelmetProvider },
-        { default: ReactDOM }
+        { default: ReactDOM },
     ] = await Promise.all([
         import('app'),
         import('react-router-dom'),
