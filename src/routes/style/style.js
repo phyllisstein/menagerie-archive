@@ -1,4 +1,4 @@
-import { Impress, Step } from 'app/components/impress'
+import { Impress, Step } from 'components/impress'
 import { FunctionComponent } from 'react'
 
 export const Style: FunctionComponent = () => {

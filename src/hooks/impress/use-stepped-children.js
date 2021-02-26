@@ -1,5 +1,5 @@
 import { Children, cloneElement } from 'react'
-import { Step } from 'app/components/impress'
+import { Step } from 'components/impress'
 import { useMem } from '../optimization'
 
 const getSteppedChildren = c => {

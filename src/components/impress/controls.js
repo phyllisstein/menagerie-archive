@@ -4,11 +4,11 @@ import {
     faChevronsRight,
 } from '@fortawesome/pro-duotone-svg-icons'
 import { Icon, Root } from './controls-styles'
-import { useSwipe, useTap } from 'app/hooks/hammer'
+import { useSwipe, useTap } from 'hooks/hammer'
 import { Button } from '../button'
 import { canUseDOM } from 'exenv'
 import { useMemo } from 'react'
-import { useStep } from 'app/hooks/impress'
+import { useStep } from 'hooks/impress'
 
 export const Controls = () => {
     const [, previous, next] = useStep()

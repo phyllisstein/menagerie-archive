@@ -1,11 +1,11 @@
 import { useCallback, useEffect } from 'react'
 import _ from 'lodash'
-import { impress } from 'app/state'
+import { impress } from 'state'
 import { oneLine } from 'common-tags'
 import { Root } from './step-styles'
 import { useNavigate } from 'react-router'
 import { useRecoilState } from 'recoil'
-import { useStep } from 'app/hooks/impress'
+import { useStep } from 'hooks/impress'
 
 const COORDINATE_DEFAULTS = {
     x: 0,

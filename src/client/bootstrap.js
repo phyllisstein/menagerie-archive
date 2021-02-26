@@ -9,12 +9,12 @@ const loadCSS = async () => {
 
 const renderApp = async () => {
     const [
-        { default: App },
+        { App },
         { BrowserRouter },
         { HelmetProvider },
         { default: ReactDOM },
     ] = await Promise.all([
-        import('app'),
+        import('routes'),
         import('react-router-dom'),
         import('react-helmet-async'),
         import('react-dom'),
@@ -32,8 +32,8 @@ const renderApp = async () => {
     )
 
     if (module.hot) {
-        module.hot.accept('app', () => {
-            const { App } = require('app')
+        module.hot.accept(() => {
+            const { App } = require('routes')
 
             ReactDOM.render(
                 <BrowserRouter>

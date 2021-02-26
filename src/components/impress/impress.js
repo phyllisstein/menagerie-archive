@@ -1,9 +1,9 @@
 import { Body, Canvas, Root } from './impress-styles'
 import { useEffect, useRef, useState } from 'react'
-import { useStep, useSteppedChildren } from 'app/hooks/impress'
+import { useStep, useSteppedChildren } from 'hooks/impress'
 import { addEventListener } from 'consolidated-events'
 import { canUseDOM } from 'exenv'
-import { impress } from 'app/state'
+import { impress } from 'state'
 import R from 'ramda'
 import { useRecoilValue } from 'recoil'
 
