@@ -20,6 +20,7 @@ export const Step = ({
     rotation = {},
     scale = 1,
     step,
+    style,
 }) => {
     const [{ previous }, setCurrentAndPreviousAnimation] = useRecoilState(
         impress.currentAndPreviousAnimation(step),
@@ -70,14 +71,20 @@ export const Step = ({
 
     const navigate = useNavigate()
     const jumpToStep = useCallback(() => {
-        navigate(`../${ step }`)
-    }, [navigate, step])
+        console.log({ step, currentStep })
+
+        if (step === currentStep) {
+            navigate('../')
+        } else {
+            navigate(`../${ step }`)
+        }
+    }, [currentStep, step])
 
     return (
         <Root
             animate={{ opacity: step === currentStep ? 1 : 0.3 }}
             style={{
-                pointerEvents: step === currentStep ? 'none' : 'auto',
+                ...style,
                 transform,
             }}
             onClick={ jumpToStep }>
