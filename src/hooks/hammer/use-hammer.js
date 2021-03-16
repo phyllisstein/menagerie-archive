@@ -9,9 +9,10 @@ export const useHammer = target => {
     )
 
     useEffect(() => {
-        mc.current.set({ enable: true })
+        const mcRef = mc.current
+        mcRef.set({ enable: true })
 
-        return () => mc.current.destroy()
+        return () => mcRef.destroy()
     }, [''])
 
     return mc.current

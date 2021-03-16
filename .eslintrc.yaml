@@ -82,7 +82,7 @@ rules:
           shorthandFirst: true
     react/jsx-tag-spacing:
         - warn
-        - beforeSelfClosing: never
+        - beforeSelfClosing: always
     react/prop-types: 'off'
     react/react-in-jsx-scope: 'off'
     react/sort-comp:

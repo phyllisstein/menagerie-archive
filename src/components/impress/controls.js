@@ -29,7 +29,7 @@ export const Controls = () => {
         }
 
         return Math.round(window.innerWidth / 4)
-    }, [canUseDOM])
+    }, [])
 
     const rightQuarterStart = useMemo(() => {
         if (!canUseDOM) {
@@ -37,7 +37,7 @@ export const Controls = () => {
         }
 
         return Math.round(window.innerWidth - window.innerWidth / 4)
-    }, [canUseDOM])
+    }, [])
 
     useTap(ev => {
         if (ev.center.x <= leftQuarterEnd) {
@@ -52,10 +52,10 @@ export const Controls = () => {
     return (
         <Root>
             <Button onClick={ previous }>
-                <Icon icon={ faChevronsLeft }/>
+                <Icon icon={ faChevronsLeft } />
             </Button>
             <Button onClick={ next }>
-                <Icon icon={ faChevronsRight }/>
+                <Icon icon={ faChevronsRight } />
             </Button>
         </Root>
     )

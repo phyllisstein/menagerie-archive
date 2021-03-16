@@ -1,4 +1,4 @@
-import { atom, atomFamily, selectorFamily } from 'recoil'
+import { atomFamily, selectorFamily } from 'recoil'
 
 export const animation = atomFamily({
     default: {
@@ -26,7 +26,7 @@ export const currentAndPreviousAnimation = selectorFamily({
         return { current, previous }
     },
     key: 'impress:current-and-previous-animation',
-    set: step => ({ get, set }, newValue) => {
+    set: step => ({ set }, newValue) => {
         if (newValue.current != null) {
             set(animation(step), newValue.current)
         }

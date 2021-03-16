@@ -6,8 +6,8 @@ export const Root = styled.button`
 
     color: ${ ({ theme, themeColor }) =>
         theme.palette.js[themeColor].luminance() >= 0.5
-        ? theme.palette.css.black
-        : theme.palette.css.white };
+            ? theme.palette.css.black
+            : theme.palette.css.white };
     text-align: center;
 
     background-color: ${ ({ theme, themeColor }) =>
@@ -23,7 +23,7 @@ export const Root = styled.button`
 
     &:hover {
         background-color: ${ ({ theme, themeColor }) =>
-            theme.palette.js[themeColor].set('hsl.h', '+15') .darken(1) .css() };
+        theme.palette.js[themeColor].set('hsl.h', '+15') .darken(1) .css() };
         outline: 0;
     }
 `

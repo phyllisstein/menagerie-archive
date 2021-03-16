@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef } from 'react'
+import { useCallback, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router'
 
 export const useStep = max => {
@@ -14,13 +14,16 @@ export const useStep = max => {
         } else if (max != null && step < 1) {
             navigate(`../${ max }`)
         }
-    }, [params.step, step, max])
+    }, [params.step, step, max, navigate])
 
     const nextPath = params.step == null ? `${ step + 1 }` : `../${ step + 1 }`
     const previousPath = params.step == null ? `${ step - 1 }` : `../${ step - 1 }`
 
-    const next = useCallback(() => navigate(nextPath), [nextPath])
-    const previous = useCallback(() => navigate(previousPath), [previousPath])
+    const next = useCallback(() => navigate(nextPath), [navigate, nextPath])
+    const previous = useCallback(() => navigate(previousPath), [
+        navigate,
+        previousPath,
+    ])
 
     return [step, previous, next]
 }

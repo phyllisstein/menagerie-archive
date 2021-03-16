@@ -11,5 +11,5 @@ export const useTap = handler => {
         mc.on('tap', handler)
 
         return () => mc.off('tap', handler)
-    }, [handler])
+    }, [handler, mc])
 }

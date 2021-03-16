@@ -11,5 +11,5 @@ export const useSwipe = handler => {
         mc.on('swipe', handler)
 
         return () => mc.off('swipe', handler)
-    }, [handler])
+    }, [handler, mc])
 }

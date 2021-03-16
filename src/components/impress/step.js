@@ -57,12 +57,21 @@ export const Step = ({
                 scale: nextScale,
             },
         })
-    }, [transform])
+    }, [
+        nextPosition.x,
+        nextPosition.y,
+        nextPosition.z,
+        nextRotation.x,
+        nextRotation.y,
+        nextRotation.z,
+        nextScale,
+        setCurrentAndPreviousAnimation,
+    ])
 
     const navigate = useNavigate()
     const jumpToStep = useCallback(() => {
         navigate(`../${ step }`)
-    }, [step])
+    }, [navigate, step])
 
     return (
         <Root

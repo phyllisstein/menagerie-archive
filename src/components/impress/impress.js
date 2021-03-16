@@ -58,7 +58,7 @@ export const Impress = ({
         getScale()
 
         return addEventListener(window, 'resize', getScale, { passive: true })
-    }, [])
+    }, [height, scaleConstraints.max, scaleConstraints.min, width, windowScale])
 
     const zoom = targetScale >= previousScale.current
     previousScale.current = targetScale
@@ -66,7 +66,7 @@ export const Impress = ({
 
     return (
         <>
-            <Body/>
+            <Body />
             <Root
                 animate={{
                     perspective,

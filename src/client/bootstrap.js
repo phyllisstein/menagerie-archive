@@ -25,7 +25,7 @@ const renderApp = async () => {
     ReactDOM.render(
         <BrowserRouter>
             <HelmetProvider>
-                <App/>
+                <App />
             </HelmetProvider>
         </BrowserRouter>,
         main,
@@ -38,7 +38,7 @@ const renderApp = async () => {
             ReactDOM.render(
                 <BrowserRouter>
                     <HelmetProvider>
-                        <App/>
+                        <App />
                     </HelmetProvider>
                 </BrowserRouter>,
                 main,
