@@ -17,11 +17,10 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
-    "target": "esnext",
-    "typeRoots": ["./node_modules/@types", "./src/types"]
+    "target": "esnext"
   },
   "exclude": ["node_modules"],
-  "include": ["**/*.ts", "**/*.tsx", "**/*.d.ts", "src/types/**/*"],
+  "include": ["**/*.ts", "**/*.tsx", "**/*.d.ts"],
   "typeAcquisition": {
     "enable": true
   }
