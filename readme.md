@@ -1,2 +1,3 @@
-# An Evening With…: Talks & Performances
+# An Evening With…
+
 ![](mascot.gif)
