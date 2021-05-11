@@ -1,4 +1,4 @@
-import { animation } from './animation'
+import { css as animationCSS, AnimationCurve, AnimationDuration } from './animation'
 import { css } from 'styled-components'
 import R from 'ramda'
 
@@ -104,14 +104,14 @@ export function box(level = 1) {
   const ambient = SHADOWS.AMBIENT[level]
 
   return css`
-    box-shadow: ${ umbra } ${ BLACK.UMBRA }, ${ penumbra } ${ BLACK.PENUMBRA },
-      ${ ambient } ${ BLACK.AMBIENT };
+    box-shadow: ${umbra} ${BLACK.UMBRA}, ${penumbra} ${BLACK.PENUMBRA},
+      ${ambient} ${BLACK.AMBIENT};
   `
 }
 
-box.animation = animation({
-  duration: animation.duration.elevation,
-  property: 'box-shadow',
+box.animation = animationCSS({
+  duration: AnimationDuration.Elevation,
+  properties: 'box-shadow',
 })
 
 export function text(level = 1) {
@@ -122,12 +122,12 @@ export function text(level = 1) {
   const ambient = dropSpread(SHADOWS.AMBIENT[level])
 
   return css`
-    text-shadow: ${ umbra } ${ BLACK.UMBRA }, ${ penumbra } ${ BLACK.PENUMBRA },
-      ${ ambient } ${ BLACK.AMBIENT };
+    text-shadow: ${umbra} ${BLACK.UMBRA}, ${penumbra} ${BLACK.PENUMBRA},
+      ${ambient} ${BLACK.AMBIENT};
   `
 }
 
-text.animation = animation({
-  duration: animation.duration.elevation,
-  property: 'text-shadow',
+text.animation = animationCSS({
+  duration: AnimationDuration.Elevation,
+  properties: 'text-shadow',
 })

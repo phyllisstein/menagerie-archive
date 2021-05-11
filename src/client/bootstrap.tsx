@@ -16,20 +16,20 @@ const renderApp = async () => {
   ReactDOM.render(
     <BrowserRouter>
       <HelmetProvider>
-        <App/>
+        <App />
       </HelmetProvider>
     </BrowserRouter>,
     main,
   )
 
   if (module.hot) {
-    module.hot.accept(() => {
-      const { App } = require('routes')
+    module.hot.accept(async () => {
+      const { App } = await import('routes')
 
       ReactDOM.render(
         <BrowserRouter>
           <HelmetProvider>
-            <App/>
+            <App />
           </HelmetProvider>
         </BrowserRouter>,
         main,

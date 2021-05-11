@@ -3,18 +3,14 @@
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "alwaysStrict": true,
-    "baseUrl": "./",
+    "baseUrl": "./src",
     "checkJs": true,
     "esModuleInterop": true,
     "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "module": "esnext",
     "moduleResolution": "node",
     "noEmit": true,
@@ -22,18 +18,11 @@
     "skipLibCheck": true,
     "strict": true,
     "target": "esnext",
-    "paths": {
-      "*": ["*", "./src/*", "./vendor/*"]
-    }
+    "typeRoots": ["./node_modules/@types", "./src/types"]
   },
-  "exclude": [
-    "node_modules"
-  ],
+  "exclude": ["node_modules"],
+  "include": ["**/*.ts", "**/*.tsx", "**/*.d.ts", "src/types/**/*"],
   "typeAcquisition": {
     "enable": true
-  },
-  "include": [
-    "**/*.ts",
-    "**/*.tsx"
-  ]
+  }
 }
