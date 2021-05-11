@@ -25,6 +25,7 @@ module.exports = api => {
         useBuiltIns: true,
       },
     ],
+    '@babel/typescript',
   ]
 
   const plugins = [

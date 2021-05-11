@@ -11,7 +11,9 @@ const server = new Config()
 const BABEL_OPTIONS = {
   babelrc: false,
   cacheDirectory: true,
-  presets: [],
+  presets: [
+    '@babel/typescript',
+  ],
   plugins: [
     '@babel/proposal-async-generator-functions',
     [
@@ -64,7 +66,13 @@ const BABEL_OPTIONS = {
 
 client.name('client').context(path.resolve('./src')).target('web')
 
-client.entry('main').add('./client').end()
+client
+  .entry('main')
+    .add('./client')
+    .end()
+  .entry('experimental')
+    .add('./client/experimental')
+    .end()
 
 client.output
   .chunkFilename('js/[name].js')
@@ -194,6 +202,12 @@ client.plugin('define').use(webpack.DefinePlugin, [
 ])
 
 client.plugin('loadable').use(LoadablePlugin)
+
+client.optimization
+  .runtimeChunk('single')
+  .splitChunks({
+    chunks: 'all',
+  })
 
 client.set('experiments', {
   asset: true,

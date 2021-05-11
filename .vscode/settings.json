@@ -1,5 +1,21 @@
 {
-  // "typescript.tsdk": "node_modules/typescript/lib",
-  // "stylelint.customSyntax": "/Users/daniel/Code/Personal/an-evening-with/node_modules/postcss-styled",
+  "editor.defaultFormatter": "sebastian-software.effective-prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true,
+    "source.organizeImports": false
+  },
+  "tailwindCSS.emmetCompletions": true,
+  "tailwindCSS.includeLanguages": {
+    "typescript": "javascript",
+    "typescriptreact": "javascriptreact"
+  },
+  "tailwindCSS.experimental.classRegex": [
+    "tw`([^`]*)", // tw`...`
+    "tw=\"([^\"]*)", // <div tw="..." />
+    "tw={\"([^\"}]*)", // <div tw={"..."} />
+    "tw\\.\\w+`([^`]*)", // tw.xxx`...`
+    "tw\\(.*?\\)`([^`]*)" // tw(Component)`...`
+  ],
   "stylelint.enable": true
 }

@@ -6,7 +6,7 @@ const webpack = require('webpack')
 
 const enableWDYR = process.env.WHY_DID_YOU_RENDER != null
 
-client.mode('development').devtool('source-map')
+client.mode('development').devtool('cheap-module-source-map')
 
 client.output.publicPath('/')
 
@@ -56,7 +56,7 @@ client.plugin('html').use(HTMLPlugin, [
     chunks: ['main'],
     filename: 'index.html',
     hash: true,
-    scriptLoading: 'defer',
+    // scriptLoading: 'defer',
     template: './index.html',
   },
 ])
