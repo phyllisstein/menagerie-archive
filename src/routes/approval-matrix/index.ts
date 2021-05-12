@@ -1,1 +1,1 @@
-export { ApprovalMatrix } from './approval-matrix'
+export * from './approval-matrix'
