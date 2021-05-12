@@ -1,12 +1,18 @@
 import _ from 'lodash'
-import { getValueAndUnit } from 'polished'
 import { css } from 'styled-components'
+import { getValueAndUnit } from 'polished'
 import { unitless } from './scale'
 
 // (UnitsPerEm − hhea.Ascender − hhea.Descender) / (2 × UnitsPerEm)
 const BASELINE = {
   ADOBE_CLEAN: 0.113,
   ADOBE_CLEAN_SERIF: 0.113,
+  CAPITA: 0.138,
+  DIN_NEXT: 0.105,
+  DIN_TEXT: 0.1,
+  EGYPTIENNE: 0.1078,
+  MILLER_DISPLAY: 0.12,
+  MILLER_TEXT: 0.12,
 }
 
 const round = _.partial(_.round, _.partial.placeholder, 0)
