@@ -1,5 +1,4 @@
-import { Impress, Step } from 'components/impress'
-import { Entry } from 'components/matrix'
+import { Entry, Impress, Step } from 'components'
 import gtasa from 'assets/matrix/gtasa.jpg'
 import { Image } from './approval-matrix-styles'
 import madge from 'assets/matrix/madge.png'
