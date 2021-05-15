@@ -10,7 +10,7 @@ const server = new Config()
 
 const BABEL_OPTIONS = {
   babelrc: false,
-  cacheDirectory: true,
+  cacheDirectory: false,
   presets: ['@babel/typescript'],
   plugins: [
     '@babel/proposal-async-generator-functions',
@@ -65,7 +65,7 @@ const BABEL_OPTIONS = {
 
 client.name('client').context(path.resolve('./src')).target('web')
 
-client.entry('main').add('./client').end()
+client.entry('main').add('./bootstrap/client').end()
 
 client.output
   .chunkFilename('js/[name].js')
@@ -86,13 +86,17 @@ client.module
         [
           '@babel/env',
           {
-            exclude: ['transform-async-to-generator', 'transform-regenerator'],
+            corejs: {
+              proposals: true,
+              version: 3,
+            },
             modules: false,
             targets: {
               browsers: [
                 'last 2 major versions and > 5% in US and not dead and not ie > 0',
               ],
             },
+            useBuiltIns: 'usage',
           },
         ],
       ],
@@ -117,22 +121,6 @@ client.module
                 'last 2 major versions and > 5% in US and not dead and not ie > 0',
               ],
             },
-          },
-        ],
-        [
-          'module:fast-async',
-          {
-            compiler: {
-              es6target: true,
-              lazyThenables: true,
-              parser: {
-                sourceType: 'module',
-              },
-              promises: true,
-              sourceMap: true,
-              wrapAwait: true,
-            },
-            useRuntimeModule: true,
           },
         ],
       ],
@@ -216,7 +204,7 @@ client.set('experiments', {
 
 server.name('server').context(path.resolve('./src')).target('node')
 
-server.entry('main').add('./server')
+server.entry('main').add('./bootstrap/server')
 
 server.output
   .filename('app.js')
@@ -237,11 +225,15 @@ server.module
         [
           '@babel/env',
           {
-            exclude: ['transform-async-to-generator', 'transform-regenerator'],
-            modules: 'commonjs',
+            corejs: {
+              proposals: true,
+              version: 3,
+            },
+            modules: false,
             targets: {
               node: 'current',
             },
+            useBuiltIns: 'usage',
           },
         ],
       ],
@@ -265,20 +257,6 @@ server.module
               },
             },
           ],
-          'module:fast-async',
-          {
-            compiler: {
-              engine: true,
-              es6target: true,
-              lazyThenables: true,
-              parser: {
-                sourceType: 'module',
-              },
-              sourceMap: true,
-              wrapAwait: true,
-            },
-            useRuntimeModule: true,
-          },
         ],
       ],
     }),
@@ -317,7 +295,7 @@ server.module
     ref: true,
     svgo: true,
   })
-  
+
 server.module
   .rule('styles')
     .test(/\.css$/)

@@ -1,5 +1,5 @@
 module.exports = api => {
-  api.cache.forever()
+  api.cache.never()
 
   const presets = [
     [
@@ -9,7 +9,6 @@ module.exports = api => {
           proposals: true,
           version: 3,
         },
-        exclude: ['transform-async-to-generator', 'transform-regenerator'],
         modules: 'commonjs',
         targets: {
           node: 'current',

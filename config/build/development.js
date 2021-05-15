@@ -65,31 +65,36 @@ client.plugin('html').use(HTMLPlugin, [
 
 client.plugin('hmr').use(webpack.HotModuleReplacementPlugin)
 
-client.plugin('fast-refresh').use(ReactRefreshPlugin)
-
-client.set('cache', {
-  type: 'filesystem',
-})
-
-client.merge({
-  snapshot: {
-    buildDependencies: {
-      hash: false,
-      timestamp: true,
-    },
-    module: {
-      hash: false,
-      timestamp: true,
-    },
-    resolve: {
-      hash: false,
-      timestamp: true,
-    },
-    resolveBuildDependencies: {
-      hash: false,
-      timestamp: true,
-    },
+client.plugin('fast-refresh').use(ReactRefreshPlugin, [
+  {
+    esModule: true,
+    overlay: false,
   },
-})
+])
+
+// client.set('cache', {
+//   type: 'filesystem',
+// })
+
+// client.merge({
+//   snapshot: {
+//     buildDependencies: {
+//       hash: false,
+//       timestamp: true,
+//     },
+//     module: {
+//       hash: false,
+//       timestamp: true,
+//     },
+//     resolve: {
+//       hash: false,
+//       timestamp: true,
+//     },
+//     resolveBuildDependencies: {
+//       hash: false,
+//       timestamp: true,
+//     },
+//   },
+// })
 
 module.exports = client.toConfig()

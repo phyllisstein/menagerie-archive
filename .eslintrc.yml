@@ -13,13 +13,11 @@ parserOptions:
 extends:
   - 'eslint:recommended'
   - plugin:@typescript-eslint/recommended
-  - plugin:jsx-a11y/recommended
   - plugin:ramda/recommended
   - plugin:react-hooks/recommended
   - plugin:react/recommended
 plugins:
   - '@typescript-eslint'
-  - jsx-a11y
   - ramda
   - react
   - react-hooks
