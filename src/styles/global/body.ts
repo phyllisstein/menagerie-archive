@@ -23,7 +23,7 @@ export const Body = createGlobalStyle`
   }
 
   body {
-    ${ ({ theme }) => theme.typeface.primary() }
+    ${ ({ theme }) => theme.typeface.primaryFamily }
 
     color: ${ ({ theme }) => theme.palette.css.text };
   }

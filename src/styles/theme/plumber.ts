@@ -19,7 +19,7 @@ const round = _.partial(_.round, _.partial.placeholder, 0)
 
 const getBaselineCorrection = ({ baseline, fontSize, lineHeight }) => {
   const baselineFromBottom = (lineHeight - fontSize) / 2 + fontSize * baseline
-  const correctedBaseline = _.round(baselineFromBottom)
+  const correctedBaseline = baselineFromBottom
   const baselineDifference = correctedBaseline - baselineFromBottom
 
   return {
@@ -49,7 +49,7 @@ const getPlumber = ({
     const [gridHeightValue, gridHeightUnit] = getValueAndUnit(gridHeight)
     fontSize = unitless(fontSize)
     lineHeight =
-      lineHeight == null ? fontSize * 1.2 : unitless(lineHeight * 1.2)
+      lineHeight == null ? unitless(1.777 ** fontSize) : unitless(lineHeight)
 
     const { baselineDifference, correctedBaseline } = getBaselineCorrection({
       baseline,
@@ -64,13 +64,11 @@ const getPlumber = ({
 
     const shift = baselineDifference < 0 ? 0 : 1
 
-    fontSize = round(fontSize * gridHeightValue)
-    const marginTop = round((leadingTop - shift) * gridHeightValue)
-    const paddingTop = round((shift - baselineDifference) * gridHeightValue)
-    const paddingBottom = round(
-      (1 - shift + baselineDifference) * gridHeightValue,
-    )
-    const marginBottom = round((leadingBottom + shift - 1) * gridHeightValue)
+    const gridFontSize = fontSize * gridHeightValue
+    const marginTop = (leadingTop - shift) * gridHeightValue
+    const paddingTop = (shift - baselineDifference) * gridHeightValue
+    const paddingBottom = (1 - shift + baselineDifference) * gridHeightValue
+    const marginBottom = (leadingBottom + shift - 1) * gridHeightValue
 
     return css`
       margin-top: ${ marginTop }${ gridHeightUnit };
@@ -78,7 +76,7 @@ const getPlumber = ({
       padding-top: ${ paddingTop }${ gridHeightUnit };
       padding-bottom: ${ paddingBottom }${ gridHeightUnit };
 
-      font-size: ${ fontSize }${ gridHeightUnit };
+      font-size: ${ gridFontSize }${ gridHeightUnit };
       line-height: ${ lineHeight }${ gridHeightUnit };
     `
   }
