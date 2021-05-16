@@ -4129,6 +4129,7 @@ __metadata:
     body-scroll-lock: ^3.1.5
     chroma-js: ^2.1.1
     common-tags: ^1.8.0
+    connect-history-api-fallback: ^1.6.0
     consolidated-events: ^2.0.2
     copy-webpack-plugin: ^8.1.1
     core-js: ^3.12.1
@@ -4154,6 +4155,7 @@ __metadata:
     eslint-plugin-react-hooks: ^4.2.0
     eslint-plugin-sort-destructure-keys: ^1.3.5
     exenv: ^1.2.2
+    express: ^4.17.1
     framer-motion: ^4.1.18-rc.1
     hammerjs: ^2.0.8
     history: ^5.0.0
@@ -4204,6 +4206,7 @@ __metadata:
     stylelint-order: ^4.1.0
     stylelint-prettier: ^1.2.0
     stylelint-processor-styled-components: ^1.10.0
+    time-fix-plugin: ^2.0.7
     tslib: ^2.2.0
     typescript: 4.3.1-rc
     use-memo-one: ^1.1.2
@@ -4211,6 +4214,7 @@ __metadata:
     webpack-chain: ^6.5.1
     webpack-cli: ^4.7.0
     webpack-common-shake: ^2.1.0
+    webpack-dev-middleware: ^4.2.0
     webpack-dev-server: ^3.11.2
     webpack-hot-middleware: ^2.25.0
     webpack-node-externals: ^3.0.0
@@ -8162,6 +8166,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"fs-monkey@npm:1.0.3":
+  version: 1.0.3
+  resolution: "fs-monkey@npm:1.0.3"
+  checksum: cf50804833f9b88a476911ae911fe50f61a98d986df52f890bd97e7262796d023698cb2309fa9b74fdd8974f04315b648748a0a8ee059e7d5257b293bfc409c0
+  languageName: node
+  linkType: hard
+
 "fs-readdir-recursive@npm:^1.1.0":
   version: 1.1.0
   resolution: "fs-readdir-recursive@npm:1.1.0"
@@ -10388,6 +10399,15 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
+"memfs@npm:^3.2.2":
+  version: 3.2.2
+  resolution: "memfs@npm:3.2.2"
+  dependencies:
+    fs-monkey: 1.0.3
+  checksum: b50f91aafda967c440a38e793bbe70cd04e4f155a38316468b90b7a2256328cebe87e0665ff81057cf72110f9017cbfd1e1a9c66df1ebce3cbf39ec3620220d9
+  languageName: node
+  linkType: hard
+
 "memory-fs@npm:^0.4.1":
   version: 0.4.1
   resolution: "memory-fs@npm:0.4.1"
@@ -10585,7 +10605,7 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"mime-types@npm:^2.1.18, mime-types@npm:^2.1.27, mime-types@npm:~2.1.17, mime-types@npm:~2.1.24":
+"mime-types@npm:^2.1.18, mime-types@npm:^2.1.27, mime-types@npm:^2.1.30, mime-types@npm:~2.1.17, mime-types@npm:~2.1.24":
   version: 2.1.30
   resolution: "mime-types@npm:2.1.30"
   dependencies:
@@ -14633,6 +14653,15 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
+"time-fix-plugin@npm:^2.0.7":
+  version: 2.0.7
+  resolution: "time-fix-plugin@npm:2.0.7"
+  peerDependencies:
+    webpack: ">=4.0.0"
+  checksum: cacce280d2b7f912ebb9f418e8bf05c11dfd73fb93dabb592acbd9338f9ca42192bc3e975f4e77b9eb982845ac896859c5d1b024bb665ff451070d319b0dd7dc
+  languageName: node
+  linkType: hard
+
 "timers-browserify@npm:^2.0.4":
   version: 2.0.12
   resolution: "timers-browserify@npm:2.0.12"
@@ -15367,6 +15396,22 @@ typescript@^3.2.1:
   peerDependencies:
     webpack: ^4.0.0 || ^5.0.0
   checksum: faa3cdd7b82d23c35b8f45903556eadd92b0795c76f3e08e234d53f7bab3de13331096a71968e7e9905770ae5de7a4f75ddf09f66d1e0bbabfecbb30db0f71e3
+  languageName: node
+  linkType: hard
+
+"webpack-dev-middleware@npm:^4.2.0":
+  version: 4.2.0
+  resolution: "webpack-dev-middleware@npm:4.2.0"
+  dependencies:
+    colorette: ^1.2.2
+    mem: ^8.1.1
+    memfs: ^3.2.2
+    mime-types: ^2.1.30
+    range-parser: ^1.2.1
+    schema-utils: ^3.0.0
+  peerDependencies:
+    webpack: ^4.0.0 || ^5.0.0
+  checksum: 9d75ee6ca40f6f7203947b1f919efd661e75cb14b6572139456405628e0293e85f3456c8c27e0f2a1874f25ef91ee05c70f7418549758b4cb4ad4af799d4b862
   languageName: node
   linkType: hard
 

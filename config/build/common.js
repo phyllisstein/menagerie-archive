@@ -63,13 +63,15 @@ const BABEL_OPTIONS = {
   ],
 }
 
-client.name('client').context(path.resolve('./src')).target('web')
+client
+  .name('client')
+  .context(path.resolve('./src'))
+  .target('web')
+  .stats('minimal')
 
 client.entry('main').add('./bootstrap/client').end()
 
 client.output
-  .chunkFilename('js/[name].js')
-  .filename('js/[name].js')
   .path(path.resolve('dist', 'public'))
   .publicPath('/')
 
