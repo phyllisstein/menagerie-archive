@@ -35,9 +35,10 @@ export function App(): ReactElement {
           <Body />
           <AdobeClean />
           <AdobeCleanSerif />
+
           <Helmet defaultTitle={ SITE_NAME } titleTemplate={ `%s | ${ SITE_NAME }` }>
             <html
-              className='spectrum spectrum--dark spectrum--medium'
+              className='spectrum spectrum--light spectrum--medium'
               lang='en' />
             <meta charSet='utf-8' />
             <meta
@@ -62,10 +63,11 @@ export function App(): ReactElement {
             { /* Favicon */ }
             <link href={ faviconPNG } rel='icon' sizes='192x192' />
           </Helmet>
+
           <Routes>
             <Route element={ <Navigate to='1' /> } path='matrix' />
             <Route element={ <ApprovalRoute /> } path='matrix/:step' />
-            <Route element={ <KyarRoute /> } path='kyar' />
+            <Route element={ <KyarRoute /> } path='kyar/*' />
             <Route element={ <SandboxRoute /> } path='sandbox/*' />
           </Routes>
         </ThemeProvider>
