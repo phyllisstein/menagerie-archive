@@ -1,5 +1,5 @@
 import { Impress as BaseImpress, Step as BaseStep } from 'app/components'
-import { Face as BaseFace } from '../perspective-styles'
+import { Face as BaseFace } from './impress-styles'
 import type { JS } from 'app/styles/theme/palette'
 import styled from 'styled-components'
 
