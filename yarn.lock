@@ -140,7 +140,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/generator@npm:^7.0.0-beta.44, @babel/generator@npm:^7.14.0":
+"@babel/generator@npm:^7.14.0":
   version: 7.14.1
   resolution: "@babel/generator@npm:7.14.1"
   dependencies:
@@ -278,7 +278,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/helper-module-imports@npm:^7.0.0, @babel/helper-module-imports@npm:^7.0.0-beta.44, @babel/helper-module-imports@npm:^7.0.0-beta.49, @babel/helper-module-imports@npm:^7.12.13, @babel/helper-module-imports@npm:^7.13.12":
+"@babel/helper-module-imports@npm:^7.0.0, @babel/helper-module-imports@npm:^7.0.0-beta.49, @babel/helper-module-imports@npm:^7.12.13, @babel/helper-module-imports@npm:^7.13.12":
   version: 7.13.12
   resolution: "@babel/helper-module-imports@npm:7.13.12"
   dependencies:
@@ -1757,7 +1757,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fortawesome/fontawesome-common-types@npm:^0.2.33-beta1, @fortawesome/fontawesome-common-types@npm:^0.2.35":
+"@fortawesome/fontawesome-common-types@npm:^0.2.33-alpha3, @fortawesome/fontawesome-common-types@npm:^0.2.33-beta1, @fortawesome/fontawesome-common-types@npm:^0.2.35":
   version: 0.2.35
   resolution: "@fortawesome/fontawesome-common-types@npm:0.2.35::__archiveUrl=https%3A%2F%2Fnpm.fontawesome.com%2F%40fortawesome%2Ffontawesome-common-types%2F-%2F0.2.35%2Ffontawesome-common-types-0.2.35.tgz"
   checksum: d8a25c567cb4949ea63fd63ad320ca1ccd95094ec2e011215af7e415fc6108afa64719cefa3f85b8cf65abf2d349b76fefdb368418ba3c27cc7ba23fcbf4d485
@@ -1771,12 +1771,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fortawesome/fontawesome-svg-core@npm:^1.2.35":
-  version: 1.2.35
-  resolution: "@fortawesome/fontawesome-svg-core@npm:1.2.35::__archiveUrl=https%3A%2F%2Fnpm.fontawesome.com%2F%40fortawesome%2Ffontawesome-svg-core%2F-%2F1.2.35%2Ffontawesome-svg-core-1.2.35.tgz"
+"@fortawesome/fontawesome-svg-core@npm:next":
+  version: 1.2.33-alpha3
+  resolution: "@fortawesome/fontawesome-svg-core@npm:1.2.33-alpha3::__archiveUrl=https%3A%2F%2Fnpm.fontawesome.com%2F%40fortawesome%2Ffontawesome-svg-core%2F-%2F1.2.33-alpha3%2Ffontawesome-svg-core-1.2.33-alpha3.tgz"
   dependencies:
-    "@fortawesome/fontawesome-common-types": ^0.2.35
-  checksum: 2457135c46ff06c32b8dd88cc3e1df96e8d9175657cb57cb74c3e26e7047cd3989a2c76c2d784a37d1edc724e1f3b9ac10e82bf7cc06d74a6a438370b4deac2b
+    "@fortawesome/fontawesome-common-types": ^0.2.33-alpha3
+  checksum: 4d6be73ffce69e4bbec32cef0df2bf684ab0d4beef2af91e4011eb0769b4b7eb065864a9079f5cd2097e2b8f19e9884de86250d4d8bb6ace362a22eb34673df5
   languageName: node
   linkType: hard
 
@@ -1987,6 +1987,129 @@ __metadata:
     webpack-plugin-serve:
       optional: true
   checksum: 718853bf7b8a517616e1b136d698fdd600998c667b556982c7f460ba628da7575248f1c75a3b2b8fe0e2a458121c81039038d25ed1c79f4517c783e407417585
+  languageName: node
+  linkType: hard
+
+"@react-spring/animated@npm:~9.2.0-beta.6":
+  version: 9.2.0-beta.6
+  resolution: "@react-spring/animated@npm:9.2.0-beta.6"
+  dependencies:
+    "@react-spring/shared": ~9.2.0-beta.6
+    "@react-spring/types": ~9.2.0-beta.6
+  peerDependencies:
+    react: ^16.8.0  || ^17.0.0
+  checksum: 33af2099af7cb2e749bb8401c1ac098ab76c551048e0a70c767e0c05dbc97b99b87b6d1e0fc33cf0be94bfb7bdd048b6e94e569a53c279c688eece013fb16019
+  languageName: node
+  linkType: hard
+
+"@react-spring/core@npm:~9.2.0-beta.6":
+  version: 9.2.0-beta.6
+  resolution: "@react-spring/core@npm:9.2.0-beta.6"
+  dependencies:
+    "@react-spring/animated": ~9.2.0-beta.6
+    "@react-spring/shared": ~9.2.0-beta.6
+    "@react-spring/types": ~9.2.0-beta.6
+  peerDependencies:
+    react: ^16.8.0  || ^17.0.0
+  checksum: cd57bf93578b54c469f1565022894e86f5e701f3f82f0f294c464ce50e33782160cebafbc6f6a5febb2d61b19d912d7c804e80ce20b186da70e353894ca51366
+  languageName: node
+  linkType: hard
+
+"@react-spring/konva@npm:~9.2.0-beta.6":
+  version: 9.2.0-beta.6
+  resolution: "@react-spring/konva@npm:9.2.0-beta.6"
+  dependencies:
+    "@react-spring/animated": ~9.2.0-beta.6
+    "@react-spring/core": ~9.2.0-beta.6
+    "@react-spring/shared": ~9.2.0-beta.6
+    "@react-spring/types": ~9.2.0-beta.6
+  peerDependencies:
+    konva: ">=2.6"
+    react: ^16.8.0  || ^17.0.0
+    react-konva: ^16.8.0  || ^17.0.0
+  checksum: 170b056ceccefe2ad6e004e2afa70ae088cd056e242865f698123507b1647d788cdc84a155f6f67d347943de7974c9395df43c26073337d93f7c6a6dba0a5cd6
+  languageName: node
+  linkType: hard
+
+"@react-spring/native@npm:~9.2.0-beta.6":
+  version: 9.2.0-beta.6
+  resolution: "@react-spring/native@npm:9.2.0-beta.6"
+  dependencies:
+    "@react-spring/animated": ~9.2.0-beta.6
+    "@react-spring/core": ~9.2.0-beta.6
+    "@react-spring/shared": ~9.2.0-beta.6
+    "@react-spring/types": ~9.2.0-beta.6
+  peerDependencies:
+    react: ^16.8.0  || ^17.0.0
+    react-native: ">=0.58"
+  checksum: 70751d584d699179cf59c053be266163aa7ee504a2c8e87aa21dca875c44d0306d6dcf88f3b07509588853744de44bdcbd438a176aad07112c187c9dc2c033e5
+  languageName: node
+  linkType: hard
+
+"@react-spring/shared@npm:~9.2.0-beta.6":
+  version: 9.2.0-beta.6
+  resolution: "@react-spring/shared@npm:9.2.0-beta.6"
+  dependencies:
+    "@react-spring/types": ~9.2.0-beta.6
+    rafz: ^0.1.13
+  peerDependencies:
+    react: ^16.8.0  || ^17.0.0
+  checksum: 85e14029b24bd371cd5fd1bb13d5da1d5594b50dbd12b6b142d0c9ea26fd79bc3df2de5f8f1d96ad7dc6710813a5923ba081e997d7260cc521c511f9ea2e0596
+  languageName: node
+  linkType: hard
+
+"@react-spring/three@npm:~9.2.0-beta.6":
+  version: 9.2.0-beta.6
+  resolution: "@react-spring/three@npm:9.2.0-beta.6"
+  dependencies:
+    "@react-spring/animated": ~9.2.0-beta.6
+    "@react-spring/core": ~9.2.0-beta.6
+    "@react-spring/shared": ~9.2.0-beta.6
+    "@react-spring/types": ~9.2.0-beta.6
+  peerDependencies:
+    "@react-three/fiber": ">=6.0"
+    react: ">=16.11"
+    three: ">=0.126"
+  checksum: b06a4a681cfad8a9a25255ff458de72c6b8731f21996ad4491079844f8f01851d284570f4ea238ddea2514c524b0746b579c6fb30a5578ef3d2c96692d9b6243
+  languageName: node
+  linkType: hard
+
+"@react-spring/types@npm:~9.2.0-beta.6":
+  version: 9.2.0-beta.6
+  resolution: "@react-spring/types@npm:9.2.0-beta.6"
+  checksum: e447923978029c76e28d638279e3da8ca34a3cc601aa234d5fe93efce8955424eef39ce6ffebaa4e047cd23a8c2bf74e2a01fa1754f77172081ca2dc73750d3c
+  languageName: node
+  linkType: hard
+
+"@react-spring/web@npm:~9.2.0-beta.6":
+  version: 9.2.0-beta.6
+  resolution: "@react-spring/web@npm:9.2.0-beta.6"
+  dependencies:
+    "@react-spring/animated": ~9.2.0-beta.6
+    "@react-spring/core": ~9.2.0-beta.6
+    "@react-spring/shared": ~9.2.0-beta.6
+    "@react-spring/types": ~9.2.0-beta.6
+  peerDependencies:
+    react: ^16.8.0  || ^17.0.0
+    react-dom: ^16.8.0  || ^17.0.0
+  checksum: bd5d662f2d19d622209aed964505f31418c1011017a4ac6dd6aeace6c3bed03349845bedf3028ca7d2edffd8d79fed848e27d98a0f5726b2370437ec18efc946
+  languageName: node
+  linkType: hard
+
+"@react-spring/zdog@npm:~9.2.0-beta.6":
+  version: 9.2.0-beta.6
+  resolution: "@react-spring/zdog@npm:9.2.0-beta.6"
+  dependencies:
+    "@react-spring/animated": ~9.2.0-beta.6
+    "@react-spring/core": ~9.2.0-beta.6
+    "@react-spring/shared": ~9.2.0-beta.6
+    "@react-spring/types": ~9.2.0-beta.6
+  peerDependencies:
+    react: ^16.8.0  || ^17.0.0
+    react-dom: ^16.8.0  || ^17.0.0
+    react-zdog: ">=1.0"
+    zdog: ">=1.0"
+  checksum: 7ee73eb1cdd42ad7a373fe171d37387866acc56e470076a1f9fcc6502d20d30943dc5a794f75703e4e887c17570061340dacc4af1aa99d7e2ec6c93128efa992
   languageName: node
   linkType: hard
 
@@ -2221,7 +2344,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/babel__core@npm:^7.1.14":
+"@types/babel-plugin-macros@npm:^2.8.4":
+  version: 2.8.4
+  resolution: "@types/babel-plugin-macros@npm:2.8.4"
+  dependencies:
+    "@types/babel__core": "*"
+  checksum: d006acc89e57b7e497c335ec009d11a58e7b393a677c783bd8e97b50e6d100452b5765f9ca430d8730724e79261d7b5a5e0d0c780c1d11adacf132accbdf4445
+  languageName: node
+  linkType: hard
+
+"@types/babel__core@npm:*, @types/babel__core@npm:^7.1.14":
   version: 7.1.14
   resolution: "@types/babel__core@npm:7.1.14"
   dependencies:
@@ -2286,6 +2418,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/body-scroll-lock@npm:^2.6.1":
+  version: 2.6.1
+  resolution: "@types/body-scroll-lock@npm:2.6.1"
+  checksum: 589cf12a463448de83fbb0c46ed473463c2acfb7f725f690536f21c0ceaad59336bdff4a7d1a5aca9d526aba26d811999bf9550e47d193764b79e467d67ebdcb
+  languageName: node
+  linkType: hard
+
 "@types/chroma-js@npm:^2.1.3":
   version: 2.1.3
   resolution: "@types/chroma-js@npm:2.1.3"
@@ -2300,7 +2439,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/connect-history-api-fallback@npm:*":
+"@types/connect-history-api-fallback@npm:*, @types/connect-history-api-fallback@npm:^1.3.4":
   version: 1.3.4
   resolution: "@types/connect-history-api-fallback@npm:1.3.4"
   dependencies:
@@ -2696,7 +2835,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/express@npm:*":
+"@types/express@npm:*, @types/express@npm:^4.17.11":
   version: 4.17.11
   resolution: "@types/express@npm:4.17.11"
   dependencies:
@@ -3079,6 +3218,17 @@ __metadata:
   version: 2.0.3
   resolution: "@types/unist@npm:2.0.3"
   checksum: 42e0dc4ac75a27c4bb91a3f8e82edfd8819cacb6edda08bdfb436700ea01a587faa30017fde744b0a0b33825f5e37686398c1eb5b664cabc3a72a6b3757f85a5
+  languageName: node
+  linkType: hard
+
+"@types/webpack-dev-middleware@npm:^4.2.0":
+  version: 4.2.0
+  resolution: "@types/webpack-dev-middleware@npm:4.2.0"
+  dependencies:
+    "@types/connect": "*"
+    tapable: ^2.2.0
+    webpack: ^5
+  checksum: e3d40d817076ab092891952fa537c715245adc27e56a34dc66255c305bc692b6296709423b723b576b3356123d695dacd9917600dd3b3f08975f8e96885e13bc
   languageName: node
   linkType: hard
 
@@ -3901,7 +4051,7 @@ __metadata:
     "@effective/prettier": ^4.2.4
     "@fortawesome/fontawesome-common-types": ^0.2.35
     "@fortawesome/fontawesome-pro": ^6.0.0-alpha3
-    "@fortawesome/fontawesome-svg-core": ^1.2.35
+    "@fortawesome/fontawesome-svg-core": next
     "@fortawesome/pro-duotone-svg-icons": ^6.0.0-alpha3
     "@fortawesome/pro-light-svg-icons": ^6.0.0-alpha3
     "@fortawesome/pro-regular-svg-icons": ^6.0.0-alpha3
@@ -3921,11 +4071,14 @@ __metadata:
     "@spectrum-css/typography": ^3.0.2
     "@spectrum-css/vars": ^3.0.2
     "@svgr/webpack": ^5.5.0
+    "@types/babel-plugin-macros": ^2.8.4
     "@types/babel__core": ^7.1.14
     "@types/babel__plugin-transform-runtime": ^7.9.1
     "@types/babel__preset-env": ^7.9.1
+    "@types/body-scroll-lock": ^2.6.1
     "@types/chroma-js": ^2.1.3
     "@types/common-tags": ^1.8.0
+    "@types/connect-history-api-fallback": ^1.3.4
     "@types/copy-webpack-plugin": ^8.0.0
     "@types/core-js": ^2.5.4
     "@types/d3": ^6.3.0
@@ -3933,6 +4086,7 @@ __metadata:
     "@types/eslint": ^7.2.10
     "@types/eslint-plugin-prettier": ^3.1.0
     "@types/exenv": ^1.2.0
+    "@types/express": ^4.17.11
     "@types/hammerjs": ^2.0.39
     "@types/koa": ^2.13.1
     "@types/koa-router": ^7.4.2
@@ -3950,6 +4104,7 @@ __metadata:
     "@types/react-is": ^17.0.0
     "@types/styled-components": ^5.1.9
     "@types/stylelint": ^9.10.1
+    "@types/webpack-dev-middleware": ^4.2.0
     "@types/webpack-dev-server": ^3.11.4
     "@types/webpack-env": ^1.16.0
     "@types/webpack-hot-middleware": ^2.25.4
@@ -3962,12 +4117,14 @@ __metadata:
     babel-loader: ^8.2.2
     babel-plugin-graphql-tag: ^3.2.0
     babel-plugin-lodash: ^3.3.4
+    babel-plugin-macros: ^3.1.0
     babel-plugin-polyfill-corejs3: ^0.2.0
     babel-plugin-polyfill-regenerator: ^0.2.0
     babel-plugin-ramda: ^2.0.0
     babel-plugin-react-local: ^0.7.0
     babel-plugin-styled-components: ^1.12.0
     bezier-easing: ^2.1.0
+    body-scroll-lock: ^3.1.5
     chroma-js: ^2.1.1
     common-tags: ^1.8.0
     consolidated-events: ^2.0.2
@@ -3996,8 +4153,7 @@ __metadata:
     eslint-plugin-react-hooks: ^4.2.0
     eslint-plugin-sort-destructure-keys: ^1.3.5
     exenv: ^1.2.2
-    fast-async: 7.x
-    framer-motion: 4.1.15
+    framer-motion: ^4.1.18-rc.1
     hammerjs: ^2.0.8
     history: ^5.0.0
     html-webpack-plugin: 5.3.1
@@ -4032,8 +4188,9 @@ __metadata:
     react-refresh: ^0.10.0
     react-router: ^6.0.0-beta.0
     react-router-dom: ^6.0.0-beta.0
+    react-spring: ^9.2.0-beta.6
     react-use-gesture: ^9.1.3
-    recoil: ^0.2.0
+    recoil: ^0.3.0
     regenerator-runtime: ^0.13.8
     style-loader: ^2.0.0
     styled-components: ^5.3.0
@@ -4525,6 +4682,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"babel-plugin-macros@npm:^3.1.0":
+  version: 3.1.0
+  resolution: "babel-plugin-macros@npm:3.1.0"
+  dependencies:
+    "@babel/runtime": ^7.12.5
+    cosmiconfig: ^7.0.0
+    resolve: ^1.19.0
+  checksum: 765de4abebd3e4688ebdfbff8571ddc8cd8061f839bb6c3e550b0344a4027b04c60491f843296ce3f3379fb356cc873d57a9ee6694262547eb822c14a25be9a6
+  languageName: node
+  linkType: hard
+
 "babel-plugin-polyfill-corejs2@npm:^0.2.0":
   version: 0.2.0
   resolution: "babel-plugin-polyfill-corejs2@npm:0.2.0"
@@ -4600,15 +4768,6 @@ __metadata:
   version: 6.18.0
   resolution: "babel-plugin-syntax-jsx@npm:6.18.0"
   checksum: a5c8174ad6165d5f541f9f31cf4b6338ccfb7d586cec111537fa567f13b5fbdcf54f7928db44429d4610aa1be9d07bb03d017b22ba521ff819a6a2090b694797
-  languageName: node
-  linkType: hard
-
-"babylon@npm:^7.0.0-beta.44":
-  version: 7.0.0-beta.47
-  resolution: "babylon@npm:7.0.0-beta.47"
-  bin:
-    babylon: ./bin/babylon.js
-  checksum: 1118a398403a00db8f56d978d4e5af02b17c997c0dd528cabd048fcc3caf022e0f9d14fa8504729b34352120306b14f7c3ba747167febbf769f0bb4aff48a558
   languageName: node
   linkType: hard
 
@@ -4735,6 +4894,13 @@ __metadata:
     raw-body: 2.4.0
     type-is: ~1.6.17
   checksum: 18c2a81df5eabc7e3541bc9ace394b88e6fbd390989b5e764ff34c3f9dbd097e19986c31baa9b855ec5c2cff2b79157449afb0cdfb97bb99c11d6239b2c47a34
+  languageName: node
+  linkType: hard
+
+"body-scroll-lock@npm:^3.1.5":
+  version: 3.1.5
+  resolution: "body-scroll-lock@npm:3.1.5"
+  checksum: 52c25b81d6e7a87cfbdd7870363c3e20a439dbc76535b735916e2df907abbce95c0da0d2c7a2cfe88f49775d53bbc4bd09445ffda2d61b999efa3f0b1dedfc5e
   languageName: node
   linkType: hard
 
@@ -7701,19 +7867,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fast-async@npm:7.x":
-  version: 7.0.6
-  resolution: "fast-async@npm:7.0.6"
-  dependencies:
-    "@babel/generator": ^7.0.0-beta.44
-    "@babel/helper-module-imports": ^7.0.0-beta.44
-    babylon: ^7.0.0-beta.44
-    nodent-runtime: ^3.2.1
-    nodent-transform: ^3.2.4
-  checksum: 95b48bf953bb5c9450b3dd7df0858556654ac343ea44e28a8f332565e98f9441133ea1546469ddc799021b6f9b106eb270cc2d43c7239f6f140e61eaa2010ec0
-  languageName: node
-  linkType: hard
-
 "fast-deep-equal@npm:^3.1.1":
   version: 3.1.3
   resolution: "fast-deep-equal@npm:3.1.3"
@@ -8009,9 +8162,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"framer-motion@npm:4.1.15":
-  version: 4.1.15
-  resolution: "framer-motion@npm:4.1.15"
+"framer-motion@npm:^4.1.18-rc.1":
+  version: 4.1.18-rc.1
+  resolution: "framer-motion@npm:4.1.18-rc.1"
   dependencies:
     "@emotion/is-prop-valid": ^0.8.2
     framesync: 5.3.0
@@ -8025,7 +8178,7 @@ __metadata:
   dependenciesMeta:
     "@emotion/is-prop-valid":
       optional: true
-  checksum: 3d9ca7b8cd1c509a547a2e4645da80d8c2a7e92903c4fff5fc67cf22b489263c67dcdb58101984e14ef2b04ab0ae92d4025e4934209ad571607043ead11e1bf6
+  checksum: 2c48b653161126c449cc6660bf03a62f791a24f8446207ca8064454f4686c60e5d41b479f3588f1444e7e121ac77f17d2e3ed17213b71fdd62ddff0b5b71715f
   languageName: node
   linkType: hard
 
@@ -11029,13 +11182,6 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"nodent-transform@npm:^3.2.4":
-  version: 3.2.9
-  resolution: "nodent-transform@npm:3.2.9"
-  checksum: c124a04c0ff39f9c26bdec0cb05095e1e475bf729d585fc4c3d7afa1eb4365dbb820192a10900953ec0afe723a7a8a9a1c7a8a1d01ebfeaeac37c61b9288d585
-  languageName: node
-  linkType: hard
-
 "nopt@npm:^5.0.0":
   version: 5.0.0
   resolution: "nopt@npm:5.0.0"
@@ -12432,6 +12578,13 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
+"rafz@npm:^0.1.13":
+  version: 0.1.14
+  resolution: "rafz@npm:0.1.14"
+  checksum: 6ee25182e2041a33aa315dc60fda7737407a19aa476fd5accb480a2119497b125e32ff02e6fc31d00a9896702088fbc17073adf41e2e692f011786e58117733c
+  languageName: node
+  linkType: hard
+
 "ramda@npm:*, ramda@npm:^0.27.1":
   version: 0.27.1
   resolution: "ramda@npm:0.27.1"
@@ -12579,6 +12732,20 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
+"react-spring@npm:^9.2.0-beta.6":
+  version: 9.2.0-beta.6
+  resolution: "react-spring@npm:9.2.0-beta.6"
+  dependencies:
+    "@react-spring/core": ~9.2.0-beta.6
+    "@react-spring/konva": ~9.2.0-beta.6
+    "@react-spring/native": ~9.2.0-beta.6
+    "@react-spring/three": ~9.2.0-beta.6
+    "@react-spring/web": ~9.2.0-beta.6
+    "@react-spring/zdog": ~9.2.0-beta.6
+  checksum: ec7c84066da54c59812260edfd0fa4998af1b9406a19154745242a41cee36f364088f8ac93bd3d96ab0644ab1ac8a64d1eadc8c3d912e857bfda8c2df6cb47af
+  languageName: node
+  linkType: hard
+
 "react-use-gesture@npm:^9.1.3":
   version: 9.1.3
   resolution: "react-use-gesture@npm:9.1.3"
@@ -12711,9 +12878,9 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"recoil@npm:^0.2.0":
-  version: 0.2.0
-  resolution: "recoil@npm:0.2.0"
+"recoil@npm:^0.3.0":
+  version: 0.3.0
+  resolution: "recoil@npm:0.3.0"
   dependencies:
     hamt_plus: 1.0.2
   peerDependencies:
@@ -12723,7 +12890,7 @@ fsevents@~2.3.1:
       optional: true
     react-native:
       optional: true
-  checksum: 33fbbe352c0c9378fe170bbf192482ed082f11d4185fb27d2e9146f7e55111026aafd6676bbfab0c39517c444ffedfb4dede248c0c0cc588c28253a705ade7a5
+  checksum: d1650e1aeeb05f034f511a24859fe7ded3c556d1b2c461d2debb2e87e010d4825267d87c54165e44631f566fea72e19564bd68e4391a8a78323a2336abc089f1
   languageName: node
   linkType: hard
 
@@ -13010,7 +13177,7 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"resolve@^1.10.0, resolve@^1.10.1, resolve@^1.12.0, resolve@^1.14.2, resolve@^1.20.0, resolve@^1.9.0":
+"resolve@^1.10.0, resolve@^1.10.1, resolve@^1.12.0, resolve@^1.14.2, resolve@^1.19.0, resolve@^1.20.0, resolve@^1.9.0":
   version: 1.20.0
   resolution: "resolve@npm:1.20.0"
   dependencies:
@@ -13030,7 +13197,7 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"resolve@patch:resolve@^1.10.0#builtin<compat/resolve>, resolve@patch:resolve@^1.10.1#builtin<compat/resolve>, resolve@patch:resolve@^1.12.0#builtin<compat/resolve>, resolve@patch:resolve@^1.14.2#builtin<compat/resolve>, resolve@patch:resolve@^1.20.0#builtin<compat/resolve>, resolve@patch:resolve@^1.9.0#builtin<compat/resolve>":
+"resolve@patch:resolve@^1.10.0#builtin<compat/resolve>, resolve@patch:resolve@^1.10.1#builtin<compat/resolve>, resolve@patch:resolve@^1.12.0#builtin<compat/resolve>, resolve@patch:resolve@^1.14.2#builtin<compat/resolve>, resolve@patch:resolve@^1.19.0#builtin<compat/resolve>, resolve@patch:resolve@^1.20.0#builtin<compat/resolve>, resolve@patch:resolve@^1.9.0#builtin<compat/resolve>":
   version: 1.20.0
   resolution: "resolve@patch:resolve@npm%3A1.20.0#builtin<compat/resolve>::version=1.20.0&hash=3388aa"
   dependencies:

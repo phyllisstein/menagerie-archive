@@ -59,6 +59,7 @@ const BABEL_OPTIONS = {
       },
     ],
     '@loadable/babel-plugin',
+    'macros',
   ],
 }
 
