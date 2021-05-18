@@ -100,8 +100,8 @@ rules:
       allowTernary: true
   '@typescript-eslint/no-unused-vars':
     - error
-    - argsIgnorePattern: ^_
-      varsIgnorePattern: ^_
+    - argsIgnorePattern: '^_\w+'
+      varsIgnorePattern: '^_\w+'
   '@typescript-eslint/prefer-as-const': warn
   '@typescript-eslint/prefer-namespace-keyword': warn
   '@typescript-eslint/semi':
