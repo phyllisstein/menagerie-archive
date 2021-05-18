@@ -24,6 +24,6 @@ app.use(historyAPIFallback({}))
 app.use(devMiddleware(compiler))
 app.use(hotMiddleware(compiler))
 
-app.listen('passenger', VIRTUAL_HOST, () => {
+app.listen(PORT, VIRTUAL_HOST, () => {
   console.log(`Server listening on port: ${ PORT }!`)
 })

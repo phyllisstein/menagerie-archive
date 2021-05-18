@@ -67,7 +67,9 @@ module.exports = api => {
       },
     ],
     '@loadable/babel-plugin',
-    'lodash',
+    ['lodash', {
+      id: 'lodash-es',
+    }],
     [
       'ramda',
       {
@@ -85,22 +87,7 @@ module.exports = api => {
         useESModules: false,
       },
     ],
-    [
-      'module:fast-async',
-      {
-        compiler: {
-          engine: true,
-          es6target: true,
-          lazyThenables: true,
-          parser: {
-            sourceType: 'module',
-          },
-          sourceMap: true,
-          wrapAwait: true,
-        },
-        useRuntimeModule: true,
-      },
-    ],
+    'macros',
   ]
 
   return {

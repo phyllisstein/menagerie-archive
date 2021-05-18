@@ -43,15 +43,9 @@ const BABEL_OPTIONS = {
     '@babel/proposal-throw-expressions',
     '@babel/proposal-unicode-property-regex',
     '@babel/syntax-dynamic-import',
-    [
-      '@babel/transform-regenerator',
-      {
-        async: false,
-        asyncGenerators: true,
-        generators: true,
-      },
-    ],
-    'lodash',
+    ['lodash', {
+      id: 'lodash-es',
+    }],
     [
       'ramda',
       {

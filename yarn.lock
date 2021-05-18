@@ -3007,13 +3007,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/lodash@npm:^4.14.169":
-  version: 4.14.169
-  resolution: "@types/lodash@npm:4.14.169"
-  checksum: 78c9e49f4c9d21e72bdf5d7f64da3a2db4daad9e8b72cbd72605dacfddec49038e0ddc21e6646e169e78d4f365fb8abb34a03dbb29cbb1112f332adb81be3e4f
-  languageName: node
-  linkType: hard
-
 "@types/mdast@npm:^3.0.0":
   version: 3.0.3
   resolution: "@types/mdast@npm:3.0.3"
@@ -4096,7 +4089,6 @@ __metadata:
     "@types/loadable__component": ^5.13.3
     "@types/loadable__server": ^5.12.5
     "@types/loadable__webpack-plugin": ^5.7.2
-    "@types/lodash": ^4.14.169
     "@types/mini-css-extract-plugin": ^1.4.3
     "@types/prettier": ^2.2.3
     "@types/prettier-package-json": ^2.1.0
@@ -4146,7 +4138,6 @@ __metadata:
     eslint-config-standard-jsx: ^10.0.0
     eslint-config-standard-react: ^11.0.1
     eslint-plugin-babel: ^5.3.1
-    eslint-plugin-lodash-fp: ^2.2.0-a1
     eslint-plugin-node: ^11.1.0
     eslint-plugin-prettier: ^3.4.0
     eslint-plugin-promise: ^5.1.0
@@ -4164,7 +4155,7 @@ __metadata:
     koa: ^2.13.1
     koa-router: ^10.0.0
     koa-static: ^5.0.0
-    lodash: ^4.17.21
+    lodash-es: ^4.17.21
     mem: ^8.1.1
     merge-deep: ^3.0.3
     mini-css-extract-plugin: ^1.6.0
@@ -6891,15 +6882,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"enhance-visitors@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "enhance-visitors@npm:1.0.0"
-  dependencies:
-    lodash: ^4.13.1
-  checksum: d01d41297eb2c726fcbc42b602b3480290b8c301fd2628a64e640480f72d237bafbe31f4c99e80b752b65292948b77be21f51b98a9b120227faecb74972ff3cf
-  languageName: node
-  linkType: hard
-
 "enhanced-resolve@npm:^4.5.0":
   version: 4.5.0
   resolution: "enhanced-resolve@npm:4.5.0"
@@ -7152,16 +7134,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-ast-utils@npm:^1.0.0":
-  version: 1.1.0
-  resolution: "eslint-ast-utils@npm:1.1.0"
-  dependencies:
-    lodash.get: ^4.4.2
-    lodash.zip: ^4.2.0
-  checksum: f72d6875595e665e0707980f3ce36a2e812bf65989dc192c19adfce9d4ca3455c78fcb77f8ffa17a119f24916b2f0a7bf19e02dd2ff0747b9cb83dbcbecf164d
-  languageName: node
-  linkType: hard
-
 "eslint-config-prettier-standard@npm:^4.0.1":
   version: 4.0.1
   resolution: "eslint-config-prettier-standard@npm:4.0.1"
@@ -7237,21 +7209,6 @@ __metadata:
   peerDependencies:
     eslint: ">=4.19.1"
   checksum: e57592c52301ee8ddc296ae44216df007f3a870bcb3be8d1fbdb909a1d3a3efe3fa3785de02066f9eba1d6466b722d3eb3cc3f8b75b3cf6a1cbded31ac6298e4
-  languageName: node
-  linkType: hard
-
-"eslint-plugin-lodash-fp@npm:^2.2.0-a1":
-  version: 2.2.0-a1
-  resolution: "eslint-plugin-lodash-fp@npm:2.2.0-a1"
-  dependencies:
-    create-eslint-index: ^1.0.0
-    enhance-visitors: ^1.0.0
-    eslint-ast-utils: ^1.0.0
-    lodash: ^4.11.1
-    req-all: ^1.0.0
-  peerDependencies:
-    eslint: ">=3"
-  checksum: ae6d9454af0990195b1d9d779f4edd1b1527ca917575852872b3d8d1aeb062712de32ccb1997e75a9f9714f7f7bc0b8297d0caf49c31782bd5b889954e119052
   languageName: node
   linkType: hard
 
@@ -10086,6 +10043,13 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
+"lodash-es@npm:^4.17.21":
+  version: 4.17.21
+  resolution: "lodash-es@npm:4.17.21"
+  checksum: 05cbffad6e2adbb331a4e16fbd826e7faee403a1a04873b82b42c0f22090f280839f85b95393f487c1303c8a3d2a010048bf06151a6cbe03eee4d388fb0a12d2
+  languageName: node
+  linkType: hard
+
 "lodash.clonedeep@npm:^4.5.0":
   version: 4.5.0
   resolution: "lodash.clonedeep@npm:4.5.0"
@@ -10100,7 +10064,7 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"lodash.get@npm:^4.3.0, lodash.get@npm:^4.4.2":
+"lodash.get@npm:^4.3.0":
   version: 4.4.2
   resolution: "lodash.get@npm:4.4.2"
   checksum: e403047ddb03181c9d0e92df9556570e2b67e0f0a930fcbbbd779370972368f5568e914f913e93f3b08f6d492abc71e14d4e9b7a18916c31fa04bd2306efe545
@@ -10135,14 +10099,7 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"lodash.zip@npm:^4.2.0":
-  version: 4.2.0
-  resolution: "lodash.zip@npm:4.2.0"
-  checksum: 41fd8dc1af8b38086369d4fdc81dd725715dcda36ec463d907b9c58f25e5ebb518376b0acec39ded96a6b1790a89c387b9a6b1627306f33fabaf987c8d5eac9e
-  languageName: node
-  linkType: hard
-
-"lodash@npm:^4, lodash@npm:^4.11.1, lodash@npm:^4.13.1, lodash@npm:^4.17.10, lodash@npm:^4.17.11, lodash@npm:^4.17.12, lodash@npm:^4.17.14, lodash@npm:^4.17.15, lodash@npm:^4.17.20, lodash@npm:^4.17.21, lodash@npm:^4.17.4":
+"lodash@npm:^4, lodash@npm:^4.17.10, lodash@npm:^4.17.11, lodash@npm:^4.17.12, lodash@npm:^4.17.14, lodash@npm:^4.17.15, lodash@npm:^4.17.20, lodash@npm:^4.17.21, lodash@npm:^4.17.4":
   version: 4.17.21
   resolution: "lodash@npm:4.17.21"
   checksum: eb835a2e51d381e561e508ce932ea50a8e5a68f4ebdd771ea240d3048244a8d13658acbd502cd4829768c56f2e16bdd4340b9ea141297d472517b83868e677f7

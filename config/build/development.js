@@ -13,8 +13,8 @@ client
   .devtool('source-map')
 
 client.output
-  .chunkFilename('js/[name].js?[contenthash]')
-  .filename('js/[name].js?[contenthash]')
+  .chunkFilename('js/[name].[contenthash].js')
+  .filename('js/[name].[contenthash].js')
 
 client.module
   .rule('babel')
