@@ -34,6 +34,7 @@ rules:
   declaration-colon-newline-after: null
   declaration-empty-line-before: null
   font-family-no-missing-generic-family-keyword: null
+  function-comma-newline-after: null
   function-name-case: null
   indentation: 2
   no-eol-whitespace: null
