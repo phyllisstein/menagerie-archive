@@ -39,6 +39,9 @@ export const Step = ({
     nextScale *= previous?.scale ?? 1
   }
 
+  // FIXME: Flattening and sorting the transforms makes them almost
+  // impossible to reason about. Ideally, each step would take many
+  // transform parameters and apply them in sequence.
   const transform = oneLine`
     translate(-50%, -50%)
     rotateX(${ nextRotation.x }deg)

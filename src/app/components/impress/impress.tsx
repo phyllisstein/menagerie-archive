@@ -103,6 +103,9 @@ export const Impress = ({
             y: 0,
             z: 0,
           }}
+          // FIXME: Flattening and sorting the transforms makes them almost
+          // impossible to reason about. Ideally, each step would take many
+          // transform parameters and apply them in sequence.
           transformTemplate={ ({ rotateX, rotateY, rotateZ, x, y, z }) =>
             `translate3d(${ x }, ${ y }, ${ z }) rotateZ(${ rotateZ }) rotateY(${ rotateY }) rotateX(${ rotateX })` }
           transition={{
