@@ -5,12 +5,12 @@ export const Root = styled.button`
   padding: 1em;
 
   color: ${ ({ $color, theme }) =>
-    theme.palette.js[`${ $color }600`].luminance() <= 0.6
-      ? theme.palette.css.gray100
-      : theme.palette.css.gray800 };
+    theme.palette.js[`${ $color }600`].luminance() >= 0.6
+      ? theme.palette.css.gray800
+      : theme.palette.css.gray100 };
   text-align: center;
 
-  background-color: ${ ({ $color, theme }) => theme.palette.css[`${ $color }600`] };
+  background-color: ${ ({ $color, theme }) => theme.palette.css[`${ $color }400`] };
   border: none;
 
   ${ ({ theme }) => theme.animation.css({ properties: ['background-color'] }) }
@@ -22,7 +22,7 @@ export const Root = styled.button`
 
   &:hover {
     background-color: ${ ({ $color, theme }) =>
-    theme.palette.css[`${ $color }400`] };
+    theme.palette.css[`${ $color }600`] };
     outline: 0;
   }
 `

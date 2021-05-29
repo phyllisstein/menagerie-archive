@@ -6,7 +6,7 @@ export function FreestyleImpressSandboxRoute(): ReactElement {
   return (
     <div>
       <Impress>
-        <Step position={{ z: -125 }} rotation={{ x: 180 }}>
+        <Step position={{ z: 125 }}>
           <Face $background='indigo400'>F</Face>
         </Step>
         <Step position={{ z: 125 }} rotation={{ y: 90 }}>
@@ -18,10 +18,10 @@ export function FreestyleImpressSandboxRoute(): ReactElement {
         <Step position={{ z: 125 }} rotation={{ y: 270 }}>
           <Face $background='blue400'>L</Face>
         </Step>
-        <Step position={{ z: -125 }} rotation={{ x: -90 }}>
+        <Step rotation={{ x: 90 }}>
           <Face $background='yellow400'>T</Face>
         </Step>
-        <Step position={{ z: 125 }} rotation={{ x: 270 }}>
+        <Step position={{ z: 125 }} rotation={{ x: -90 }}>
           <Face $background='orange400'>B</Face>
         </Step>
       </Impress>

@@ -1,8 +1,14 @@
 import { config, useSpring } from 'react-spring'
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
-import { Layer, Root, StoryWrapper } from './parallax-styles'
+import { Image, Layer, Root, StoryWrapper } from './parallax-styles'
 import { useEffect, useRef } from 'react'
+import _ from 'lodash-es'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import png1 from 'assets/hobo-lobo/pg1pn1cp4.png'
+import png2 from 'assets/hobo-lobo/pg1pn2cp4.png'
+import png3 from 'assets/hobo-lobo/pg1pn3cp4.png'
+import png4 from 'assets/hobo-lobo/pg1pn4cp3.png'
+import png5 from 'assets/hobo-lobo/pg1pn5cp4.png'
 import type { ReactElement } from 'react'
 import { thin } from '@fortawesome/fontawesome-svg-core/import.macro'
 import { useGesture } from 'react-use-gesture'
@@ -10,29 +16,20 @@ import { useGesture } from 'react-use-gesture'
 export function ParallaxSandboxRoute(): ReactElement {
   const wrapperRef = useRef<HTMLDivElement>(null)
 
-  const w = { max: window.innerWidth * 0.5, min: window.innerWidth * -0.5 }
-
   const [springValue, animate] = useSpring(() => ({
-    config: config.gentle,
     scroll: 0,
   }))
 
   useGesture(
     {
-      onWheel: ({ offset: [scroll] }) => {
-        animate({
+      onWheel: ({ direction: [dx], offset: [scroll] }) => {
+        animate.start({
           scroll,
         })
       },
     },
     {
       domTarget: wrapperRef,
-      wheel: {
-        bounds: {
-          left: w.min,
-          right: w.max,
-        },
-      },
     },
   )
 
@@ -52,62 +49,9 @@ export function ParallaxSandboxRoute(): ReactElement {
         <Layer
           $depth={ 1 }
           style={{
-            x: springValue.scroll.to(
-              {
-                output: ['-100%', '100%'],
-                range: [w.min, w.max],
-              },
-            ),
+            x: springValue.scroll,
           }}>
-          <FontAwesomeIcon icon={ thin('cube') } />
-        </Layer>
-        <Layer
-          $depth={ 2 }
-          style={{
-            x: springValue.scroll.to(
-              {
-                output: ['-75%', '75%'],
-                range: [w.min, w.max],
-              },
-            ),
-          }}>
-          <FontAwesomeIcon icon={ thin('box-archive') } />
-        </Layer>
-        <Layer
-          $depth={ 3 }
-          style={{
-            x: springValue.scroll.to(
-              {
-                output: ['-50%', '50%'],
-                range: [w.min, w.max],
-              },
-            ),
-          }}>
-          <FontAwesomeIcon icon={ thin('browser') } />
-        </Layer>
-        <Layer
-          $depth={ 4 }
-          style={{
-            x: springValue.scroll.to(
-              {
-                output: ['-25%', '25%'],
-                range: [w.min, w.max],
-              },
-            ),
-          }}>
-          <FontAwesomeIcon icon={ thin('window') } />
-        </Layer>
-        <Layer
-          $depth={ 5 }
-          style={{
-            x: springValue.scroll.to(
-              {
-                output: ['-10%', '10%'],
-                range: [w.min, w.max],
-              },
-            ),
-          }}>
-          <FontAwesomeIcon icon={ thin('folder') } />
+          <Image src={ png1 } />
         </Layer>
       </StoryWrapper>
     </Root>

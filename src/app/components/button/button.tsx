@@ -1,6 +1,6 @@
 import { Root } from './button-styles'
 
-export const Button = ({ children, color = 'chartreuse', ...props }) => {
+export const Button = ({ children, color = 'indigo', ...props }) => {
   return (
     <Root { ...props } $color={ color }>
       { children }

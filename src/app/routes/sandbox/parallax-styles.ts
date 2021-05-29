@@ -1,6 +1,10 @@
 import { animated } from 'react-spring'
 import styled from 'styled-components'
 
+export const Image = styled.img`
+  width: auto;
+`
+
 interface LayerProps {
   $depth: number
 }
@@ -18,7 +22,6 @@ export const Layer = styled(animated.div)<LayerProps>`
   top: 0;
   left: 0;
 
-  color: ${ ({ $depth, theme }) => theme.palette.css[DEPTH_COLORS[$depth - 1]] };
   display: flex;
   align-items: center;
   justify-content: center;
@@ -26,6 +29,7 @@ export const Layer = styled(animated.div)<LayerProps>`
   height: 50vh;
 
   font-size: 8rem;
+  color: ${ ({ $depth, theme }) => theme.palette.css[DEPTH_COLORS[$depth - 1]] };
 
   /* background: ${ ({ $depth, theme }) => theme.palette.js[DEPTH_COLORS[$depth - 1]].alpha(0.2).css() }; */
 `
@@ -45,4 +49,8 @@ export const StoryWrapper = styled.div`
 
   height: 50%;
   width: 100%;
+
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  transform-origin: top left;
 `
