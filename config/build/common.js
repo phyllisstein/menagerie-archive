@@ -82,6 +82,7 @@ client.module
         [
           '@babel/env',
           {
+            bugfixes: true,
             corejs: {
               proposals: true,
               version: 3,
@@ -221,6 +222,7 @@ server.module
         [
           '@babel/env',
           {
+            bugfixes: true,
             corejs: {
               proposals: true,
               version: 3,
