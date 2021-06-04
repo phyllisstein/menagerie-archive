@@ -5,7 +5,7 @@ interface Props {
   children: ReactNode
 }
 
-export function Repress({ children, style }: Props): ReactElement {
+export function Repress(props: Props): ReactElement {
   const transform = oneLine`
     scaleX(-0.5)
     scaleY(0.33333333)
@@ -18,6 +18,8 @@ export function Repress({ children, style }: Props): ReactElement {
     translateX(-50px)
     scaleZ(0.66666667)
   `
+
+  const { style = {}} = props
 
   return (
     <>
@@ -35,7 +37,7 @@ export function Repress({ children, style }: Props): ReactElement {
             transformOrigin: 'center',
             transformStyle: 'preserve-3d',
           }}>
-          { children }
+          { props.children }
         </div>
       </div>
     </>

@@ -13,7 +13,11 @@ const getSolid = R.pipe(
   c => c.alpha(0.33).css(),
 )
 
-export function Repressed({ style, transform = [] }: Props): ReactElement {
+export function Repressed(props: Props): ReactElement {
+  console.log([...Object.entries(props)])
+
+  const { style = {}, transform = [] } = props
+
   const backgroundColor = getSolid(js)
   const transforms = ['translate(-50%, -50%)', ...transform]
 
