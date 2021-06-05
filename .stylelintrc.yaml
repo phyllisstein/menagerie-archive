@@ -26,7 +26,6 @@ rules:
       empty-line-property-threshold: 3
       empty-lines-within-groups: false
       empty-line-before-unspecified: always
-      property-order: flexible
       unspecified: bottomAlphabetical
 
   block-no-empty: null

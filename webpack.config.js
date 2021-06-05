@@ -1,1 +1,3 @@
-module.exports = require('./config/build/development')
+const { client } = require('./config/build/development')
+
+module.exports = client.toConfig()
