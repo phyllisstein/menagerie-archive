@@ -17,18 +17,6 @@ export function RepressSandboxRoute(): ReactElement {
           'scaleY(3)',
           'scaleX(-2)',
         ] } />
-      <Repressed
-        rotateZ='90deg'
-        scaleX='1.5'
-        label='rZsXtZ'
-        translateZ='250px'
-      />
-      <Repressed
-        label='tZsXrZ'
-        translateZ='250px'
-        scaleX='1.5'
-        rotateZ='90deg'
-      />
     </Repress>
   )
 }
