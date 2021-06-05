@@ -141,6 +141,7 @@
     "@types/loadable__component": "^5.13.3",
     "@types/loadable__server": "^5.12.5",
     "@types/loadable__webpack-plugin": "^5.7.2",
+    "@types/lodash-es": "^4.17.4",
     "@types/mini-css-extract-plugin": "^1.4.3",
     "@types/prettier": "^2.2.3",
     "@types/prettier-package-json": "^2.1.0",

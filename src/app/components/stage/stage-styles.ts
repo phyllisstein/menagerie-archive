@@ -1,7 +1,7 @@
-import { animated } from 'react-spring'
+import { motion } from 'framer-motion'
 import styled from 'styled-components'
 
-export const Proscenium = styled(animated.div)`
+export const Proscenium = styled(motion.div)`
   position: absolute;
 
   transform-style: preserve-3d;
@@ -18,7 +18,7 @@ export const Root = styled.div`
   transform-style: preserve-3d;
 `
 
-export const StageRoot = styled(animated.div)`
+export const StageRoot = styled(motion.div)`
   position: absolute;
 
   transform-style: preserve-3d;

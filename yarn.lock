@@ -3268,6 +3268,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/lodash-es@npm:^4.17.4":
+  version: 4.17.4
+  resolution: "@types/lodash-es@npm:4.17.4"
+  dependencies:
+    "@types/lodash": "*"
+  checksum: acffe910e8cffe475b854d74f4372549ec700ac00d9ed885fd85ec34c3f9af1a262bf667000ea9126dc39a05a75f64593d8a5f312cfd7d90e91294d458be08a7
+  languageName: node
+  linkType: hard
+
+"@types/lodash@npm:*":
+  version: 4.14.170
+  resolution: "@types/lodash@npm:4.14.170"
+  checksum: 238a440804e787b85461cc280a11926c80779f7502fec21a70b4424d5feba4cc34cdcbbbc1dca2ec5e75b06d5dc42e42add798be3b6651e8dce9f4b5318d6022
+  languageName: node
+  linkType: hard
+
 "@types/mdast@npm:^3.0.0":
   version: 3.0.3
   resolution: "@types/mdast@npm:3.0.3"
@@ -4369,6 +4385,7 @@ __metadata:
     "@types/loadable__component": ^5.13.3
     "@types/loadable__server": ^5.12.5
     "@types/loadable__webpack-plugin": ^5.7.2
+    "@types/lodash-es": ^4.17.4
     "@types/mini-css-extract-plugin": ^1.4.3
     "@types/prettier": ^2.2.3
     "@types/prettier-package-json": ^2.1.0

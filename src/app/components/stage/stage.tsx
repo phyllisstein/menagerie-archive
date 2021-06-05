@@ -1,15 +1,33 @@
+import { Children, useEffect, useMemo, useRef } from 'react'
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
 import { Proscenium, Root, StageRoot } from './stage-styles'
 import type { ReactElement, ReactNode } from 'react'
-import { useEffect, useRef } from 'react'
-import { useScenes } from './use-scenes'
+import _ from 'lodash'
+import { getValueAndUnit } from 'polished'
+import R from 'ramda'
+import { useSpring } from 'react-spring'
+
+const VALID_TRANSFORMS = [
+  'rotate',
+  'rotateX',
+  'rotateY',
+  'rotateZ',
+  'scale',
+  'scaleX',
+  'scaleY',
+  'scaleZ',
+  'translate',
+  'translateX',
+  'translateY',
+  'translateZ',
+]
 
 interface Props {
   children: ReactNode
   step: number
 }
 
-export function Stage({ children, step = 0 }: Props): ReactElement {
+export function Stage({ children, step = 1 }: Props): ReactElement {
   const rootEl = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -20,14 +38,30 @@ export function Stage({ children, step = 0 }: Props): ReactElement {
     return () => enableBodyScroll(el)
   }, [rootEl])
 
-  const [transformedChildren, parentTransforms] = useScenes(children)
-  const currentTransform = parentTransforms[step]
+  const childArray = Children.toArray(children)
+  const currentStep = _.clamp(step, 0, childArray.length - 1)
+  const currentChild = childArray[currentStep]
+  const transforms = R.pipe(
+    R.pick(VALID_TRANSFORMS),
+    R.map(def => {
+      const [value, unit] = getValueAndUnit(def)
+      return unit
+        ? value * -1
+        : 1 / value
+    }),
+  )(currentChild.props)
+
+  const styles = useSpring({
+    to: {
+      ...transforms,
+    },
+  })
 
   return (
     <Root ref={ rootEl }>
       <Proscenium>
-        <StageRoot style={{ transform: currentTransform }}>
-          { transformedChildren }
+        <StageRoot animate={ transforms }>
+          { children }
         </StageRoot>
       </Proscenium>
     </Root>

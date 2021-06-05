@@ -1,32 +1,34 @@
 import type { ReactChild, ReactElement } from 'react'
-import { Children } from 'react'
+import { getValueAndUnit } from 'polished'
 import { Root } from './scene-styles'
-
-interface Transform3d {
-  x?: number | string
-  y?: number | string
-  z?: number | string
-}
 
 export interface Props {
   children: ReactChild
   rotate?: number | string
-  rotate3d?: Transform3d
   rotateX?: number | string
   rotateY?: number | string
   rotateZ?: number | string
   scale?: number | string
-  scale3d?: Transform3d
   scaleX?: number | string
   scaleY?: number | string
   scaleZ?: number | string
   translate?: number | string
-  translate3d?: Transform3d
   translateX?: number | string
   translateY?: number | string
   translateZ?: number | string
 }
 
-export function Scene({ children, style }: Props): ReactElement {
-  return <Root style={ style }>{ Children.only(children) }</Root>
+export function Scene({ children, ...rest }: Props): ReactElement {
+  const transforms = Object.entries(rest)
+    .map(([kind, amount]) => {
+      const [value, unit = 'px'] = getValueAndUnit(amount)
+      return `${ kind }(${ value }${ unit })`
+    })
+    .join(' ')
+
+  return (
+    <Root style={{ transform: `translate(-50%, -50%) ${ transforms }` }}>
+      { children }
+    </Root>
+  )
 }

@@ -6,13 +6,12 @@ import type {
   ReactPortal,
 } from 'react'
 import React, { Children } from 'react'
+import type { Scene, Props as SceneProps } from './scene'
 import _ from 'lodash'
 import DeepWeakMap from 'deep-weak-map'
 import { getValueAndUnit } from 'polished'
 import mem from 'mem'
 import R from 'ramda'
-import type { Scene } from 'components/scene'
-import type { SceneProps } from 'components/scene'
 
 type ChildArray = Array<ReactChild | ReactFragment | ReactPortal>
 type Scene = FunctionComponentElement<SceneProps>
