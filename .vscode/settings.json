@@ -1,9 +1,15 @@
 {
-  "editor.defaultFormatter": "sebastian-software.effective-prettier-vscode",
-  "editor.formatOnSave": false,
+  "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+  "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
-    "source.fixAll": false,
+    "source.fixAll": true,
     "source.organizeImports": false
+  },
+  "eslint.format.enable": true,
+  "eslint.lintTask.enable": true,
+  "eslint.codeAction.disableRuleComment": {
+    "enable": true,
+    "location": "sameLine"
   },
   "tailwindCSS.emmetCompletions": true,
   "tailwindCSS.includeLanguages": {
@@ -18,5 +24,6 @@
     "tw\\(.*?\\)`([^`]*)" // tw(Component)`...`
   ],
   "stylelint.enable": true,
-  "jupyter.jupyterServerType": "local"
+  "jupyter.jupyterServerType": "local",
+  "typescript.tsdk": "node_modules/typescript/lib"
 }

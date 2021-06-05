@@ -1,17 +1,16 @@
-import { AdobeClean, AdobeCleanSerif } from 'assets/fonts'
-import { Navigate, Route, Routes } from 'react-router'
-import { StyleSheetManager, ThemeProvider } from 'styled-components'
+import { KyarRoute } from 'app/routes/kyar'
 import { ApprovalRoute } from 'app/routes/matrix'
+import { SandboxRoute } from 'app/routes/sandbox'
+import { Body } from 'app/styles/global'
+import { theme } from 'app/styles/theme'
 import avatarFB from 'assets/avatar-fb.jpg'
 import avatarTW from 'assets/avatar-tw.jpg'
-import { Body } from 'app/styles/global'
 import faviconPNG from 'assets/favicon.png'
+import { AdobeClean, AdobeCleanSerif } from 'assets/fonts'
 import { Helmet } from 'react-helmet-async'
-import { KyarRoute } from 'app/routes/kyar'
-import type { ReactElement } from 'react'
+import { Navigate, Route, Routes } from 'react-router'
 import { RecoilRoot } from 'recoil'
-import { SandboxRoute } from 'app/routes/sandbox'
-import { theme } from 'app/styles/theme'
+import { StyleSheetManager, ThemeProvider } from 'styled-components'
 
 const SITE_NAME = 'An Evening With…'
 
@@ -27,7 +26,7 @@ const KEYWORDS = [
   'web development',
 ]
 
-export function App(): ReactElement {
+export function App() {
   return (
     <RecoilRoot>
       <StyleSheetManager disableVendorPrefixes>

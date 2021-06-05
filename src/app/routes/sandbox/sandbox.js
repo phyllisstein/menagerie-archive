@@ -1,10 +1,9 @@
 import { Route, Routes } from 'react-router'
 import { ImpressSandboxRoute } from './impress'
 import { ParallaxSandboxRoute } from './parallax'
-import type { ReactElement } from 'react'
 import { StageSandboxRouter } from './stage'
 
-export function SandboxRoute(): ReactElement {
+export function SandboxRoute() {
   return (
     <Routes>
       <Route element={ <ImpressSandboxRoute /> } path='impress/*' />

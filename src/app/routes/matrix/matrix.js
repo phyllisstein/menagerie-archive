@@ -1,8 +1,7 @@
 import { Navigate, Route, Routes } from 'react-router'
 import { ApprovalRoute } from './approval'
-import type { ReactElement } from 'react'
 
-export function SandboxRoute(): ReactElement {
+export function SandboxRoute() {
   return (
     <Routes>
       <Route element={ <Navigate to='1' /> } path='approval' />

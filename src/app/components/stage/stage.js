@@ -1,16 +1,10 @@
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
-import { Proscenium, Root, StageRoot } from './stage-styles'
-import type { ReactElement, ReactNode } from 'react'
 import { useEffect, useRef } from 'react'
+import { Proscenium, Root, StageRoot } from './stage-styles'
 import { useScenes } from './use-scenes'
 
-interface Props {
-  children: ReactNode
-  step: number
-}
-
-export function Stage({ children, step = 0 }: Props): ReactElement {
-  const rootEl = useRef<HTMLDivElement>(null)
+export function Stage({ children, step = 0 }) {
+  const rootEl = useRef(null)
 
   useEffect(() => {
     const el = rootEl.current

@@ -5,10 +5,6 @@ export const Image = styled.img`
   width: auto;
 `
 
-interface LayerProps {
-  $depth: number
-}
-
 const DEPTH_COLORS = [
   'blue400',
   'indigo400',
@@ -17,7 +13,7 @@ const DEPTH_COLORS = [
   'orange400',
 ]
 
-export const Layer = styled(animated.div)<LayerProps>`
+export const Layer = styled(animated.div)`
   position: absolute;
   top: 0;
   left: 0;
@@ -28,8 +24,8 @@ export const Layer = styled(animated.div)<LayerProps>`
   width: 100%;
   height: 50vh;
 
-  font-size: 8rem;
   color: ${ ({ $depth, theme }) => theme.palette.css[DEPTH_COLORS[$depth - 1]] };
+  font-size: 8rem;
 
   /* background: ${ ({ $depth, theme }) => theme.palette.js[DEPTH_COLORS[$depth - 1]].alpha(0.2).css() }; */
 `
@@ -47,10 +43,10 @@ export const StoryWrapper = styled.div`
   position: absolute;
   top: 25%;
 
-  height: 50%;
   width: 100%;
+  height: 50%;
 
-  perspective: 1000px;
-  transform-style: preserve-3d;
   transform-origin: top left;
+  transform-style: preserve-3d;
+  perspective: 1000px;
 `

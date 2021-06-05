@@ -1,22 +1,6 @@
-import type {
-  FunctionComponentElement,
-  ReactChild,
-  ReactChildren,
-  ReactFragment,
-  ReactPortal,
-} from 'react'
 import React, { Children } from 'react'
-import _ from 'lodash'
-import DeepWeakMap from 'deep-weak-map'
 import { getValueAndUnit } from 'polished'
-import mem from 'mem'
 import R from 'ramda'
-import type { Scene } from 'components/scene'
-import type { SceneProps } from 'components/scene'
-
-type ChildArray = Array<ReactChild | ReactFragment | ReactPortal>
-type Scene = FunctionComponentElement<SceneProps>
-type ChildrenWithTransforms = [Scene[], string[]]
 
 const VALID_TRANSFORMS = [
   'rotate',
@@ -36,12 +20,10 @@ const VALID_TRANSFORMS = [
   'translateZ',
 ]
 
-const positionChildren = (children: ChildArray): ChildrenWithTransforms => {
+const positionChildren = (children) => {
   return children.reduce(
     ([clones, transforms], child) => {
-      const sc = child as unknown as Scene
-
-      const transformProps = Object.entries(sc.props).filter(([k]) =>
+      const transformProps = Object.entries(child.props).filter(([k]) =>
         VALID_TRANSFORMS.includes(k),
       )
 
@@ -58,7 +40,7 @@ const positionChildren = (children: ChildArray): ChildrenWithTransforms => {
             |> #.map(R.trim)
             |> #.map(getValueAndUnit.bind(null))
             |> #.map(([value, unit]) => {
-              const parentValue = !!unit ? value * -1 : 1 / value
+              const parentValue = unit ? value * -1 : 1 / value
               return `${ parentValue }${ unit }`
             })
             |> #.join(', ')
@@ -68,11 +50,11 @@ const positionChildren = (children: ChildArray): ChildrenWithTransforms => {
         .reverse()
         .join(' ')
 
-      const style = sc.props.style
-        ? { ...sc.props.style, transform: childTransforms }
+      const style = child.props.style
+        ? { ...child.props.style, transform: childTransforms }
         : { transform: childTransforms }
 
-      const clone = React.cloneElement(sc, {
+      const clone = React.cloneElement(child, {
         style,
       })
 
@@ -82,10 +64,10 @@ const positionChildren = (children: ChildArray): ChildrenWithTransforms => {
       return [clones, transforms]
     },
     [[], []],
-  ) as any
+  )
 }
 
-export const useScenes = (children: ReactNode) => {
+export const useScenes = (children) => {
   if (!children) {
     return []
   }

@@ -1,8 +1,7 @@
 import { Route, Routes } from 'react-router'
 import { MainKyarRoute } from './main'
-import type { ReactElement } from 'react'
 
-export function KyarRoute(): ReactElement {
+export function KyarRoute() {
   return (
     <Routes>
       <Route element={ <MainKyarRoute /> } />

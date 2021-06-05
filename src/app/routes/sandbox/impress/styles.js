@@ -1,13 +1,8 @@
 import { Impress as BaseImpress, Step as BaseStep } from 'app/components'
-import { Face as BaseFace } from './impress-styles'
-import type { JS } from 'app/styles/theme/palette'
 import styled from 'styled-components'
+import { Face as BaseFace } from './impress-styles'
 
-interface FaceProps {
-  $background: keyof JS
-}
-
-export const Face = styled(BaseFace)<FaceProps>`
+export const Face = styled(BaseFace)`
   width: 100%;
   height: 100%;
 
@@ -19,8 +14,8 @@ export const Impress = styled(BaseImpress)`
 `
 
 export const Step = styled(BaseStep)`
-  height: 250px;
   width: 250px;
+  height: 250px;
 
   opacity: 0.333;
 `

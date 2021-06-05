@@ -5,19 +5,23 @@ env:
   es2020: true
   node: true
   shared-node-browser: true
-parser: '@typescript-eslint/parser'
+parser: '@babel/eslint-parser'
 parserOptions:
+  babelOptions:
+    configFile: ./.babelrc.js
   ecmaFeatures:
     jsx: true
-  project: './tsconfig.json'
+  sourceType: module
 extends:
   - 'eslint:recommended'
-  - plugin:@typescript-eslint/recommended
   - plugin:ramda/recommended
   - plugin:react-hooks/recommended
   - plugin:react/recommended
+  - standard
+  - standard-jsx
+  - standard-react
 plugins:
-  - '@typescript-eslint'
+  - '@babel/eslint-plugin'
   - ramda
   - react
   - react-hooks
@@ -26,88 +30,14 @@ settings:
   react:
     version: '17'
 rules:
-  '@typescript-eslint/ban-types': warn
-  '@typescript-eslint/consistent-type-imports':
-    - warn
-    - prefer: type-imports
-  '@typescript-eslint/member-delimiter-style':
-    - warn
-    - multiline:
-        delimiter: none
-      singleline:
-        delimiter: comma
-  '@typescript-eslint/member-ordering':
-    - warn
-    - default:
-        memberTypes:
-          - signature
-          - public-static-field
-          - protected-static-field
-          - private-static-field
-          - public-decorated-field
-          - protected-decorated-field
-          - private-decorated-field
-          - public-instance-field
-          - protected-instance-field
-          - private-instance-field
-          - public-abstract-field
-          - protected-abstract-field
-          - private-abstract-field
-          - public-field
-          - protected-field
-          - private-field
-          - static-field
-          - instance-field
-          - abstract-field
-          - decorated-field
-          - field
-          - public-constructor
-          - protected-constructor
-          - private-constructor
-          - constructor
-          - public-static-method
-          - protected-static-method
-          - private-static-method
-          - public-decorated-method
-          - protected-decorated-method
-          - private-decorated-method
-          - public-instance-method
-          - protected-instance-method
-          - private-instance-method
-          - public-abstract-method
-          - protected-abstract-method
-          - private-abstract-method
-          - public-method
-          - protected-method
-          - private-method
-          - static-method
-          - instance-method
-          - abstract-method
-          - decorated-method
-          - method
-        order: alphabetically
-  '@typescript-eslint/no-array-constructor': warn
-  '@typescript-eslint/no-empty-interface':
-    - warn
-    - allowSingleExtends: true
-  '@typescript-eslint/no-extra-non-null-assertion': warn
-  '@typescript-eslint/no-extra-semi': warn
-  '@typescript-eslint/no-inferrable-types': warn
-  '@typescript-eslint/no-unused-expressions':
+  '@babel/no-unused-expressions':
     - warn
     - allowShortCircuit: true
       allowTaggedTemplates: true
       allowTernary: true
-  '@typescript-eslint/no-unused-vars':
-    - error
-    - argsIgnorePattern: '^_\w+'
-      varsIgnorePattern: '^_\w+'
-  '@typescript-eslint/prefer-as-const': warn
-  '@typescript-eslint/prefer-namespace-keyword': warn
-  '@typescript-eslint/semi':
+  '@babel/semi':
     - warn
     - never
-  '@typescript-eslint/sort-type-union-intersection-members': warn
 
   react/display-name: 'off'
   react/jsx-closing-bracket-location:
@@ -166,6 +96,7 @@ rules:
       ignoreCase: true
       requiredFirst: true
       sortShapeProp: true
+
   react-hooks/rules-of-hooks: error
   react-hooks/exhaustive-deps:
     - warn
@@ -175,7 +106,9 @@ rules:
     - warn
     - caseSensitive: false
 
-  accessor-pairs: 'off'
+  arrow-parens:
+    - warn
+    - as-needed
   comma-dangle:
     - warn
     - always-multiline
@@ -183,17 +116,17 @@ rules:
   indent:
     - warn
     - 2
-  no-extra-boolean-cast: 'off'
-  no-extra-semi: 'off'
+  no-extra-semi: warn
   no-multiple-empty-lines:
     - warn
     - max: 2
       maxBOF: 0
-  no-regex-spaces: 'off'
   no-trailing-spaces: 'off'
   no-unused-expressions: 'off'
-  no-unused-labels: 'off'
-  no-unused-vars: 'off'
+  no-unused-vars:
+    - error
+    - argsIgnorePattern: '^_\w+'
+      varsIgnorePattern: '^_\w+'
   no-var: warn
   object-curly-spacing:
     - warn
@@ -211,7 +144,7 @@ rules:
     - asc
     - caseSensitive: false
       natural: true
-  sort-vars: 'off'
+  sort-vars: warn
   template-curly-spacing:
     - warn
     - always
@@ -221,6 +154,3 @@ overrides:
       indent: 'off'
       sort-keys: 'off'
       sort-vars: 'off'
-  - files: '**/*.js'
-    rules:
-      '@typescript-eslint/no-var-requires': 'off'

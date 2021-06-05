@@ -1,8 +1,7 @@
 import { Scene, Stage } from 'app/components'
-import _ from 'lodash'
 import { js } from 'app/styles/theme/palette'
+import _ from 'lodash'
 import R from 'ramda'
-import type { ReactElement } from 'react'
 
 const getSolid = R.pipe(
   _.partial(_.filter, _, (_value, key) => key.includes('400')),
@@ -10,9 +9,9 @@ const getSolid = R.pipe(
   c => c.alpha(0.33).css(),
 )
 
-export function StageSandboxRoute(): ReactElement {
+export function StageSandboxRoute() {
   const backgroundColor = getSolid(js)
-  
+
   console.log(backgroundColor)
 
   return (

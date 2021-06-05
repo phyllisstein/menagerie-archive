@@ -1,20 +1,12 @@
-import { config, useSpring } from 'react-spring'
-import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
-import { Image, Layer, Root, StoryWrapper } from './parallax-styles'
-import { useEffect, useRef } from 'react'
-import _ from 'lodash-es'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import png1 from 'assets/hobo-lobo/pg1pn1cp4.png'
-import png2 from 'assets/hobo-lobo/pg1pn2cp4.png'
-import png3 from 'assets/hobo-lobo/pg1pn3cp4.png'
-import png4 from 'assets/hobo-lobo/pg1pn4cp3.png'
-import png5 from 'assets/hobo-lobo/pg1pn5cp4.png'
-import type { ReactElement } from 'react'
-import { thin } from '@fortawesome/fontawesome-svg-core/import.macro'
+import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
+import { useEffect, useRef } from 'react'
+import { useSpring } from 'react-spring'
 import { useGesture } from 'react-use-gesture'
+import { Image, Layer, Root, StoryWrapper } from './parallax-styles'
 
-export function ParallaxSandboxRoute(): ReactElement {
-  const wrapperRef = useRef<HTMLDivElement>(null)
+export function ParallaxSandboxRoute () {
+  const wrapperRef = useRef(null)
 
   const [springValue, animate] = useSpring(() => ({
     scroll: 0,

@@ -1,8 +1,7 @@
-import { Face, Impress, Step } from './styles'
 import { Controls } from 'app/components'
-import type { ReactElement } from 'react'
+import { Face, Impress, Step } from './styles'
 
-export function CubeImpressSandboxRoute(): ReactElement {
+export function CubeImpressSandboxRoute() {
   return (
     <div>
       <Impress>
