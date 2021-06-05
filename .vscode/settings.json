@@ -1,8 +1,8 @@
 {
   "editor.defaultFormatter": "sebastian-software.effective-prettier-vscode",
-  "editor.formatOnSave": true,
+  "editor.formatOnSave": false,
   "editor.codeActionsOnSave": {
-    "source.fixAll": true,
+    "source.fixAll": false,
     "source.organizeImports": false
   },
   "tailwindCSS.emmetCompletions": true,
@@ -17,5 +17,6 @@
     "tw\\.\\w+`([^`]*)", // tw.xxx`...`
     "tw\\(.*?\\)`([^`]*)" // tw(Component)`...`
   ],
-  "stylelint.enable": true
+  "stylelint.enable": true,
+  "jupyter.jupyterServerType": "local"
 }
