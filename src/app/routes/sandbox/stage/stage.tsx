@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import _ from 'lodash'
 import { js } from 'app/styles/theme/palette'
 import R from 'ramda'
-import type { ReactElement } from 'react'
+import { ReactElement } from 'react'
 
 const getSolid = R.pipe(
   _.partial(_.filter, _, (_value, key) => key.includes('400')),

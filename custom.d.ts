@@ -1,4 +1,4 @@
-import type { ReactSVGElement } from 'react'
+import { ReactSVGElement } from 'react'
 
 declare module '*.jpg' {
   const f: string

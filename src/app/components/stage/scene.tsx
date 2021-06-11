@@ -1,4 +1,4 @@
-import type { ReactChild, ReactElement } from 'react'
+import { ReactChild, ReactElement } from 'react'
 import { getValueAndUnit } from 'polished'
 import { Root } from './scene-styles'
 

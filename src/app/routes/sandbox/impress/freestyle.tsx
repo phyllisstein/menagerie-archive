@@ -1,6 +1,6 @@
 import { Face, Impress, Step } from './styles'
 import { Controls } from 'app/components'
-import type { ReactElement } from 'react'
+import { ReactElement } from 'react'
 
 export function FreestyleImpressSandboxRoute(): ReactElement {
   return (

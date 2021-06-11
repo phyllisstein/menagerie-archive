@@ -3,7 +3,7 @@ import gtasa from 'assets/matrix/gtasa.jpg'
 import { Image } from './approval-styles'
 import madge from 'assets/matrix/madge.png'
 import Madge from 'assets/matrix/madge.svg'
-import type { ReactElement } from 'react'
+import { ReactElement } from 'react'
 import twenty from 'assets/matrix/twenty.jpg'
 
 export function ApprovalRoute(): ReactElement {

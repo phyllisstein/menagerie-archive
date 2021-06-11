@@ -1,14 +1,12 @@
-import type {
+import React, {
+  Children,
   FunctionComponentElement,
   ReactChild,
   ReactChildren,
   ReactFragment,
   ReactPortal,
 } from 'react'
-import React, { Children } from 'react'
-import type { Scene, Props as SceneProps } from './scene'
 import _ from 'lodash'
-import DeepWeakMap from 'deep-weak-map'
 import { getValueAndUnit } from 'polished'
 import mem from 'mem'
 import R from 'ramda'

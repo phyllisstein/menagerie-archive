@@ -1,7 +1,6 @@
-import { Children, useEffect, useMemo, useRef } from 'react'
+import { Children, ReactElement, ReactNode, useEffect, useRef } from 'react'
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
 import { Proscenium, Root, StageRoot } from './stage-styles'
-import type { ReactElement, ReactNode } from 'react'
 import _ from 'lodash'
 import { getValueAndUnit } from 'polished'
 import R from 'ramda'
