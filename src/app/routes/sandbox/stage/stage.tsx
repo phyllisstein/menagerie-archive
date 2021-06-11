@@ -1,17 +1,16 @@
 import { Scene, Stage } from 'app/components'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, ReactElement } from 'react'
 import _ from 'lodash'
 import { js } from 'app/styles/theme/palette'
 import R from 'ramda'
-import { ReactElement } from 'react'
 
 const getSolid = R.pipe(
   _.partial(_.filter, _, (_value, key) => key.includes('400')),
   _.sample,
-  c => c.alpha(0.33).css(),
+  c => c.alpha(0.33).css()
 )
 
-export function StageSandboxRoute(): ReactElement {
+export function StageSandboxRoute (): ReactElement {
   const [step, setStep] = useState(1)
   const backgroundColor = getSolid(js)
 
@@ -30,7 +29,7 @@ export function StageSandboxRoute(): ReactElement {
   })
 
   return (
-    <Stage step={ step }>
+    <Stage step={step}>
       <Scene translateX='250px'>
         <div style={{ backgroundColor, height: '250px', width: '250px' }}>
           250px

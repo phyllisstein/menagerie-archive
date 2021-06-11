@@ -3,7 +3,7 @@ import { js as spectrum } from './spectrum-light'
 
 export const js = {
   ...spectrum,
-  text: spectrum.gray900,
+  text: spectrum.gray900
 }
 
 export type JS = typeof js

@@ -3,12 +3,12 @@ const renderApp = async () => {
     { App },
     { BrowserRouter },
     { HelmetProvider },
-    { default: ReactDOM },
+    { default: ReactDOM }
   ] = await Promise.all([
     import('app/routes'),
     import('react-router-dom'),
     import('react-helmet-async'),
-    import('react-dom'),
+    import('react-dom')
   ])
 
   const main = document.querySelector('main')
@@ -19,10 +19,10 @@ const renderApp = async () => {
         <App />
       </HelmetProvider>
     </BrowserRouter>,
-    main,
+    main
   )
 
-  if (module.hot) {
+  if (module.hot != null) {
     module.hot.accept(async () => {
       const { App } = await import('app/routes')
 
@@ -32,7 +32,7 @@ const renderApp = async () => {
             <App />
           </HelmetProvider>
         </BrowserRouter>,
-        main,
+        main
       )
     })
   }

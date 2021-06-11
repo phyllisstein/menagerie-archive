@@ -1,12 +1,11 @@
-import { Navigate, Route, Routes } from 'react-router'
-import { DorianVariorumRoute } from './dorian'
+import { Route, Routes } from 'react-router'
 import { ReactElement } from 'react'
+import { VariorumSandboxRoute } from './variorum'
 
-export function VariorumSandboxRoute(): ReactElement {
+export function VariorumSandboxRouter (): ReactElement {
   return (
     <Routes>
-      <Route element={ <Navigate to='dorian' /> } path='/' />
-      <Route element={ <DorianVariorumRoute /> } path='dorian' />
+      <Route element={<VariorumSandboxRoute />} />
     </Routes>
   )
 }

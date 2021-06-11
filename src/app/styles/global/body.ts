@@ -6,8 +6,7 @@ export const Body = createGlobalStyle`
   *::after {
     box-sizing: inherit;
 
-    outline: none;
-
+    -moz-osx-font-smoothing: always;
     -webkit-font-smoothing: antialiased;
 
     -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
@@ -17,18 +16,19 @@ export const Body = createGlobalStyle`
 
   html {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 
-    color: ${ ({ theme }) => theme.palette.css.text };
-    font: 62.5%/1.333 sans-serif;
+    font-size: 62.5% !important;
 
-    font-kerning: normal;
-    font-variant-ligatures: common-ligatures;
-    font-variant-numeric: lining-nums proportional-nums;
+    font-kerning: normal !important;
+    font-variant-ligatures: common-ligatures !important;
+    font-variant-numeric: oldstyle-nums proportional-nums !important;
   }
 
   body {
-    ${ ({ theme }) => theme.typeface.primaryFamily }
+    ${({ theme }) => theme.typeface.primaryFamily}
 
-    color: ${ ({ theme }) => theme.palette.css.text };
+    color: ${({ theme }) => theme.palette.css.text};
   }
 `

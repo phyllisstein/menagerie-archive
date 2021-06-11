@@ -11,7 +11,7 @@ export const Face = styled(BaseFace)<FaceProps>`
   width: 100%;
   height: 100%;
 
-  background: ${ ({ $background, theme }) => theme.palette.css[$background] };
+  background: ${({ $background, theme }) => theme.palette.css[$background]};
 `
 
 export const Impress = styled(BaseImpress)`

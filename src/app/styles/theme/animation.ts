@@ -7,15 +7,15 @@ export interface CSSParams {
   properties?: string | string[]
 }
 
-export function css({
+export function css ({
   curve = AnimationCurve.MaterialStandard,
   duration = AnimationDuration.Entering,
-  properties = ['all'],
+  properties = ['all']
 }: CSSParams = {}) {
   const property = Array.from(properties).join(',')
 
   return styledCSS`
-    transition: ${ property } ${ duration }ms ${ curve };
+    transition: ${property} ${duration}ms ${curve};
   `
 }
 

@@ -39,7 +39,7 @@ export const Impress = ({
   height ??= canUseDOM && window.innerHeight
 
   const [windowScale, setWindowScale] = useState(() =>
-    getWindowScale(height, width, scaleConstraints),
+    getWindowScale(height, width, scaleConstraints)
   )
   const [steppedChildren, stepCount] = useSteppedChildren(children)
   const [step] = useStep(stepCount)
@@ -72,20 +72,21 @@ export const Impress = ({
     <>
       <Body />
       <Root
-        { ...props }
+        {...props}
         animate={{
           perspective,
-          scale: targetScale * windowScale,
+          scale: targetScale * windowScale
         }}
         initial={{
           perspective: perspectiveBase,
-          scale: windowScale,
+          scale: windowScale
         }}
         transition={{
           delay: zoom ? 0.5 : 0,
           duration: 1,
-          type: 'tween',
-        }}>
+          type: 'tween'
+        }}
+      >
         <Canvas
           animate={{
             rotateX: targetRotation.x,
@@ -93,7 +94,7 @@ export const Impress = ({
             rotateZ: targetRotation.z,
             x: targetPosition.x,
             y: targetPosition.y,
-            z: targetPosition.z,
+            z: targetPosition.z
           }}
           initial={{
             rotateX: 0,
@@ -101,19 +102,20 @@ export const Impress = ({
             rotateZ: 0,
             x: 0,
             y: 0,
-            z: 0,
+            z: 0
           }}
           // FIXME: Flattening and sorting the transforms makes them almost
           // impossible to reason about. Ideally, each step would take many
           // transform parameters and apply them in sequence.
-          transformTemplate={ ({ rotateX, rotateY, rotateZ, x, y, z }) =>
-            `translate3d(${ x }, ${ y }, ${ z }) rotateZ(${ rotateZ }) rotateY(${ rotateY }) rotateX(${ rotateX })` }
+          transformTemplate={({ rotateX, rotateY, rotateZ, x, y, z }) =>
+            `translate3d(${x}, ${y}, ${z}) rotateZ(${rotateZ}) rotateY(${rotateY}) rotateX(${rotateX})`}
           transition={{
             delay: zoom ? 0 : 0.5,
             duration: 1,
-            type: 'tween',
-          }}>
-          { steppedChildren }
+            type: 'tween'
+          }}
+        >
+          {steppedChildren}
         </Canvas>
       </Root>
     </>

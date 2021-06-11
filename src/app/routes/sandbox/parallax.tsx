@@ -12,30 +12,30 @@ import png5 from 'assets/hobo-lobo/pg1pn5cp4.png'
 import { thin } from '@fortawesome/fontawesome-svg-core/import.macro'
 import { useGesture } from 'react-use-gesture'
 
-export function ParallaxSandboxRoute(): ReactElement {
+export function ParallaxSandboxRoute (): ReactElement {
   const wrapperRef = useRef<HTMLDivElement>(null)
 
   const [springValue, animate] = useSpring(() => ({
-    scroll: 0,
+    scroll: 0
   }))
 
   useGesture(
     {
       onWheel: ({ direction: [dx], offset: [scroll] }) => {
         animate.start({
-          scroll,
+          scroll
         })
-      },
+      }
     },
     {
-      domTarget: wrapperRef,
-    },
+      domTarget: wrapperRef
+    }
   )
 
   useEffect(() => {
     const el = wrapperRef.current
 
-    if (!el) return
+    if (el == null) return
 
     disableBodyScroll(el)
 
@@ -44,13 +44,14 @@ export function ParallaxSandboxRoute(): ReactElement {
 
   return (
     <Root>
-      <StoryWrapper ref={ wrapperRef }>
+      <StoryWrapper ref={wrapperRef}>
         <Layer
-          $depth={ 1 }
+          $depth={1}
           style={{
-            x: springValue.scroll,
-          }}>
-          <Image src={ png1 } />
+            x: springValue.scroll
+          }}
+        >
+          <Image src={png1} />
         </Layer>
       </StoryWrapper>
     </Root>

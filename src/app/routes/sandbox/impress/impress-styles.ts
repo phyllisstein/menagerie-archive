@@ -41,31 +41,31 @@ export const Face = styled.div`
 `
 
 export const Front = styled(Face)`
-  background: ${ ({ theme }) => theme.palette.js.gray700.alpha(0.75) .css() };
+  background: ${({ theme }) => theme.palette.js.gray700.alpha(0.75).css()};
   transform: translate3d(0, 0, 50px);
 `
 
 export const Back = styled(Face)`
-  background: ${ ({ theme }) => theme.palette.js.magenta500.alpha(0.75) .css() };
+  background: ${({ theme }) => theme.palette.js.magenta500.alpha(0.75).css()};
   transform: rotateY(180deg) translate3d(0, 0, 50px);
 `
 
 export const Right = styled(Face)`
-  background: ${ ({ theme }) => theme.palette.js.red500.alpha(0.75) .css() };
+  background: ${({ theme }) => theme.palette.js.red500.alpha(0.75).css()};
   transform: rotateY(90deg) translate3d(0, 0, 50px);
 `
 
 export const Left = styled(Face)`
-  background: ${ ({ theme }) => theme.palette.js.blue500.alpha(0.75) .css() };
+  background: ${({ theme }) => theme.palette.js.blue500.alpha(0.75).css()};
   transform: rotateY(-90deg) translate3d(0, 0, 50px);
 `
 
 export const Top = styled(Face)`
-  background: ${ ({ theme }) => theme.palette.js.yellow500.alpha(0.75) .css() };
+  background: ${({ theme }) => theme.palette.js.yellow500.alpha(0.75).css()};
   transform: rotateX(90deg) translate3d(0, 0, 50px);
 `
 
 export const Bottom = styled(Face)`
-  background: ${ ({ theme }) => theme.palette.js.purple500.alpha(0.75) .css() };
+  background: ${({ theme }) => theme.palette.js.purple500.alpha(0.75).css()};
   transform: rotateX(-90deg) translate3d(0, 0, 50px);
 `

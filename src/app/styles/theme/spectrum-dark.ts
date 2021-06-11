@@ -62,7 +62,7 @@ export const js = {
   celery700: chroma('hsl(130, 69%, 61%)'),
   celery600: chroma('hsl(130, 59%, 57%)'),
   celery500: chroma('hsl(130, 50%, 53%)'),
-  celery400: chroma('hsl(130, 45%, 49%)'),
+  celery400: chroma('hsl(130, 45%, 49%)')
 }
 
 export type JS = typeof js

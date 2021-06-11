@@ -7,9 +7,9 @@ const breakpoints = pxToRem(
     max: '1584px',
     md: '672px',
     sm: '320px',
-    xlg: '1312px',
+    xlg: '1312px'
   },
-  16,
+  16
 )
 
 export const between = (start, end, style) => css`

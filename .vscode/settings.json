@@ -1,8 +1,8 @@
 {
   "editor.defaultFormatter": "sebastian-software.effective-prettier-vscode",
-  "editor.formatOnSave": false,
+  "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
-    "source.fixAll": false,
+    "source.fixAll": true,
     "source.organizeImports": false
   },
   "tailwindCSS.emmetCompletions": true,

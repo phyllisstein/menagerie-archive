@@ -28,7 +28,7 @@ const SHADOWS = {
     '0px 8px 40px 7px',
     '0px 8px 42px 7px',
     '0px 9px 44px 8px',
-    '0px 9px 46px 8px',
+    '0px 9px 46px 8px'
   ],
   PENUMBRA: [
     '0px 0px 0px 0px',
@@ -55,7 +55,7 @@ const SHADOWS = {
     '0px 21px 33px 3px',
     '0px 22px 35px 3px',
     '0px 23px 36px 3px',
-    '0px 24px 38px 3px',
+    '0px 24px 38px 3px'
   ],
   UMBRA: [
     '0px 0px 0px 0px',
@@ -82,21 +82,21 @@ const SHADOWS = {
     '0px 10px 13px -6px',
     '0px 10px 14px -6px',
     '0px 11px 14px -7px',
-    '0px 11px 15px -7px',
-  ],
+    '0px 11px 15px -7px'
+  ]
 }
 
 const BLACK = {
   AMBIENT: 'hsla(215, 9%, 15%, 12%)',
   PENUMBRA: 'hsla(215, 9%, 15%, 14%)',
-  UMBRA: 'hsla(215, 9%, 15%, 20%)',
+  UMBRA: 'hsla(215, 9%, 15%, 20%)'
 }
 
 const clampLevel = R.clamp(1, 25)
 
 const dropSpread = R.pipe(R.split(' '), R.dropLast(1), R.join(' '))
 
-export function box(level = 1) {
+export function box (level = 1) {
   level = clampLevel(level)
 
   const umbra = SHADOWS.UMBRA[level]
@@ -111,10 +111,10 @@ export function box(level = 1) {
 
 box.animation = animationCSS({
   duration: AnimationDuration.Elevation,
-  properties: 'box-shadow',
+  properties: 'box-shadow'
 })
 
-export function text(level = 1) {
+export function text (level = 1) {
   level = clampLevel(level)
 
   const umbra = dropSpread(SHADOWS.UMBRA[level])
@@ -129,5 +129,5 @@ export function text(level = 1) {
 
 text.animation = animationCSS({
   duration: AnimationDuration.Elevation,
-  properties: 'text-shadow',
+  properties: 'text-shadow'
 })

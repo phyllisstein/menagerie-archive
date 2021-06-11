@@ -20,7 +20,7 @@ export const Step = ({
   ...props
 }) => {
   const [{ previous }, setCurrentAndPreviousAnimation] = useRecoilState(
-    impress.currentAndPreviousAnimation(step),
+    impress.currentAndPreviousAnimation(step)
   )
   const [currentStep] = useStep()
 
@@ -44,11 +44,11 @@ export const Step = ({
   // transform parameters and apply them in sequence.
   const transform = oneLine`
     translate(-50%, -50%)
-    rotateX(${ nextRotation.x }deg)
-    rotateY(${ nextRotation.y }deg)
-    rotateZ(${ nextRotation.z }deg)
-    translate3d(${ nextPosition.x }px, ${ nextPosition.y }px, ${ nextPosition.z }px)
-    scale(${ nextScale })
+    rotateX(${nextRotation.x}deg)
+    rotateY(${nextRotation.y}deg)
+    rotateZ(${nextRotation.z}deg)
+    translate3d(${nextPosition.x}px, ${nextPosition.y}px, ${nextPosition.z}px)
+    scale(${nextScale})
   `
 
   useEffect(() => {
@@ -56,8 +56,8 @@ export const Step = ({
       current: {
         position: nextPosition,
         rotation: nextRotation,
-        scale: nextScale,
-      },
+        scale: nextScale
+      }
     })
   }, [transform])
 
@@ -66,20 +66,21 @@ export const Step = ({
     if (step === currentStep) {
       navigate('../1')
     } else {
-      navigate(`../${ step }`)
+      navigate(`../${step}`)
     }
   }, [currentStep, step])
 
   return (
     <Root
-      { ...props }
+      {...props}
       animate={{ opacity: step === currentStep ? 0.6 : 0.2 }}
       style={{
         ...style,
-        transform,
+        transform
       }}
-      onClick={ jumpToStep }>
-      { children }
+      onClick={jumpToStep}
+    >
+      {children}
     </Root>
   )
 }

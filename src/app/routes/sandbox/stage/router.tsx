@@ -2,10 +2,10 @@ import { Route, Routes } from 'react-router'
 import { ReactElement } from 'react'
 import { StageSandboxRoute } from './stage'
 
-export function StageSandboxRouter(): ReactElement {
+export function StageSandboxRouter (): ReactElement {
   return (
     <Routes>
-      <Route element={ <StageSandboxRoute /> } />
+      <Route element={<StageSandboxRoute />} />
     </Routes>
   )
 }

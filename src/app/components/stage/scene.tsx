@@ -18,17 +18,17 @@ export interface Props {
   translateZ?: number | string
 }
 
-export function Scene({ children, ...rest }: Props): ReactElement {
+export function Scene ({ children, ...rest }: Props): ReactElement {
   const transforms = Object.entries(rest)
     .map(([kind, amount]) => {
       const [value, unit = 'px'] = getValueAndUnit(amount)
-      return `${ kind }(${ value }${ unit })`
+      return `${kind}(${value}${unit})`
     })
     .join(' ')
 
   return (
-    <Root style={{ transform: `translate(-50%, -50%) ${ transforms }` }}>
-      { children }
+    <Root style={{ transform: `translate(-50%, -50%) ${transforms}` }}>
+      {children}
     </Root>
   )
 }

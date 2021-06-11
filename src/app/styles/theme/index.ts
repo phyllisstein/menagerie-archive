@@ -21,7 +21,7 @@ export const theme = {
   scale,
   spectrumDark,
   spectrumLight,
-  typeface,
+  typeface
 }
 
 export type Theme = typeof theme

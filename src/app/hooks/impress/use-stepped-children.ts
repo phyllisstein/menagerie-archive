@@ -12,7 +12,7 @@ const getSteppedChildren = c => {
       childCount += 1
 
       const nextChild = cloneElement(child, {
-        step: childCount,
+        step: childCount
       })
 
       acc.push(nextChild)
@@ -28,7 +28,7 @@ const getStepCount = c => {
   const childArray = Children.toArray(c)
 
   return childArray.filter(
-    child => child.type === Step || child?.type?.target === Step,
+    child => child.type === Step || child?.type?.target === Step
   ).length
 }
 

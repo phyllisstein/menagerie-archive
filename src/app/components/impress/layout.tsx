@@ -5,7 +5,7 @@ import { Root } from './layout-styles'
 const COORDINATE_DEFAULTS = {
   x: 0,
   y: 0,
-  z: 0,
+  z: 0
 }
 
 export const Layout = ({
@@ -21,16 +21,16 @@ export const Layout = ({
 
   const transform = oneLine`
     translate(-50%, -50%)
-    rotateX(${ rotationWithDefaults.x }deg)
-    rotateY(${ rotationWithDefaults.y }deg)
-    rotateZ(${ rotationWithDefaults.z }deg)
-    translate3d(${ positionWithDefaults.x }px, ${ positionWithDefaults.y }px, ${ positionWithDefaults.z }px)
-    scale(${ scale })
+    rotateX(${rotationWithDefaults.x}deg)
+    rotateY(${rotationWithDefaults.y}deg)
+    rotateZ(${rotationWithDefaults.z}deg)
+    translate3d(${positionWithDefaults.x}px, ${positionWithDefaults.y}px, ${positionWithDefaults.z}px)
+    scale(${scale})
   `
 
   return (
-    <Root { ...props } style={{ ...style, transform }}>
-      { children }
+    <Root {...props} style={{ ...style, transform }}>
+      {children}
     </Root>
   )
 }

@@ -14,7 +14,7 @@ const DEPTH_COLORS = [
   'indigo400',
   'magenta400',
   'celery400',
-  'orange400',
+  'orange400'
 ]
 
 export const Layer = styled(animated.div)<LayerProps>`
@@ -29,9 +29,9 @@ export const Layer = styled(animated.div)<LayerProps>`
   height: 50vh;
 
   font-size: 8rem;
-  color: ${ ({ $depth, theme }) => theme.palette.css[DEPTH_COLORS[$depth - 1]] };
+  color: ${({ $depth, theme }) => theme.palette.css[DEPTH_COLORS[$depth - 1]]};
 
-  /* background: ${ ({ $depth, theme }) => theme.palette.js[DEPTH_COLORS[$depth - 1]].alpha(0.2).css() }; */
+  /* background: ${({ $depth, theme }) => theme.palette.js[DEPTH_COLORS[$depth - 1]].alpha(0.2).css()}; */
 `
 
 export const Root = styled.div`

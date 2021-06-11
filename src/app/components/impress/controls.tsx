@@ -1,7 +1,7 @@
 import { DIRECTION_LEFT, DIRECTION_RIGHT } from 'hammerjs'
 import {
   faChevronsLeft,
-  faChevronsRight,
+  faChevronsRight
 } from '@fortawesome/pro-duotone-svg-icons'
 import { Icon, Root } from './controls-styles'
 import { useSwipe, useTap } from 'app/hooks/hammer'
@@ -40,12 +40,12 @@ export const Controls = (props = {}) => {
   }, [canUseDOM])
 
   return (
-    <Root { ...props }>
-      <Button onClick={ previous }>
-        <Icon icon={ faChevronsLeft } />
+    <Root {...props}>
+      <Button onClick={previous}>
+        <Icon icon={faChevronsLeft} />
       </Button>
-      <Button onClick={ next }>
-        <Icon icon={ faChevronsRight } />
+      <Button onClick={next}>
+        <Icon icon={faChevronsRight} />
       </Button>
     </Root>
   )

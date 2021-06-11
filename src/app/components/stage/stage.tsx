@@ -18,7 +18,7 @@ const VALID_TRANSFORMS = [
   'translate',
   'translateX',
   'translateY',
-  'translateZ',
+  'translateZ'
 ]
 
 interface Props {
@@ -26,12 +26,12 @@ interface Props {
   step: number
 }
 
-export function Stage({ children, step = 1 }: Props): ReactElement {
+export function Stage ({ children, step = 1 }: Props): ReactElement {
   const rootEl = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const el = rootEl.current
-    if (!el) return
+    if (el == null) return
     disableBodyScroll(el)
 
     return () => enableBodyScroll(el)
@@ -47,20 +47,20 @@ export function Stage({ children, step = 1 }: Props): ReactElement {
       return unit
         ? value * -1
         : 1 / value
-    }),
+    })
   )(currentChild.props)
 
   const styles = useSpring({
     to: {
-      ...transforms,
-    },
+      ...transforms
+    }
   })
 
   return (
-    <Root ref={ rootEl }>
+    <Root ref={rootEl}>
       <Proscenium>
-        <StageRoot animate={ transforms }>
-          { children }
+        <StageRoot animate={transforms}>
+          {children}
         </StageRoot>
       </Proscenium>
     </Root>

@@ -24,51 +24,51 @@ const KEYWORDS = [
   'software engineering',
   'talks',
   'tech talks',
-  'web development',
+  'web development'
 ]
 
-export function App(): ReactElement {
+export function App (): ReactElement {
   return (
     <RecoilRoot>
       <StyleSheetManager disableVendorPrefixes>
-        <ThemeProvider theme={ theme }>
+        <ThemeProvider theme={theme}>
           <Body />
           <AdobeClean />
           <AdobeCleanSerif />
 
-          <Helmet defaultTitle={ SITE_NAME } titleTemplate={ `%s | ${ SITE_NAME }` }>
-            <html
-              className='spectrum spectrum--light spectrum--medium'
-              lang='en' />
+          <Helmet defaultTitle={SITE_NAME} titleTemplate={`%s | ${SITE_NAME}`}>
+            <html lang='en' />
+            <body className='spectrum spectrum--light spectrum--medium' />
             <meta charSet='utf-8' />
             <meta
               content='width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no, user-scalable=no'
-              name='viewport' />
-            { /* Common Metadata */ }
-            <meta content={ DESCRIPTION } name='description' />
-            <meta content={ KEYWORDS.join(',') } name='keywords' />
-            { /* Facebook OpenGraph */ }
-            <meta content={ DESCRIPTION } property='og:description' />
-            <meta content={ avatarFB } property='og:image' />
+              name='viewport'
+            />
+            {/* Common Metadata */}
+            <meta content={DESCRIPTION} name='description' />
+            <meta content={KEYWORDS.join(',')} name='keywords' />
+            {/* Facebook OpenGraph */}
+            <meta content={DESCRIPTION} property='og:description' />
+            <meta content={avatarFB} property='og:image' />
             <meta content='en_US' property='og:locale' />
-            <meta content={ SITE_NAME } property='og:site_name' />
+            <meta content={SITE_NAME} property='og:site_name' />
             <meta content='website' property='og:type' />
-            { /* Twitter Cards */ }
+            {/* Twitter Cards */}
             <meta content='summary' name='twitter:card' />
-            <meta content={ DESCRIPTION } property='twitter:description' />
+            <meta content={DESCRIPTION} property='twitter:description' />
             <meta content='on' name='twitter:dnt' />
-            <meta content={ avatarTW } property='twitter:image' />
+            <meta content={avatarTW} property='twitter:image' />
             <meta content='@phyllisstein' name='twitter:site' />
-            <meta content={ SITE_NAME } property='twitter:title' />
-            { /* Favicon */ }
-            <link href={ faviconPNG } rel='icon' sizes='192x192' />
+            <meta content={SITE_NAME} property='twitter:title' />
+            {/* Favicon */}
+            <link href={faviconPNG} rel='icon' sizes='192x192' />
           </Helmet>
 
           <Routes>
-            <Route element={ <Navigate to='1' /> } path='matrix' />
-            <Route element={ <ApprovalRoute /> } path='matrix/:step' />
-            <Route element={ <KyarRoute /> } path='kyar/*' />
-            <Route element={ <SandboxRoute /> } path='sandbox/*' />
+            <Route element={<Navigate to='1' />} path='matrix' />
+            <Route element={<ApprovalRoute />} path='matrix/:step' />
+            <Route element={<KyarRoute />} path='kyar/*' />
+            <Route element={<SandboxRoute />} path='sandbox/*' />
           </Routes>
         </ThemeProvider>
       </StyleSheetManager>
