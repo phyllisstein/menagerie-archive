@@ -1,4 +1,5 @@
 const Config = require('webpack-chain')
+const CopyPlugin = require('copy-webpack-plugin')
 const LoadablePlugin = require('@loadable/webpack-plugin')
 const merge = require('merge-deep')
 const nodeExternals = require('webpack-node-externals')
@@ -66,7 +67,7 @@ client
 client.entry('main').add('./bootstrap/client').end()
 
 client.output
-  .path(path.resolve('dist', 'public'))
+  .path(path.resolve('public'))
   .publicPath('/')
 
 client.module
@@ -167,6 +168,14 @@ client.module
     .use('css')
       .loader('css-loader')
       .end()
+
+client.module
+  .rule('hyphenopoly')
+    .test(/hyphenopoly/i)
+    .set('type', 'asset/resource')
+    .set('generator', {
+        filename: 'vendor/hyphenopoly/[name][ext]',
+    })
 
 client.resolve
   .enforceExtension(false)
@@ -300,6 +309,14 @@ server.module
     .use('null')
       .loader('null-loader')
 
+server.module
+  .rule('hyphenopoly')
+    .test(/hyphenopoly/i)
+    .set('type', 'asset/resource')
+    .set('generator', {
+        filename: 'vendor/hyphenopoly/[name]',
+    })
+
 server.resolve
   .enforceExtension(false)
   .extensions.add('.ts')
@@ -326,7 +343,7 @@ server.plugin('loadable').use(LoadablePlugin)
 server.externals([
   (_context, request, callback) => {
     if (/stats\.json$/.test(request)) {
-      return callback(null, `commonjs ${ request }`)
+      return callback(null, `commonjs ${request}`)
     }
     callback()
   },

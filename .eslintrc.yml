@@ -31,9 +31,22 @@ settings:
     version: '17'
 
 rules:
-  'react/prop-types': 'off'
-  'react/react-in-jsx-scope': 'off'
+  react/jsx-curly-newline:
+    - warn
+    - consistent
+  react/jsx-curly-spacing:
+    - warn
+    - children:
+        when: always
+      attributes:
+        when: always
+      when: always
+      spacing:
+        objectLiterals: never
+  react/prop-types: 'off'
+  react/react-in-jsx-scope: 'off'
 
+  '@typescript-eslint/no-misused-promises': 'off'
   '@typescript-eslint/no-unused-expressions':
     - warn
     - allowShortCircuit: true
@@ -44,3 +57,24 @@ rules:
     - argsIgnorePattern: '^_.+'
       varsIgnorePattern: '^_.+'
   '@typescript-eslint/restrict-template-expressions': 'off'
+
+  comma-dangle:
+    - warn
+    - always-multiline
+  object-curly-spacing:
+    - warn
+    - always
+    - objectsInObjects: false
+  template-curly-spacing:
+    - warn
+    - always
+
+overrides:
+  - files: '**/config/**'
+    rules:
+      indent: 'off'
+      sort-keys: 'off'
+      sort-vars: 'off'
+  - files: '**/*.js'
+    rules:
+      '@typescript-eslint/no-var-requires': 'off'

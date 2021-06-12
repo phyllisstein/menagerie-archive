@@ -27,8 +27,8 @@ export const Body = createGlobalStyle`
   }
 
   body {
-    ${({ theme }) => theme.typeface.primaryFamily}
+    ${ ({ theme }) => theme.typeface.primaryFamily }
 
-    color: ${({ theme }) => theme.palette.css.text};
+    color: ${ ({ theme }) => theme.palette.css.text };
   }
 `
