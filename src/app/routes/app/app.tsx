@@ -37,7 +37,7 @@ export function App (): ReactElement {
           <AdobeCleanSerif />
 
           <Helmet defaultTitle={ SITE_NAME } titleTemplate={ `%s | ${ SITE_NAME }` }>
-            <html lang='en' />
+            <html lang='en-us' />
             <body className='spectrum spectrum--dark spectrum--medium' />
             <meta charSet='utf-8' />
             <meta

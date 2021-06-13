@@ -42,16 +42,17 @@ const renderApp = async () => {
 }
 
 const bootstrapHyphenopoly = async () => {
-  const { default: patternURL } = await import(
-    'hyphenopoly/patterns/en-us.wasm'
-  )
-  const { default: loaderURL } = await import('hyphenopoly/Hyphenopoly_Loader')
+  const hyphens = await Promise.all([
+    import('hyphenopoly/patterns/en-us.wasm'),
+    import('hyphenopoly/Hyphenopoly_Loader.js'),
+    import('hyphenopoly/Hyphenopoly.js'),
+  ])
 
   await new Promise((resolve, reject) => {
     window.Hyphenopoly = {
       paths: {
-        maindir: patternURL,
-        patterndir: patternURL,
+        maindir: '/vendor/hyphenopoly/',
+        patterndir: '/vendor/hyphenopoly/',
       },
       require: {
         'en-us': 'FORCEHYPHENOPOLY',
@@ -77,7 +78,7 @@ const bootstrapHyphenopoly = async () => {
       const scpt = document.createElement('script')
       scpt.async = true
       scpt.defer = true
-      scpt.src = loaderURL
+      scpt.src = '/vendor/hyphenopoly/Hyphenopoly_Loader.js'
       scpt.setAttribute('crossorigin', 'anonymous')
       scpt.onload = resolve
       document.body.appendChild(scpt)

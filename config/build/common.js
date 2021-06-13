@@ -200,6 +200,18 @@ client.plugin('define').use(webpack.DefinePlugin, [
 
 client.plugin('loadable').use(LoadablePlugin)
 
+// client
+//   .plugin('copy')
+//     .use(CopyPlugin, [
+//       {
+//         pattersn: [
+//           {
+//             from: path.resolve('node_modules', 'hyphenopoly', ''),
+//           },
+//         ],
+//       },
+//     ])
+
 client.optimization.runtimeChunk('single').splitChunks({
   chunks: 'all',
 })
@@ -314,7 +326,7 @@ server.module
     .test(/hyphenopoly/i)
     .set('type', 'asset/resource')
     .set('generator', {
-        filename: 'vendor/hyphenopoly/[name]',
+        filename: 'vendor/hyphenopoly/[name][ext]',
     })
 
 server.resolve
@@ -343,7 +355,7 @@ server.plugin('loadable').use(LoadablePlugin)
 server.externals([
   (_context, request, callback) => {
     if (/stats\.json$/.test(request)) {
-      return callback(null, `commonjs ${request}`)
+      return callback(null, `commonjs ${ request }`)
     }
     callback()
   },
