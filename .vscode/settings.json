@@ -18,5 +18,6 @@
     "tw\\(.*?\\)`([^`]*)" // tw(Component)`...`
   ],
   "stylelint.enable": true,
-  "jupyter.jupyterServerType": "local"
+  "jupyter.jupyterServerType": "local",
+  "typescript.tsdk": "node_modules/typescript/lib"
 }
