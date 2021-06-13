@@ -1,12 +1,12 @@
 import { Graf } from 'app/components/markup'
-import { Variorum } from 'app/components/variorum'
+import { Palimpsest } from 'app/components/palimpsest'
 import { ReactElement } from 'react'
-import { Original, Replacement } from './variorum-styles'
+import { Original, Replacement } from './palimpsest-styles'
 
-export function VariorumSandboxRoute (): ReactElement {
+export function PalimpsestSandboxRoute (): ReactElement {
   return (
     <div style={{ margin: '1.778rem auto', width: '56.2%' }}>
-      <Variorum>
+      <Palimpsest>
         <Graf>
           ”And how did Lady Brandon describe this wonderful young man? I know
           she goes in for giving a rapid <em>précis</em> of all her guests. I
@@ -28,7 +28,7 @@ export function VariorumSandboxRoute (): ReactElement {
           She either explains them entirely away, or tells one everything about
           them except what one wants to know.”
         </Graf>
-      </Variorum>
+      </Palimpsest>
     </div>
   )
 }

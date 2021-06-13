@@ -3,15 +3,15 @@ import { ImpressSandboxRoute } from './impress'
 import { ParallaxSandboxRoute } from './parallax'
 import { ReactElement } from 'react'
 import { StageSandboxRouter } from './stage'
-import { VariorumSandboxRouter } from './variorum'
+import { PalimpsestSandboxRouter } from './palimpsest'
 
 export function SandboxRoute (): ReactElement {
   return (
     <Routes>
-      <Route element={<ImpressSandboxRoute />} path='impress/*' />
-      <Route element={<ParallaxSandboxRoute />} path='parallax/*' />
-      <Route element={<StageSandboxRouter />} path='stage/*' />
-      <Route element={<VariorumSandboxRouter />} path='variorum/*' />
+      <Route element={ <ImpressSandboxRoute /> } path='impress/*' />
+      <Route element={ <ParallaxSandboxRoute /> } path='parallax/*' />
+      <Route element={ <StageSandboxRouter /> } path='stage/*' />
+      <Route element={ <PalimpsestSandboxRouter /> } path='palimpsest/*' />
     </Routes>
   )
 }
