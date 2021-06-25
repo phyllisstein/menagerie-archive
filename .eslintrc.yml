@@ -31,6 +31,9 @@ settings:
     version: '17'
 
 rules:
+  react/jsx-closing-bracket-location:
+    - warn
+    - after-props
   react/jsx-curly-newline:
     - warn
     - consistent
@@ -61,6 +64,7 @@ rules:
   comma-dangle:
     - warn
     - always-multiline
+  no-trailing-spaces: 'off'
   object-curly-spacing:
     - warn
     - always
