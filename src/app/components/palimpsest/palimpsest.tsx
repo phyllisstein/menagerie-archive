@@ -1,4 +1,5 @@
-import { ReactChild, ReactElement, useCallback, useState } from 'react'
+import R from 'ramda'
+import { ReactChild, ReactElement, useCallback, useEffect, useRef, useState } from 'react'
 import { animated, useSpring } from 'react-spring'
 
 interface Props {
@@ -6,7 +7,52 @@ interface Props {
 }
 
 export function Palimpsest ({ children }: Props): ReactElement {
-  const [offset, setOffset] = useState(0)
+  const container = useRef()
+  const [containerDimensions, setContainerDimensions] = useState({ lineHeight: 0, width: 0 })
+  useEffect(() => {
+    if (!container.current) return
+
+    const { width } = container.current.getBoundingClientRect()
+    const lineHeight =
+      container.current
+      |> window.getComputedStyle(#)
+      |> R.prop('lineHeight', #)
+      |> Number.parseFloat(#)
+
+    setContainerDimensions({ lineHeight, width })
+  }, [container])
+
+  const [offset, setOffset] = useState({ left: 0, top: 0 })
+  const clampOffset = useCallback(
+    nextOffset => {
+      const left = offset.left + nextOffset
+
+      if (left >= containerDimensions.width) {
+        const top = offset.top + containerDimensions.lineHeight
+        setOffset({
+          left: 0,
+          top,
+        })
+        return
+      }
+
+      if (left <= 0) {
+        const top = offset.top - containerDimensions.lineHeight
+        setOffset(current => ({
+          left: 0,
+          top,
+        }))
+        return
+      }
+
+      setOffset(current => ({
+        ...current,
+        left,
+      }))
+    },
+    [containerDimensions, offset]
+  )
+
   const [sentenceStart, setSentenceStart] = useState('The presence that')
   const [sentenceEnd, setSentenceEnd] = useState(
     'rose thus so strangely beside the waters, is expressive of what in the ways of a thousand years men had come to desire.',
@@ -30,17 +76,18 @@ export function Palimpsest ({ children }: Props): ReactElement {
     setSentenceEnd(end)
   }, [sentenceStart, sentenceEnd])
 
-  const { left } = useSpring({
-    left: offset,
+  const { left, top } = useSpring({
+    left: offset.left,
+    top: offset.top,
   })
 
   return (
     <div>
-      <button onClick={ () => setOffset(o => o - 100) }>←</button>
-      <button onClick={ () => setOffset(o => o + 100) }>→</button>
+      <button onClick={ () => clampOffset(-100) }>←</button>
+      <button onClick={ () => clampOffset(100) }>→</button>
       <button onClick={ wordLeft }>-</button>
       <button onClick={ wordRight }>+</button>
-      <div style={{ position: 'relative', fontSize: '18px' }}>
+      <animated.div ref={ container } style={{ position: 'relative', fontSize: '18px', paddingTop: top }}>
         <animated.span style={{ position: 'absolute', left }}>
           { sentenceStart }
         </animated.span>{ ' ' }
@@ -61,7 +108,7 @@ export function Palimpsest ({ children }: Props): ReactElement {
           age with its spiritual ambition and imaginative loves, the return of
           the Pagan world, the sins of the Borgias.
         </animated.span>
-      </div>
+      </animated.div>
     </div>
   )
 }
