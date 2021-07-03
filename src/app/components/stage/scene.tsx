@@ -1,4 +1,5 @@
 import { FunctionComponent, memo } from 'react'
+import { Root } from './scene-styles'
 
 export interface Props {
   rotate?: number
@@ -33,13 +34,8 @@ export const Scene: FunctionComponent<Props> = memo(function Scene ({
     .join(' ')
 
   return (
-    <div
-      style={{
-        position: 'absolute',
-        transform: `translate(-50%, -50%) ${ transforms }`,
-        transformStyle: 'preserve-3d',
-      }}>
+    <Root style={{ transform: `translate(-50%, -50%) ${ transforms }` }}>
       { children }
-    </div>
+    </Root>
   )
 })

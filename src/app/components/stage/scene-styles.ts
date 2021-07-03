@@ -6,7 +6,8 @@ export const Root = styled.div`
   transform-style: preserve-3d;
   backface-visibility: visible;
 
-  * *::before,
+  *,
+  *::before,
   *::after {
     backface-visibility: visible;
   }
