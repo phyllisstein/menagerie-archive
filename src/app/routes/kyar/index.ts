@@ -1,1 +1,1 @@
-export * from './kyar'
+export * from './router'

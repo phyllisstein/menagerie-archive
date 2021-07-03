@@ -1,8 +1,6 @@
-import { ReactChild, ReactElement } from 'react'
-import { Root } from './scene-styles'
+import { FunctionComponent, memo } from 'react'
 
 export interface Props {
-  children: ReactChild
   rotate?: number
   rotateX?: number
   rotateY?: number
@@ -16,7 +14,10 @@ export interface Props {
   translateZ?: number
 }
 
-export function Scene ({ children, ...rest }: Props): ReactElement {
+export const Scene: FunctionComponent<Props> = memo(function Scene ({
+  children,
+  ...rest
+}) {
   const transforms = Object.entries(rest)
     .map(([kind, amount]) => {
       if (kind.includes('translate')) {
@@ -32,8 +33,13 @@ export function Scene ({ children, ...rest }: Props): ReactElement {
     .join(' ')
 
   return (
-    <Root style={{ transform: `translate(-50%, -50%) ${ transforms }` }}>
+    <div
+      style={{
+        position: 'absolute',
+        transform: `translate(-50%, -50%) ${ transforms }`,
+        transformStyle: 'preserve-3d',
+      }}>
       { children }
-    </Root>
+    </div>
   )
-}
+})

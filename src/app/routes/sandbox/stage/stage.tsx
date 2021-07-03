@@ -2,19 +2,19 @@ import { Scene, Stage } from 'app/components'
 import { js } from 'app/styles/theme/palette'
 import _ from 'lodash'
 import R from 'ramda'
-import { ReactElement, useEffect, useState } from 'react'
+import { ReactElement, useEffect, useRef, useState } from 'react'
 
 const getSolid = R.pipe(
   _.partial(_.filter, _, (_value, key) => key.includes('500')),
   _.sample,
-  c => c.alpha(0.5).css(),
+  c => c.alpha(0.66).css(),
 )
 
 const getJS = R.partial(getSolid, [js])
 
 export function StageSandboxRoute (): ReactElement {
   const [step, setStep] = useState(1)
-  const backgroundColor = getSolid(js)
+  const colorRef = useRef([getJS(), getJS(), getJS(), getJS()])
 
   useEffect(() => {
     const t = setTimeout(() => {
@@ -34,25 +34,41 @@ export function StageSandboxRoute (): ReactElement {
     <Stage step={ step }>
       <Scene translateX={ 250 }>
         <div
-          style={{ backgroundColor: getJS(), height: '250px', width: '250px' }}>
+          style={{
+            backgroundColor: colorRef.current[0],
+            height: 750,
+            width: 250,
+          }}>
           250px [{ step }]
         </div>
       </Scene>
       <Scene translateX={ 500 } scale={ 2 }>
         <div
-          style={{ backgroundColor: getJS(), height: '250px', width: '250px' }}>
+          style={{
+            backgroundColor: colorRef.current[1],
+            height: 125,
+            width: 250,
+          }}>
           500px + 2× [{ step }]
         </div>
       </Scene>
       <Scene translateZ={ -250 } rotate={ -45 }>
         <div
-          style={{ backgroundColor: getJS(), height: '250px', width: '250px' }}>
+          style={{
+            backgroundColor: colorRef.current[2],
+            height: 375,
+            width: 125,
+          }}>
           -12rem × 2z [{ step }]
         </div>
       </Scene>
       <Scene rotateY={ 98 }>
         <div
-          style={{ backgroundColor: getJS(), height: '250px', width: '250px' }}>
+          style={{
+            backgroundColor: colorRef.current[3],
+            height: 768,
+            width: 1024,
+          }}>
           98° [{ step }]
         </div>
       </Scene>

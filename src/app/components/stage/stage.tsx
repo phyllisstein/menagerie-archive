@@ -1,6 +1,13 @@
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
 import _ from 'lodash'
-import { Children, ReactElement, ReactNode, useEffect, useRef } from 'react'
+import {
+  Children,
+  FunctionComponentElement,
+  ReactElement,
+  useEffect,
+  useRef,
+} from 'react'
+import { Props as SceneProps } from './scene'
 import { Proscenium, Root, StageRoot } from './stage-styles'
 
 const VALID_TRANSFORMS = [
@@ -17,14 +24,14 @@ const VALID_TRANSFORMS = [
   'translateZ',
 ]
 
-const INVERSE_TRANSFORMS = []
-
-interface Props {
-  children: ReactNode
+export interface Props {
+  children: OneOrMore<SceneElement>
   step: number
 }
 
-export function Stage ({ children, step = 1 }: Props): ReactElement {
+type SceneElement = FunctionComponentElement<SceneProps>
+
+export function Stage ({ children, step }: Props): ReactElement {
   const rootEl = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -37,9 +44,11 @@ export function Stage ({ children, step = 1 }: Props): ReactElement {
 
   const childArray = Children.toArray(children)
   const currentStep = _.clamp(step, 0, childArray.length - 1)
-  const currentChild = childArray[currentStep]
+  const currentChild = childArray[currentStep] as SceneElement
 
-  const includedTransforms = Object.entries(currentChild.props)
+  const includedTransforms = (
+    Object.entries(currentChild.props) as Array<[string, number]>
+  )
     .filter(([kind]) => VALID_TRANSFORMS.includes(kind))
     .reverse()
     .map(([kind, amount]) => {
@@ -48,35 +57,6 @@ export function Stage ({ children, step = 1 }: Props): ReactElement {
       return [kind, inverse]
     })
 
-  const missingTransforms = VALID_TRANSFORMS.reduce<Array<[string, string]>>(
-    (acc, transform) => {
-      const [_match, name, axis] = Array.from(
-        /^([a-z]+)([XYZ]?)$/.exec(transform) as string[],
-      )
-      const currentKeys = Object.keys(currentChild.props)
-      const value = transform.includes('scale') ? 1 : 0
-
-      if (
-        axis === '' &&
-        currentKeys.find(key => key.startsWith(name)) == null
-      ) {
-        const entry = [transform, value]
-        acc.push(entry)
-      }
-
-      if (axis !== '' && currentKeys.find(key => key === axis) != null) {
-        const entry = [transform, value]
-        acc.push(entry)
-      }
-
-      return acc
-    },
-    [],
-  )
-
-  // const allTransforms = Object.fromEntries(
-  //   includedTransforms.concat(missingTransforms),
-  // )
   const allTransforms = Object.fromEntries(includedTransforms)
 
   return (

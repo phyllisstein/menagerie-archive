@@ -1,4 +1,4 @@
-import { KyarRoute } from 'app/routes/kyar'
+import { KyarRouter } from 'app/routes/kyar'
 import { ApprovalRoute } from 'app/routes/matrix'
 import { SandboxRoute } from 'app/routes/sandbox'
 import { Body } from 'app/styles/global'
@@ -9,7 +9,7 @@ import faviconPNG from 'assets/favicon.png'
 import { AdobeClean, AdobeCleanSerif } from 'assets/fonts'
 import { ReactElement } from 'react'
 import { Helmet } from 'react-helmet-async'
-import { Navigate, Route, Routes } from 'react-router'
+import { Route, Routes } from 'react-router'
 import { RecoilRoot } from 'recoil'
 import { StyleSheetManager, ThemeProvider } from 'styled-components'
 
@@ -42,8 +42,7 @@ export function App (): ReactElement {
             <meta charSet='utf-8' />
             <meta
               content='width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no, user-scalable=no'
-              name='viewport'
-            />
+              name='viewport' />
             { /* Common Metadata */ }
             <meta content={ DESCRIPTION } name='description' />
             <meta content={ KEYWORDS.join(',') } name='keywords' />
@@ -65,9 +64,8 @@ export function App (): ReactElement {
           </Helmet>
 
           <Routes>
-            <Route element={ <Navigate to='1' /> } path='matrix' />
-            <Route element={ <ApprovalRoute /> } path='matrix/:step' />
-            <Route element={ <KyarRoute /> } path='kyar/*' />
+            <Route element={ <ApprovalRoute /> } path='matrix/*' />
+            <Route element={ <KyarRouter /> } path='kyar/*' />
             <Route element={ <SandboxRoute /> } path='sandbox/*' />
           </Routes>
         </ThemeProvider>
