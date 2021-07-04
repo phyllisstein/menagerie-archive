@@ -1,1 +1,1 @@
-export * from './graf'
+export * from './p'

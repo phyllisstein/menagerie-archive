@@ -2,6 +2,7 @@
 
 import { canUseDOM } from 'exenv'
 import pWaitFor from 'p-wait-for'
+import R from 'ramda'
 import { useEffect } from 'react'
 
 export const useHyphenator = targetRef => {
@@ -12,7 +13,10 @@ export const useHyphenator = targetRef => {
       }
 
       await pWaitFor(() => {
-        return !!Hyphenopoly.hyphenators && !!Hyphenopoly.hyphenators.HTML
+        return (
+          R.has('hyphenators', Hyphenopoly) &&
+          R.hasPath(['hyphenators', 'HTML'], Hyphenopoly)
+        )
       })
 
       let hyphenator
@@ -28,8 +32,12 @@ export const useHyphenator = targetRef => {
       hyphenator(targetRef.current, '.__default')
     }
 
-    Promise.resolve().then(async () => {
-      return await hyphenate()
-    })
-  }, [targetRef.current])
+    Promise.resolve()
+      .then(async () => {
+        return await hyphenate()
+      })
+      .catch(err => {
+        throw err
+      })
+  }, [targetRef])
 }

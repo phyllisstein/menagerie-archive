@@ -21,13 +21,7 @@
     "typeRoots": ["./node_modules/@types", "./src/types"]
   },
   "exclude": ["node_modules"],
-  "include": [
-    "**/*.ts",
-    "**/*.tsx",
-    "**/*.d.ts",
-    "./src/types/assets.d.ts",
-    "./src/types/utilities.d.ts"
-  ],
+  "include": ["**/*.ts", "**/*.tsx", "**/*.d.ts", "./global.d.ts"],
   "typeAcquisition": {
     "enable": true
   }

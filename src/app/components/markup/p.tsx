@@ -1,6 +1,6 @@
-import { useHyphenator } from 'app/hooks/ui'
-import { ReactElement, ReactNode, useRef } from 'react'
+import { forwardRef, FunctionComponent, ReactHTML } from 'react'
 import styled from 'styled-components'
+import { useHyphenator } from 'app/hooks/ui'
 
 const BaseP = styled.p`
   ${ ({ theme }) => theme.typeface.primary({ fontSize: 4 }) }
@@ -12,12 +12,14 @@ const BaseP = styled.p`
   }
 `
 
-interface GrafProps {
-  children: ReactNode
-}
+type Graf = ReactHTML['p']
 
-export function Graf ({ children, ...props }: GrafProps): ReactElement {
-  const ref = useRef(null)
+interface GrafProps extends Graf {}
+
+export const P: FunctionComponent<GrafProps> = forwardRef<
+HTMLParagraphElement,
+GrafProps
+>(function P ({ children, ...props }, ref) {
   useHyphenator(ref)
 
   return (
@@ -25,4 +27,4 @@ export function Graf ({ children, ...props }: GrafProps): ReactElement {
       { children }
     </BaseP>
   )
-}
+})

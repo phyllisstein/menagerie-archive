@@ -1,4 +1,4 @@
-const renderApp = async () => {
+const renderApp = async (): Promise<void> => {
   const [
     { App },
     { BrowserRouter },
@@ -13,20 +13,11 @@ const renderApp = async () => {
 
   const main = document.querySelector('main')
 
-  ReactDOM.render(
-    <BrowserRouter>
-      <HelmetProvider>
-        <App />
-      </HelmetProvider>
-    </BrowserRouter>,
-    main,
-  )
-
   if (module.hot != null) {
     module.hot.accept(async (): Promise<void> => {
       const { App } = await import('app/routes')
 
-      await new Promise(resolve => {
+      await new Promise<void>(resolve => {
         ReactDOM.render(
           <BrowserRouter>
             <HelmetProvider>
@@ -39,10 +30,22 @@ const renderApp = async () => {
       })
     })
   }
+
+  await new Promise<void>(resolve => {
+    ReactDOM.render(
+      <BrowserRouter>
+        <HelmetProvider>
+          <App />
+        </HelmetProvider>
+      </BrowserRouter>,
+      main,
+      resolve,
+    )
+  })
 }
 
-const bootstrapHyphenopoly = async () => {
-  const hyphens = await Promise.all([
+const bootstrapHyphenopoly = async (): Promise<void> => {
+  await Promise.all([
     import('hyphenopoly/patterns/en-us.wasm'),
     import('hyphenopoly/Hyphenopoly_Loader.js'),
     import('hyphenopoly/Hyphenopoly.js'),
@@ -88,7 +91,9 @@ const bootstrapHyphenopoly = async () => {
   })
 }
 
-const bootstrap = async () =>
-  await Promise.all([renderApp(), bootstrapHyphenopoly()])
+const bootstrap = async (): Promise<void> => {
+  await bootstrapHyphenopoly()
+  await renderApp()
+}
 
 export default bootstrap
