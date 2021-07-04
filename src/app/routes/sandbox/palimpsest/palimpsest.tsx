@@ -1,4 +1,4 @@
-import { Graf } from 'app/components/markup'
+import { P } from 'app/components/markup'
 import { Palimpsest } from 'app/components/palimpsest'
 import { ReactElement } from 'react'
 import { Original, Replacement } from './palimpsest-styles'
@@ -7,7 +7,7 @@ export function PalimpsestSandboxRoute (): ReactElement {
   return (
     <div style={{ margin: '1.778rem auto', width: '56.2%' }}>
       <Palimpsest>
-        <Graf>
+        <P>
           ”And how did Lady Brandon describe this wonderful young man? I know
           she goes in for giving a rapid <em>précis</em> of all her guests. I
           remember her bringing me up to a truculent and red-faced old gentleman
@@ -27,7 +27,7 @@ export function PalimpsestSandboxRoute (): ReactElement {
           Brandon treats her guests exactly as an auctioneer treats his goods.
           She either explains them entirely away, or tells one everything about
           them except what one wants to know.”
-        </Graf>
+        </P>
       </Palimpsest>
     </div>
   )

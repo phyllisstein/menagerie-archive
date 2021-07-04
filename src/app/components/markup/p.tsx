@@ -1,4 +1,4 @@
-import { forwardRef, FunctionComponent, ReactHTML } from 'react'
+import { forwardRef, FunctionComponent, ReactHTML, Ref } from 'react'
 import styled from 'styled-components'
 import { useHyphenator } from 'app/hooks/ui'
 
@@ -14,7 +14,9 @@ const BaseP = styled.p`
 
 type Graf = ReactHTML['p']
 
-interface GrafProps extends Graf {}
+interface GrafProps extends Graf {
+  ref?: Ref<HTMLParagraphElement>
+}
 
 export const P: FunctionComponent<GrafProps> = forwardRef<
 HTMLParagraphElement,

@@ -6,7 +6,8 @@ import {
   useRef,
   useState,
 } from 'react'
-import { animated, useSpring } from 'react-spring'
+import { motion } from 'framer-motion'
+import { P } from '../markup'
 
 interface Props {
   children: ReactChild
@@ -22,9 +23,9 @@ export function Palimpsest ({ children }: Props): ReactElement {
   useEffect(() => {
     if (container.current == null) return
 
-    const { width } = container.current.getBoundingClientRect()
-    const lineHeight = Number.parseFloat(
-      window.getComputedStyle(container.current).lineHeight,
+    const width = Math.round(container.current.getBoundingClientRect().width)
+    const lineHeight = Math.round(
+      Number.parseFloat(window.getComputedStyle(container.current).lineHeight),
     )
 
     setContainerDimensions({ lineHeight, width })
@@ -36,45 +37,48 @@ export function Palimpsest ({ children }: Props): ReactElement {
       const left = offset.left + nextOffset
 
       if (left >= containerDimensions.width) {
-        const top = offset.top + containerDimensions.lineHeight
         setOffset({
           left: 0,
-          top,
+          top: offset.top + containerDimensions.lineHeight,
         })
         return
       }
 
       if (left <= 0) {
-        const top = offset.top - containerDimensions.lineHeight
+        const top = Math.max(offset.top - containerDimensions.lineHeight, 0)
+        const left = top === 0 ? 0 : containerDimensions.width
+
         setOffset({
-          left: containerDimensions.width,
+          left,
           top,
         })
         return
       }
 
-      setOffset(current => ({
-        ...current,
-        left,
-      }))
+      setOffset({ left, top: offset.top })
     },
     [containerDimensions, offset],
   )
-
-  const { left, top } = useSpring({
-    left: offset.left,
-    top: offset.top,
-  })
 
   return (
     <div>
       <button onClick={ () => clampOffset(-100) }>←</button>
       <button onClick={ () => clampOffset(100) }>→</button>
-      <animated.div
-        ref={ container }
-        style={{ position: 'relative', fontSize: '18px', paddingTop: top }}>
-        <animated.span style={{ marginLeft: left }}>The</animated.span>{ ' ' }
-        <animated.span>
+      <P
+        ref={ el => (container.current = el == null ? undefined : el) }
+        animate={{ paddingTop: offset.top }}
+        as={ motion.p }
+        initial={{ paddingTop: 0 }}
+        style={{
+          fontSize: '18px',
+          position: 'relative',
+        }}>
+        <motion.span
+          animate={{ marginLeft: offset.left }}
+          initial={{ marginLeft: 0 }}>
+          The
+        </motion.span>{ ' ' }
+        <motion.span>
           presence that rose thus so strangely beside the waters, is expressive
           of what in the ways of a thousand years men had come to desire. Hers
           is the head upon which all “the ends of the world are come,” and the
@@ -89,8 +93,8 @@ export function Palimpsest ({ children }: Props): ReactElement {
           the animalism of Greece, the lust of Rome, the mysticism of the middle
           age with its spiritual ambition and imaginative loves, the return of
           the Pagan world, the sins of the Borgias.
-        </animated.span>
-      </animated.div>
+        </motion.span>
+      </P>
     </div>
   )
 }
