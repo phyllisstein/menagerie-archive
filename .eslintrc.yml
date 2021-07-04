@@ -16,12 +16,14 @@ extends:
   - plugin:ramda/recommended
   - plugin:react-hooks/recommended
   - plugin:react/recommended
+  - plugin:jsx-a11y/recommended
   - standard
   - standard-jsx
   - standard-react
   - standard-with-typescript
 plugins:
   - '@typescript-eslint'
+  - jsx-a11y
   - ramda
   - react
   - react-hooks
@@ -31,6 +33,39 @@ settings:
     version: '17'
 
 rules:
+  '@typescript-eslint/ban-types': warn
+  '@typescript-eslint/consistent-type-imports':
+    - warn
+    - prefer: no-type-imports
+  '@typescript-eslint/member-delimiter-style':
+    - warn
+    - multiline:
+        delimiter: none
+      singleline:
+        delimiter: comma
+  '@typescript-eslint/no-array-constructor': warn
+  '@typescript-eslint/no-empty-interface': warn
+  '@typescript-eslint/no-extra-non-null-assertion': warn
+  '@typescript-eslint/no-extra-semi': warn
+  '@typescript-eslint/no-inferrable-types': warn
+  '@typescript-eslint/no-misused-promises': 'off'
+  '@typescript-eslint/no-unused-expressions':
+    - warn
+    - allowShortCircuit: true
+      allowTaggedTemplates: true
+      allowTernary: true
+  '@typescript-eslint/no-unused-vars':
+    - error
+    - argsIgnorePattern: '^_.+'
+      varsIgnorePattern: '^_.+'
+  '@typescript-eslint/prefer-as-const': warn
+  '@typescript-eslint/prefer-namespace-keyword': warn
+  '@typescript-eslint/restrict-template-expressions': 'off'
+  '@typescript-eslint/semi':
+    - warn
+    - never
+  '@typescript-eslint/sort-type-union-intersection-members': warn
+
   react/display-name: 'off'
   react/jsx-closing-bracket-location:
     - warn
@@ -47,32 +82,94 @@ rules:
       when: always
       spacing:
         objectLiterals: never
+  react/jsx-indent:
+    - warn
+    - 2
+    - checkAttributes: true
+      indentLogicalExpressions: true
+  react/jsx-indent-props:
+    - warn
+    - 2
+  react/jsx-pascal-case:
+    - error
+    - allowAllCaps: true
+  react/jsx-sort-default-props:
+    - error
+    - ignoreCase: true
+  react/jsx-sort-props:
+    - warn
+    - callbacksLast: true
+      ignoreCase: true
+      reservedFirst: true
+      shorthandFirst: true
+  react/jsx-tag-spacing:
+    - warn
+    - beforeSelfClosing: always
   react/prop-types: 'off'
   react/react-in-jsx-scope: 'off'
-
-  '@typescript-eslint/no-misused-promises': 'off'
-  '@typescript-eslint/no-unused-expressions':
-    - warn
-    - allowShortCircuit: true
-      allowTaggedTemplates: true
-      allowTernary: true
-  '@typescript-eslint/no-unused-vars':
+  react/self-closing-comp: warn
+  react/sort-comp:
     - error
-    - argsIgnorePattern: '^_.+'
-      varsIgnorePattern: '^_.+'
-  '@typescript-eslint/restrict-template-expressions': 'off'
+    - order:
+        - static-variables
+        - static-methods
+        - instance-variables
+        - instance-methods
+        - everything-else
+        - render
+  react/sort-prop-types:
+    - error
+    - callbacksLast: true
+      ignoreCase: true
+      requiredFirst: true
+      sortShapeProp: true
 
+  react-hooks/rules-of-hooks: error
+  react-hooks/exhaustive-deps:
+    - warn
+    - additionalHooks: RecoilCallback
+
+  sort-destructure-keys/sort-destructure-keys:
+    - warn
+    - caseSensitive: false
+
+  accessor-pairs: 'off'
   comma-dangle:
     - warn
     - always-multiline
+  eol-last: 'off'
+  indent:
+    - warn
+    - 2
+  no-extra-boolean-cast: 'off'
+  no-extra-semi: 'off'
+  no-multiple-empty-lines:
+    - warn
+    - max: 2
+      maxBOF: 0
+  no-regex-spaces: 'off'
+  no-return-assign: 'off'
   no-trailing-spaces: 'off'
+  no-unused-expressions: 'off' # @typescript-eslint/no-unused-expressions
+  no-unused-vars: 'off' # @typescript-eslint/no-unused-vars
+  no-var: warn
   object-curly-spacing:
     - warn
     - always
     - objectsInObjects: false
-  # sort-imports:
-  #   - warn
-  #   - ignoreCase: true
+  prefer-const: warn
+  prefer-rest-params: error
+  radix: error
+  semi: 'off'
+  sort-imports:
+    - warn
+    - ignoreCase: true
+  sort-keys:
+    - error
+    - asc
+    - caseSensitive: false
+      natural: true
+  sort-vars: 'off'
   template-curly-spacing:
     - warn
     - always
