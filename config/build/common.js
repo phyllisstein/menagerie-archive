@@ -11,7 +11,6 @@ const server = new Config()
 
 const BABEL_OPTIONS = {
   babelrc: false,
-  cacheDirectory: false,
   presets: ['@babel/typescript'],
   plugins: [
     '@babel/proposal-async-generator-functions',
@@ -212,14 +211,6 @@ client.plugin('loadable').use(LoadablePlugin)
 //       },
 //     ])
 
-client.optimization.runtimeChunk('single').splitChunks({
-  chunks: 'all',
-})
-
-client.set('experiments', {
-  asset: true,
-})
-
 server.name('server').context(path.resolve('./src')).target('node')
 
 server.entry('main').add('./bootstrap/server')
@@ -361,9 +352,5 @@ server.externals([
   },
   nodeExternals(),
 ])
-
-server.set('experiments', {
-  asset: true,
-})
 
 module.exports = { client, server }

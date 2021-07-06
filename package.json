@@ -160,7 +160,6 @@
     "@types/webpack-node-externals": "^2.5.1",
     "@typescript-eslint/eslint-plugin": "^4.28.1",
     "@typescript-eslint/parser": "^4.28.1",
-    "@webpack-cli/serve": "^1.5.1",
     "@welldone-software/why-did-you-render": "^6.2.0",
     "babel-eslint": "11.0.0-beta.2",
     "babel-loader": "^8.2.2",
@@ -223,10 +222,7 @@
     "typescript": "next",
     "webpack": "^5.42.0",
     "webpack-chain": "^6.5.1",
-    "webpack-cli": "^4.7.2",
-    "webpack-common-shake": "^2.1.0",
     "webpack-dev-middleware": "^5.0.0",
-    "webpack-dev-server": "^4.0.0-beta.3",
     "webpack-hot-middleware": "^2.25.0",
     "webpack-node-externals": "^3.0.0"
   }
