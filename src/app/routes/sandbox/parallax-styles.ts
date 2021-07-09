@@ -40,9 +40,11 @@ export const Layer = styled(motion.div)<LayerProps>`
   color: ${ ({ $depth, theme }) => theme.palette.css[DEPTH_COLORS[$depth]] };
   font-size: 8rem;
 
+  transform-origin: center;
+
   img {
-    width: 50%;
-    height: auto;
+    width: auto;
+    max-height: 50vh;
   }
 `
 
@@ -64,7 +66,7 @@ export const StoryWrapper = styled.div`
   width: 100vw;
   height: 100vh;
 
-  transform-origin: top left;
+  transform-origin: center;
   transform-style: preserve-3d;
   perspective: 1000px;
 `

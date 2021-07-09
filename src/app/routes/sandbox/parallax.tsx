@@ -14,12 +14,12 @@ export function ParallaxSandboxRoute (): ReactElement {
   const wrapperRef = useRef<HTMLDivElement>(null)
 
   const mainLayer = useMotionValue(0)
-  const backThreeLayer = useTransform(mainLayer, x => x / 6)
-  const backTwoLayer = useTransform(mainLayer, x => x / 5)
-  const backOneLayer = useTransform(mainLayer, x => x / 4)
-  const frontOneLayer = useTransform(mainLayer, x => x / 3)
-  const frontTwoLayer = useTransform(mainLayer, x => x / 2)
-  const frontThreeLayer = useTransform(mainLayer, x => x * 1)
+  const backThreeLayer = useTransform(mainLayer, x => x * -1.44)
+  const backTwoLayer = useTransform(mainLayer, x => x * -1.2)
+  const backOneLayer = useTransform(mainLayer, x => x * -0.5)
+  const frontOneLayer = useTransform(mainLayer, x => x * 0.5)
+  const frontTwoLayer = useTransform(mainLayer, x => x * 1.2)
+  const frontThreeLayer = useTransform(mainLayer, x => x * 1.44)
 
   useGesture(
     {
