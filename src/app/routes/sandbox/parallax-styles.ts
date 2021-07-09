@@ -1,4 +1,4 @@
-import { animated } from 'react-spring'
+import { motion } from 'framer-motion'
 import styled from 'styled-components'
 
 export const Image = styled.img`
@@ -8,19 +8,28 @@ export const Image = styled.img`
 interface LayerProps {
   $depth: number
 }
+type Colors = Array<
+| 'blue400'
+| 'celery400'
+| 'fucsia400'
+| 'indigo400'
+| 'magenta400'
+| 'orange400'
+| 'seafoam400'
+>
 
-const DEPTH_COLORS = [
+const DEPTH_COLORS: Colors = [
   'blue400',
-  'indigo400',
   'magenta400',
   'celery400',
-  'orange400'
+  'indigo400',
+  'orange400',
+  'seafoam400',
+  'fucsia400',
 ]
 
-export const Layer = styled(animated.div)<LayerProps>`
+export const Layer = styled(motion.div)<LayerProps>`
   position: absolute;
-  top: 0;
-  left: 0;
 
   display: flex;
   align-items: center;
@@ -28,10 +37,13 @@ export const Layer = styled(animated.div)<LayerProps>`
   width: 100%;
   height: 50vh;
 
+  color: ${ ({ $depth, theme }) => theme.palette.css[DEPTH_COLORS[$depth]] };
   font-size: 8rem;
-  color: ${({ $depth, theme }) => theme.palette.css[DEPTH_COLORS[$depth - 1]]};
 
-  /* background: ${({ $depth, theme }) => theme.palette.js[DEPTH_COLORS[$depth - 1]].alpha(0.2).css()}; */
+  img {
+    width: 50%;
+    height: auto;
+  }
 `
 
 export const Root = styled.div`
@@ -45,12 +57,14 @@ export const Root = styled.div`
 
 export const StoryWrapper = styled.div`
   position: absolute;
-  top: 25%;
 
-  height: 50%;
-  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
 
-  perspective: 1000px;
-  transform-style: preserve-3d;
   transform-origin: top left;
+  transform-style: preserve-3d;
+  perspective: 1000px;
 `

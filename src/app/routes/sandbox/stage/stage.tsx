@@ -1,8 +1,10 @@
-import { Scene, Stage } from 'app/components'
-import { js } from 'app/styles/theme/palette'
-import _ from 'lodash'
-import R from 'ramda'
+/* eslint-disable react/jsx-sort-props */
+
 import { ReactElement, useEffect, useRef, useState } from 'react'
+import { Scene, Stage } from 'app/components'
+import _ from 'lodash'
+import { js } from 'app/styles/theme/palette'
+import R from 'ramda'
 
 const getSolid = R.pipe(
   _.partial(_.filter, _, (_value, key) => key.includes('500')),

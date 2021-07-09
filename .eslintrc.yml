@@ -16,14 +16,12 @@ extends:
   - plugin:ramda/recommended
   - plugin:react-hooks/recommended
   - plugin:react/recommended
-  - plugin:jsx-a11y/recommended
   - standard
   - standard-jsx
   - standard-react
   - standard-with-typescript
 plugins:
   - '@typescript-eslint'
-  - jsx-a11y
   - ramda
   - react
   - react-hooks

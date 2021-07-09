@@ -6,6 +6,7 @@ export const js = {
   text: spectrum.gray900,
 }
 
+export type ColorNames = keyof JS
 export type JS = typeof js
 export type CSS = { [k in keyof JS]: string }
 
