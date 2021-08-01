@@ -1,6 +1,7 @@
 const { client } = require('./common')
 const HTMLPlugin = require('html-webpack-plugin')
 const merge = require('merge-deep')
+const path = require('path')
 const TimeFixPlugin = require('time-fix-plugin')
 const ReactRefreshPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
 const { HotModuleReplacementPlugin } = require('webpack')
@@ -9,7 +10,7 @@ const enableWDYR = process.env.WHY_DID_YOU_RENDER != null
 
 client
   .mode('development')
-  .devtool('eval-cheap-module-source-map')
+  .devtool('cheap-module-source-map')
 
 client.output
   .chunkFilename('js/[name].[contenthash].js')
@@ -81,16 +82,27 @@ client
   .plugin('fast-refresh')
   .use(ReactRefreshPlugin)
 
-client
-  .plugin('time-fix')
-  .use(TimeFixPlugin)
+client.cache({
+  buildDependencies: {
+    config: [
+      __filename,
+      path.resolve(__dirname, 'common.js'),
+    ],
+  },
+  type: 'filesystem',
+})
 
+client.cache(false)
 
-client.devServer.merge({
-  historyApiFallback: true,
-  host: 'talk.danielsh.here',
-  static: [{ serveIndex: true }],
-  watchFiles: ['config/build/*.js'],
+client.merge({
+  experiments: {
+    executeModule: true,
+    lazyCompilation: {
+      entries: false,
+      imports: true,
+    },
+    outputModule: true,
+  },
 })
 
 exports.client = client

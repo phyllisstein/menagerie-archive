@@ -11,6 +11,8 @@ const server = new Config()
 
 const BABEL_OPTIONS = {
   babelrc: false,
+  cacheDirectory: false,
+  ignore: [/node_modules/],
   presets: ['@babel/typescript'],
   plugins: [
     '@babel/proposal-async-generator-functions',
@@ -90,7 +92,10 @@ client.module
             modules: false,
             targets: {
               browsers: [
-                'last 2 major versions and > 5% in US and not dead and not ie > 0',
+                '>10% in US',
+                'last 2 major versions',
+                'not dead',
+                'not ie >= 0',
               ],
             },
             useBuiltIns: 'usage',

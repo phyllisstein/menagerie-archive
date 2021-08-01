@@ -15,8 +15,8 @@ declare module '*.png' {
 }
 
 declare module '*.svg' {
-  import { ReactSVGElement } from 'react'
-  const s: ReactSVGElement
+  import { ReactSVGFactory } from 'react'
+  const s: ReactSVGFactory
   export default s
 }
 

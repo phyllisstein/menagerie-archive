@@ -24,6 +24,13 @@ app.use(historyAPIFallback({}))
 app.use(devMiddleware(compiler))
 app.use(hotMiddleware(compiler))
 
-app.listen(PORT, VIRTUAL_HOST, () => {
-  console.log(`Server listening on port: ${ PORT }!`)
-})
+if (typeof PhusionPassenger !== 'undefined') {
+  PhusionPassenger.configure({ autoInstall: false })
+  app.listen('passenger', () => {
+    console.log('Application listening through Phusion Passenger!')
+  })
+} else {
+  app.listen(PORT, VIRTUAL_HOST, () => {
+    console.log(`Server listening on port: ${ PORT }!`)
+  })
+}
