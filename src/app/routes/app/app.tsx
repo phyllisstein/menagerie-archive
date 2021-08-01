@@ -1,10 +1,10 @@
 import { AdobeClean, AdobeCleanSerif } from 'assets/fonts'
+import { Body, Reboot } from 'app/styles/global'
 import { Route, Routes } from 'react-router'
 import { StyleSheetManager, ThemeProvider } from 'styled-components'
 import { ApprovalRoute } from 'app/routes/matrix'
 import avatarFB from 'assets/avatar-fb.jpg'
 import avatarTW from 'assets/avatar-tw.jpg'
-import { Body } from 'app/styles/global'
 import faviconPNG from 'assets/favicon.png'
 import { Helmet } from 'react-helmet-async'
 import { KyarRouter } from 'app/routes/kyar'
@@ -32,6 +32,7 @@ export function App (): ReactElement {
     <RecoilRoot>
       <StyleSheetManager disableVendorPrefixes>
         <ThemeProvider theme={ theme }>
+          <Reboot />
           <Body />
           <AdobeClean />
           <AdobeCleanSerif />
