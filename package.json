@@ -1,18 +1,18 @@
 {
-  "name": "an-evening-with",
+  "name": "prolegomena",
   "version": "0.0.0",
-  "description": "Talks and performances.",
-  "license": "GPL-3.0",
+  "description": "Preliminary, prefatory, preambulary.",
+  "license": "GPL-3.0-or-later",
   "repository": {
     "type": "git",
-    "url": "https://github.com/phyllisstein/an-evening-with"
+    "url": "https://github.com/phyllisstein/prolegomena.git"
   },
   "author": {
     "name": "Daniel P. Shannon",
     "email": "daniel@fleet.i.ng",
     "url": "https://fleet.i.ng"
   },
-  "bugs": "https://github.com/phyllisstein/an-evening-with/issues",
+  "bugs": "https://github.com/phyllisstein/prolegomena/issues",
   "scripts": {
     "clean": "npm-run-all 'clean:*'",
     "clean:build": "del build dist",

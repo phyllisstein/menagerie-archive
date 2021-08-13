@@ -19,5 +19,8 @@
   ],
   "stylelint.enable": true,
   "jupyter.jupyterServerType": "local",
-  "typescript.tsdk": "node_modules/typescript/lib"
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "licenser.license": "GPLv3",
+  "licenser.projectName": "Prolegomena",
+  "licenser.author": "Daniel P. Shannon"
 }
