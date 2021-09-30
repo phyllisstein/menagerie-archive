@@ -1,21 +1,5 @@
 import { FunctionComponent, memo } from 'react'
-import { Properties } from 'csstype'
 import { Root } from './scene-styles'
-
-export const createTransformString = (props: Props): string =>
-  Object.entries(props)
-    .map(([kind, amount]) => {
-      if (kind.includes('translate')) {
-        return `${ kind }(${ amount }px)`
-      }
-
-      if (kind.includes('rotate')) {
-        return `${ kind }(${ amount }deg)`
-      }
-
-      return `${ kind }(${ amount })`
-    })
-    .join(' ')
 
 export interface Props {
   relative?: boolean
@@ -26,28 +10,27 @@ export interface Props {
   scale?: number
   scaleX?: number
   scaleY?: number
-  style?: Properties
   translate?: number
   translateX?: number
   translateY?: number
   translateZ?: number
 }
 
-export const Scene: FunctionComponent<Props> = function Scene ({
+export const Scene: FunctionComponent<Props> = memo(function Scene ({
   children,
   relative: _relative,
-  style = {},
+  rotate: _rotate,
+  rotateX: _rotateX,
+  rotateY: _rotateY,
+  rotateZ: _rotateZ,
+  scale: _scale,
+  scaleX: _scaleX,
+  scaleY: _scaleY,
+  translate: _translate,
+  translateX: _translateX,
+  translateY: _translateY,
+  translateZ: _translateZ,
   ...rest
 }) {
-  const transforms = createTransformString(rest)
-
-  return (
-    <Root
-      style={{
-        ...style,
-        transform: `translate(-50%, -50%) ${ transforms }`,
-      }}>
-      { children }
-    </Root>
-  )
-}
+  return <Root { ...rest }>{ children }</Root>
+})

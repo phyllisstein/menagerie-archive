@@ -12,6 +12,27 @@ import { Scene, Props as SceneProps } from './scene'
 import _ from 'lodash'
 import R from 'ramda'
 
+const createTransformString = (props: SceneProps): string =>
+  Object.entries(props)
+    .filter(
+      ([key]) =>
+        key.includes('scale') ||
+        key.includes('translate') ||
+        key.includes('rotate'),
+    )
+    .map(([kind, amount]) => {
+      if (kind.includes('translate')) {
+        return `${ kind }(${ amount }px)`
+      }
+
+      if (kind.includes('rotate')) {
+        return `${ kind }(${ amount }deg)`
+      }
+
+      return `${ kind }(${ amount })`
+    })
+    .join(' ')
+
 const mergeTransforms = R.mergeWithKey(
   (key: string, lhs: number, rhs: number): number => {
     if (
@@ -95,14 +116,32 @@ export function Stage ({ children, step }: Props): ReactElement {
   const childArray = useMemo(() => {
     return Children.toArray(children).map((child, childNumber, childArray) => {
       const childEl = child as SceneElement
+      const currentTrasnforms = createTransformString(childEl.props)
 
-      if (childEl.props.relative == null || childNumber === 0) return child
+      if (childEl.props.relative == null || childNumber === 0) {
+        return React.cloneElement<SceneElement>(childEl, {
+          ...childEl.props,
+          style: {
+            ...childEl.props.style,
+            transform: currentTrasnforms,
+          },
+        })
+      }
 
       const previousStep = _.clamp(childNumber, 0, childNumber - 1)
-
       const previousChild = childArray[previousStep] as SceneElement
-      const relativeProps = mergeTransforms(previousChild.props, childEl.props)
-      return React.cloneElement(childEl, relativeProps)
+
+      const transform = [
+        previousChild.props.style?.transform,
+        currentTrasnforms,
+      ].join(' ')
+
+      const style = { ...childEl.props.style, transform }
+
+      return React.cloneElement(childEl, {
+        ...childEl.props,
+        style,
+      })
     })
   }, [children])
 
