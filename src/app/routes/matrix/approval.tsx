@@ -1,44 +1,58 @@
-import { Entry, Impress, Step } from 'app/components'
+/* eslint-disable react/jsx-sort-props */
+
+import { Entry, Scene, Stage } from 'app/components'
+import { ReactElement, useEffect, useState } from 'react'
 import gtasa from 'assets/matrix/gtasa.jpg'
 import { Image } from './approval-styles'
 import madge from 'assets/matrix/madge.png'
 import Madge from 'assets/matrix/madge.svg'
-import { ReactElement } from 'react'
 import twenty from 'assets/matrix/twenty.jpg'
 
 export function ApprovalRoute (): ReactElement {
+  const [step, setStep] = useState(0)
+
+  useEffect(() => {
+    const t = setTimeout(() => {
+      setStep(s => {
+        if (s === 3) {
+          return 0
+        }
+
+        return s + 1
+      })
+    }, 5000)
+
+    return () => clearTimeout(t)
+  })
+
   return (
-    <Impress height={1024} width={1024}>
-      <Step scale={2} style={{ pointerEvents: 'none' }} />
-      <Step
-        position={{ x: -512, z: 256 }}
-        scale={0.5}
-        style={{ pointerEvents: 'none' }}
-      >
+    <Stage step={ step }>
+      <Scene scale={ 2 } />
+      <Scene translateX={ -512 } translateZ={ 256 } scale={ 0.5 }>
         <Entry>
           <Entry.Text>
             <strong>Madonna</strong>, Oxford student.
           </Entry.Text>
-          <Image src={madge} style={{ clipPath: 'url(\'#madge_svg__madge\')' }} />
+          <Image src={ madge } style={{ clipPath: "url('#madge_svg__madge')" }} />
           <Madge />
         </Entry>
-      </Step>
-      <Step position={{ x: 250, z: -500 }}>
+      </Scene>
+      <Scene translateX={ 250 } translateZ={ -500 }>
         <Entry>
           <Entry.Text>
             <strong>MoMA</strong> charges $20.
           </Entry.Text>
-          <Image src={twenty} />
+          <Image src={ twenty } />
         </Entry>
-      </Step>
-      <Step position={{ x: 125, y: 250 }} rotation={{ x: -15, y: -45 }}>
+      </Scene>
+      <Scene relative translateX={ 150 } translateY={ 25 } rotateY={ -55 }>
         <Entry>
           <Entry.Text>
             <strong>Grand Theft Auto: San Andreas.</strong> Vroom.
           </Entry.Text>
-          <Image src={gtasa} />
+          <Image src={ gtasa } />
         </Entry>
-      </Step>
-    </Impress>
+      </Scene>
+    </Stage>
   )
 }

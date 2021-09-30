@@ -1,5 +1,5 @@
 import { Body, Canvas, Root } from './impress-styles'
-import { useEffect, useRef, useState } from 'react'
+import { FunctionComponent, useEffect, useRef, useState } from 'react'
 import { useStep, useSteppedChildren } from 'app/hooks/impress'
 import { addEventListener } from 'consolidated-events'
 import { canUseDOM } from 'exenv'
@@ -7,7 +7,16 @@ import { impress } from 'app/state'
 import R from 'ramda'
 import { useRecoilValue } from 'recoil'
 
-const getWindowScale = (height, width, scaleConstraints = {}) => {
+export type ScaleConstraints = { min?: number; max?: number }
+
+export interface ImpressProps {
+  height?: number
+  perspective?: number
+  scale?: ScaleConstraints
+  width?: number
+}
+
+const getWindowScale = (height: number, width: number, scaleConstraints: ScaleConstraints = {}): number => {
   if (!canUseDOM) {
     return 1
   }
@@ -27,7 +36,7 @@ const getWindowScale = (height, width, scaleConstraints = {}) => {
   return scaleWindow
 }
 
-export const Impress = ({
+export const Impress: FunctionComponent<ImpressProps> = ({
   children,
   height,
   perspective: perspectiveBase = 1000,
@@ -35,8 +44,8 @@ export const Impress = ({
   width,
   ...props
 }) => {
-  width ??= canUseDOM && window.innerWidth
-  height ??= canUseDOM && window.innerHeight
+  width ??= canUseDOM ? window.innerWidth : 0
+  height ??= canUseDOM ? window.innerHeight : 0
 
   const [windowScale, setWindowScale] = useState(() =>
     getWindowScale(height, width, scaleConstraints)

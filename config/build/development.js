@@ -10,7 +10,7 @@ const enableWDYR = process.env.WHY_DID_YOU_RENDER != null
 
 client
   .mode('development')
-  .devtool('cheap-module-source-map')
+  .devtool('source-map')
 
 client.output
   .chunkFilename('js/[name].[contenthash].js')
@@ -92,11 +92,9 @@ client.cache({
   type: 'filesystem',
 })
 
-client.cache(false)
-
 client.merge({
   experiments: {
-    executeModule: true,
+    futureDefaults: true,
     lazyCompilation: {
       entries: false,
       imports: true,

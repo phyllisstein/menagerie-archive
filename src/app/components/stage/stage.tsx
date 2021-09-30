@@ -1,28 +1,32 @@
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
-import _ from 'lodash'
-import {
+import React, {
   Children,
   FunctionComponentElement,
   ReactElement,
   useEffect,
+  useMemo,
   useRef,
 } from 'react'
-import { Props as SceneProps } from './scene'
 import { Root, StageRoot } from './stage-styles'
+import { Scene, Props as SceneProps } from './scene'
+import _ from 'lodash'
+import R from 'ramda'
 
-const VALID_TRANSFORMS = [
-  'rotate',
-  'rotateX',
-  'rotateY',
-  'rotateZ',
-  'scale',
-  'scaleX',
-  'scaleY',
-  'translate',
-  'translateX',
-  'translateY',
-  'translateZ',
-]
+const mergeTransforms = R.mergeWithKey(
+  (key: string, lhs: number, rhs: number): number => {
+    if (
+      !key.includes('scale') &&
+      !key.includes('translate') &&
+      !key.includes('rotate')
+    ) {
+      console.log('Not merging: %s:\t\t %n != %n', key, lhs, rhs)
+      return rhs
+    }
+
+    console.log('Merging: %s:\t\t %n + %n = %n', key, lhs, rhs)
+    return lhs + rhs
+  },
+)
 
 const getScale = (childProps: SceneProps): ScaleMap => {
   const entries = (Object.entries(childProps) as Array<[string, number]>)
@@ -88,7 +92,20 @@ export function Stage ({ children, step }: Props): ReactElement {
     staleScale.current = { ...freshScale }
   })
 
-  const childArray = Children.toArray(children)
+  const childArray = useMemo(() => {
+    return Children.toArray(children).map((child, childNumber, childArray) => {
+      const childEl = child as SceneElement
+
+      if (childEl.props.relative == null || childNumber === 0) return child
+
+      const previousStep = _.clamp(childNumber, 0, childNumber - 1)
+
+      const previousChild = childArray[previousStep] as SceneElement
+      const relativeProps = mergeTransforms(previousChild.props, childEl.props)
+      return React.cloneElement(childEl, relativeProps)
+    })
+  }, [children])
+
   const currentStep = _.clamp(step, 0, childArray.length - 1)
   const currentChild = childArray[currentStep] as SceneElement
 
@@ -101,12 +118,12 @@ export function Stage ({ children, step }: Props): ReactElement {
 
   return (
     <Root
-      animate={ scale }
       ref={ rootEl }
+      animate={ scale }
       transformTemplate={ joinSortedEntries }
       transition={{
         damping: 10,
-        mass: 1.5,
+        mass: 1,
         stiffness: 100,
         type: 'spring',
         when: didZoom ? 'afterChildren' : 'beforeChildren',
@@ -116,12 +133,11 @@ export function Stage ({ children, step }: Props): ReactElement {
         transformTemplate={ joinSortedEntries }
         transition={{
           damping: 10,
-          delay: !didZoom ? 0.25 : 0,
-          mass: 1.5,
+          mass: 1,
           stiffness: 100,
           type: 'spring',
         }}>
-        { children }
+        { childArray }
       </StageRoot>
     </Root>
   )
