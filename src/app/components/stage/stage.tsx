@@ -11,27 +11,7 @@ import { Root, StageRoot } from './stage-styles'
 import { Scene, Props as SceneProps } from './scene'
 import _ from 'lodash'
 import R from 'ramda'
-
-const createTransformString = (props: SceneProps): string =>
-  Object.entries(props)
-    .filter(
-      ([key]) =>
-        key.includes('scale') ||
-        key.includes('translate') ||
-        key.includes('rotate'),
-    )
-    .map(([kind, amount]) => {
-      if (kind.includes('translate')) {
-        return `${ kind }(${ amount }px)`
-      }
-
-      if (kind.includes('rotate')) {
-        return `${ kind }(${ amount }deg)`
-      }
-
-      return `${ kind }(${ amount })`
-    })
-    .join(' ')
+import { canUseDOM } from 'exenv'
 
 const mergeTransforms = R.mergeWithKey(
   (key: string, lhs: number, rhs: number): number => {
@@ -74,6 +54,7 @@ const joinSortedEntries = (obj: { [key: string]: unknown }): string =>
 
 export interface Props {
   children: OneOrMore<SceneElement>
+  perspective?: number | string
   step: number
 }
 
@@ -96,7 +77,9 @@ interface TranslateMap {
   translateZ: number
 }
 
-export function Stage ({ children, step }: Props): ReactElement {
+export function Stage ({ children, perspective, step }: Props): ReactElement {
+  perspective ??= canUseDOM ? window.innerWidth : 1000
+
   const rootEl = useRef<HTMLDivElement>(null)
   const staleScale = useRef<ScaleMap>({ scale: 1, scaleX: 1, scaleY: 1 })
 
@@ -116,37 +99,25 @@ export function Stage ({ children, step }: Props): ReactElement {
   const childArray = useMemo(() => {
     return Children.toArray(children).map((child, childNumber, childArray) => {
       const childEl = child as SceneElement
-      const currentTrasnforms = createTransformString(childEl.props)
 
-      if (childEl.props.relative == null || childNumber === 0) {
-        return React.cloneElement<SceneElement>(childEl, {
-          ...childEl.props,
-          style: {
-            ...childEl.props.style,
-            transform: currentTrasnforms,
-          },
-        })
-      }
+      if (childEl.props.relative == null || childNumber === 0) return childEl
 
       const previousStep = _.clamp(childNumber, 0, childNumber - 1)
       const previousChild = childArray[previousStep] as SceneElement
 
-      const transform = [
-        previousChild.props.style?.transform,
-        currentTrasnforms,
-      ].join(' ')
-
-      const style = { ...childEl.props.style, transform }
-
+      const mergedTransforms = mergeTransforms(
+        previousChild.props,
+        childEl.props,
+      )
       return React.cloneElement(childEl, {
         ...childEl.props,
-        style,
+        ...mergedTransforms,
       })
     })
   }, [children])
 
   const currentStep = _.clamp(step, 0, childArray.length - 1)
-  const currentChild = childArray[currentStep] as SceneElement
+  const currentChild = childArray[currentStep]
 
   const translate = getTranslate(currentChild.props)
   const scale = getScale(currentChild.props)
@@ -158,6 +129,7 @@ export function Stage ({ children, step }: Props): ReactElement {
   return (
     <Root
       ref={ rootEl }
+      $perspective={ perspective }
       animate={ scale }
       transformTemplate={ joinSortedEntries }
       transition={{

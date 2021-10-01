@@ -28,7 +28,7 @@ export function ApprovalRoute (): ReactElement {
   return (
     <Stage step={ step }>
       <Scene scale={ 2 } />
-      <Scene translateX={ -512 } translateZ={ 256 } scale={ 0.5 }>
+      <Scene translateZ={ 256 }>
         <Entry>
           <Entry.Text>
             <strong>Madonna</strong>, Oxford student.
@@ -37,7 +37,7 @@ export function ApprovalRoute (): ReactElement {
           <Madge />
         </Entry>
       </Scene>
-      <Scene translateX={ 250 } translateZ={ -500 }>
+      <Scene translateZ={ 512 }>
         <Entry>
           <Entry.Text>
             <strong>MoMA</strong> charges $20.
@@ -45,7 +45,7 @@ export function ApprovalRoute (): ReactElement {
           <Image src={ twenty } />
         </Entry>
       </Scene>
-      <Scene relative translateX={ 150 } translateY={ 25 } rotateY={ -55 }>
+      <Scene translateZ={ 1024 }>
         <Entry>
           <Entry.Text>
             <strong>Grand Theft Auto: San Andreas.</strong> Vroom.

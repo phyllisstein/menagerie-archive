@@ -7,6 +7,8 @@ export const Root = styled(motion.div)`
   left: 50%;
 
   transform-style: preserve-3d;
+  perspective: ${ ({ $perspective }) =>
+    typeof $perspective === 'number' ? `${ $perspective }px` : $perspective };
 `
 
 export const StageRoot = styled(motion.div)`
