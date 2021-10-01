@@ -208,7 +208,7 @@ client
   .plugin('copy')
     .use(CopyPlugin, [
       {
-        pattersn: [
+        patterns: [
           {
             from: path.resolve('node_modules', 'hyphenopoly', ''),
           },
