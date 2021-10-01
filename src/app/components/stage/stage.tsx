@@ -58,7 +58,7 @@ const getScale = (childProps: SceneProps, windowScale: number): ScaleMap => {
   const entries = (Object.entries(childProps) as Array<[string, number]>)
     .filter(([kind]) => kind.includes('scale'))
     .reverse()
-    .map(([kind, amount]) => [kind, (1 / amount) * windowScale])
+    .map(([kind, amount]) => [kind, (1 / amount)])
 
   return Object.fromEntries(entries)
 }
@@ -206,9 +206,9 @@ export function Stage ({
       animate={ scale }
       transformTemplate={ joinSortedEntries }
       transition={{
-        damping: 10,
-        mass: 1,
-        stiffness: 100,
+        damping: 15,
+        mass: 1.5,
+        stiffness: 75,
         type: 'spring',
         when: didZoom ? 'afterChildren' : 'beforeChildren',
       }}>
@@ -216,9 +216,9 @@ export function Stage ({
         animate={ translate }
         transformTemplate={ joinSortedEntries }
         transition={{
-          damping: 10,
-          mass: 1,
-          stiffness: 100,
+          damping: 15,
+          mass: 1.5,
+          stiffness: 75,
           type: 'spring',
         }}>
         { layoutSteps }
