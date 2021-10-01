@@ -9,8 +9,8 @@ client
   .devtool('source-map')
 
 client.output
-  .chunkFilename('js/[name].[contenthash].js')
-  .filename('js/[name].[contenthash].js')
+  .chunkFilename('public/js/[name].[contenthash].js')
+  .filename('public/js/[name].[contenthash].js')
 
 client.module
   .rule('babel')
@@ -32,8 +32,8 @@ client.module
         [
           'styled-components',
           {
-            displayName: false,
-            fileName: false,
+            displayName: true,
+            fileName: true,
             ssr: false,
           },
         ],

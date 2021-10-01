@@ -15,7 +15,7 @@
   "bugs": "https://github.com/phyllisstein/prolegomena/issues",
   "scripts": {
     "build": "cross-env NODE_ENV=staging webpack",
-    "clean": "concurrently 'clean:*'",
+    "clean": "concurrently \"yarn:clean:*\"",
     "clean:build": "del build dist",
     "clean:cache": "del node_modules/.cache",
     "start:dev": "node app.js"

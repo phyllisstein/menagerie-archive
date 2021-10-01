@@ -68,7 +68,7 @@ client
 client.entry('main').add('./bootstrap/client').end()
 
 client.output
-  .path(path.resolve('public'))
+  .path(path.resolve('dist'))
   .publicPath('/')
 
 client.module
@@ -134,7 +134,7 @@ client.module
   .test(/\.(woff2?)$/)
   .set('type', 'asset')
   .set('generator', {
-    filename: 'fonts/[name].[hash][ext]',
+    filename: 'public/fonts/[name].[hash][ext]',
   })
 
 client.module
@@ -142,7 +142,7 @@ client.module
   .test(/\.(jpe?g|png|webp|ico)$/)
   .set('type', 'asset')
   .set('generator', {
-    filename: 'images/[name].[hash][ext]',
+    filename: 'public/images/[name].[hash][ext]',
   })
 
 client.module
@@ -150,7 +150,7 @@ client.module
   .test(/\.(mp4|webm)$/)
   .set('type', 'asset')
   .set('generator', {
-    filename: 'videos/[name].[hash][ext]',
+    filename: 'public/videos/[name].[hash][ext]',
   })
 
 client.module
@@ -178,7 +178,7 @@ client.module
     .test(/hyphenopoly/i)
     .set('type', 'asset/resource')
     .set('generator', {
-        filename: 'vendor/hyphenopoly/[name][ext]',
+        filename: 'public/vendor/hyphenopoly/[name][ext]',
     })
 
 client.resolve
@@ -203,18 +203,6 @@ client.plugin('define').use(webpack.DefinePlugin, [
 ])
 
 client.plugin('loadable').use(LoadablePlugin)
-
-client
-  .plugin('copy')
-    .use(CopyPlugin, [
-      {
-        patterns: [
-          {
-            from: path.resolve('node_modules', 'hyphenopoly', ''),
-          },
-        ],
-      },
-    ])
 
 server.name('server').context(path.resolve('./src')).target('node')
 
@@ -282,7 +270,7 @@ server.module
   .test(/\.(woff2?)$/)
   .set('type', 'asset')
   .set('generator', {
-    filename: 'fonts/[name].[hash][ext]',
+    filename: 'public/fonts/[name].[hash][ext]',
   })
 
 server.module
@@ -290,7 +278,7 @@ server.module
   .test(/\.(jpe?g|png|webp|ico)$/)
   .set('type', 'asset')
   .set('generator', {
-    filename: 'images/[name].[hash][ext]',
+    filename: 'public/images/[name].[hash][ext]',
   })
 
 server.module
@@ -298,7 +286,7 @@ server.module
   .test(/\.(mp4|webm)$/)
   .set('type', 'asset')
   .set('generator', {
-    filename: 'videos/[name].[hash][ext]',
+    filename: 'public/videos/[name].[hash][ext]',
   })
 
 server.module
