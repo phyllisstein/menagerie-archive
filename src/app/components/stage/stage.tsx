@@ -6,12 +6,37 @@ import React, {
   useEffect,
   useMemo,
   useRef,
+  useState,
 } from 'react'
 import { Root, StageRoot } from './stage-styles'
 import { Scene, Props as SceneProps } from './scene'
 import _ from 'lodash'
-import R from 'ramda'
 import { canUseDOM } from 'exenv'
+import R from 'ramda'
+
+const getWindowScale = (
+  height: number,
+  width: number,
+  scaleConstraints: ScaleConstraints = {},
+): number => {
+  if (!canUseDOM) {
+    return 1
+  }
+
+  const scaleHeight = window.innerHeight / height
+  const scaleWidth = window.innerWidth / width
+  const scaleWindow = scaleHeight > scaleWidth ? scaleWidth : scaleHeight
+
+  if (scaleConstraints.max != null && scaleWindow > scaleConstraints.max) {
+    return scaleConstraints.max
+  }
+
+  if (scaleConstraints.min != null && scaleWindow < scaleConstraints.min) {
+    return scaleConstraints.min
+  }
+
+  return scaleWindow
+}
 
 const mergeTransforms = R.mergeWithKey(
   (key: string, lhs: number, rhs: number): number => {
@@ -29,11 +54,11 @@ const mergeTransforms = R.mergeWithKey(
   },
 )
 
-const getScale = (childProps: SceneProps): ScaleMap => {
+const getScale = (childProps: SceneProps, windowScale: number): ScaleMap => {
   const entries = (Object.entries(childProps) as Array<[string, number]>)
     .filter(([kind]) => kind.includes('scale'))
     .reverse()
-    .map(([kind, amount]) => [kind, 1 / amount])
+    .map(([kind, amount]) => [kind, (1 / amount) * windowScale])
 
   return Object.fromEntries(entries)
 }
@@ -54,11 +79,19 @@ const joinSortedEntries = (obj: { [key: string]: unknown }): string =>
 
 export interface Props {
   children: OneOrMore<SceneElement>
+  height?: number
   perspective?: number | string
+  scale?: ScaleConstraints
   step: number
+  width?: number
 }
 
 type SceneElement = FunctionComponentElement<SceneProps>
+
+export interface ScaleConstraints {
+  min?: number
+  max?: number
+}
 
 interface ScaleMap {
   scale: number
@@ -77,11 +110,40 @@ interface TranslateMap {
   translateZ: number
 }
 
-export function Stage ({ children, perspective, step }: Props): ReactElement {
+export function Stage ({
+  children,
+  height,
+  perspective,
+  scale: scaleConstraints = {},
+  step,
+  width,
+}: Props): ReactElement {
+  width ??= canUseDOM ? window.innerWidth : 0
+  height ??= canUseDOM ? window.innerHeight : 0
+
+  const [windowScale, setWindowScale] = useState(() =>
+    getWindowScale(height, width, scaleConstraints),
+  )
+
   perspective ??= canUseDOM ? window.innerWidth : 1000
 
   const rootEl = useRef<HTMLDivElement>(null)
   const staleScale = useRef<ScaleMap>({ scale: 1, scaleX: 1, scaleY: 1 })
+
+  useEffect(() => {
+    const getScale = (): void => {
+      const nextScale = getWindowScale(height, width, scaleConstraints)
+      if (nextScale !== windowScale) {
+        setWindowScale(nextScale)
+      }
+    }
+
+    getScale()
+
+    window.addEventListener('resize', getScale, { passive: true })
+
+    return () => window.removeEventListener('resize', getScale)
+  }, [])
 
   useEffect(() => {
     const el = rootEl.current
@@ -90,11 +152,6 @@ export function Stage ({ children, perspective, step }: Props): ReactElement {
 
     return () => enableBodyScroll(el)
   }, [rootEl])
-
-  useEffect(() => {
-    const freshScale = getScale(currentChild.props)
-    staleScale.current = { ...freshScale }
-  })
 
   const childArray = useMemo(() => {
     return Children.toArray(children)
@@ -131,11 +188,16 @@ export function Stage ({ children, perspective, step }: Props): ReactElement {
   const currentChild = childArray[currentStep]
 
   const translate = getTranslate(currentChild.props)
-  const scale = getScale(currentChild.props)
+  const scale = getScale(currentChild.props, windowScale)
   const didZoom =
     scale.scale >= staleScale.current.scale ||
     scale.scaleX >= staleScale.current.scaleX ||
     scale.scaleY >= staleScale.current.scaleY
+
+  useEffect(() => {
+    const freshScale = getScale(currentChild.props, windowScale)
+    staleScale.current = { ...freshScale }
+  }, [currentChild, windowScale])
 
   return (
     <Root
