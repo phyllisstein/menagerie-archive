@@ -3,6 +3,7 @@ import { Entry as EntryBase } from 'app/components'
 
 export const Entry = styled(EntryBase)`
   width: min-content;
+  cursor: pointer !important;
 `
 
 export const Image = styled.img`
@@ -24,7 +25,7 @@ export const Line = styled.div`
   left: 50%;
 
   background-color: ${ ({ theme }) =>
-    theme.palette.js.gray600.alpha(0.25).css() };
+    theme.palette.js.gray600.alpha(0.25) .css() };
   transform: translate3d(-50%, -50%, 0);
 
   &::before {
