@@ -4,7 +4,6 @@ extends:
   - stylelint-config-styled-components
 plugins:
   - stylelint-config-rational-order/plugin
-  - stylelint-no-unsupported-browser-features
   - stylelint-order
 ignoreFiles:
   - 'node_modules/**/*'
@@ -15,10 +14,6 @@ rules:
     - []
     - unspecified: bottom
       emptyLineMinimumPropertyThreshold: 4
-  plugin/no-unsupported-browser-features:
-    - true
-    - browsers:
-        ['last 2 major versions and >5% in US and not dead and not IE > 0']
 
   plugin/rational-order:
     - true
@@ -35,6 +30,7 @@ rules:
   font-family-no-missing-generic-family-keyword: null
   function-comma-newline-after: null
   function-name-case: null
+  function-whitespace-after: null
   indentation: 2
   no-eol-whitespace: null
   no-extra-semicolons: null
