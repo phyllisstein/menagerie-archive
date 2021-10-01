@@ -26,6 +26,7 @@ const createTransformString = R.pipe(
 )
 
 export interface Props {
+  layout?: boolean
   relative?: boolean
   rotate?: number
   rotateX?: number
@@ -43,6 +44,7 @@ export interface Props {
 export const Scene: FunctionComponent<Props> = function Scene (props) {
   const {
     children,
+    layout: _layout,
     relative: _relative,
     rotate: _rotate,
     rotateX: _rotateX,

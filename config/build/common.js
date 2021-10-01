@@ -160,7 +160,7 @@ client.module
   .loader('@svgr/webpack')
   .options({
     ref: true,
-    svgo: true,
+    svgo: false,
   })
 
 client.module

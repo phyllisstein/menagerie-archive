@@ -97,23 +97,34 @@ export function Stage ({ children, perspective, step }: Props): ReactElement {
   })
 
   const childArray = useMemo(() => {
-    return Children.toArray(children).map((child, childNumber, childArray) => {
-      const childEl = child as SceneElement
+    return Children.toArray(children)
+      .filter(child => (child as SceneElement).props.layout == null)
+      .map((child, childNumber, childArray) => {
+        const childEl = child as SceneElement
 
-      if (childEl.props.relative == null || childNumber === 0) return childEl
+        if (childEl.props.relative == null || childNumber === 0) {
+          return childEl
+        }
 
-      const previousStep = _.clamp(childNumber, 0, childNumber - 1)
-      const previousChild = childArray[previousStep] as SceneElement
+        const previousStep = _.clamp(childNumber, 0, childNumber - 1)
+        const previousChild = childArray[previousStep] as SceneElement
 
-      const mergedTransforms = mergeTransforms(
-        previousChild.props,
-        childEl.props,
-      )
-      return React.cloneElement(childEl, {
-        ...childEl.props,
-        ...mergedTransforms,
+        const mergedTransforms = mergeTransforms(
+          previousChild.props,
+          childEl.props,
+        )
+
+        return React.cloneElement(childEl, {
+          ...childEl.props,
+          ...mergedTransforms,
+        })
       })
-    })
+  }, [children])
+
+  const layoutSteps = useMemo(() => {
+    return Children.toArray(children).filter(
+      child => (child as SceneElement).props.layout != null,
+    )
   }, [children])
 
   const currentStep = _.clamp(step, 0, childArray.length - 1)
@@ -148,6 +159,7 @@ export function Stage ({ children, perspective, step }: Props): ReactElement {
           stiffness: 100,
           type: 'spring',
         }}>
+        { layoutSteps }
         { childArray }
       </StageRoot>
     </Root>
