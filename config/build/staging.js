@@ -29,7 +29,6 @@ client.module
         ],
       ],
       plugins: [
-        'react-refresh/babel',
         [
           'styled-components',
           {
