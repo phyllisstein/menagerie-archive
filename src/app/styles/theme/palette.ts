@@ -1,9 +1,10 @@
+import chroma from 'chroma-js'
 import R from 'ramda'
-import { js as spectrum } from './spectrum-dark'
+import { js as spectrum } from './spectrum-light'
 
 export const js = {
   ...spectrum,
-  text: spectrum.gray900,
+  text: chroma('rgba(0, 0, 0, 0.87)'),
 }
 
 export type ColorNames = keyof JS

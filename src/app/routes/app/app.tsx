@@ -39,7 +39,7 @@ export function App (): ReactElement {
 
           <Helmet defaultTitle={ SITE_NAME } titleTemplate={ `%s | ${ SITE_NAME }` }>
             <html lang='en-us' />
-            <body className='spectrum spectrum--dark spectrum--medium' />
+            <body className='spectrum spectrum--light spectrum--medium' />
             <meta charSet='utf-8' />
             <meta
               content='width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no, user-scalable=no'

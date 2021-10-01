@@ -3,11 +3,14 @@
 import { Entry, Grid, Image, Line } from './approval-styles'
 import { ReactElement, useCallback, useState } from 'react'
 import { Scene, Stage } from 'app/components'
+import dylan from 'assets/matrix/dylan.jpg'
+import ghostling from 'assets/matrix/ghostling.png'
 import madge from 'assets/matrix/madge.png'
 import Madge from 'assets/matrix/madge.svg'
 import Malcolm from 'assets/matrix/MalcolmGladwell.svg'
 import malcolmGladwell from 'assets/matrix/MalcolmGladwell.png'
-import R from 'ramda'
+import trucker from 'assets/matrix/trucker.png'
+import twenty from 'assets/matrix/twenty.jpg'
 
 export function ApprovalRoute (): ReactElement {
   const [step, setStep] = useState(0)
@@ -36,7 +39,7 @@ export function ApprovalRoute (): ReactElement {
           </Grid>
         </Scene>
         <Scene scale={ 2 } />
-        <Scene translateX={ -512 } onClick={ toggleCurrentStep(1) }>
+        <Scene translateX={ -512 } scale={ 2.5 } onClick={ toggleCurrentStep(1) }>
           <Entry>
             <Entry.Text>
               <strong>Ponchos.</strong>
@@ -44,7 +47,6 @@ export function ApprovalRoute (): ReactElement {
           </Entry>
         </Scene>
         <Scene
-          style={{ pointerEvents: 'none' }}
           translateX={ -128 }
           translateY={ -256 }
           onClick={ toggleCurrentStep(2) }>
@@ -59,7 +61,7 @@ export function ApprovalRoute (): ReactElement {
         <Scene
           translateX={ -128 }
           translateY={ -512 }
-          scale={ 0.5 }
+          scale={ 1.5 }
           onClick={ toggleCurrentStep(3) }>
           <Entry style={{ minWidth: 256 }}>
             <Entry.Text>
@@ -70,19 +72,92 @@ export function ApprovalRoute (): ReactElement {
         </Scene>
         <Scene
           translateX={ -512 }
-          translateY={ -256 }
+          translateY={ -512 }
+          rotate={ 128 }
           onClick={ toggleCurrentStep(4) }>
           <Entry>
             <Entry.Text>
               <strong>
                 <em>Tipping Point</em> author Malcolm Gladwell's
-              </strong>
+              </strong>{ ' ' }
               hair ignites: Geek schadenfreude erupts.
             </Entry.Text>
-            <Image
-              src={ malcolmGladwell }
-              style={{ clipPath: "url('#gladwell')" }} />
+            <Image src={ malcolmGladwell } />
             <Malcolm />
+          </Entry>
+        </Scene>
+        <Scene
+          translateX={ -960 }
+          translateY={ -128 }
+          scale={ 1.25 }
+          onClick={ toggleCurrentStep(5) }>
+          <Entry>
+            <Entry.Text>
+              <strong>Tucker Carlson:</strong> His smugness boomerangs.
+            </Entry.Text>
+          </Entry>
+        </Scene>
+        <Scene
+          translateX={ -128 }
+          translateY={ -768 }
+          scale={ 1.25 }
+          onClick={ toggleCurrentStep(6) }>
+          <Entry>
+            <Entry.Text>
+              <strong>MoMA</strong> charges $20.
+              <Image src={ twenty } />
+            </Entry.Text>
+          </Entry>
+        </Scene>
+        <Scene
+          scale={ 1.25 }
+          translateY={ -512 }
+          translateX={ 128 }
+          translateZ={ -512 }
+          onClick={ toggleCurrentStep(7) }>
+          <Entry>
+            <Entry.Text>
+              <strong>Bob Dylan</strong> bio. Poignant! Idiosyncratic! And full
+              of New York trivia.
+              <Image src={ dylan } />
+            </Entry.Text>
+          </Entry>
+        </Scene>
+        <Scene
+          translateY={ 512 }
+          translateX={ -1024 }
+          scale={ 2 }
+          rotateY={ -45 }
+          onClick={ toggleCurrentStep(8) }>
+          <Entry>
+            <Entry.Text>
+              <strong>Quickie marriages.</strong>
+              <Image src={ trucker } />
+            </Entry.Text>
+          </Entry>
+        </Scene>
+        <Scene
+          translateY={ 512 }
+          translateX={ -256 }
+          scale={ 2 }
+          onClick={ toggleCurrentStep(9) }>
+          <Entry>
+            <Entry.Text>
+              <strong>Surviving Christmas:</strong> a Yuletide <em>Gigli</em>?
+            </Entry.Text>
+          </Entry>
+        </Scene>
+        <Scene
+          translateY={ 256 }
+          translateX={ 128 }
+          rotateX={ 45 }
+          onClick={ toggleCurrentStep(10) }>
+          <Entry>
+            <Entry.Text>
+              <strong>Halloween Parade:</strong> People think it's gross and
+              tacky. (It's still fun.)
+              <Image src={ ghostling } style={{ maxHeight: 256 }} />
+            </Entry.Text>
           </Entry>
         </Scene>
       </Stage>

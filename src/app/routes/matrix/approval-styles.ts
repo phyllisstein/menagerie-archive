@@ -2,11 +2,11 @@ import styled, { css } from 'styled-components'
 import { Entry as EntryBase } from 'app/components'
 
 export const Entry = styled(EntryBase)`
-  /* min-width: 256px; */
+  width: min-content;
 `
 
 export const Image = styled.img`
-  width: 128px;
+  width: 256px;
   height: auto;
 `
 
@@ -24,7 +24,7 @@ export const Line = styled.div`
   left: 50%;
 
   background-color: ${ ({ theme }) =>
-    theme.palette.js.gray400.alpha(0.66) .css() };
+    theme.palette.js.gray600.alpha(0.25).css() };
   transform: translate3d(-50%, -50%, 0);
 
   &::before {

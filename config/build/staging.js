@@ -9,8 +9,8 @@ client
   .devtool('source-map')
 
 client.output
-  .chunkFilename('public/js/[name].[contenthash].js')
-  .filename('public/js/[name].[contenthash].js')
+  .chunkFilename('js/[name].[contenthash].js')
+  .filename('js/[name].[contenthash].js')
 
 client.module
   .rule('babel')
