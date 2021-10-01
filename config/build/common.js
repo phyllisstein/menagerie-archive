@@ -204,17 +204,17 @@ client.plugin('define').use(webpack.DefinePlugin, [
 
 client.plugin('loadable').use(LoadablePlugin)
 
-// client
-//   .plugin('copy')
-//     .use(CopyPlugin, [
-//       {
-//         pattersn: [
-//           {
-//             from: path.resolve('node_modules', 'hyphenopoly', ''),
-//           },
-//         ],
-//       },
-//     ])
+client
+  .plugin('copy')
+    .use(CopyPlugin, [
+      {
+        pattersn: [
+          {
+            from: path.resolve('node_modules', 'hyphenopoly', ''),
+          },
+        ],
+      },
+    ])
 
 server.name('server').context(path.resolve('./src')).target('node')
 
