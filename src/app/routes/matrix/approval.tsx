@@ -1,10 +1,11 @@
 /* eslint-disable react/jsx-sort-props */
 
-import { Entry, Grid, Image, Line } from './approval-styles'
+import { Entry, Grid, Image, Label, Line } from './approval-styles'
 import { ReactElement, useCallback, useState } from 'react'
 import { Scene, Stage } from 'app/components'
 import dylan from 'assets/matrix/dylan.jpg'
 import ghostling from 'assets/matrix/ghostling.png'
+import { Helmet } from 'react-helmet-async'
 import madge from 'assets/matrix/madge.png'
 import Madge from 'assets/matrix/madge.svg'
 import Malcolm from 'assets/matrix/MalcolmGladwell.svg'
@@ -31,15 +32,38 @@ export function ApprovalRoute (): ReactElement {
 
   return (
     <>
-      <Stage step={ step } perspective={ 1000 }>
-        <Scene layout scale={ 2 }>
+      <Helmet>
+        <title>The Approval Matrix</title>
+      </Helmet>
+      <Stage height={ 1024 } step={ step } width={ 1024 }>
+        <Scene layout>
           <Grid>
             <Line $axis='x' />
             <Line $axis='y' />
           </Grid>
         </Scene>
-        <Scene scale={ 2 } />
-        <Scene translateX={ -512 } scale={ 2.5 } onClick={ toggleCurrentStep(1) }>
+        <Scene layout translateY={ -1000 }>
+          <Label>
+            Highbrow
+          </Label>
+        </Scene>
+        <Scene layout translateY={ 1000 }>
+          <Label>
+            Lowbrow
+          </Label>
+        </Scene>
+        <Scene layout translateX={ 1200 } rotate={ 90 }>
+          <Label>
+            Brilliant
+          </Label>
+        </Scene>
+        <Scene layout translateX={ -1200 } rotate={ -90 }>
+          <Label>
+            Despicable
+          </Label>
+        </Scene>
+        <Scene translateZ={ 2048 } />
+        <Scene translateX={ -512 } translateY={ -25 } onClick={ toggleCurrentStep(1) }>
           <Entry>
             <Entry.Text>
               <strong>Ponchos.</strong>

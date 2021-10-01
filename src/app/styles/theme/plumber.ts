@@ -12,7 +12,7 @@ const BASELINE = {
   DIN_TEXT: 0.1,
   EGYPTIENNE: 0.1078,
   MILLER_DISPLAY: 0.12,
-  MILLER_TEXT: 0.12
+  MILLER_TEXT: 0.12,
 }
 
 const round = _.partial(_.round, _.partial.placeholder, 0)
@@ -24,7 +24,7 @@ const getBaselineCorrection = ({ baseline, fontSize, lineHeight }) => {
 
   return {
     baselineDifference,
-    correctedBaseline
+    correctedBaseline,
   }
 }
 
@@ -35,7 +35,7 @@ const getPlumber = ({
   leadingBottom: LEADING_BOTTOM = 0,
   leadingTop: LEADING_TOP = 0,
   lineHeight: LINE_HEIGHT,
-  useBaselineOrigin: USE_BASELINE_ORIGIN = false
+  useBaselineOrigin: USE_BASELINE_ORIGIN = false,
 }) => {
   function plumber ({
     baseline = B,
@@ -44,7 +44,7 @@ const getPlumber = ({
     leadingBottom = LEADING_BOTTOM,
     leadingTop = LEADING_TOP,
     lineHeight = LINE_HEIGHT,
-    useBaselineOrigin = USE_BASELINE_ORIGIN
+    useBaselineOrigin = USE_BASELINE_ORIGIN,
   } = {}) {
     const [gridHeightValue, gridHeightUnit] = getValueAndUnit(gridHeight)
     const scaledFontSize = unitless(fontSize)
@@ -55,7 +55,7 @@ const getPlumber = ({
     const { baselineDifference, correctedBaseline } = getBaselineCorrection({
       baseline,
       fontSize: scaledFontSize,
-      lineHeight
+      lineHeight,
     })
 
     if (useBaselineOrigin) {
@@ -72,13 +72,13 @@ const getPlumber = ({
     const marginBottom = (leadingBottom + shift - 1) * gridHeightValue
 
     return css`
-      margin-top: ${marginTop}${gridHeightUnit};
-      margin-bottom: ${marginBottom}${gridHeightUnit};
-      padding-top: ${paddingTop}${gridHeightUnit};
-      padding-bottom: ${paddingBottom}${gridHeightUnit};
+      margin-top: ${ marginTop }${ gridHeightUnit };
+      margin-bottom: ${ marginBottom }${ gridHeightUnit };
+      padding-top: ${ paddingTop }${ gridHeightUnit };
+      padding-bottom: ${ paddingBottom }${ gridHeightUnit };
 
-      font-size: ${gridFontSize}${gridHeightUnit};
-      line-height: ${lineHeight}${gridHeightUnit};
+      font-size: ${ gridFontSize }${ gridHeightUnit };
+      line-height: ${ lineHeight }${ gridHeightUnit };
     `
   }
 
@@ -86,23 +86,23 @@ const getPlumber = ({
     border = ['0px', '0px'],
     gridHeight = GRID_HEIGHT,
     margin = [0, 0],
-    padding = [0, 0]
+    padding = [0, 0],
   }) {
     const [gridHeightValue, gridHeightUnit] = getValueAndUnit(gridHeight)
 
     const [marginTop, marginBottom] = margin.map(m =>
-      round(m * gridHeightValue)
+      round(m * gridHeightValue),
     )
     const [paddingTop, paddingBottom] = padding.map(p =>
-      round(p * gridHeightValue)
+      round(p * gridHeightValue),
     )
     const [borderTop, borderBottom] = border
 
     return css`
-      margin-top: ${marginTop}${gridHeightUnit};
-      margin-bottom: ${marginBottom}${gridHeightUnit};
-      padding-top: calc(${paddingTop}${gridHeightUnit} - ${borderTop});
-      padding-bottom: calc(${paddingBottom}${gridHeightUnit} - ${borderBottom});
+      margin-top: ${ marginTop }${ gridHeightUnit };
+      margin-bottom: ${ marginBottom }${ gridHeightUnit };
+      padding-top: calc(${ paddingTop }${ gridHeightUnit } - ${ borderTop });
+      padding-bottom: calc(${ paddingBottom }${ gridHeightUnit } - ${ borderBottom });
     `
   }
 
@@ -111,3 +111,4 @@ const getPlumber = ({
 
 export const primary = getPlumber({ baseline: BASELINE.ADOBE_CLEAN })
 export const accent = getPlumber({ baseline: BASELINE.ADOBE_CLEAN_SERIF })
+export const millerDisplay = getPlumber({ baseline: BASELINE.MILLER_DISPLAY })

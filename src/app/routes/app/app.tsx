@@ -1,4 +1,4 @@
-import { AdobeClean, AdobeCleanSerif } from 'assets/fonts'
+import { AdobeClean, AdobeCleanSerif, MillerDisplay } from 'assets/fonts'
 import { Body, Reboot } from 'app/styles/global'
 import { Route, Routes } from 'react-router'
 import { StyleSheetManager, ThemeProvider } from 'styled-components'
@@ -36,8 +36,9 @@ export function App (): ReactElement {
           <Body />
           <AdobeClean />
           <AdobeCleanSerif />
+          <MillerDisplay />
 
-          <Helmet defaultTitle={ SITE_NAME } titleTemplate={ `%s | ${ SITE_NAME }` }>
+          <Helmet defaultTitle={ SITE_NAME } titleTemplate={ `${ SITE_NAME } %s` }>
             <html lang='en-us' />
             <body className='spectrum spectrum--light spectrum--medium' />
             <meta charSet='utf-8' />

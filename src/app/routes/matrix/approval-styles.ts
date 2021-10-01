@@ -6,11 +6,6 @@ export const Entry = styled(EntryBase)`
   cursor: pointer !important;
 `
 
-export const Image = styled.img`
-  width: 256px;
-  height: auto;
-`
-
 export const Grid = styled.div`
   position: fixed;
   top: 0;
@@ -19,13 +14,36 @@ export const Grid = styled.div`
   perspective: 1000px;
 `
 
+export const Image = styled.img`
+  width: 256px;
+  height: auto;
+`
+
+export const Label = styled.div`
+  ${ ({ theme }) => theme.typeface.millerDisplay({ fontSize: 10 }) }
+
+  background-color: ${ ({ theme }) => theme.palette.css.gray100 };
+
+  font-family: 'Miller Text';
+
+  margin: 0;
+  padding: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-weight: 400;
+
+  font-variant-caps: all-small-caps;
+`
+
 export const Line = styled.div`
   position: absolute;
   top: 50%;
   left: 50%;
 
   background-color: ${ ({ theme }) =>
-    theme.palette.js.gray600.alpha(0.25) .css() };
+    theme.palette.css.gray700 };
   transform: translate3d(-50%, -50%, 0);
 
   &::before {
@@ -35,15 +53,15 @@ export const Line = styled.div`
     ${ ({ $axis }) => {
     if ($axis === 'x') {
       return css`
-          width: 200vw;
-          height: 0.5px;
+          width: 1000vw;
+          height: 5px;
         `
     }
 
     if ($axis === 'y') {
       return css`
-          width: 0.5px;
-          height: 200vh;
+          width: 5px;
+          height: 1000vh;
         `
     }
   } }
