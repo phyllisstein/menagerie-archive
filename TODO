@@ -1,0 +1,2 @@
+Bugs:
+  ☐ Can't transition between `Entry` components with different rotations.

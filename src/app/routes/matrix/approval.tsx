@@ -73,7 +73,6 @@ export function ApprovalRoute (): ReactElement {
         <Scene
           translateX={ -512 }
           translateY={ -512 }
-          rotate={ 128 }
           onClick={ toggleCurrentStep(4) }>
           <Entry>
             <Entry.Text>
@@ -127,7 +126,6 @@ export function ApprovalRoute (): ReactElement {
           translateY={ 512 }
           translateX={ -1024 }
           scale={ 2 }
-          rotateY={ -45 }
           onClick={ toggleCurrentStep(8) }>
           <Entry>
             <Entry.Text>
@@ -150,7 +148,6 @@ export function ApprovalRoute (): ReactElement {
         <Scene
           translateY={ 256 }
           translateX={ 128 }
-          rotateX={ 45 }
           onClick={ toggleCurrentStep(10) }>
           <Entry>
             <Entry.Text>
