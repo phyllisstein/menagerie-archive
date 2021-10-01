@@ -23,7 +23,8 @@ export const Line = styled.div`
   top: 50%;
   left: 50%;
 
-  background-color: ${ ({ theme }) => theme.palette.css.gray700 };
+  background-color: ${ ({ theme }) =>
+    theme.palette.js.gray400.alpha(0.66) .css() };
   transform: translate3d(-50%, -50%, 0);
 
   &::before {
