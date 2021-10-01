@@ -134,7 +134,7 @@ client.module
   .test(/\.(woff2?)$/)
   .set('type', 'asset')
   .set('generator', {
-    filename: 'public/fonts/[name].[hash][ext]',
+    filename: 'fonts/[name].[hash][ext]',
   })
 
 client.module
@@ -142,7 +142,7 @@ client.module
   .test(/\.(jpe?g|png|webp|ico)$/)
   .set('type', 'asset')
   .set('generator', {
-    filename: 'public/images/[name].[hash][ext]',
+    filename: 'images/[name].[hash][ext]',
   })
 
 client.module
@@ -150,7 +150,7 @@ client.module
   .test(/\.(mp4|webm)$/)
   .set('type', 'asset')
   .set('generator', {
-    filename: 'public/videos/[name].[hash][ext]',
+    filename: 'videos/[name].[hash][ext]',
   })
 
 client.module
@@ -178,7 +178,7 @@ client.module
     .test(/hyphenopoly/i)
     .set('type', 'asset/resource')
     .set('generator', {
-        filename: 'public/vendor/hyphenopoly/[name][ext]',
+        filename: 'vendor/hyphenopoly/[name][ext]',
     })
 
 client.resolve
@@ -270,7 +270,7 @@ server.module
   .test(/\.(woff2?)$/)
   .set('type', 'asset')
   .set('generator', {
-    filename: 'public/fonts/[name].[hash][ext]',
+    filename: 'fonts/[name].[hash][ext]',
   })
 
 server.module
@@ -278,7 +278,7 @@ server.module
   .test(/\.(jpe?g|png|webp|ico)$/)
   .set('type', 'asset')
   .set('generator', {
-    filename: 'public/images/[name].[hash][ext]',
+    filename: 'images/[name].[hash][ext]',
   })
 
 server.module
@@ -286,7 +286,7 @@ server.module
   .test(/\.(mp4|webm)$/)
   .set('type', 'asset')
   .set('generator', {
-    filename: 'public/videos/[name].[hash][ext]',
+    filename: 'videos/[name].[hash][ext]',
   })
 
 server.module

@@ -5,7 +5,7 @@ if (process.env.NODE_ENV === 'production') {
 } else if (process.env.NODE_ENV === 'staging') {
   client = require('./config/build/staging').client
 } else {
-  client = require('./config/development').client
+  client = require('./config/build/development').client
 }
 
 module.exports = client.toConfig()
