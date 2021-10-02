@@ -45,11 +45,9 @@ const mergeTransforms = R.mergeWithKey(
       !key.includes('translate') &&
       !key.includes('rotate')
     ) {
-      console.log('Not merging: %s:\t\t %n != %n', key, lhs, rhs)
       return rhs
     }
 
-    console.log('Merging: %s:\t\t %n + %n = %n', key, lhs, rhs)
     return lhs + rhs
   },
 )

@@ -21,7 +21,7 @@ const createTransformString = R.pipe(
 
     return `${ kind }(${ amount })`
   }),
-  R.prepend('translate3d(-50%, -50%, 0px)'),
+  R.prepend('translate(-50%, -50%)'),
   R.join(' '),
 )
 

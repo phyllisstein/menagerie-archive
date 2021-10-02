@@ -42,7 +42,7 @@ export const Line = styled.div`
   left: 50%;
 
   background-color: ${ ({ theme }) => theme.palette.css.gray800 };
-  transform: translate3d(-50%, -50%, 0);
+  transform: translate(-50%, -50%);
 
   &::before {
     content: '';
