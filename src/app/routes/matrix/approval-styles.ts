@@ -24,15 +24,14 @@ export const Label = styled.div`
 
   background-color: ${ ({ theme }) => theme.palette.css.gray100 };
 
-  font-family: 'Miller Text';
-
   margin: 0;
-  padding: 3rem;
+  padding: 0;
   display: flex;
   align-items: center;
   justify-content: center;
 
-  font-weight: 400;
+  letter-spacing: 4px;
+  font-weight: 600;
 
   font-variant-caps: all-small-caps;
 `
@@ -42,8 +41,7 @@ export const Line = styled.div`
   top: 50%;
   left: 50%;
 
-  background-color: ${ ({ theme }) =>
-    theme.palette.css.gray700 };
+  background-color: ${ ({ theme }) => theme.palette.css.gray800 };
   transform: translate3d(-50%, -50%, 0);
 
   &::before {

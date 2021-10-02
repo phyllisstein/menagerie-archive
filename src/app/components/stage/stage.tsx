@@ -58,7 +58,7 @@ const getScale = (childProps: SceneProps, windowScale: number): ScaleMap => {
   const entries = (Object.entries(childProps) as Array<[string, number]>)
     .filter(([kind]) => kind.includes('scale'))
     .reverse()
-    .map(([kind, amount]) => [kind, (1 / amount)])
+    .map(([kind, amount]) => [kind, (1 / amount) * windowScale])
 
   return Object.fromEntries(entries)
 }
@@ -189,6 +189,7 @@ export function Stage ({
 
   const translate = getTranslate(currentChild.props)
   const scale = getScale(currentChild.props, windowScale)
+
   const didZoom =
     scale.scale >= staleScale.current.scale ||
     scale.scaleX >= staleScale.current.scaleX ||

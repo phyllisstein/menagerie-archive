@@ -35,35 +35,30 @@ export function ApprovalRoute (): ReactElement {
       <Helmet>
         <title>The Approval Matrix</title>
       </Helmet>
-      <Stage height={ 1024 } step={ step } width={ 1024 }>
+      <Stage step={ step }>
         <Scene layout>
           <Grid>
             <Line $axis='x' />
             <Line $axis='y' />
           </Grid>
         </Scene>
-        <Scene layout translateY={ -1000 }>
-          <Label>
-            Highbrow
-          </Label>
+        <Scene layout translateY={ -900 }>
+          <Label>Highbrow</Label>
         </Scene>
-        <Scene layout translateY={ 1000 }>
-          <Label>
-            Lowbrow
-          </Label>
+        <Scene layout translateY={ 900 }>
+          <Label>Lowbrow</Label>
         </Scene>
         <Scene layout translateX={ 1200 } rotate={ 90 }>
-          <Label>
-            Brilliant
-          </Label>
+          <Label>Brilliant</Label>
         </Scene>
         <Scene layout translateX={ -1200 } rotate={ -90 }>
-          <Label>
-            Despicable
-          </Label>
+          <Label>Despicable</Label>
         </Scene>
         <Scene translateZ={ 2048 } />
-        <Scene translateX={ -512 } translateY={ -25 } onClick={ toggleCurrentStep(1) }>
+        <Scene
+          translateX={ -512 }
+          translateY={ -25 }
+          onClick={ toggleCurrentStep(1) }>
           <Entry>
             <Entry.Text>
               <strong>Ponchos.</strong>
