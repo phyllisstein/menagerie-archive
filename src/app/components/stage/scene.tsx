@@ -33,8 +33,6 @@ export interface Props {
   rotateY?: number
   rotateZ?: number
   scale?: number
-  scaleX?: number
-  scaleY?: number
   translate?: number
   translateX?: number
   translateY?: number
@@ -51,8 +49,6 @@ export const Scene: FunctionComponent<Props> = function Scene (props) {
     rotateY: _rotateY,
     rotateZ: _rotateZ,
     scale: _scale,
-    scaleX: _scaleX,
-    scaleY: _scaleY,
     style: styleProp = {},
     translate: _translate,
     translateX: _translateX,

@@ -1,5 +1,13 @@
+import styled, { createGlobalStyle } from 'styled-components'
 import { motion } from 'framer-motion'
-import styled from 'styled-components'
+
+export const Body = createGlobalStyle`
+  body {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+  }
+`
 
 export const Root = styled(motion.div)`
   position: absolute;
@@ -7,11 +15,8 @@ export const Root = styled(motion.div)`
   left: 50%;
 
   transform-style: preserve-3d;
-  perspective: ${ ({ $perspective }) =>
-    typeof $perspective === 'number' ? `${ $perspective }px` : $perspective };
 `
 
 export const StageRoot = styled(motion.div)`
-  position: absolute;
   transform-style: preserve-3d;
 `

@@ -1,3 +1,4 @@
+import { Body, Root, StageRoot } from './stage-styles'
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
 import React, {
   Children,
@@ -8,11 +9,10 @@ import React, {
   useRef,
   useState,
 } from 'react'
-import { Root, StageRoot } from './stage-styles'
-import { Scene, Props as SceneProps } from './scene'
 import _ from 'lodash'
 import { canUseDOM } from 'exenv'
 import R from 'ramda'
+import { Props as SceneProps } from './scene'
 
 const getWindowScale = (
   height: number,
@@ -52,15 +52,6 @@ const mergeTransforms = R.mergeWithKey(
   },
 )
 
-const getScale = (childProps: SceneProps, windowScale: number): ScaleMap => {
-  const entries = (Object.entries(childProps) as Array<[string, number]>)
-    .filter(([kind]) => kind.includes('scale'))
-    .reverse()
-    .map(([kind, amount]) => [kind, (1 / amount) * windowScale])
-
-  return Object.fromEntries(entries)
-}
-
 const getTranslate = (childProps: SceneProps): TranslateMap => {
   const entries = (Object.entries(childProps) as Array<[string, number]>)
     .filter(([kind]) => kind.includes('translate') || kind.includes('rotate'))
@@ -78,7 +69,7 @@ const joinSortedEntries = (obj: { [key: string]: unknown }): string =>
 export interface Props {
   children: OneOrMore<SceneElement>
   height?: number
-  perspective?: number | string
+  perspective?: number
   scale?: ScaleConstraints
   step: number
   width?: number
@@ -111,7 +102,7 @@ interface TranslateMap {
 export function Stage ({
   children,
   height,
-  perspective,
+  perspective: perspectiveBase = 1000,
   scale: scaleConstraints = {},
   step,
   width,
@@ -123,25 +114,21 @@ export function Stage ({
     getWindowScale(height, width, scaleConstraints),
   )
 
-  perspective ??= canUseDOM ? window.innerWidth : 1000
-
   const rootEl = useRef<HTMLDivElement>(null)
-  const staleScale = useRef<ScaleMap>({ scale: 1, scaleX: 1, scaleY: 1 })
+  const staleScale = useRef<number>(1)
 
   useEffect(() => {
-    const getScale = (): void => {
+    const triggerRescale = (): void => {
       const nextScale = getWindowScale(height, width, scaleConstraints)
-      if (nextScale !== windowScale) {
-        setWindowScale(nextScale)
-      }
+      setWindowScale(nextScale)
     }
 
-    getScale()
+    triggerRescale()
 
-    window.addEventListener('resize', getScale, { passive: true })
+    window.addEventListener('resize', triggerRescale, { passive: true })
 
-    return () => window.removeEventListener('resize', getScale)
-  }, [])
+    return () => window.removeEventListener('resize', triggerRescale)
+  }, [height, width, scaleConstraints])
 
   useEffect(() => {
     const el = rootEl.current
@@ -186,43 +173,40 @@ export function Stage ({
   const currentChild = childArray[currentStep]
 
   const translate = getTranslate(currentChild.props)
-  const scale = getScale(currentChild.props, windowScale)
+  const currentScale = 1 / (currentChild.props.scale ?? 1)
+  const didZoom = currentScale >= staleScale.current
+  staleScale.current = currentScale
 
-  const didZoom =
-    scale.scale >= staleScale.current.scale ||
-    scale.scaleX >= staleScale.current.scaleX ||
-    scale.scaleY >= staleScale.current.scaleY
-
-  useEffect(() => {
-    const freshScale = getScale(currentChild.props, windowScale)
-    staleScale.current = { ...freshScale }
-  }, [currentChild, windowScale])
+  const scale = currentScale * windowScale
+  const perspective = perspectiveBase / scale
 
   return (
-    <Root
-      ref={ rootEl }
-      $perspective={ perspective }
-      animate={ scale }
-      transformTemplate={ joinSortedEntries }
-      transition={{
-        damping: 15,
-        mass: 1.5,
-        stiffness: 75,
-        type: 'spring',
-        when: didZoom ? 'afterChildren' : 'beforeChildren',
-      }}>
-      <StageRoot
-        animate={ translate }
-        transformTemplate={ joinSortedEntries }
+    <>
+      <Body />
+      <Root
+        ref={ rootEl }
+        animate={{ perspective, scale }}
+        initial={{ perspective: perspectiveBase, scale: 1 }}
         transition={{
           damping: 15,
+          delay: didZoom ? 0.25 : 0,
           mass: 1.5,
           stiffness: 75,
           type: 'spring',
         }}>
-        { layoutSteps }
-        { childArray }
-      </StageRoot>
-    </Root>
+        <StageRoot
+          animate={ translate }
+          transition={{
+            damping: 15,
+            delay: didZoom ? 0 : 0.25,
+            mass: 1.5,
+            stiffness: 75,
+            type: 'spring',
+          }}>
+          { layoutSteps }
+          { childArray }
+        </StageRoot>
+      </Root>
+    </>
   )
 }
