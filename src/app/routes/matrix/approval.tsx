@@ -35,7 +35,7 @@ export function ApprovalRoute (): ReactElement {
       <Helmet>
         <title>The Approval Matrix</title>
       </Helmet>
-      <Stage height={ 768 } step={ step } width={ 1024 }>
+      <Stage step={ step }>
         <Scene layout>
           <Grid>
             <Line $axis='x' />
