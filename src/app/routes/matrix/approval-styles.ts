@@ -30,6 +30,8 @@ export const Label = styled.div`
   align-items: center;
   justify-content: center;
 
+  pointer-events: none;
+
   letter-spacing: 4px;
   font-weight: 600;
 

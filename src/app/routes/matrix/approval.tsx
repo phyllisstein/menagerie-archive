@@ -35,26 +35,27 @@ export function ApprovalRoute (): ReactElement {
       <Helmet>
         <title>The Approval Matrix</title>
       </Helmet>
-      <Stage step={ step }>
+      <Stage height={ 768 } step={ step } width={ 1024 }>
         <Scene layout>
           <Grid>
             <Line $axis='x' />
             <Line $axis='y' />
           </Grid>
         </Scene>
-        <Scene layout translateY={ -900 }>
+        <Scene layout translateY={ -1536 }>
           <Label>Highbrow</Label>
         </Scene>
-        <Scene layout translateY={ 900 }>
+        <Scene layout translateY={ 1536 }>
           <Label>Lowbrow</Label>
         </Scene>
-        <Scene layout translateX={ 1200 } rotate={ 90 }>
+        <Scene layout translateX={ 1920 } rotate={ 90 }>
           <Label>Brilliant</Label>
         </Scene>
-        <Scene layout translateX={ -1200 } rotate={ -90 }>
+        <Scene layout translateX={ -1920 } rotate={ -90 }>
           <Label>Despicable</Label>
         </Scene>
-        <Scene translateZ={ 2048 } />
+        { /* <Scene translateZ={ 2048 } /> */ }
+        <Scene scale={ 4 } />
         <Scene
           translateX={ -512 }
           translateY={ -25 }
@@ -92,6 +93,7 @@ export function ApprovalRoute (): ReactElement {
         <Scene
           translateX={ -512 }
           translateY={ -512 }
+          scale={ 2 }
           onClick={ toggleCurrentStep(4) }>
           <Entry>
             <Entry.Text>
@@ -128,7 +130,6 @@ export function ApprovalRoute (): ReactElement {
           </Entry>
         </Scene>
         <Scene
-          scale={ 1.25 }
           translateY={ -512 }
           translateX={ 128 }
           translateZ={ -512 }
