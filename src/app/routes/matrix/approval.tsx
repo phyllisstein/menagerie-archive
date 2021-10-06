@@ -14,6 +14,7 @@ import Madge from 'assets/matrix/madge.svg'
 import malcolmGladwell from 'assets/matrix/MalcolmGladwell.png'
 import trucker from 'assets/matrix/trucker.png'
 import twenty from 'assets/matrix/twenty.jpg'
+import washington from 'assets/matrix/washington.jpg'
 
 export function ApprovalRoute (): ReactElement {
   const [step, setStep] = useState(0)
@@ -70,7 +71,9 @@ export function ApprovalRoute (): ReactElement {
         </Scene>
         <Scene
           translateX={ -256 }
-          translateY={ -512 }
+          translateY={ -256 }
+          translateZ={ 512 }
+          scale={ 1.25 }
           onClick={ toggleCurrentStep(2) }>
           <Entry>
             <Entry.Text>
@@ -123,6 +126,7 @@ export function ApprovalRoute (): ReactElement {
         <Scene
           translateX={ -128 }
           translateY={ -1200 }
+          scale={ 2 }
           onClick={ toggleCurrentStep(6) }>
           <Entry>
             <Entry.Text>
@@ -135,6 +139,7 @@ export function ApprovalRoute (): ReactElement {
           translateY={ -512 }
           translateX={ 128 }
           translateZ={ -512 }
+          scale={ 1.5 }
           onClick={ toggleCurrentStep(7) }>
           <Entry>
             <Entry.Text>
@@ -147,7 +152,7 @@ export function ApprovalRoute (): ReactElement {
         <Scene
           translateY={ 512 }
           translateX={ -1024 }
-          scale={ 2 }
+          scale={ 1.5 }
           onClick={ toggleCurrentStep(8) }>
           <Entry>
             <Entry.Text>
@@ -196,7 +201,7 @@ export function ApprovalRoute (): ReactElement {
         <Scene
           translateX={ -960 }
           translateY={ -960 }
-          scale={ 2 }
+          scale={ 1.5 }
           onClick={ toggleCurrentStep(12) }>
           <Entry
             style={{
@@ -213,6 +218,20 @@ export function ApprovalRoute (): ReactElement {
               icon={ duotone('heart-broken') }
               size='3x'
               style={{ color: css.red700 }} />
+          </Entry>
+        </Scene>
+        <Scene
+          translateX={ 1024 }
+          translateY={ -1024 }
+          translateZ={ 256 }
+          scale={ 2 }
+          onClick={ toggleCurrentStep(13) }>
+          <Entry>
+            <Entry.Text>
+              <strong>His Excellency: George Washington</strong>, by{ ' ' }
+              <em>Founding Brothers</em> author Joseph J. Ellis.
+            </Entry.Text>
+            <Image src={ washington } />
           </Entry>
         </Scene>
       </Stage>
