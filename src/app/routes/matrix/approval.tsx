@@ -1,10 +1,13 @@
 /* eslint-disable react/jsx-sort-props */
 
-import { Entry, Grid, Image, Label, Line } from './approval-styles'
+import { Entry, Grid, Image, Label, Line, PulsingIcon } from './approval-styles'
 import { ReactElement, useCallback, useState } from 'react'
 import { Scene, Stage } from 'app/components'
+import { css } from 'app/styles/theme/palette'
+import { duotone } from '@fortawesome/fontawesome-svg-core/import.macro'
 import dylan from 'assets/matrix/dylan.jpg'
 import ghostling from 'assets/matrix/ghostling.png'
+import gta from 'assets/matrix/gtasa.jpg'
 import { Helmet } from 'react-helmet-async'
 import madge from 'assets/matrix/madge.png'
 import Madge from 'assets/matrix/madge.svg'
@@ -53,11 +56,11 @@ export function ApprovalRoute (): ReactElement {
         <Scene layout translateX={ -1920 } rotate={ -90 }>
           <Label>Despicable</Label>
         </Scene>
-        { /* <Scene translateZ={ 2048 } /> */ }
         <Scene scale={ 4 } />
         <Scene
           translateX={ -512 }
-          translateY={ -25 }
+          translateY={ -128 }
+          scale={ 2 }
           onClick={ toggleCurrentStep(1) }>
           <Entry>
             <Entry.Text>
@@ -66,8 +69,8 @@ export function ApprovalRoute (): ReactElement {
           </Entry>
         </Scene>
         <Scene
-          translateX={ -128 }
-          translateY={ -256 }
+          translateX={ -256 }
+          translateY={ -512 }
           onClick={ toggleCurrentStep(2) }>
           <Entry>
             <Entry.Text>
@@ -80,8 +83,8 @@ export function ApprovalRoute (): ReactElement {
           </Entry>
         </Scene>
         <Scene
-          translateX={ -128 }
-          translateY={ -512 }
+          translateX={ -256 }
+          translateY={ -768 }
           scale={ 1.5 }
           onClick={ toggleCurrentStep(3) }>
           <Entry style={{ minWidth: 256 }}>
@@ -92,9 +95,8 @@ export function ApprovalRoute (): ReactElement {
           </Entry>
         </Scene>
         <Scene
-          translateX={ -512 }
+          translateX={ -1024 }
           translateY={ -512 }
-          scale={ 2 }
           onClick={ toggleCurrentStep(4) }>
           <Entry>
             <Entry.Text>
@@ -109,7 +111,8 @@ export function ApprovalRoute (): ReactElement {
         <Scene
           translateX={ -960 }
           translateY={ -128 }
-          scale={ 1.25 }
+          translateZ={ 512 }
+          scale={ 2 }
           onClick={ toggleCurrentStep(5) }>
           <Entry>
             <Entry.Text>
@@ -119,14 +122,13 @@ export function ApprovalRoute (): ReactElement {
         </Scene>
         <Scene
           translateX={ -128 }
-          translateY={ -768 }
-          scale={ 1.25 }
+          translateY={ -1200 }
           onClick={ toggleCurrentStep(6) }>
           <Entry>
             <Entry.Text>
               <strong>MoMA</strong> charges $20.
-              <Image src={ twenty } />
             </Entry.Text>
+            <Image src={ twenty } />
           </Entry>
         </Scene>
         <Scene
@@ -138,8 +140,8 @@ export function ApprovalRoute (): ReactElement {
             <Entry.Text>
               <strong>Bob Dylan</strong> bio. Poignant! Idiosyncratic! And full
               of New York trivia.
-              <Image src={ dylan } />
             </Entry.Text>
+            <Image src={ dylan } />
           </Entry>
         </Scene>
         <Scene
@@ -150,8 +152,8 @@ export function ApprovalRoute (): ReactElement {
           <Entry>
             <Entry.Text>
               <strong>Quickie marriages.</strong>
-              <Image src={ trucker } />
             </Entry.Text>
+            <Image src={ trucker } />
           </Entry>
         </Scene>
         <Scene
@@ -168,16 +170,50 @@ export function ApprovalRoute (): ReactElement {
         <Scene
           translateY={ 256 }
           translateX={ 128 }
+          translateZ={ 512 }
           onClick={ toggleCurrentStep(10) }>
           <Entry>
             <Entry.Text>
               <strong>Halloween Parade:</strong> People think it's gross and
               tacky. (It's still fun.)
-              <Image src={ ghostling } style={{ maxHeight: 256 }} />
             </Entry.Text>
+            <Image src={ ghostling } style={{ maxHeight: 256 }} />
           </Entry>
         </Scene>
-        <Scene>
+        <Scene
+          translateY={ 768 }
+          translateX={ 512 }
+          rotateY={ -45 }
+          scale={ 2 }
+          onClick={ toggleCurrentStep(11) }>
+          <Entry>
+            <Entry.Text>
+              <strong>Grand Theft Auto: San Andreas.</strong> Vroom.
+            </Entry.Text>
+            <Image src={ gta } />
+          </Entry>
+        </Scene>
+        <Scene
+          translateX={ -960 }
+          translateY={ -960 }
+          scale={ 2 }
+          onClick={ toggleCurrentStep(12) }>
+          <Entry
+            style={{
+              alignItems: 'center',
+              display: 'flex',
+              justifyContent: 'center',
+              minWidth: 256,
+            }}>
+            <Entry.Text>
+              <strong>It's All About Love:</strong> Dogma + indie star power =
+              pretentious glop.
+            </Entry.Text>
+            <PulsingIcon
+              icon={ duotone('heart-broken') }
+              size='3x'
+              style={{ color: css.red700 }} />
+          </Entry>
         </Scene>
       </Stage>
     </>

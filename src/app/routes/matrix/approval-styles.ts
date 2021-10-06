@@ -1,5 +1,6 @@
-import styled, { css } from 'styled-components'
+import styled, { css, keyframes } from 'styled-components'
 import { Entry as EntryBase } from 'app/components'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export const Entry = styled(EntryBase)`
   width: min-content;
@@ -71,4 +72,26 @@ export const Line = styled.div`
     }
   } }
   }
+`
+
+const pulse = keyframes`
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(2);
+  }
+
+  60% {
+    transform: scale(2);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+`
+
+export const PulsingIcon = styled(FontAwesomeIcon)`
+  animation: ${ pulse } 2s ease-in-out infinite;
 `
