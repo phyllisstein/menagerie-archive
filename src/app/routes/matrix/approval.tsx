@@ -8,7 +8,6 @@ import ghostling from 'assets/matrix/ghostling.png'
 import { Helmet } from 'react-helmet-async'
 import madge from 'assets/matrix/madge.png'
 import Madge from 'assets/matrix/madge.svg'
-import Malcolm from 'assets/matrix/MalcolmGladwell3.svg'
 import malcolmGladwell from 'assets/matrix/MalcolmGladwell.png'
 import trucker from 'assets/matrix/trucker.png'
 import twenty from 'assets/matrix/twenty.jpg'
@@ -105,7 +104,6 @@ export function ApprovalRoute (): ReactElement {
               hair ignites: Geek schadenfreude erupts.
             </Entry.Text>
             <Image src={ malcolmGladwell } />
-            <Malcolm />
           </Entry>
         </Scene>
         <Scene
@@ -178,6 +176,8 @@ export function ApprovalRoute (): ReactElement {
               <Image src={ ghostling } style={{ maxHeight: 256 }} />
             </Entry.Text>
           </Entry>
+        </Scene>
+        <Scene>
         </Scene>
       </Stage>
     </>
