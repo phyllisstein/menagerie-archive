@@ -8,7 +8,7 @@ import ghostling from 'assets/matrix/ghostling.png'
 import { Helmet } from 'react-helmet-async'
 import madge from 'assets/matrix/madge.png'
 import Madge from 'assets/matrix/madge.svg'
-import Malcolm from 'assets/matrix/MalcolmGladwell.svg'
+import Malcolm from 'assets/matrix/MalcolmGladwell3.svg'
 import malcolmGladwell from 'assets/matrix/MalcolmGladwell.png'
 import trucker from 'assets/matrix/trucker.png'
 import twenty from 'assets/matrix/twenty.jpg'
@@ -74,7 +74,9 @@ export function ApprovalRoute (): ReactElement {
             <Entry.Text>
               <strong>Madonna</strong>, Oxford student.
             </Entry.Text>
-            <Image src={ madge } style={{ clipPath: "url('#madge')" }} />
+            <Image
+              src={ madge }
+              style={{ clipPath: "url('#madge_svg__madge')" }} />
             <Madge />
           </Entry>
         </Scene>

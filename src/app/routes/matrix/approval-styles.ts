@@ -3,7 +3,12 @@ import { Entry as EntryBase } from 'app/components'
 
 export const Entry = styled(EntryBase)`
   width: min-content;
-  cursor: pointer !important;
+  pointer-events: none;
+
+  &&& * {
+    cursor: pointer;
+    pointer-events: auto;
+  }
 `
 
 export const Grid = styled.div`
