@@ -95,10 +95,7 @@ client.cache({
 client.merge({
   experiments: {
     futureDefaults: true,
-    lazyCompilation: {
-      entries: false,
-      imports: true,
-    },
+    lazyCompilation: false,
     outputModule: true,
   },
 })

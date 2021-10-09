@@ -174,6 +174,22 @@ client.module
       .end()
 
 client.module
+  .rule('sass')
+    .test(/\.s[ac]ss$/)
+    .use('style')
+      .loader('style-loader')
+      .end()
+    .use('css')
+      .loader('css-loader')
+      .end()
+    .use('resolve-url')
+      .loader('resolve-url-loader')
+      .end()
+    .use('sass')
+      .loader('sass-loader')
+      .end()
+
+client.module
   .rule('hyphenopoly')
     .test(/hyphenopoly/i)
     .set('type', 'asset/resource')
@@ -302,6 +318,12 @@ server.module
 server.module
   .rule('styles')
     .test(/\.css$/)
+    .use('null')
+      .loader('null-loader')
+
+server.module
+  .rule('sass')
+    .test(/\.s[ca]ss$/)
     .use('null')
       .loader('null-loader')
 
