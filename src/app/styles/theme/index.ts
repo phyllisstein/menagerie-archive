@@ -3,11 +3,12 @@ import * as easing from './ease'
 import * as elevation from './elevation'
 import * as measures from './measures'
 import * as palette from './palette'
+import * as paletteGrandJatte from './palette-grand-jatte'
+import * as paletteSpectrumDark from './palette-spectrum-dark'
+import * as paletteSpectrumLight from './palette-spectrum-light'
 import * as plumber from './plumber'
 import * as responsive from './responsive'
 import * as scale from './scale'
-import * as spectrumDark from './spectrum-dark'
-import * as spectrumLight from './spectrum-light'
 import * as typeface from './typeface'
 
 export const theme = {
@@ -16,12 +17,13 @@ export const theme = {
   elevation,
   measures,
   palette,
+  paletteGrandJatte,
+  paletteSpectrumDark,
+  paletteSpectrumLight,
   plumber,
   responsive,
   scale,
-  spectrumDark,
-  spectrumLight,
-  typeface
+  typeface,
 }
 
 export type Theme = typeof theme
