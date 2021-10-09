@@ -65,7 +65,7 @@ export function ApprovalRoute (): ReactElement {
         <Scene scale={ 4 } />
         <Scene
           translateX={ -512 }
-          translateY={ -42 }
+          translateY={ -80 }
           scale={ 2 }
           onClick={ toggleCurrentStep(1) }>
           <Entry dot={ Entry.DotPosition.Bottom }>
@@ -92,7 +92,7 @@ export function ApprovalRoute (): ReactElement {
         </Scene>
         <Scene
           translateX={ -256 }
-          translateY={ -768 }
+          translateY={ -700 }
           scale={ 1.5 }
           onClick={ toggleCurrentStep(3) }>
           <Entry style={{ minWidth: 256 }} dot={ Entry.DotPosition.TopRight }>
@@ -130,7 +130,7 @@ export function ApprovalRoute (): ReactElement {
         </Scene>
         <Scene
           translateX={ -128 }
-          translateY={ -1200 }
+          translateY={ -1100 }
           scale={ 2 }
           onClick={ toggleCurrentStep(6) }>
           <Entry dot={ Entry.DotPosition.Top }>
