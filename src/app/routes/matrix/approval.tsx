@@ -15,6 +15,8 @@ import locas from 'assets/matrix/locas.jpg'
 import madge from 'assets/matrix/madge.png'
 import Madge from 'assets/matrix/madge.svg'
 import malcolmGladwell from 'assets/matrix/MalcolmGladwell.png'
+import purpleHeart from 'assets/matrix/purple-heart.png'
+import reynolds from 'assets/matrix/reynolds.png'
 import trucker from 'assets/matrix/trucker.png'
 import twenty from 'assets/matrix/twenty.jpg'
 import washington from 'assets/matrix/washington.jpg'
@@ -154,7 +156,7 @@ export function ApprovalRoute (): ReactElement {
         </Scene>
         <Scene
           translateY={ 512 }
-          translateX={ -1024 }
+          translateX={ -1200 }
           translateZ={ 128 }
           scale={ 1.5 }
           rotateY={ 35 }
@@ -170,7 +172,7 @@ export function ApprovalRoute (): ReactElement {
         </Scene>
         <Scene
           translateY={ 512 }
-          translateX={ -256 }
+          translateX={ -512 }
           scale={ 2 }
           onClick={ toggleCurrentStep(9) }>
           <Entry>
@@ -215,7 +217,7 @@ export function ApprovalRoute (): ReactElement {
               alignItems: 'center',
               display: 'flex',
               justifyContent: 'center',
-              minWidth: 256,
+              minWidth: 512,
             }}>
             <Entry.Text>
               <strong>It's All About Love:</strong> Dogma + indie star power =
@@ -283,6 +285,45 @@ export function ApprovalRoute (): ReactElement {
               .
             </Entry.Text>
             <Image src={ locas } />
+          </Entry>
+        </Scene>
+        <Scene
+          translateX={ -256 }
+          translateY={ 900 }
+          onClick={ toggleCurrentStep(17) }>
+          <Entry>
+            <Entry.Text>
+              <strong>Burt Reynolds</strong>
+              as Boss Hogg in <em>Dukes of Hazzard</em> movie. Toupée makers,
+              rejoice.
+            </Entry.Text>
+            <Image src={ reynolds } />
+          </Entry>
+        </Scene>
+        <Scene
+          translateX={ -256 }
+          translateY={ 900 }
+          onClick={ toggleCurrentStep(17) }>
+          <Entry>
+            <Entry.Text>
+              <strong>Burt Reynolds</strong>
+              as Boss Hogg in <em>Dukes of Hazzard</em> movie. Toupée makers,
+              rejoice.
+            </Entry.Text>
+            <Image src={ reynolds } />
+          </Entry>
+        </Scene>
+        <Scene
+          translateY={ 1000 }
+          translateX={ -850 }
+          translateZ={ 256 }
+          onClick={ toggleCurrentStep(19) }>
+          <Entry>
+            <Entry.Text>
+              <strong>Stolen Honor: Wounds That Never Heal:</strong>
+              Sinclair flip-flops on anti-Kerry doc.
+            </Entry.Text>
+            <Image src={ purpleHeart } style={{ width: 256, height: 'auto' }} />
           </Entry>
         </Scene>
       </Stage>

@@ -51,6 +51,7 @@ export const Line = styled.div`
 
   background-color: ${ ({ theme }) => theme.palette.css.gray800 };
   transform: translate(-50%, -50%);
+  backface-visibility: hidden;
 
   &::before {
     content: '';
