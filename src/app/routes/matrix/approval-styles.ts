@@ -26,7 +26,7 @@ export const Image = styled.img`
 `
 
 export const Label = styled.div`
-  ${ ({ theme }) => theme.typeface.millerDisplay({ fontSize: 10 }) }
+  ${ ({ theme }) => theme.typeface.millerDisplay({ fontSize: 11 }) }
 
   background-color: ${ ({ theme }) => theme.palette.css.gray100 };
 

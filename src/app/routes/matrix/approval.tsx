@@ -53,7 +53,7 @@ export function ApprovalRoute (): ReactElement {
         <Scene layout translateY={ -1440 }>
           <Label>Highbrow</Label>
         </Scene>
-        <Scene layout translateY={ 1240 }>
+        <Scene layout translateY={ 1440 }>
           <Label>Lowbrow</Label>
         </Scene>
         <Scene layout translateX={ 1920 } rotate={ 90 }>
