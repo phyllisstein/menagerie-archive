@@ -1,5 +1,7 @@
-import { Body, Root, StageRoot } from './stage-styles'
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
+import { canUseDOM } from 'exenv'
+import _ from 'lodash'
+import R from 'ramda'
 import React, {
   Children,
   FunctionComponentElement,
@@ -9,10 +11,8 @@ import React, {
   useRef,
   useState,
 } from 'react'
-import _ from 'lodash'
-import { canUseDOM } from 'exenv'
-import R from 'ramda'
 import { Props as SceneProps } from './scene'
+import { Body, Root, StageRoot } from './stage-styles'
 
 const getWindowScale = (
   height: number,
@@ -101,15 +101,12 @@ interface TranslateMap {
 
 export function Stage ({
   children,
-  height,
+  height = 768,
   perspective: perspectiveBase = 1000,
   scale: scaleConstraints = {},
   step,
-  width,
+  width = 1024,
 }: Props): ReactElement {
-  width ??= canUseDOM ? window.innerWidth : 0
-  height ??= canUseDOM ? window.innerHeight : 0
-
   const [windowScale, setWindowScale] = useState(() =>
     getWindowScale(height, width, scaleConstraints),
   )

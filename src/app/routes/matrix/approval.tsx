@@ -6,9 +6,12 @@ import { Scene, Stage } from 'app/components'
 import { css } from 'app/styles/theme/palette'
 import { duotone } from '@fortawesome/fontawesome-svg-core/import.macro'
 import dylan from 'assets/matrix/dylan.jpg'
+import ghery from 'assets/matrix/ghery.png'
 import ghostling from 'assets/matrix/ghostling.png'
 import gta from 'assets/matrix/gtasa.jpg'
 import { Helmet } from 'react-helmet-async'
+import housewives from 'assets/matrix/housewives.png'
+import locas from 'assets/matrix/locas.jpg'
 import madge from 'assets/matrix/madge.png'
 import Madge from 'assets/matrix/madge.svg'
 import malcolmGladwell from 'assets/matrix/MalcolmGladwell.png'
@@ -38,17 +41,17 @@ export function ApprovalRoute (): ReactElement {
       <Helmet>
         <title>The Approval Matrix</title>
       </Helmet>
-      <Stage step={ step }>
+      <Stage height={ 768 } step={ step } width={ 1024 }>
         <Scene layout>
           <Grid>
             <Line $axis='x' />
             <Line $axis='y' />
           </Grid>
         </Scene>
-        <Scene layout translateY={ -1536 }>
+        <Scene layout translateY={ -1440 }>
           <Label>Highbrow</Label>
         </Scene>
-        <Scene layout translateY={ 1536 }>
+        <Scene layout translateY={ 1240 }>
           <Label>Lowbrow</Label>
         </Scene>
         <Scene layout translateX={ 1920 } rotate={ 90 }>
@@ -152,7 +155,11 @@ export function ApprovalRoute (): ReactElement {
         <Scene
           translateY={ 512 }
           translateX={ -1024 }
+          translateZ={ 128 }
           scale={ 1.5 }
+          rotateY={ 35 }
+          rotateX={ 10 }
+          rotateZ={ 5 }
           onClick={ toggleCurrentStep(8) }>
           <Entry>
             <Entry.Text>
@@ -232,6 +239,50 @@ export function ApprovalRoute (): ReactElement {
               <em>Founding Brothers</em> author Joseph J. Ellis.
             </Entry.Text>
             <Image src={ washington } />
+          </Entry>
+        </Scene>
+        <Scene
+          translateX={ 1024 }
+          translateY={ -360 }
+          onClick={ toggleCurrentStep(14) }>
+          <Entry>
+            <Entry.Text>
+              <strong>Ghery</strong> picked for WTC performing-arts center.
+            </Entry.Text>
+            <Image src={ ghery } />
+          </Entry>
+        </Scene>
+        <Scene
+          translateX={ 1440 }
+          translateY={ 1024 }
+          translateZ={ -128 }
+          scale={ 1.5 }
+          onClick={ toggleCurrentStep(15) }>
+          <Entry>
+            <Entry.Text>
+              <strong>
+                <em>Desperate Housewives:</em>
+              </strong>{ ' ' }
+              <em>Melrose</em>-like genius, plus a career boost for Felicity
+              Huffman.
+            </Entry.Text>
+            <Image src={ housewives } />
+          </Entry>
+        </Scene>
+        <Scene
+          translateX={ 1440 }
+          translateY={ 384 }
+          translateZ={ 128 }
+          onClick={ toggleCurrentStep(16) }>
+          <Entry>
+            <Entry.Text>
+              Jaime Hernandez's{ ' ' }
+              <strong>
+                <em>Locas: A Love & Rockets Book</em>
+              </strong>
+              .
+            </Entry.Text>
+            <Image src={ locas } />
           </Entry>
         </Scene>
       </Stage>
