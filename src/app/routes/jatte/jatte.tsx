@@ -1,12 +1,15 @@
 import * as jatte from 'app/styles/theme/palette-grand-jatte'
 import { Root, SVG } from './jatte-styles'
 import { FunctionComponent } from 'react'
+import chroma from 'chroma-js'
 
 interface EmeraldProps {
   size?: number
 }
 
 const EmeraldCrossHatch: FunctionComponent = () => {}
+
+const paleCobalt = chroma.mix(jatte.css.cobalt, jatte.css.leadWhite, 0.5, 'lab')
 
 export const Jatte: FunctionComponent = () => {
   return (
@@ -41,6 +44,30 @@ export const Jatte: FunctionComponent = () => {
               xChannelSelector='R'
               yChannelSelector='G' />
           </filter>
+          <filter id='jatte_daubstroke_filter10'>
+            <feTurbulence
+              baseFrequency='0.2'
+              numOctaves='4'
+              result='turbulence'
+              seed='0'
+              type='turbulence' />
+            <feDisplacementMap
+              in='SourceGraphic'
+              in2='turbulence'
+              scale='5'
+              xChannelSelector='R'
+              yChannelSelector='G' />
+          </filter>
+          <radialGradient
+            cx='0'
+            cy='0'
+            fx='0'
+            fy='0'
+            id='jatte_daubcolor_white_cobalt10'
+            r='1'>
+            <stop offset='0%' stopColor={ paleCobalt.css() } />
+            <stop offset='75%' stopColor={ jatte.css.cobalt } />
+          </radialGradient>
         </defs>
         <ellipse
           cx='256'
@@ -124,6 +151,26 @@ export const Jatte: FunctionComponent = () => {
             filter: 'url("#jatte_brushstroke_filter20")',
           }}
           transform='translate(100, 420) rotate(100) translate(-100, -420)' />
+
+        <ellipse
+          cx='300'
+          cy='300'
+          rx='12'
+          ry='18'
+          style={{
+            fill: jatte.css.cobalt,
+            filter: 'url("#jatte_daubstroke_filter10")',
+          }} />
+        <ellipse
+          cx='50'
+          cy='50'
+          rx='12'
+          ry='18'
+          style={{
+            fill: jatte.css.cobalt,
+            filter: 'url("#jatte_daubstroke_filter10")',
+          }}
+          transform='translate(50, 50) rotate(90) translate(-50, -50)' />
       </SVG>
     </Root>
   )
