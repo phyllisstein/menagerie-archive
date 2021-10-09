@@ -81,7 +81,7 @@ export function ApprovalRoute (): ReactElement {
             </Entry.Text>
             <Image
               src={ madge }
-              style={{ clipPath: "url('#madge_svg__madge')" }} />
+              style={{ clipPath: 'url("#madge_svg__madge")' }} />
             <Madge />
           </Entry>
         </Scene>
