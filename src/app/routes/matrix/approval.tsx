@@ -65,10 +65,10 @@ export function ApprovalRoute (): ReactElement {
         <Scene scale={ 4 } />
         <Scene
           translateX={ -512 }
-          translateY={ -128 }
+          translateY={ -42 }
           scale={ 2 }
           onClick={ toggleCurrentStep(1) }>
-          <Entry>
+          <Entry dot={ Entry.DotPosition.Bottom }>
             <Entry.Text>
               <strong>Ponchos.</strong>
             </Entry.Text>
@@ -80,8 +80,8 @@ export function ApprovalRoute (): ReactElement {
           translateZ={ 512 }
           scale={ 1.25 }
           onClick={ toggleCurrentStep(2) }>
-          <Entry>
-            <Entry.Text>
+          <Entry dot={ Entry.DotPosition.Left }>
+            <Entry.Text style={{ marginRight: '-7rem' }}>
               <strong>Madonna</strong>, Oxford student.
             </Entry.Text>
             <Image
@@ -95,7 +95,7 @@ export function ApprovalRoute (): ReactElement {
           translateY={ -768 }
           scale={ 1.5 }
           onClick={ toggleCurrentStep(3) }>
-          <Entry style={{ minWidth: 256 }}>
+          <Entry style={{ minWidth: 256 }} dot={ Entry.DotPosition.TopRight }>
             <Entry.Text>
               <strong>PBS Broadway-musical documentary:</strong> Noble but
               misbegotten—and too many of the talking heads are dead.
@@ -106,7 +106,7 @@ export function ApprovalRoute (): ReactElement {
           translateX={ -1024 }
           translateY={ -512 }
           onClick={ toggleCurrentStep(4) }>
-          <Entry>
+          <Entry dot={ Entry.DotPosition.BottomRight }>
             <Entry.Text>
               <strong>
                 <em>Tipping Point</em> author Malcolm Gladwell's
@@ -122,7 +122,7 @@ export function ApprovalRoute (): ReactElement {
           translateZ={ 512 }
           scale={ 2 }
           onClick={ toggleCurrentStep(5) }>
-          <Entry>
+          <Entry dot={ Entry.DotPosition.TopLeft }>
             <Entry.Text>
               <strong>Tucker Carlson:</strong> His smugness boomerangs.
             </Entry.Text>
@@ -133,7 +133,7 @@ export function ApprovalRoute (): ReactElement {
           translateY={ -1200 }
           scale={ 2 }
           onClick={ toggleCurrentStep(6) }>
-          <Entry>
+          <Entry dot={ Entry.DotPosition.Top }>
             <Entry.Text>
               <strong>MoMA</strong> charges $20.
             </Entry.Text>
@@ -146,7 +146,7 @@ export function ApprovalRoute (): ReactElement {
           translateZ={ -512 }
           scale={ 1.5 }
           onClick={ toggleCurrentStep(7) }>
-          <Entry>
+          <Entry dot={ Entry.DotPosition.Top }>
             <Entry.Text>
               <strong>Bob Dylan</strong> bio. Poignant! Idiosyncratic! And full
               of New York trivia.
@@ -163,7 +163,7 @@ export function ApprovalRoute (): ReactElement {
           rotateX={ 10 }
           rotateZ={ 5 }
           onClick={ toggleCurrentStep(8) }>
-          <Entry>
+          <Entry dot={ Entry.DotPosition.BottomLeft }>
             <Entry.Text>
               <strong>Quickie marriages.</strong>
             </Entry.Text>
@@ -175,7 +175,7 @@ export function ApprovalRoute (): ReactElement {
           translateX={ -512 }
           scale={ 2 }
           onClick={ toggleCurrentStep(9) }>
-          <Entry>
+          <Entry dot={ Entry.DotPosition.TopRight }>
             <Entry.Text>
               <strong>Surviving Christmas:</strong> a Yuletide <em>Gigli</em>?
             </Entry.Text>
@@ -186,7 +186,7 @@ export function ApprovalRoute (): ReactElement {
           translateX={ 128 }
           translateZ={ 512 }
           onClick={ toggleCurrentStep(10) }>
-          <Entry>
+          <Entry dot={ Entry.DotPosition.Top }>
             <Entry.Text>
               <strong>Halloween Parade:</strong> People think it's gross and
               tacky. (It's still fun.)
@@ -200,7 +200,7 @@ export function ApprovalRoute (): ReactElement {
           rotateY={ -45 }
           scale={ 2 }
           onClick={ toggleCurrentStep(11) }>
-          <Entry>
+          <Entry dot={ Entry.DotPosition.BottomLeft }>
             <Entry.Text>
               <strong>Grand Theft Auto: San Andreas.</strong> Vroom.
             </Entry.Text>
@@ -213,11 +213,9 @@ export function ApprovalRoute (): ReactElement {
           scale={ 1.5 }
           onClick={ toggleCurrentStep(12) }>
           <Entry
+            dot={ Entry.DotPosition.Top }
             style={{
-              alignItems: 'center',
-              display: 'flex',
-              justifyContent: 'center',
-              minWidth: 512,
+              minWidth: 256,
             }}>
             <Entry.Text>
               <strong>It's All About Love:</strong> Dogma + indie star power =
@@ -235,7 +233,7 @@ export function ApprovalRoute (): ReactElement {
           translateZ={ 256 }
           scale={ 2 }
           onClick={ toggleCurrentStep(13) }>
-          <Entry>
+          <Entry dot={ Entry.DotPosition.Right }>
             <Entry.Text>
               <strong>His Excellency: George Washington</strong>, by{ ' ' }
               <em>Founding Brothers</em> author Joseph J. Ellis.
@@ -247,7 +245,7 @@ export function ApprovalRoute (): ReactElement {
           translateX={ 1024 }
           translateY={ -360 }
           onClick={ toggleCurrentStep(14) }>
-          <Entry>
+          <Entry dot={ Entry.DotPosition.BottomRight }>
             <Entry.Text>
               <strong>Ghery</strong> picked for WTC performing-arts center.
             </Entry.Text>
@@ -260,7 +258,7 @@ export function ApprovalRoute (): ReactElement {
           translateZ={ -128 }
           scale={ 1.5 }
           onClick={ toggleCurrentStep(15) }>
-          <Entry>
+          <Entry dot={ Entry.DotPosition.TopLeft }>
             <Entry.Text>
               <strong>
                 <em>Desperate Housewives:</em>
@@ -276,7 +274,7 @@ export function ApprovalRoute (): ReactElement {
           translateY={ 384 }
           translateZ={ 128 }
           onClick={ toggleCurrentStep(16) }>
-          <Entry>
+          <Entry dot={ Entry.DotPosition.Top }>
             <Entry.Text>
               Jaime Hernandez's{ ' ' }
               <strong>
@@ -291,20 +289,7 @@ export function ApprovalRoute (): ReactElement {
           translateX={ -256 }
           translateY={ 900 }
           onClick={ toggleCurrentStep(17) }>
-          <Entry>
-            <Entry.Text>
-              <strong>Burt Reynolds</strong>
-              as Boss Hogg in <em>Dukes of Hazzard</em> movie. Toupée makers,
-              rejoice.
-            </Entry.Text>
-            <Image src={ reynolds } />
-          </Entry>
-        </Scene>
-        <Scene
-          translateX={ -256 }
-          translateY={ 900 }
-          onClick={ toggleCurrentStep(17) }>
-          <Entry>
+          <Entry dot={ Entry.DotPosition.BottomRight }>
             <Entry.Text>
               <strong>Burt Reynolds</strong>
               as Boss Hogg in <em>Dukes of Hazzard</em> movie. Toupée makers,
@@ -317,8 +302,8 @@ export function ApprovalRoute (): ReactElement {
           translateY={ 1000 }
           translateX={ -850 }
           translateZ={ 256 }
-          onClick={ toggleCurrentStep(19) }>
-          <Entry>
+          onClick={ toggleCurrentStep(18) }>
+          <Entry dot={ Entry.DotPosition.TopLeft }>
             <Entry.Text>
               <strong>Stolen Honor: Wounds That Never Heal:</strong>
               Sinclair flip-flops on anti-Kerry doc.

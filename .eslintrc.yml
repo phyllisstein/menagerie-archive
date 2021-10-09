@@ -139,6 +139,7 @@ rules:
   indent:
     - warn
     - 2
+    - SwitchCase: 1
   no-extra-boolean-cast: 'off'
   no-extra-semi: 'off'
   no-multiple-empty-lines:
