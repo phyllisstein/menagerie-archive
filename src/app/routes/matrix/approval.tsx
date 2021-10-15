@@ -2,7 +2,7 @@
 
 import { Entry, Grid, Image, Label, Line, PulsingIcon } from './approval-styles'
 import { ReactElement, useCallback, useState } from 'react'
-import { Scene, Stage } from 'app/components'
+import { Scene, Stage, Transform } from 'app/components/stage'
 import { css } from 'app/styles/theme/palette'
 import { duotone } from '@fortawesome/fontawesome-svg-core/import.macro'
 import dylan from 'assets/matrix/dylan.jpg'
@@ -22,13 +22,13 @@ import twenty from 'assets/matrix/twenty.jpg'
 import washington from 'assets/matrix/washington.jpg'
 
 export function ApprovalRoute (): ReactElement {
-  const [step, setStep] = useState(0)
+  const [step, setStep] = useState(1)
 
   const toggleCurrentStep = useCallback(
     clickableStep => {
       return () => {
         if (clickableStep === step) {
-          setStep(0)
+          setStep(1)
           return
         }
 
@@ -50,36 +50,42 @@ export function ApprovalRoute (): ReactElement {
             <Line $axis='y' />
           </Grid>
         </Scene>
-        <Scene layout translateY={ -1440 }>
+        <Scene layout>
+          <Transform translateY={ -1440 } />
           <Label>Highbrow</Label>
         </Scene>
-        <Scene layout translateY={ 1440 }>
+        <Scene layout>
+          <Transform translateY={ 1440 } />
           <Label>Lowbrow</Label>
         </Scene>
-        <Scene layout translateX={ 1920 } rotate={ 90 }>
+        <Scene layout>
+          <Transform translateX={ 1920 } />
+          <Transform rotate={ 90 } />
           <Label>Brilliant</Label>
         </Scene>
-        <Scene layout translateX={ -1920 } rotate={ -90 }>
+        <Scene layout>
+          <Transform translateX={ -1920 } />
+          <Transform rotate={ -90 } />
           <Label>Despicable</Label>
         </Scene>
-        <Scene scale={ 4 } />
-        <Scene
-          translateX={ -512 }
-          translateY={ -80 }
-          scale={ 2 }
-          onClick={ toggleCurrentStep(1) }>
+        <Scene>
+          <Transform scale={ 4 } />
+        </Scene>
+        <Scene onClick={ toggleCurrentStep(2) }>
+          <Transform translateX={ -512 } />
+          <Transform translateY={ -80 } />
+          <Transform scale={ 2 } />
           <Entry dot={ Entry.DotPosition.Bottom }>
             <Entry.Text>
               <strong>Ponchos.</strong>
             </Entry.Text>
           </Entry>
         </Scene>
-        <Scene
-          translateX={ -256 }
-          translateY={ -256 }
-          translateZ={ 512 }
-          scale={ 1.25 }
-          onClick={ toggleCurrentStep(2) }>
+        <Scene onClick={ toggleCurrentStep(3) }>
+          <Transform translateX={ -256 } />
+          <Transform translateY={ -256 } />
+          <Transform translateZ={ 512 } />
+          <Transform scale={ 1.25 } />
           <Entry dot={ Entry.DotPosition.Left }>
             <Entry.Text style={{ marginRight: '-7rem' }}>
               <strong>Madonna</strong>, Oxford student.
@@ -90,11 +96,10 @@ export function ApprovalRoute (): ReactElement {
             <Madge />
           </Entry>
         </Scene>
-        <Scene
-          translateX={ -256 }
-          translateY={ -700 }
-          scale={ 1.5 }
-          onClick={ toggleCurrentStep(3) }>
+        <Scene onClick={ toggleCurrentStep(4) }>
+          <Transform translateX={ -256 } />
+          <Transform translateY={ -700 } />
+          <Transform scale={ 1.5 } />
           <Entry style={{ minWidth: 256 }} dot={ Entry.DotPosition.TopRight }>
             <Entry.Text>
               <strong>PBS Broadway-musical documentary:</strong> Noble but
@@ -102,10 +107,9 @@ export function ApprovalRoute (): ReactElement {
             </Entry.Text>
           </Entry>
         </Scene>
-        <Scene
-          translateX={ -1024 }
-          translateY={ -512 }
-          onClick={ toggleCurrentStep(4) }>
+        <Scene onClick={ toggleCurrentStep(5) }>
+          <Transform translateX={ -1024 } />
+          <Transform translateY={ -512 } />
           <Entry dot={ Entry.DotPosition.BottomRight }>
             <Entry.Text>
               <strong>
@@ -116,23 +120,21 @@ export function ApprovalRoute (): ReactElement {
             <Image src={ malcolmGladwell } />
           </Entry>
         </Scene>
-        <Scene
-          translateX={ -960 }
-          translateY={ -128 }
-          translateZ={ 512 }
-          scale={ 2 }
-          onClick={ toggleCurrentStep(5) }>
+        <Scene onClick={ toggleCurrentStep(6) }>
+          <Transform translateX={ -960 } />
+          <Transform translateY={ -128 } />
+          <Transform translateZ={ 512 } />
+          <Transform scale={ 2 } />
           <Entry dot={ Entry.DotPosition.TopLeft }>
             <Entry.Text>
               <strong>Tucker Carlson:</strong> His smugness boomerangs.
             </Entry.Text>
           </Entry>
         </Scene>
-        <Scene
-          translateX={ -128 }
-          translateY={ -1100 }
-          scale={ 2 }
-          onClick={ toggleCurrentStep(6) }>
+        <Scene onClick={ toggleCurrentStep(7) }>
+          <Transform translateX={ -128 } />
+          <Transform translateY={ -1100 } />
+          <Transform scale={ 2 } />
           <Entry dot={ Entry.DotPosition.Top }>
             <Entry.Text>
               <strong>MoMA</strong> charges $20.
@@ -140,12 +142,11 @@ export function ApprovalRoute (): ReactElement {
             <Image src={ twenty } />
           </Entry>
         </Scene>
-        <Scene
-          translateY={ -512 }
-          translateX={ 128 }
-          translateZ={ -512 }
-          scale={ 1.5 }
-          onClick={ toggleCurrentStep(7) }>
+        <Scene onClick={ toggleCurrentStep(8) }>
+          <Transform translateY={ -512 } />
+          <Transform translateX={ 128 } />
+          <Transform translateZ={ -512 } />
+          <Transform scale={ 1.5 } />
           <Entry dot={ Entry.DotPosition.Top }>
             <Entry.Text>
               <strong>Bob Dylan</strong> bio. Poignant! Idiosyncratic! And full
@@ -154,15 +155,14 @@ export function ApprovalRoute (): ReactElement {
             <Image src={ dylan } />
           </Entry>
         </Scene>
-        <Scene
-          translateY={ 512 }
-          translateX={ -1200 }
-          translateZ={ 128 }
-          scale={ 1.5 }
-          rotateY={ 35 }
-          rotateX={ 10 }
-          rotateZ={ 5 }
-          onClick={ toggleCurrentStep(8) }>
+        <Scene onClick={ toggleCurrentStep(9) }>
+          <Transform translateY={ 512 } />
+          <Transform translateX={ -1200 } />
+          <Transform translateZ={ 128 } />
+          <Transform scale={ 1.5 } />
+          <Transform rotateY={ 35 } />
+          <Transform rotateX={ 10 } />
+          <Transform rotateZ={ 5 } />
           <Entry dot={ Entry.DotPosition.BottomLeft }>
             <Entry.Text>
               <strong>Quickie marriages.</strong>
@@ -170,22 +170,20 @@ export function ApprovalRoute (): ReactElement {
             <Image src={ trucker } />
           </Entry>
         </Scene>
-        <Scene
-          translateY={ 512 }
-          translateX={ -512 }
-          scale={ 2 }
-          onClick={ toggleCurrentStep(9) }>
+        <Scene onClick={ toggleCurrentStep(10) }>
+          <Transform translateY={ 512 } />
+          <Transform translateX={ -512 } />
+          <Transform scale={ 2 } />
           <Entry dot={ Entry.DotPosition.TopRight }>
             <Entry.Text>
               <strong>Surviving Christmas:</strong> a Yuletide <em>Gigli</em>?
             </Entry.Text>
           </Entry>
         </Scene>
-        <Scene
-          translateY={ 256 }
-          translateX={ 128 }
-          translateZ={ 512 }
-          onClick={ toggleCurrentStep(10) }>
+        <Scene onClick={ toggleCurrentStep(11) }>
+          <Transform translateY={ 256 } />
+          <Transform translateX={ 128 } />
+          <Transform translateZ={ 512 } />
           <Entry dot={ Entry.DotPosition.Top }>
             <Entry.Text>
               <strong>Halloween Parade:</strong> People think it's gross and
@@ -194,12 +192,11 @@ export function ApprovalRoute (): ReactElement {
             <Image src={ ghostling } style={{ maxHeight: 256 }} />
           </Entry>
         </Scene>
-        <Scene
-          translateY={ 768 }
-          translateX={ 512 }
-          rotateY={ -45 }
-          scale={ 2 }
-          onClick={ toggleCurrentStep(11) }>
+        <Scene onClick={ toggleCurrentStep(12) }>
+          <Transform translateY={ 768 } />
+          <Transform translateX={ 512 } />
+          <Transform rotateY={ -45 } />
+          <Transform scale={ 2 } />
           <Entry dot={ Entry.DotPosition.BottomLeft }>
             <Entry.Text>
               <strong>Grand Theft Auto: San Andreas.</strong> Vroom.
@@ -207,11 +204,10 @@ export function ApprovalRoute (): ReactElement {
             <Image src={ gta } />
           </Entry>
         </Scene>
-        <Scene
-          translateX={ -960 }
-          translateY={ -960 }
-          scale={ 1.5 }
-          onClick={ toggleCurrentStep(12) }>
+        <Scene onClick={ toggleCurrentStep(13) }>
+          <Transform translateX={ -960 } />
+          <Transform translateY={ -960 } />
+          <Transform scale={ 1.5 } />
           <Entry
             dot={ Entry.DotPosition.Top }
             style={{
@@ -227,12 +223,11 @@ export function ApprovalRoute (): ReactElement {
               style={{ color: css.red700 }} />
           </Entry>
         </Scene>
-        <Scene
-          translateX={ 1024 }
-          translateY={ -1024 }
-          translateZ={ 256 }
-          scale={ 2 }
-          onClick={ toggleCurrentStep(13) }>
+        <Scene onClick={ toggleCurrentStep(14) }>
+          <Transform translateX={ 1024 } />
+          <Transform translateY={ -1024 } />
+          <Transform translateZ={ 256 } />
+          <Transform scale={ 2 } />
           <Entry dot={ Entry.DotPosition.Right }>
             <Entry.Text>
               <strong>His Excellency: George Washington</strong>, by{ ' ' }
@@ -241,10 +236,9 @@ export function ApprovalRoute (): ReactElement {
             <Image src={ washington } />
           </Entry>
         </Scene>
-        <Scene
-          translateX={ 1024 }
-          translateY={ -360 }
-          onClick={ toggleCurrentStep(14) }>
+        <Scene onClick={ toggleCurrentStep(15) }>
+          <Transform translateX={ 1024 } />
+          <Transform translateY={ -360 } />
           <Entry dot={ Entry.DotPosition.BottomRight }>
             <Entry.Text>
               <strong>Ghery</strong> picked for WTC performing-arts center.
@@ -252,12 +246,11 @@ export function ApprovalRoute (): ReactElement {
             <Image src={ ghery } />
           </Entry>
         </Scene>
-        <Scene
-          translateX={ 1440 }
-          translateY={ 1024 }
-          translateZ={ -128 }
-          scale={ 1.5 }
-          onClick={ toggleCurrentStep(15) }>
+        <Scene onClick={ toggleCurrentStep(16) }>
+          <Transform translateX={ 1440 } />
+          <Transform translateY={ 1024 } />
+          <Transform translateZ={ -128 } />
+          <Transform scale={ 1.5 } />
           <Entry dot={ Entry.DotPosition.TopLeft }>
             <Entry.Text>
               <strong>
@@ -269,11 +262,10 @@ export function ApprovalRoute (): ReactElement {
             <Image src={ housewives } />
           </Entry>
         </Scene>
-        <Scene
-          translateX={ 1440 }
-          translateY={ 384 }
-          translateZ={ 128 }
-          onClick={ toggleCurrentStep(16) }>
+        <Scene onClick={ toggleCurrentStep(17) }>
+          <Transform translateX={ 1440 } />
+          <Transform translateY={ 384 } />
+          <Transform translateZ={ 128 } />
           <Entry dot={ Entry.DotPosition.Top }>
             <Entry.Text>
               Jaime Hernandez's{ ' ' }
@@ -285,10 +277,9 @@ export function ApprovalRoute (): ReactElement {
             <Image src={ locas } />
           </Entry>
         </Scene>
-        <Scene
-          translateX={ -256 }
-          translateY={ 900 }
-          onClick={ toggleCurrentStep(17) }>
+        <Scene onClick={ toggleCurrentStep(18) }>
+          <Transform translateX={ -256 } />
+          <Transform translateY={ 900 } />
           <Entry dot={ Entry.DotPosition.BottomRight }>
             <Entry.Text>
               <strong>Burt Reynolds</strong>
@@ -298,11 +289,10 @@ export function ApprovalRoute (): ReactElement {
             <Image src={ reynolds } />
           </Entry>
         </Scene>
-        <Scene
-          translateY={ 1000 }
-          translateX={ -850 }
-          translateZ={ 256 }
-          onClick={ toggleCurrentStep(18) }>
+        <Scene onClick={ toggleCurrentStep(19) }>
+          <Transform translateY={ 1000 } />
+          <Transform translateX={ -850 } />
+          <Transform translateZ={ 256 } />
           <Entry dot={ Entry.DotPosition.TopLeft }>
             <Entry.Text>
               <strong>Stolen Honor: Wounds That Never Heal:</strong>

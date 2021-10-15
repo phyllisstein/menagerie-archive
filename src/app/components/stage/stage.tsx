@@ -1,18 +1,25 @@
+import { Body, Root, StageRoot } from './stage-styles'
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
-import { canUseDOM } from 'exenv'
-import _ from 'lodash'
-import R from 'ramda'
 import React, {
   Children,
+  cloneElement,
+  createContext,
   FunctionComponentElement,
   ReactElement,
+  useCallback,
   useEffect,
   useMemo,
   useRef,
   useState,
 } from 'react'
+import { canUseDOM } from 'exenv'
+import R from 'ramda'
 import { Props as SceneProps } from './scene'
-import { Body, Root, StageRoot } from './stage-styles'
+
+type TransformRegistrationFn = (transform: Transform) => void
+export const StageTransform = createContext<TransformRegistrationFn | null>(
+  null,
+)
 
 const getWindowScale = (
   height: number,
@@ -37,34 +44,6 @@ const getWindowScale = (
 
   return scaleWindow
 }
-
-const mergeTransforms = R.mergeWithKey(
-  (key: string, lhs: number, rhs: number): number => {
-    if (
-      !key.includes('scale') &&
-      !key.includes('translate') &&
-      !key.includes('rotate')
-    ) {
-      return rhs
-    }
-
-    return lhs + rhs
-  },
-)
-
-const getTranslate = (childProps: SceneProps): TranslateMap => {
-  const entries = (Object.entries(childProps) as Array<[string, number]>)
-    .filter(([kind]) => kind.includes('translate') || kind.includes('rotate'))
-    .reverse()
-    .map(([kind, amount]) => [kind, amount * -1])
-
-  return Object.fromEntries(entries)
-}
-
-const joinSortedEntries = (obj: { [key: string]: unknown }): string =>
-  Object.entries(obj)
-    .map(([kind, amount]) => `${ kind }(${ amount })`)
-    .join(' ')
 
 export interface Props {
   children: OneOrMore<SceneElement>
@@ -99,20 +78,30 @@ interface TranslateMap {
   translateZ: number
 }
 
+interface Transform {
+  scale: number
+  translate: TranslateMap
+}
+
 export function Stage ({
   children,
   height = 768,
   perspective: perspectiveBase = 1000,
   scale: scaleConstraints = {},
-  step,
+  step: rawStep,
   width = 1024,
 }: Props): ReactElement {
   const [windowScale, setWindowScale] = useState(() =>
     getWindowScale(height, width, scaleConstraints),
   )
 
+  const step = R.clamp(1, Children.count(children), rawStep) - 1
   const rootEl = useRef<HTMLDivElement>(null)
   const staleScale = useRef<number>(1)
+  const [transforms, setTransforms] = useState<Transform[]>([])
+  const registerTransform = useCallback((transform: Transform) => {
+    setTransforms(transforms => [...transforms, transform])
+  }, [])
 
   useEffect(() => {
     const triggerRescale = (): void => {
@@ -135,50 +124,16 @@ export function Stage ({
     return () => enableBodyScroll(el)
   }, [rootEl])
 
-  const childArray = useMemo(() => {
-    return Children.toArray(children)
-      .filter(child => (child as SceneElement).props.layout == null)
-      .map((child, childNumber, childArray) => {
-        const childEl = child as SceneElement
+  const transform = R.prop(step, transforms) || { scale: 1, translate: {}}
 
-        if (childEl.props.relative == null || childNumber === 0) {
-          return childEl
-        }
+  const didZoom = transform.scale >= staleScale.current
+  staleScale.current = transform.scale
 
-        const previousStep = _.clamp(childNumber, 0, childNumber - 1)
-        const previousChild = childArray[previousStep] as SceneElement
-
-        const mergedTransforms = mergeTransforms(
-          previousChild.props,
-          childEl.props,
-        )
-
-        return React.cloneElement(childEl, {
-          ...childEl.props,
-          ...mergedTransforms,
-        })
-      })
-  }, [children])
-
-  const layoutSteps = useMemo(() => {
-    return Children.toArray(children).filter(
-      child => (child as SceneElement).props.layout != null,
-    )
-  }, [children])
-
-  const currentStep = _.clamp(step, 0, childArray.length - 1)
-  const currentChild = childArray[currentStep]
-
-  const translate = getTranslate(currentChild.props)
-  const currentScale = 1 / (currentChild.props.scale ?? 1)
-  const didZoom = currentScale >= staleScale.current
-  staleScale.current = currentScale
-
-  const scale = currentScale * windowScale
+  const scale = transform.scale * windowScale
   const perspective = perspectiveBase / scale
 
   return (
-    <>
+    <StageTransform.Provider value={ registerTransform }>
       <Body />
       <Root
         ref={ rootEl }
@@ -192,7 +147,7 @@ export function Stage ({
           type: 'spring',
         }}>
         <StageRoot
-          animate={ translate }
+          animate={ transform.translate }
           transition={{
             damping: 15,
             delay: didZoom ? 0 : 0.25,
@@ -200,10 +155,9 @@ export function Stage ({
             stiffness: 75,
             type: 'spring',
           }}>
-          { layoutSteps }
-          { childArray }
+          { children }
         </StageRoot>
       </Root>
-    </>
+    </StageTransform.Provider>
   )
 }
