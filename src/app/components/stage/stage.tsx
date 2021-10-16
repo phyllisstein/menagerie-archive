@@ -2,17 +2,16 @@ import { Body, Root, StageRoot } from './stage-styles'
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
 import React, {
   Children,
-  cloneElement,
   createContext,
   FunctionComponentElement,
   ReactElement,
   useCallback,
   useEffect,
-  useMemo,
   useRef,
   useState,
 } from 'react'
 import { canUseDOM } from 'exenv'
+import { debounce } from 'lodash/fp'
 import R from 'ramda'
 import { Props as SceneProps } from './scene'
 
@@ -104,10 +103,10 @@ export function Stage ({
   }, [])
 
   useEffect(() => {
-    const triggerRescale = (): void => {
+    const triggerRescale = debounce(250, (): void => {
       const nextScale = getWindowScale(height, width, scaleConstraints)
       setWindowScale(nextScale)
-    }
+    })
 
     triggerRescale()
 
@@ -133,7 +132,7 @@ export function Stage ({
   const perspective = perspectiveBase / scale
 
   return (
-    <StageTransform.Provider value={ registerTransform }>
+    <>
       <Body />
       <Root
         ref={ rootEl }
@@ -155,9 +154,11 @@ export function Stage ({
             stiffness: 75,
             type: 'spring',
           }}>
-          { children }
+          <StageTransform.Provider value={ registerTransform }>
+            { children }
+          </StageTransform.Provider>
         </StageRoot>
       </Root>
-    </StageTransform.Provider>
+    </>
   )
 }

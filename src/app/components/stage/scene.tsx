@@ -2,11 +2,10 @@ import {
   Children,
   CSSProperties,
   FunctionComponent,
+  memo,
   useContext,
   useEffect,
-  useLayoutEffect,
 } from 'react'
-import { getValueAndUnit } from 'polished'
 import R from 'ramda'
 import { Root } from './scene-styles'
 import { StageTransform } from './stage'
@@ -42,19 +41,6 @@ const stringifyTransform = ([kind, amount]: [
   return `${ kind }(${ amount })`
 }
 
-const stringifyMirrorTransform = ([kind, amount]: [
-  string,
-  number | string,
-]): string => {
-  if (kind.includes('translate')) {
-    return `${ kind }(${ -amount }px)`
-  }
-
-  if (kind.includes('rotate')) {
-    return `${ kind }(${ -amount }deg)`
-  }
-}
-
 const createTransform = R.pipe(
   R.toPairs,
   R.filter(
@@ -75,14 +61,12 @@ const createMirrorTransform = R.pipe(
 )
 
 export interface Props {
-  active?: boolean
   layout?: boolean
   style?: CSSProperties
 }
 
-export const Scene: FunctionComponent<Props> = function Scene (props) {
+export const Scene: FunctionComponent<Props> = memo(function Scene (props) {
   const {
-    active,
     children: allChildren,
     layout,
     style: styleProp = {},
@@ -123,11 +107,11 @@ export const Scene: FunctionComponent<Props> = function Scene (props) {
       scale: 1 / scale,
       translate: mirrorTransform,
     })
-  }, [])
+  }, [registerTransform, layout])
 
   return (
     <Root { ...rest } style={{ ...styleProp, transform: transform.join(' ') }}>
       { renderedChildren }
     </Root>
   )
-}
+})
