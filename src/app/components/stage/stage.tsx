@@ -139,13 +139,11 @@ export function Stage ({
 
   const translate = translateDefaults(transform.translate)
 
+  staleScale.current = transform.scale
+
   const scaleSpringRef = useSpringRef()
   const scaleSpring = useSpring({
     config: config.slow,
-    from: {
-      perspective: perspectiveBase,
-      scale: 1,
-    },
     ref: scaleSpringRef,
     to: {
       perspective,

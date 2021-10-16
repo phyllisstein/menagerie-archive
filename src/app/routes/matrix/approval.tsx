@@ -4,6 +4,7 @@ import { Scene, Stage, Transform } from 'app/components/stage'
 import { css } from 'app/styles/theme/palette'
 import { duotone } from '@fortawesome/fontawesome-svg-core/import.macro'
 import dylan from 'assets/matrix/dylan.jpg'
+import gallo from 'assets/matrix/gallo.png'
 import ghery from 'assets/matrix/ghery.png'
 import ghostling from 'assets/matrix/ghostling.png'
 import gta from 'assets/matrix/gtasa.jpg'
@@ -297,6 +298,20 @@ export function ApprovalRoute (): ReactElement {
               Sinclair flip-flops on anti-Kerry doc.
             </Entry.Text>
             <Image src={ purpleHeart } style={{ width: 256, height: 'auto' }} />
+          </Entry>
+        </Scene>
+        <Scene onClick={ toggleCurrentStep(20) }>
+          <Transform rotateY={ -35 } />
+          <Transform x={ -1440 } />
+          <Transform y={ -768 } />
+          <Transform z={ 768 } />
+          <Transform scale={ 2 } />
+          <Entry dot={ Entry.DotPosition.BottomRight }>
+            <Entry.Text>
+              <strong>Vincent Gallo</strong>, strutting, mutton-chopped Rasputin
+              of indie cinema.
+            </Entry.Text>
+            <Image src={ gallo } />
           </Entry>
         </Scene>
       </Stage>
