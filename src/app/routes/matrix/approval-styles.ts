@@ -42,6 +42,8 @@ export const Label = styled.div`
   font-weight: 600;
 
   font-variant-caps: all-small-caps;
+
+  backface-visibility: hidden;
 `
 
 export const Line = styled.div`
