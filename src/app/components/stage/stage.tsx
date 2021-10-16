@@ -1,4 +1,5 @@
 import { Body, Root, StageRoot } from './stage-styles'
+import { config, useChain, useSpring, useSpringRef } from 'react-spring'
 import { debounce, defaults } from 'lodash/fp'
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
 import React, {
@@ -14,7 +15,6 @@ import React, {
 import { canUseDOM } from 'exenv'
 import R from 'ramda'
 import { Props as SceneProps } from './scene'
-import { useSpring } from 'react-spring'
 
 type TransformRegistrationFn = (transform: Transform) => void
 export const StageTransform = createContext<TransformRegistrationFn | null>(
@@ -131,7 +131,7 @@ export function Stage ({
 
   const transform = R.prop(step, transforms) || { scale: 1, translate: {}}
 
-  const didZoom = transform.scale >= staleScale.current
+  const didZoom = transform.scale > staleScale.current
   staleScale.current = transform.scale
 
   const scale = transform.scale * windowScale
@@ -139,17 +139,33 @@ export function Stage ({
 
   const translate = translateDefaults(transform.translate)
 
+  const scaleSpringRef = useSpringRef()
   const scaleSpring = useSpring({
+    config: config.slow,
     from: {
       perspective: perspectiveBase,
       scale: 1,
     },
+    ref: scaleSpringRef,
     to: {
       perspective,
       scale,
     },
   })
-  const translateSpring = useSpring(translate)
+
+  const translateSpringRef = useSpringRef()
+  const translateSpring = useSpring({
+    config: config.slow,
+    ref: translateSpringRef,
+    to: translate,
+  })
+
+  useChain(
+    didZoom
+      ? [translateSpringRef, scaleSpringRef]
+      : [scaleSpringRef, translateSpringRef],
+    didZoom ? [0, 0.2] : [0, 0],
+  )
 
   return (
     <>

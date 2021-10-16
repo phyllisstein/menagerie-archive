@@ -13,7 +13,6 @@ import { Transform } from './transform'
 
 const mergeTransforms = R.mergeWithKey(
   (key: string, lhs: number, rhs: number): number => {
-    console.log({ key, lhs, rhs })
     if (
       !key.includes('scale') &&
       !['x', 'y', 'z'].includes(key) &&
