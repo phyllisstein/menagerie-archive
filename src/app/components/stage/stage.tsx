@@ -1,4 +1,5 @@
 import { Body, Root, StageRoot } from './stage-styles'
+import { debounce, defaults } from 'lodash/fp'
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
 import React, {
   Children,
@@ -11,9 +12,9 @@ import React, {
   useState,
 } from 'react'
 import { canUseDOM } from 'exenv'
-import { debounce } from 'lodash/fp'
 import R from 'ramda'
 import { Props as SceneProps } from './scene'
+import { useSpring } from 'react-spring'
 
 type TransformRegistrationFn = (transform: Transform) => void
 export const StageTransform = createContext<TransformRegistrationFn | null>(
@@ -44,6 +45,17 @@ const getWindowScale = (
   return scaleWindow
 }
 
+const translateDefaults = defaults({
+  rotate: 0,
+  rotateX: 0,
+  rotateY: 0,
+  rotateZ: 0,
+  scale: 1,
+  x: 0,
+  y: 0,
+  z: 0,
+})
+
 export interface Props {
   children: OneOrMore<SceneElement>
   height?: number
@@ -58,12 +70,6 @@ type SceneElement = FunctionComponentElement<SceneProps>
 export interface ScaleConstraints {
   min?: number
   max?: number
-}
-
-interface ScaleMap {
-  scale: number
-  scaleX: number
-  scaleY: number
 }
 
 interface TranslateMap {
@@ -131,29 +137,25 @@ export function Stage ({
   const scale = transform.scale * windowScale
   const perspective = perspectiveBase / scale
 
+  const translate = translateDefaults(transform.translate)
+
+  const scaleSpring = useSpring({
+    from: {
+      perspective: perspectiveBase,
+      scale: 1,
+    },
+    to: {
+      perspective,
+      scale,
+    },
+  })
+  const translateSpring = useSpring(translate)
+
   return (
     <>
       <Body />
-      <Root
-        ref={ rootEl }
-        animate={{ perspective, scale }}
-        initial={{ perspective: perspectiveBase, scale: 1 }}
-        transition={{
-          damping: 15,
-          delay: didZoom ? 0.25 : 0,
-          mass: 1.5,
-          stiffness: 75,
-          type: 'spring',
-        }}>
-        <StageRoot
-          animate={ transform.translate }
-          transition={{
-            damping: 15,
-            delay: didZoom ? 0 : 0.25,
-            mass: 1.5,
-            stiffness: 75,
-            type: 'spring',
-          }}>
+      <Root ref={ rootEl } style={ scaleSpring }>
+        <StageRoot style={ translateSpring }>
           <StageTransform.Provider value={ registerTransform }>
             { children }
           </StageTransform.Provider>

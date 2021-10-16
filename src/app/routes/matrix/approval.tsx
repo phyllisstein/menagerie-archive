@@ -1,5 +1,3 @@
-/* eslint-disable react/jsx-sort-props */
-
 import { Entry, Grid, Image, Label, Line, PulsingIcon } from './approval-styles'
 import { ReactElement, useCallback, useState } from 'react'
 import { Scene, Stage, Transform } from 'app/components/stage'
@@ -43,7 +41,7 @@ export function ApprovalRoute (): ReactElement {
       <Helmet>
         <title>The Approval Matrix</title>
       </Helmet>
-      <Stage height={ 768 } step={ step } width={ 1024 }>
+      <Stage step={ step }>
         <Scene layout>
           <Grid>
             <Line $axis='x' />
@@ -51,20 +49,20 @@ export function ApprovalRoute (): ReactElement {
           </Grid>
         </Scene>
         <Scene layout>
-          <Transform translateY={ -1440 } />
+          <Transform y={ -1440 } />
           <Label>Highbrow</Label>
         </Scene>
         <Scene layout>
-          <Transform translateY={ 1440 } />
+          <Transform y={ 1440 } />
           <Label>Lowbrow</Label>
         </Scene>
         <Scene layout>
-          <Transform translateX={ 1920 } />
+          <Transform x={ 1920 } />
           <Transform rotate={ 90 } />
           <Label>Brilliant</Label>
         </Scene>
         <Scene layout>
-          <Transform translateX={ -1920 } />
+          <Transform x={ -1920 } />
           <Transform rotate={ -90 } />
           <Label>Despicable</Label>
         </Scene>
@@ -72,8 +70,8 @@ export function ApprovalRoute (): ReactElement {
           <Transform scale={ 4 } />
         </Scene>
         <Scene onClick={ toggleCurrentStep(2) }>
-          <Transform translateX={ -512 } />
-          <Transform translateY={ -80 } />
+          <Transform x={ -512 } />
+          <Transform y={ -80 } />
           <Transform scale={ 2 } />
           <Entry dot={ Entry.DotPosition.Bottom }>
             <Entry.Text>
@@ -82,9 +80,9 @@ export function ApprovalRoute (): ReactElement {
           </Entry>
         </Scene>
         <Scene onClick={ toggleCurrentStep(3) }>
-          <Transform translateX={ -256 } />
-          <Transform translateY={ -256 } />
-          <Transform translateZ={ 512 } />
+          <Transform x={ -256 } />
+          <Transform y={ -256 } />
+          <Transform z={ 512 } />
           <Transform scale={ 1.25 } />
           <Entry dot={ Entry.DotPosition.Left }>
             <Entry.Text style={{ marginRight: '-7rem' }}>
@@ -97,10 +95,10 @@ export function ApprovalRoute (): ReactElement {
           </Entry>
         </Scene>
         <Scene onClick={ toggleCurrentStep(4) }>
-          <Transform translateX={ -256 } />
-          <Transform translateY={ -700 } />
+          <Transform x={ -256 } />
+          <Transform y={ -700 } />
           <Transform scale={ 1.5 } />
-          <Entry style={{ minWidth: 256 }} dot={ Entry.DotPosition.TopRight }>
+          <Entry dot={ Entry.DotPosition.TopRight } style={{ minWidth: 256 }}>
             <Entry.Text>
               <strong>PBS Broadway-musical documentary:</strong> Noble but
               misbegotten—and too many of the talking heads are dead.
@@ -108,8 +106,8 @@ export function ApprovalRoute (): ReactElement {
           </Entry>
         </Scene>
         <Scene onClick={ toggleCurrentStep(5) }>
-          <Transform translateX={ -1024 } />
-          <Transform translateY={ -512 } />
+          <Transform x={ -1024 } />
+          <Transform y={ -512 } />
           <Entry dot={ Entry.DotPosition.BottomRight }>
             <Entry.Text>
               <strong>
@@ -121,9 +119,9 @@ export function ApprovalRoute (): ReactElement {
           </Entry>
         </Scene>
         <Scene onClick={ toggleCurrentStep(6) }>
-          <Transform translateX={ -960 } />
-          <Transform translateY={ -128 } />
-          <Transform translateZ={ 512 } />
+          <Transform x={ -960 } />
+          <Transform y={ -128 } />
+          <Transform z={ 512 } />
           <Transform scale={ 2 } />
           <Entry dot={ Entry.DotPosition.TopLeft }>
             <Entry.Text>
@@ -132,8 +130,8 @@ export function ApprovalRoute (): ReactElement {
           </Entry>
         </Scene>
         <Scene onClick={ toggleCurrentStep(7) }>
-          <Transform translateX={ -128 } />
-          <Transform translateY={ -1100 } />
+          <Transform x={ -128 } />
+          <Transform y={ -1100 } />
           <Transform scale={ 2 } />
           <Entry dot={ Entry.DotPosition.Top }>
             <Entry.Text>
@@ -143,9 +141,9 @@ export function ApprovalRoute (): ReactElement {
           </Entry>
         </Scene>
         <Scene onClick={ toggleCurrentStep(8) }>
-          <Transform translateY={ -512 } />
-          <Transform translateX={ 128 } />
-          <Transform translateZ={ -512 } />
+          <Transform y={ -512 } />
+          <Transform x={ 128 } />
+          <Transform z={ -512 } />
           <Transform scale={ 1.5 } />
           <Entry dot={ Entry.DotPosition.Top }>
             <Entry.Text>
@@ -156,9 +154,9 @@ export function ApprovalRoute (): ReactElement {
           </Entry>
         </Scene>
         <Scene onClick={ toggleCurrentStep(9) }>
-          <Transform translateY={ 512 } />
-          <Transform translateX={ -1200 } />
-          <Transform translateZ={ 128 } />
+          <Transform y={ 512 } />
+          <Transform x={ -1200 } />
+          <Transform z={ 128 } />
           <Transform scale={ 1.5 } />
           <Transform rotateY={ 35 } />
           <Transform rotateX={ 10 } />
@@ -171,8 +169,8 @@ export function ApprovalRoute (): ReactElement {
           </Entry>
         </Scene>
         <Scene onClick={ toggleCurrentStep(10) }>
-          <Transform translateY={ 512 } />
-          <Transform translateX={ -512 } />
+          <Transform y={ 512 } />
+          <Transform x={ -512 } />
           <Transform scale={ 2 } />
           <Entry dot={ Entry.DotPosition.TopRight }>
             <Entry.Text>
@@ -181,9 +179,9 @@ export function ApprovalRoute (): ReactElement {
           </Entry>
         </Scene>
         <Scene onClick={ toggleCurrentStep(11) }>
-          <Transform translateY={ 256 } />
-          <Transform translateX={ 128 } />
-          <Transform translateZ={ 512 } />
+          <Transform y={ 256 } />
+          <Transform x={ 128 } />
+          <Transform z={ 512 } />
           <Entry dot={ Entry.DotPosition.Top }>
             <Entry.Text>
               <strong>Halloween Parade:</strong> People think it's gross and
@@ -193,8 +191,8 @@ export function ApprovalRoute (): ReactElement {
           </Entry>
         </Scene>
         <Scene onClick={ toggleCurrentStep(12) }>
-          <Transform translateY={ 768 } />
-          <Transform translateX={ 512 } />
+          <Transform y={ 768 } />
+          <Transform x={ 512 } />
           <Transform rotateY={ -45 } />
           <Transform scale={ 2 } />
           <Entry dot={ Entry.DotPosition.BottomLeft }>
@@ -205,8 +203,8 @@ export function ApprovalRoute (): ReactElement {
           </Entry>
         </Scene>
         <Scene onClick={ toggleCurrentStep(13) }>
-          <Transform translateX={ -960 } />
-          <Transform translateY={ -960 } />
+          <Transform x={ -960 } />
+          <Transform y={ -960 } />
           <Transform scale={ 1.5 } />
           <Entry
             dot={ Entry.DotPosition.Top }
@@ -224,9 +222,9 @@ export function ApprovalRoute (): ReactElement {
           </Entry>
         </Scene>
         <Scene onClick={ toggleCurrentStep(14) }>
-          <Transform translateX={ 1024 } />
-          <Transform translateY={ -1024 } />
-          <Transform translateZ={ 256 } />
+          <Transform x={ 1024 } />
+          <Transform y={ -1024 } />
+          <Transform z={ 256 } />
           <Transform scale={ 2 } />
           <Entry dot={ Entry.DotPosition.Right }>
             <Entry.Text>
@@ -237,8 +235,8 @@ export function ApprovalRoute (): ReactElement {
           </Entry>
         </Scene>
         <Scene onClick={ toggleCurrentStep(15) }>
-          <Transform translateX={ 1024 } />
-          <Transform translateY={ -360 } />
+          <Transform x={ 1024 } />
+          <Transform y={ -360 } />
           <Entry dot={ Entry.DotPosition.BottomRight }>
             <Entry.Text>
               <strong>Ghery</strong> picked for WTC performing-arts center.
@@ -247,9 +245,9 @@ export function ApprovalRoute (): ReactElement {
           </Entry>
         </Scene>
         <Scene onClick={ toggleCurrentStep(16) }>
-          <Transform translateX={ 1440 } />
-          <Transform translateY={ 1024 } />
-          <Transform translateZ={ -128 } />
+          <Transform x={ 1440 } />
+          <Transform y={ 1024 } />
+          <Transform z={ -128 } />
           <Transform scale={ 1.5 } />
           <Entry dot={ Entry.DotPosition.TopLeft }>
             <Entry.Text>
@@ -263,9 +261,9 @@ export function ApprovalRoute (): ReactElement {
           </Entry>
         </Scene>
         <Scene onClick={ toggleCurrentStep(17) }>
-          <Transform translateX={ 1440 } />
-          <Transform translateY={ 384 } />
-          <Transform translateZ={ 128 } />
+          <Transform x={ 1440 } />
+          <Transform y={ 384 } />
+          <Transform z={ 128 } />
           <Entry dot={ Entry.DotPosition.Top }>
             <Entry.Text>
               Jaime Hernandez's{ ' ' }
@@ -278,8 +276,8 @@ export function ApprovalRoute (): ReactElement {
           </Entry>
         </Scene>
         <Scene onClick={ toggleCurrentStep(18) }>
-          <Transform translateX={ -256 } />
-          <Transform translateY={ 900 } />
+          <Transform x={ -256 } />
+          <Transform y={ 900 } />
           <Entry dot={ Entry.DotPosition.BottomRight }>
             <Entry.Text>
               <strong>Burt Reynolds</strong>
@@ -290,9 +288,9 @@ export function ApprovalRoute (): ReactElement {
           </Entry>
         </Scene>
         <Scene onClick={ toggleCurrentStep(19) }>
-          <Transform translateY={ 1000 } />
-          <Transform translateX={ -850 } />
-          <Transform translateZ={ 256 } />
+          <Transform y={ 1000 } />
+          <Transform x={ -850 } />
+          <Transform z={ 256 } />
           <Entry dot={ Entry.DotPosition.TopLeft }>
             <Entry.Text>
               <strong>Stolen Honor: Wounds That Never Heal:</strong>

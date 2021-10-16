@@ -6,10 +6,9 @@ interface Props {
   rotateY?: number
   rotateZ?: number
   scale?: number
-  translate?: number
-  translateX?: number
-  translateY?: number
-  translateZ?: number
+  x?: number
+  y?: number
+  z?: number
 }
 
 export const Transform: FunctionComponent<Props> = props => {

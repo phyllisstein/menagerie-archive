@@ -16,7 +16,7 @@ const mergeTransforms = R.mergeWithKey(
     console.log({ key, lhs, rhs })
     if (
       !key.includes('scale') &&
-      !key.includes('translate') &&
+      !['x', 'y', 'z'].includes(key) &&
       !key.includes('rotate')
     ) {
       return rhs
@@ -30,8 +30,8 @@ const stringifyTransform = ([kind, amount]: [
   string,
   number | string,
 ]): string => {
-  if (kind.includes('translate')) {
-    return `${ kind }(${ amount }px)`
+  if (['x', 'y', 'z'].includes(kind)) {
+    return `translate${ kind.toUpperCase() }(${ amount }px)`
   }
 
   if (kind.includes('rotate')) {
@@ -47,7 +47,7 @@ const createTransform = R.pipe(
     ([key]) =>
       key.includes('rotate') ||
       key.includes('scale') ||
-      key.includes('translate'),
+      ['x', 'y', 'z'].includes(key),
   ),
   R.map(stringifyTransform),
   R.filter(Boolean),
@@ -55,7 +55,9 @@ const createTransform = R.pipe(
 )
 const createMirrorTransform = R.pipe(
   R.toPairs,
-  R.filter(([kind]) => kind.includes('rotate') || kind.includes('translate')),
+  R.filter(
+    ([kind]) => kind.includes('rotate') || ['x', 'y', 'z'].includes(kind),
+  ),
   R.map(([kind, amount]) => [kind, -amount]),
   R.fromPairs,
 )

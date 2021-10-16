@@ -1,5 +1,5 @@
 import styled, { createGlobalStyle } from 'styled-components'
-import { motion } from 'framer-motion'
+import { animated } from 'react-spring'
 
 export const Body = createGlobalStyle`
   body {
@@ -9,7 +9,7 @@ export const Body = createGlobalStyle`
   }
 `
 
-export const Root = styled(motion.div)`
+export const Root = styled(animated.div)`
   position: absolute;
   top: 50%;
   left: 50%;
@@ -17,6 +17,6 @@ export const Root = styled(motion.div)`
   transform-style: preserve-3d;
 `
 
-export const StageRoot = styled(motion.div)`
+export const StageRoot = styled(animated.div)`
   transform-style: preserve-3d;
 `
