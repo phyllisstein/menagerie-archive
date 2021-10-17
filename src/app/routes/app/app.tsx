@@ -7,11 +7,11 @@ import avatarFB from 'assets/avatar-fb.jpg'
 import avatarTW from 'assets/avatar-tw.jpg'
 import faviconPNG from 'assets/favicon.png'
 import { Helmet } from 'react-helmet-async'
-import { JatteRoutes } from 'app/routes/jatte'
 import { KyarRouter } from 'app/routes/kyar'
 import { ReactElement } from 'react'
 import { RecoilRoot } from 'recoil'
 import { SandboxRoute } from 'app/routes/sandbox'
+import { SundayRoutes } from 'src/app/routes/sunday'
 import { theme } from 'app/styles/theme'
 
 const SITE_NAME = 'An Evening With…'
@@ -70,7 +70,7 @@ export function App (): ReactElement {
             <Route element={ <ApprovalRoute /> } path='matrix/*' />
             <Route element={ <KyarRouter /> } path='kyar/*' />
             <Route element={ <SandboxRoute /> } path='sandbox/*' />
-            <Route element={ <JatteRoutes /> } path='jatte/*' />
+            <Route element={ <SundayRoutes /> } path='sunday/*' />
           </Routes>
         </ThemeProvider>
       </StyleSheetManager>

@@ -1,22 +1,21 @@
-import * as jatte from 'app/styles/theme/palette-grand-jatte'
-import { Root, SVG } from './jatte-styles'
-import { FunctionComponent } from 'react'
+import * as sundayPalette from 'src/app/styles/theme/palette-sunday'
+import { Root, SVG } from './sunday-styles'
 import chroma from 'chroma-js'
+import { FunctionComponent } from 'react'
 
-interface EmeraldProps {
-  size?: number
-}
+const paleCobalt = chroma.mix(
+  sundayPalette.css.cobalt,
+  sundayPalette.css.leadWhite,
+  0.5,
+  'lab',
+)
 
-const EmeraldCrossHatch: FunctionComponent = () => {}
-
-const paleCobalt = chroma.mix(jatte.css.cobalt, jatte.css.leadWhite, 0.5, 'lab')
-
-export const Jatte: FunctionComponent = () => {
+export const Sunday: FunctionComponent = () => {
   return (
     <Root>
       <SVG height='512' viewBox='0 0 512 512' width='512'>
         <defs>
-          <filter id='jatte_brushstroke_filter10'>
+          <filter id='sunday_brushstroke_filter10'>
             <feTurbulence
               baseFrequency='0.25'
               numOctaves='3'
@@ -30,7 +29,7 @@ export const Jatte: FunctionComponent = () => {
               xChannelSelector='R'
               yChannelSelector='G' />
           </filter>
-          <filter id='jatte_brushstroke_filter20'>
+          <filter id='sunday_brushstroke_filter20'>
             <feTurbulence
               baseFrequency='0.15'
               numOctaves='5'
@@ -44,7 +43,7 @@ export const Jatte: FunctionComponent = () => {
               xChannelSelector='R'
               yChannelSelector='G' />
           </filter>
-          <filter id='jatte_daubstroke_filter10'>
+          <filter id='sunday_daubstroke_filter10'>
             <feTurbulence
               baseFrequency='0.2'
               numOctaves='4'
@@ -63,10 +62,10 @@ export const Jatte: FunctionComponent = () => {
             cy='0'
             fx='0'
             fy='0'
-            id='jatte_daubcolor_white_cobalt10'
+            id='sunday_daubcolor_white_cobalt10'
             r='1'>
             <stop offset='0%' stopColor={ paleCobalt.css() } />
-            <stop offset='75%' stopColor={ jatte.css.cobalt } />
+            <stop offset='75%' stopColor={ sundayPalette.css.cobalt } />
           </radialGradient>
         </defs>
         <ellipse
@@ -75,8 +74,8 @@ export const Jatte: FunctionComponent = () => {
           rx='15'
           ry='200'
           style={{
-            fill: jatte.css.emerald,
-            filter: 'url("#jatte_brushstroke_filter10")',
+            fill: sundayPalette.css.emerald,
+            filter: 'url("#sunday_brushstroke_filter10")',
           }} />
         <ellipse
           cx='200'
@@ -84,8 +83,8 @@ export const Jatte: FunctionComponent = () => {
           rx='12'
           ry='150'
           style={{
-            fill: jatte.css.emerald,
-            filter: 'url("#jatte_brushstroke_filter20")',
+            fill: sundayPalette.css.emerald,
+            filter: 'url("#sunday_brushstroke_filter20")',
           }}
           transform='translate(200, 200) rotate(45) translate(-200, -200)' />
 
@@ -95,8 +94,8 @@ export const Jatte: FunctionComponent = () => {
           rx='8'
           ry='100'
           style={{
-            fill: jatte.css.emerald,
-            filter: 'url("#jatte_brushstroke_filter10")',
+            fill: sundayPalette.css.emerald,
+            filter: 'url("#sunday_brushstroke_filter10")',
           }}
           transform='translate(100, 100) rotate(24) translate(-100, -100)' />
         <ellipse
@@ -105,8 +104,8 @@ export const Jatte: FunctionComponent = () => {
           rx='12'
           ry='125'
           style={{
-            fill: jatte.css.emerald,
-            filter: 'url("#jatte_brushstroke_filter10")',
+            fill: sundayPalette.css.emerald,
+            filter: 'url("#sunday_brushstroke_filter10")',
           }}
           transform='translate(85, 125) rotate(66) translate(-85, -125)' />
 
@@ -116,8 +115,8 @@ export const Jatte: FunctionComponent = () => {
           rx='8'
           ry='128'
           style={{
-            fill: jatte.css.emerald,
-            filter: 'url("#jatte_brushstroke_filter10")',
+            fill: sundayPalette.css.emerald,
+            filter: 'url("#sunday_brushstroke_filter10")',
           }}
           transform='translate(384, 64) rotate(32) translate(-384, -64)' />
         <ellipse
@@ -126,8 +125,8 @@ export const Jatte: FunctionComponent = () => {
           rx='12'
           ry='128'
           style={{
-            fill: jatte.css.emerald,
-            filter: 'url("#jatte_brushstroke_filter20")',
+            fill: sundayPalette.css.emerald,
+            filter: 'url("#sunday_brushstroke_filter20")',
           }}
           transform='translate(384, 128) rotate(128) translate(-384, -128)' />
 
@@ -137,8 +136,8 @@ export const Jatte: FunctionComponent = () => {
           rx='8'
           ry='96'
           style={{
-            fill: jatte.css.emerald,
-            filter: 'url("#jatte_brushstroke_filter20")',
+            fill: sundayPalette.css.emerald,
+            filter: 'url("#sunday_brushstroke_filter20")',
           }}
           transform='translate(128, 450) rotate(256) translate(-128, -450)' />
         <ellipse
@@ -147,8 +146,8 @@ export const Jatte: FunctionComponent = () => {
           rx='12'
           ry='128'
           style={{
-            fill: jatte.css.emerald,
-            filter: 'url("#jatte_brushstroke_filter20")',
+            fill: sundayPalette.css.emerald,
+            filter: 'url("#sunday_brushstroke_filter20")',
           }}
           transform='translate(100, 420) rotate(100) translate(-100, -420)' />
 
@@ -158,8 +157,8 @@ export const Jatte: FunctionComponent = () => {
           rx='12'
           ry='18'
           style={{
-            fill: jatte.css.cobalt,
-            filter: 'url("#jatte_daubstroke_filter10")',
+            fill: sundayPalette.css.cobalt,
+            filter: 'url("#sunday_daubstroke_filter10")',
           }} />
         <ellipse
           cx='50'
@@ -167,8 +166,8 @@ export const Jatte: FunctionComponent = () => {
           rx='12'
           ry='18'
           style={{
-            fill: jatte.css.cobalt,
-            filter: 'url("#jatte_daubstroke_filter10")',
+            fill: sundayPalette.css.cobalt,
+            filter: 'url("#sunday_daubstroke_filter10")',
           }}
           transform='translate(50, 50) rotate(90) translate(-50, -50)' />
       </SVG>

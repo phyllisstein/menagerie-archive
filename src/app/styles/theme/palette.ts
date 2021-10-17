@@ -1,11 +1,11 @@
 import chroma from 'chroma-js'
-import { js as grandJatte } from './palette-grand-jatte'
 import R from 'ramda'
 import { js as spectrum } from './palette-spectrum-light'
+import { js as sunday } from './palette-sunday'
 
 export const js = {
   ...spectrum,
-  ...grandJatte,
+  ...sunday,
   text: chroma('rgba(0, 0, 0, 0.87)'),
 }
 export type ColorNames = keyof JS

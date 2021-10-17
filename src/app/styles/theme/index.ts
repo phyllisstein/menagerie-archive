@@ -3,9 +3,9 @@ import * as easing from './ease'
 import * as elevation from './elevation'
 import * as measures from './measures'
 import * as palette from './palette'
-import * as paletteGrandJatte from './palette-grand-jatte'
 import * as paletteSpectrumDark from './palette-spectrum-dark'
 import * as paletteSpectrumLight from './palette-spectrum-light'
+import * as paletteSunday from './palette-sunday'
 import * as plumber from './plumber'
 import * as responsive from './responsive'
 import * as scale from './scale'
@@ -17,9 +17,9 @@ export const theme = {
   elevation,
   measures,
   palette,
-  paletteGrandJatte,
   paletteSpectrumDark,
   paletteSpectrumLight,
+  paletteSunday,
   plumber,
   responsive,
   scale,
