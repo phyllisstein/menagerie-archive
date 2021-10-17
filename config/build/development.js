@@ -53,7 +53,7 @@ client.module
 if (enableWDYR) {
   client
     .entry('main')
-    .prepend('./client/wdyr')
+    .prepend('./bootstrap/client/wdyr')
 }
 
 client

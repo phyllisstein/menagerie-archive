@@ -1,4 +1,4 @@
-import { Children, FunctionComponent } from 'react'
+import { Children, FunctionComponent, memo } from 'react'
 
 interface Props {
   rotate?: number
@@ -17,7 +17,7 @@ export const Transform: FunctionComponent<Props> = props => {
       'Transform component should not have child components. Got: %o',
       props.children,
     )
-    throw new Error('Transform component should not have child components.')
+    // throw new Error('Transform component should not have child components.')
   }
 
   if (Object.keys(props).length > 1) {
@@ -25,7 +25,7 @@ export const Transform: FunctionComponent<Props> = props => {
       'Transform component accepts one transformation at a time. Got: %o',
       props,
     )
-    throw new Error('Transform component accepts one transformation at a time.')
+    // throw new Error('Transform component accepts one transformation at a time.')
   }
 
   return null

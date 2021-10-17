@@ -43,14 +43,14 @@ export const Label = styled.div`
   font-variant-caps: all-small-caps;
 `
 
-export const Line = styled.div`
+export const Line = styled.div<{ $axis: 'x' | 'y' }>`
   position: absolute;
   top: 50%;
   left: 50%;
 
   background-color: ${ ({ theme }) => theme.palette.css.gray800 };
   transform: translate(-50%, -50%);
-  backface-visibility: hidden;
+  backface-visibility: visible;
 
   &::before {
     display: block;

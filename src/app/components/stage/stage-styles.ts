@@ -15,8 +15,11 @@ export const Root = styled(animated.div)`
   left: 50%;
 
   transform-style: preserve-3d;
+
+  will-change: perspective, transform;
 `
 
 export const StageRoot = styled(animated.div)`
   transform-style: preserve-3d;
+  will-change: transform;
 `
