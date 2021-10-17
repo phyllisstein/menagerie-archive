@@ -7,7 +7,6 @@ import avatarFB from 'assets/avatar-fb.jpg'
 import avatarTW from 'assets/avatar-tw.jpg'
 import faviconPNG from 'assets/favicon.png'
 import { Helmet } from 'react-helmet-async'
-import { KyarRouter } from 'app/routes/kyar'
 import { ReactElement } from 'react'
 import { RecoilRoot } from 'recoil'
 import { SandboxRoute } from 'app/routes/sandbox'
@@ -68,7 +67,6 @@ export function App (): ReactElement {
 
           <Routes>
             <Route element={ <ApprovalRoute /> } path='matrix/*' />
-            <Route element={ <KyarRouter /> } path='kyar/*' />
             <Route element={ <SandboxRoute /> } path='sandbox/*' />
             <Route element={ <SundayRoutes /> } path='sunday/*' />
           </Routes>
