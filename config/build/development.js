@@ -92,12 +92,4 @@ client.cache({
   type: 'filesystem',
 })
 
-client.merge({
-  experiments: {
-    futureDefaults: true,
-    lazyCompilation: false,
-    outputModule: true,
-  },
-})
-
 exports.client = client
