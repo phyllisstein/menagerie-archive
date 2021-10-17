@@ -1,4 +1,4 @@
-import * as sundayPalette from 'src/app/styles/theme/palette-sunday'
+import * as sundayPalette from 'app/styles/theme/palette-sunday'
 import { Root, SVG } from './sunday-styles'
 import chroma from 'chroma-js'
 import { FunctionComponent } from 'react'

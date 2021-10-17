@@ -4,6 +4,6 @@ import { Sunday } from './sunday'
 
 export const SundayRoutes: FunctionComponent = () => (
   <Routes>
-    <Route element={ <Sunday /> } />
+    <Route index element={ <Sunday /> } />
   </Routes>
 )

@@ -5,7 +5,7 @@ import { StageSandboxRoute } from './stage'
 export function StageSandboxRouter (): ReactElement {
   return (
     <Routes>
-      <Route element={<StageSandboxRoute />} />
+      <Route index element={ <StageSandboxRoute /> } />
     </Routes>
   )
 }

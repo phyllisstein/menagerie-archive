@@ -6,9 +6,9 @@ import { ReactElement } from 'react'
 export function SwoopSandboxRouter (): ReactElement {
   return (
     <Routes>
-      <Route element={ <Navigate replace to='hilly' /> } path='/' />
-      <Route element={ <Hilly /> } path='/hilly' />
-      <Route element={ <Bluey /> } path='/bluey' />
+      <Route index element={ <Navigate replace to='hilly' /> } />
+      <Route element={ <Hilly /> } path='hilly' />
+      <Route element={ <Bluey /> } path='bluey' />
     </Routes>
   )
 }

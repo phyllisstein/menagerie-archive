@@ -5,7 +5,7 @@ import { PalimpsestSandboxRoute } from './palimpsest'
 export function PalimpsestSandboxRouter (): ReactElement {
   return (
     <Routes>
-      <Route element={ <PalimpsestSandboxRoute /> } />
+      <Route index element={ <PalimpsestSandboxRoute /> } />
     </Routes>
   )
 }

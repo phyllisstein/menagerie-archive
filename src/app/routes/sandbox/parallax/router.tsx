@@ -7,9 +7,9 @@ import { ReactElement } from 'react'
 export function ParallaxSandboxRouter (): ReactElement {
   return (
     <Routes>
-      <Route element={ <ParallaxSandboxRoute /> } path='/' />
-      <Route element={ <Layered /> } path='/layered' />
-      <Route element={ <Kyar /> } path='/kyar' /> }
+      <Route index element={ <ParallaxSandboxRoute /> } />
+      <Route element={ <Layered /> } path='layered' />
+      <Route element={ <Kyar /> } path='kyar' />
     </Routes>
   )
 }

@@ -11,7 +11,7 @@ import { KyarRouter } from 'app/routes/kyar'
 import { ReactElement } from 'react'
 import { RecoilRoot } from 'recoil'
 import { SandboxRoute } from 'app/routes/sandbox'
-import { SundayRoutes } from 'src/app/routes/sunday'
+import { SundayRoutes } from 'app/routes/sunday'
 import { theme } from 'app/styles/theme'
 
 const SITE_NAME = 'An Evening With…'
