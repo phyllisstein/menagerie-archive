@@ -25,7 +25,6 @@ app.use(devMiddleware(compiler))
 app.use(hotMiddleware(compiler))
 
 if (typeof PhusionPassenger !== 'undefined') {
-  PhusionPassenger.configure({ autoInstall: false })
   app.listen('passenger', () => {
     console.log('Application listening through Phusion Passenger!')
   })
