@@ -1,5 +1,5 @@
 import styled, { css, keyframes } from 'styled-components'
-import { Entry as EntryBase } from 'app/components'
+import { Entry as EntryBase } from 'app/components/matrix'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export const Entry = styled(EntryBase)`

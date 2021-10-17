@@ -28,7 +28,7 @@ plugins:
   - sort-destructure-keys
 settings:
   react:
-    version: '17'
+    version: detect
 
 rules:
   '@typescript-eslint/ban-types': warn

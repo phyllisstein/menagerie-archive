@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-sort-props */
 
 import { ReactElement, useEffect, useRef, useState } from 'react'
-import { Scene, Stage } from 'app/components'
+import { Scene, Stage } from 'app/components/stage'
 import _ from 'lodash'
 import { js } from 'app/styles/theme/palette'
 import R from 'ramda'
