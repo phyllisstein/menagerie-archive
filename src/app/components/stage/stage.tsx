@@ -153,7 +153,7 @@ export function Stage ({
 
   const translateSpringRef = useSpringRef()
   const translateSpring = useSpring({
-    config: config.slow,
+    config: config.default,
     ref: translateSpringRef,
     to: translate,
   })
@@ -162,7 +162,7 @@ export function Stage ({
     didZoom
       ? [translateSpringRef, scaleSpringRef]
       : [scaleSpringRef, translateSpringRef],
-    didZoom ? [0, 0.2] : [0, 0],
+    didZoom ? [0, 0.7] : [0, 0],
   )
 
   return (

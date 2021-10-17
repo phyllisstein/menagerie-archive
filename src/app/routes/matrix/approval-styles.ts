@@ -16,8 +16,6 @@ export const Grid = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-
-  perspective: 1000px;
 `
 
 export const Image = styled.img`
@@ -28,22 +26,21 @@ export const Image = styled.img`
 export const Label = styled.div`
   ${ ({ theme }) => theme.typeface.millerDisplay({ fontSize: 11 }) }
 
-  background-color: ${ ({ theme }) => theme.palette.css.gray100 };
-
-  margin: 0;
-  padding: 0;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 0;
+  padding: 0;
+
+  font-weight: 600;
+  letter-spacing: 4px;
+
+  background-color: ${ ({ theme }) => theme.palette.css.gray100 };
+  backface-visibility: hidden;
 
   pointer-events: none;
 
-  letter-spacing: 4px;
-  font-weight: 600;
-
   font-variant-caps: all-small-caps;
-
-  backface-visibility: hidden;
 `
 
 export const Line = styled.div`
@@ -56,8 +53,8 @@ export const Line = styled.div`
   backface-visibility: hidden;
 
   &::before {
-    content: '';
     display: block;
+    content: '';
 
     ${ ({ $axis }) => {
     if ($axis === 'x') {
