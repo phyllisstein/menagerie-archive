@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'react'
 
-export const Package: FunctionComponent = () => {
+export const WorkRoute: FunctionComponent = () => {
   return null
 }

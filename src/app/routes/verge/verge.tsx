@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router'
-import { ReactElement } from 'react'
+import { FunctionComponent } from 'react'
 
-export function VergeRoute (): ReactElement {
+export const VergeRoute: FunctionComponent = () => {
   return (
     <Routes>
       <Route path='making-it-work/*' />
