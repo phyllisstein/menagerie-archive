@@ -1,10 +1,11 @@
 {
-  "editor.defaultFormatter": "sebastian-software.effective-prettier-vscode",
-  "editor.formatOnSave": true,
-  "editor.codeActionsOnSave": {
-    "source.fixAll": true,
-    "source.organizeImports": false
-  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": false,
+  "editor.codeActionsOnSave": [
+    "source.formatDocument",
+    "source.fixAll.eslint",
+    "source.fixAll.stylelint"
+  ],
   "tailwindCSS.emmetCompletions": true,
   "tailwindCSS.includeLanguages": {
     "typescript": "javascript",

@@ -26,8 +26,8 @@ export const Root = styled.div<RootProps>`
 
   ${ ({ $position }) => {
     switch ($position) {
-    case DotPosition.TopLeft:
-      return css`
+      case DotPosition.TopLeft:
+        return css`
           flex-direction: column;
           align-items: flex-start;
           justify-content: flex-start;
@@ -37,8 +37,8 @@ export const Root = styled.div<RootProps>`
             left: 0;
           }
         `
-    case DotPosition.TopRight:
-      return css`
+      case DotPosition.TopRight:
+        return css`
           flex-direction: column;
           align-items: flex-end;
           justify-content: flex-start;
@@ -48,8 +48,8 @@ export const Root = styled.div<RootProps>`
             right: 0;
           }
         `
-    case DotPosition.BottomLeft:
-      return css`
+      case DotPosition.BottomLeft:
+        return css`
           flex-direction: column;
           align-items: flex-start;
           justify-content: flex-end;
@@ -63,8 +63,8 @@ export const Root = styled.div<RootProps>`
             left: 0;
           }
         `
-    case DotPosition.BottomRight:
-      return css`
+      case DotPosition.BottomRight:
+        return css`
           flex-direction: column;
           align-items: flex-end;
           justify-content: flex-end;
@@ -78,8 +78,8 @@ export const Root = styled.div<RootProps>`
             order: 1;
           }
         `
-    case DotPosition.Left:
-      return css`
+      case DotPosition.Left:
+        return css`
           flex-direction: row;
           align-items: center;
           justify-content: flex-start;
@@ -91,8 +91,8 @@ export const Root = styled.div<RootProps>`
             transform: translateY(-50%);
           }
         `
-    case DotPosition.Right:
-      return css`
+      case DotPosition.Right:
+        return css`
           flex-direction: row;
           align-items: center;
           justify-content: flex-end;
@@ -108,8 +108,8 @@ export const Root = styled.div<RootProps>`
             order: 1;
           }
         `
-    case DotPosition.Top:
-      return css`
+      case DotPosition.Top:
+        return css`
           flex-direction: column;
           align-items: center;
           justify-content: flex-start;
@@ -121,8 +121,8 @@ export const Root = styled.div<RootProps>`
             transform: translateX(-50%);
           }
         `
-    case DotPosition.Bottom:
-      return css`
+      case DotPosition.Bottom:
+        return css`
           flex-direction: column;
           align-items: center;
           justify-content: flex-end;

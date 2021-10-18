@@ -38,7 +38,8 @@ const BABEL_OPTIONS = {
     [
       '@babel/proposal-pipeline-operator',
       {
-        proposal: 'smart',
+        proposal: 'hack',
+        topicToken: '#',
       },
     ],
     '@babel/proposal-private-methods',
