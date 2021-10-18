@@ -43,6 +43,10 @@ export const Root = styled.div<RootProps>`
           align-items: flex-end;
           justify-content: flex-start;
 
+          ${ EntryText } {
+            text-align: left;
+          }
+
           & > ${ DotIcon } {
             top: 0;
             right: 0;
@@ -56,6 +60,7 @@ export const Root = styled.div<RootProps>`
 
           ${ EntryText } {
             order: 1;
+            text-align: left;
           }
 
           & > ${ DotIcon } {
@@ -76,6 +81,7 @@ export const Root = styled.div<RootProps>`
 
           ${ EntryText } {
             order: 1;
+            text-align: right;
           }
         `
       case DotPosition.Left:
@@ -86,7 +92,7 @@ export const Root = styled.div<RootProps>`
 
           & > ${ DotIcon } {
             top: 50%;
-            left: -2rem;
+            left: -1rem;
 
             transform: translateY(-50%);
           }
@@ -99,7 +105,7 @@ export const Root = styled.div<RootProps>`
 
           & > ${ DotIcon } {
             top: 50%;
-            right: -2rem;
+            right: -1rem;
 
             transform: translateY(-50%);
           }
@@ -115,7 +121,7 @@ export const Root = styled.div<RootProps>`
           justify-content: flex-start;
 
           & > ${ DotIcon } {
-            top: -2rem;
+            top: -1rem;
             left: 50%;
 
             transform: translateX(-50%);
@@ -128,7 +134,7 @@ export const Root = styled.div<RootProps>`
           justify-content: flex-end;
 
           & > ${ DotIcon } {
-            bottom: -2rem;
+            bottom: -1rem;
             left: 50%;
 
             transform: translateX(-50%);
