@@ -22,6 +22,6 @@
   "jupyter.jupyterServerType": "local",
   "typescript.tsdk": "node_modules/typescript/lib",
   "licenser.license": "GPLv3",
-  "licenser.projectName": "Try-Works",
+  "licenser.projectName": "Menagerie",
   "licenser.author": "Daniel P. Shannon"
 }

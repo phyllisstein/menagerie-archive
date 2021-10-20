@@ -1,18 +1,19 @@
 {
-  "name": "tryworks",
+  "name": "menagerie",
   "version": "0.0.0",
-  "description": "Preliminary, prefatory, preambulary.",
+  "description": "Just gorgeous little things.",
+  "homepage": "https://menagerie.glass",
   "license": "GPL-3.0-or-later",
   "repository": {
     "type": "git",
-    "url": "https://github.com/phyllisstein/tryworks.git"
+    "url": "https://github.com/phyllisstein/menagerie.git"
   },
   "author": {
     "name": "Daniel P. Shannon",
     "email": "daniel@try.works",
     "url": "https://try.works"
   },
-  "bugs": "https://github.com/phyllisstein/tryworks/issues",
+  "bugs": "https://github.com/phyllisstein/menagerie/issues",
   "scripts": {
     "build": "cross-env NODE_ENV=staging webpack",
     "clean": "concurrently \"yarn:clean:*\"",
