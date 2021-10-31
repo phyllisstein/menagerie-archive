@@ -1,9 +1,12 @@
 #!/usr/bin/env node
 
 import chroma from 'chroma-js'
+import GM from 'gm'
 import path from 'path'
 import R from 'ramda'
 import sharp from 'sharp'
+
+const gm = GM.subClass({ imageMagick: true })
 
 export function unageLightness (L) {
   return R.clamp(
@@ -29,29 +32,42 @@ export function unageB (b) {
   return R.clamp(-128, 128, Math.floor(1.09 * (b + 128 / 255) - 0.054))
 }
 
-export async function processImage (imageFileName) {
-  const { data, info } = await sharp(imageFileName, { limitInputPixels: false })
-    .raw()
-    .toBuffer({ resolveWithObject: true })
+const getGMBuffer = (gmInstance, format = 'TIFF') => new Promise((resolve, reject) => {
+  gmInstance.toBuffer(format, (err, buffer) => {
+    if (err) {
+      return reject(err)
+    }
 
-  const pixelArray = new Uint8ClampedArray(data.buffer)
+    resolve(buffer)
+  })
+})
+
+export async function processImage (imageFileName) {
+  const image = gm(imageFileName)
+    .colorspace('LAB')
+
+  const buffer = await getGMBuffer(image)
+  const pixelArray = new Uint8ClampedArray(buffer)
 
   const transformedPixelArray = R.pipe(
     R.splitEvery(3),
-    R.map((rgb) => {
-      const [L, a, b] = chroma(...rgb, 'rgb').lab()
+    R.map(([L, a, b]) => {
       const transformedLab = [
         unageLightness(L),
         unageA(a),
         unageB(b),
       ]
-      return chroma(...transformedLab, 'lab').rgb()
+      return transformedLab
     }),
     R.flatten,
   )(pixelArray)
 
-  await sharp(Buffer.from(transformedPixelArray), { raw: info })
-    .toFile('./src/assets/la-grande-jatte-refreshed.jpeg')
+  return new Promise((resolve, reject) => {
+    gm(Buffer.from(transformedPixelArray), 'la-grande-jatte-refreshed.tiff')
+      .stream('TIFF', (err, image) => {
+
+      })
+  })
 }
 
 await processImage(path.resolve('./src/assets/la-grande-jatte.jpg'))
