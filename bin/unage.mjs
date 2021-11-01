@@ -1,9 +1,12 @@
 #!/usr/bin/env node
 
 import chroma from 'chroma-js'
+import { promises as fs } from 'fs'
 import path from 'path'
 import R from 'ramda'
 import sharp from 'sharp'
+
+sharp.concurrency(1)
 
 export function unageLightness (L) {
   return R.clamp(
@@ -30,13 +33,15 @@ export function unageB (b) {
 }
 
 export async function processImage (imageFileName) {
-  const { data, info } = await sharp(imageFileName, { limitInputPixels: false })
+  console.log(imageFileName)
+
+  let { data, info } = await sharp(imageFileName, { limitInputPixels: false })
     .raw()
     .toBuffer({ resolveWithObject: true })
 
-  const pixelArray = new Uint8ClampedArray(data.buffer)
+  let pixelArray = new Uint8ClampedArray(data.buffer)
 
-  const transformedPixelArray = R.pipe(
+  let transformedPixelArray = R.pipe(
     R.splitEvery(3),
     R.map((rgb) => {
       const [L, a, b] = chroma(...rgb, 'rgb').lab()
@@ -50,8 +55,20 @@ export async function processImage (imageFileName) {
     R.flatten,
   )(pixelArray)
 
-  await sharp(Buffer.from(transformedPixelArray), { raw: info })
-    .toFile('./src/assets/la-grande-jatte-refreshed.jpeg')
+  try {
+    sharp(Buffer.from(transformedPixelArray), { raw: info })
+      .toFile(imageFileName.replace('.jpg', '-unaged.jpg'))
+  } finally {
+    data = pixelArray = transformedPixelArray = null
+  }
 }
 
-await processImage(path.resolve('./src/assets/la-grande-jatte.jpg'))
+const imageDir = await fs.readdir('./src/assets/la-grande-jatte')
+
+let p = Promise.resolve()
+
+imageDir.forEach(imageFile => {
+  p = p.then(() => processImage(`./src//assets/la-grande-jatte/${ imageFile }`))
+})
+
+// await processImage('./src/assets/la-grande-jatte.jpg')
