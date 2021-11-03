@@ -6,7 +6,7 @@ import path from 'path'
 import R from 'ramda'
 import sharp from 'sharp'
 
-sharp.concurrency(1)
+// sharp.concurrency(1)
 
 export function unageLightness (L) {
   return R.clamp(
@@ -21,7 +21,7 @@ export function unageLightness (L) {
 export function unageA (a) {
   return R.clamp(
     -128,
-    128,
+    127,
     Math.floor(
       1.077 * (a + 128 / 255) - 0.039,
     )
@@ -29,7 +29,7 @@ export function unageA (a) {
 }
 
 export function unageB (b) {
-  return R.clamp(-128, 128, Math.floor(1.09 * (b + 128 / 255) - 0.054))
+  return R.clamp(-128, 127, Math.floor(1.09 * (b + 128 / 255) - 0.054))
 }
 
 export async function processImage (imageFileName) {
@@ -39,27 +39,25 @@ export async function processImage (imageFileName) {
     .raw()
     .toBuffer({ resolveWithObject: true })
 
-  let pixelArray = new Uint8ClampedArray(data.buffer)
-
-  let transformedPixelArray = R.pipe(
-    R.splitEvery(3),
-    R.map((rgb) => {
-      const [L, a, b] = chroma(...rgb, 'rgb').lab()
-      const transformedLab = [
-        unageLightness(L),
-        unageA(a),
-        unageB(b),
-      ]
-      return chroma(...transformedLab, 'lab').rgb()
-    }),
-    R.flatten,
-  )(pixelArray)
+  for (let byte = 0; byte < data.length; byte += 3) {
+    let red = data.readUint8(byte)
+    let green = data.readUint8(byte + 1)
+    let blue = data.readUint8(byte + 2)
+    let [L, a, b] = chroma(red, green, blue, 'rgb').lab()
+    L = unageLightness(L)
+    a = unageA(a)
+    b = unageB(b)
+    let newRGB = chroma(L, a, b, 'lab').rgb()
+    data.writeUint8(newRGB[0], byte)
+    data.writeUint8(newRGB[1], byte + 1)
+    data.writeUint8(newRGB[2], byte + 2)
+  }
 
   try {
-    sharp(Buffer.from(transformedPixelArray), { raw: info })
+    sharp(data, { raw: info })
       .toFile(imageFileName.replace('.jpg', '-unaged.jpg'))
   } finally {
-    data = pixelArray = transformedPixelArray = null
+    data = null
   }
 }
 
