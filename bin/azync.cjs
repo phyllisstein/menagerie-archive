@@ -16,7 +16,7 @@ const sharp = require('sharp')
 
 async function loadImage () {
   let { data: sourceData, info: sourceInfo } = await sharp(
-    'src/assets/la-grande-jatte/x2-y1.jpg',
+    'src/assets/la-grande-jatte/x2-y1-2048.jpg',
     {
       limitInputPixels: false,
     },
@@ -44,9 +44,10 @@ async function loadImage () {
 
   let source = new cv.Mat(sourceInfo.height, sourceInfo.width, cv.CV_8UC3)
   source.data.set(sourceData)
-  let template = new cv.Mat(templateInfo.height, templateInfo.width, cv.CV_8UC3)
+  let template = new cv.Mat(templateInfo.height, templateInfo.width, cv.CV_8UC4)
+  // debugger
   template.data.set(templateData)
-  let mask = new cv.Mat(maskInfo.height, maskInfo.width, cv.CV_8UC3)
+  let mask = new cv.Mat(maskInfo.height, maskInfo.width, cv.CV_8UC4)
   mask.data.set(maskData)
   let result = new cv.Mat(source.rows, source.cols, source.type())
   cv.matchTemplate(source, template, result, cv.TM_CCOEFF_NORMED)
@@ -68,7 +69,9 @@ async function loadImage () {
 try {
   var cv = require('../vendor/opencv.cjs')
   global.cv = cv
-  loadImage()
+  cv.onRuntimeInitialized = async () => {
+    await loadImage()
+  }
 } catch (err) {
   console.log(err)
 }
