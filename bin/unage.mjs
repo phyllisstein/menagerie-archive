@@ -33,8 +33,6 @@ export function unageB (b) {
 }
 
 export async function processImage (imageFileName) {
-  console.log(imageFileName)
-
   let { data, info } = await sharp(imageFileName, { limitInputPixels: false })
     .raw()
     .toBuffer({ resolveWithObject: true })
