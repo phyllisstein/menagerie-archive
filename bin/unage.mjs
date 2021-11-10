@@ -9,27 +9,31 @@ import sharp from 'sharp'
 // sharp.concurrency(1)
 
 export function unageLightness (L) {
-  return R.clamp(
+  const unscaled = R.clamp(
     0,
-    100,
+    255,
     Math.floor(
-      100 * (0.834 * (L / 100) ** 2 + 0.309 * (L / 100) + 0.145)
+      255 * (0.834 * (L / 100) ** 2 + 0.309 * (L / 100) + 0.145)
     ),
   )
+
+  return Math.floor(unscaled / 255 * 100)
 }
 
 export function unageA (a) {
-  return R.clamp(
-    -128,
-    127,
+  const unscaled = R.clamp(
+    0,
+    255,
     Math.floor(
-      1.077 * (a + 128 / 255) - 0.039,
+      255 * (1.077 * ((a + 128) / 255) - 0.039),
     )
   )
+  return unscaled - 128
 }
 
 export function unageB (b) {
-  return R.clamp(-128, 127, Math.floor(1.09 * (b + 128 / 255) - 0.054))
+  const unscaled = R.clamp(0, 255, Math.floor(255 * (1.09 * ((b + 128) / 255) - 0.054)))
+  return unscaled - 128
 }
 
 export async function processImage (imageFileName) {
@@ -49,6 +53,10 @@ export async function processImage (imageFileName) {
     data.writeUint8(newRGB[0], byte)
     data.writeUint8(newRGB[1], byte + 1)
     data.writeUint8(newRGB[2], byte + 2)
+
+    if (byte < 100) {
+      console.log(`${byte}/${data.length}: `, { L, a, b }, { red, green, blue }, newRGB)
+    }
   }
 
   try {
@@ -59,12 +67,12 @@ export async function processImage (imageFileName) {
   }
 }
 
-const imageDir = await fs.readdir('./src/assets/la-grande-jatte')
+// const imageDir = await fs.readdir('./src/assets/la-grande-jatte')
 
-let p = Promise.resolve()
+// let p = Promise.resolve()
 
-imageDir.forEach(imageFile => {
-  p = p.then(() => processImage(`./src//assets/la-grande-jatte/${ imageFile }`))
-})
+// imageDir.forEach(imageFile => {
+//   p = p.then(() => processImage(`./src//assets/la-grande-jatte/${ imageFile }`))
+// })
 
-// await processImage('./src/assets/la-grande-jatte.jpg')
+await processImage('./src/assets/la-grande-jatte.jpg')
