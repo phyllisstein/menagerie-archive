@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 
 import chroma from 'chroma-js'
-import { promises as fs } from 'fs'
+import { globby } from 'globby'
 import path from 'path'
+import PQueue from 'p-queue'
 import R from 'ramda'
 import sharp from 'sharp'
 
@@ -53,26 +54,19 @@ export async function processImage (imageFileName) {
     data.writeUint8(newRGB[0], byte)
     data.writeUint8(newRGB[1], byte + 1)
     data.writeUint8(newRGB[2], byte + 2)
-
-    if (byte < 100) {
-      console.log(`${byte}/${data.length}: `, { L, a, b }, { red, green, blue }, newRGB)
-    }
   }
 
   try {
-    sharp(data, { raw: info })
+    sharp(data, { limitInputPixels: false, raw: info })
       .toFile(imageFileName.replace('.jpg', '-unaged.jpg'))
   } finally {
     data = null
   }
 }
 
-// const imageDir = await fs.readdir('./src/assets/la-grande-jatte')
+const images = await globby('./src/assets/la-grande-jatte/*-15.jpg')
+const queue = new PQueue({ concurrency: 3 })
 
-// let p = Promise.resolve()
-
-// imageDir.forEach(imageFile => {
-//   p = p.then(() => processImage(`./src//assets/la-grande-jatte/${ imageFile }`))
-// })
-
-await processImage('./src/assets/la-grande-jatte.jpg')
+for await (const image of images) {
+  queue.add(() => processImage(image))
+}
