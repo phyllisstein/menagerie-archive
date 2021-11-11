@@ -9,7 +9,7 @@ import sharp from 'sharp'
 
 // sharp.concurrency(1)
 
-export function unageLightness (L) {
+export function refreshLightness (L) {
   const unscaled = R.clamp(
     0,
     255,
@@ -21,7 +21,7 @@ export function unageLightness (L) {
   return Math.floor(unscaled / 255 * 100)
 }
 
-export function unageA (a) {
+export function refreshA (a) {
   const unscaled = R.clamp(
     0,
     255,
@@ -32,7 +32,7 @@ export function unageA (a) {
   return unscaled - 128
 }
 
-export function unageB (b) {
+export function refreshB (b) {
   const unscaled = R.clamp(0, 255, Math.floor(255 * (1.09 * ((b + 128) / 255) - 0.054)))
   return unscaled - 128
 }
@@ -47,9 +47,9 @@ export async function processImage (imageFileName) {
     let green = data.readUint8(byte + 1)
     let blue = data.readUint8(byte + 2)
     let [L, a, b] = chroma(red, green, blue, 'rgb').lab()
-    L = unageLightness(L)
-    a = unageA(a)
-    b = unageB(b)
+    L = refreshLightness(L)
+    a = refreshA(a)
+    b = refreshB(b)
     let newRGB = chroma(L, a, b, 'lab').rgb()
     data.writeUint8(newRGB[0], byte)
     data.writeUint8(newRGB[1], byte + 1)
@@ -58,7 +58,7 @@ export async function processImage (imageFileName) {
 
   try {
     sharp(data, { limitInputPixels: false, raw: info })
-      .toFile(imageFileName.replace('.jpg', '-unaged.jpg'))
+      .toFile(imageFileName.replace('.jpg', '-refreshed.jpg'))
   } finally {
     data = null
   }
