@@ -21,10 +21,10 @@ const AZINC = {
   YELLOW: chroma.rgb(176, 159, 70),
 }
 
-const DISTANCE = {
-  GREEN: chroma.distance(IN_SITU.GREEN, AZINC.GREEN, 'lab'),
-  ORANGE: chroma.distance(IN_SITU.ORANGE, AZINC.ORANGE, 'lab'),
-  YELLOW: chroma.distance(IN_SITU.YELLOW, AZINC.YELLOW, 'lab'),
+const DELTA = {
+  GREEN: [12, -14, 21],
+  ORANGE: [12, 4, 21],
+  YELLOW: [16, -5, 27],
 }
 
 export function refreshLightness (L) {
@@ -34,54 +34,37 @@ export function refreshLightness (L) {
     255 * (0.834 * (L / 100) ** 2 + 0.309 * (L / 100) + 0.145),
   )
 
-  return unscaled / 255 * 100
+  return (unscaled / 255) * 100
 }
 
 export function refreshA (a) {
-  const unscaled = R.clamp(
-    0,
-    255,
-    255 * (1.077 * ((a + 128) / 255) - 0.039),
-  )
-  return unscaled - 128
+  const unscaled = R.clamp(0, 255, 255 * (1.077 * ((a + 128) / 255) - 0.039))
+  return unscaled - 127
 }
 
 export function refreshB (b) {
   const unscaled = R.clamp(0, 255, 255 * (1.09 * ((b + 128) / 255) - 0.054))
-  return unscaled - 128
+  return unscaled - 127
 }
 
-function azinc(lab) {
-  const inSitu = chroma.lab(lab)
+function azinc (lab) {
+  let inSitu = chroma.lab(lab)
 
-  const color = Object.entries(IN_SITU).sort(([name1, color1], [name2, color2]) => {
-    const distance1 = chroma.distance(inSitu, color1, 'lab')
-    const distance2 = chroma.distance(inSitu, color2, 'lab')
-    return distance1 - distance2
-  })
-}
+  const sortedColors = Object.entries(IN_SITU)
+    .sort(([, color1], [, color2]) => {
+      const distance1 = chroma.distance(inSitu, color1)
+      const distance2 = chroma.distance(inSitu, color2)
+      return distance2 - distance1
+    })
+  const [colorName, _] = sortedColors.at(0)
 
-export function refresh (image) {
-  for (let byte = 0; byte < image.length; byte += 3) {
-    let red = image.readUint8(byte)
-    let green = image.readUint8(byte + 1)
-    let blue = image.readUint8(byte + 2)
-    let lab = chroma(red, green, blue, 'rgb').lab()
-    lab[0] = refreshLightness(lab[0])
-    lab[1] = refreshA(lab[1])
-    lab[2] = refreshB(lab[2])
-    lab = azinc(lab)
-    let newRGB = chroma(L, a, b, 'lab').rgb()
-    image.writeUint8(newRGB[0], byte)
-    image.writeUint8(newRGB[1], byte + 1)
-    image.writeUint8(newRGB[2], byte + 2)
+  if (chroma.distance(inSitu, IN_SITU[colorName]) <= 20) {
+    inSitu = inSitu.set('lab.l', `+${ DELTA[colorName][0] }`)
+    inSitu = inSitu.set('lab.a', `+${ DELTA[colorName][1] }`)
+    inSitu = inSitu.set('lab.b', `+${ DELTA[colorName][2] }`)
   }
 
-  return image
-}
-
-export function azinc (image) {
-
+  return inSitu
 }
 
 export async function processImage (imageFileName) {
@@ -90,22 +73,25 @@ export async function processImage (imageFileName) {
     .toBuffer({ resolveWithObject: true })
 
   for (let byte = 0; byte < data.length; byte += 3) {
-    let red = data.readUint8(byte)
-    let green = data.readUint8(byte + 1)
-    let blue = data.readUint8(byte + 2)
-    let [L, a, b] = chroma(red, green, blue, 'rgb').lab()
+    const red = data.readUint8(byte)
+    const green = data.readUint8(byte + 1)
+    const blue = data.readUint8(byte + 2)
+    let [L, a, b] = chroma.rgb(red, green, blue).lab()
     L = refreshLightness(L)
     a = refreshA(a)
     b = refreshB(b)
-    let newRGB = chroma(L, a, b, 'lab').rgb()
+    const azincAll = azinc([L, a, b])
+    // const newRGB = azincAll.rgb()
+    const newRGB = chroma.lab(L, a, b).rgb()
     data.writeUint8(newRGB[0], byte)
     data.writeUint8(newRGB[1], byte + 1)
     data.writeUint8(newRGB[2], byte + 2)
   }
 
   try {
-    sharp(data, { limitInputPixels: false, raw: info })
-      .toFile(imageFileName.replace('.jpg', '-refreshed.jpg'))
+    sharp(data, { limitInputPixels: false, raw: info }).toFile(
+      imageFileName.replace('.jpg', '-refreshed.jpg'),
+    )
   } finally {
     data = null
   }
