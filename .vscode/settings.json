@@ -6,19 +6,14 @@
     "source.fixAll.eslint",
     "source.fixAll.stylelint"
   ],
-  "tailwindCSS.emmetCompletions": true,
-  "tailwindCSS.includeLanguages": {
-    "typescript": "javascript",
-    "typescriptreact": "javascriptreact"
-  },
-  "tailwindCSS.experimental.classRegex": [
-    "tw`([^`]*)", // tw`...`
-    "tw=\"([^\"]*)", // <div tw="..." />
-    "tw={\"([^\"}]*)", // <div tw={"..."} />
-    "tw\\.\\w+`([^`]*)", // tw.xxx`...`
-    "tw\\(.*?\\)`([^`]*)" // tw(Component)`...`
-  ],
   "stylelint.enable": true,
+  "stylelint.validate": [
+    "css",
+    "less",
+    "postcss",
+    "typescript",
+    "typescriptreact"
+  ],
   "jupyter.jupyterServerType": "local",
   "typescript.tsdk": "node_modules/typescript/lib",
   "licenser.license": "GPLv3",
