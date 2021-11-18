@@ -1,7 +1,9 @@
+import { ReactElement } from 'react'
+
+import { Original, Replacement } from './palimpsest-styles'
+
 import { P } from 'app/components/markup'
 import { Palimpsest } from 'app/components/palimpsest'
-import { ReactElement } from 'react'
-import { Original, Replacement } from './palimpsest-styles'
 
 export function PalimpsestSandboxRoute (): ReactElement {
   return (

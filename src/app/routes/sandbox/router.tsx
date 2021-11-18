@@ -1,7 +1,8 @@
+import { ReactElement } from 'react'
 import { Route, Routes } from 'react-router'
+
 import { PalimpsestSandboxRouter } from './palimpsest'
 import { ParallaxSandboxRouter } from './parallax'
-import { ReactElement } from 'react'
 import { SwoopSandboxRouter } from './swoop'
 
 export function SandboxRoute (): ReactElement {

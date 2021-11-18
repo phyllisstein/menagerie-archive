@@ -1,6 +1,7 @@
-import { css as animationCSS, AnimationCurve, AnimationDuration } from './animation'
-import { css } from 'styled-components'
 import R from 'ramda'
+import { css } from 'styled-components'
+
+import { css as animationCSS, AnimationCurve, AnimationDuration } from './animation'
 
 const SHADOWS = {
   AMBIENT: [
@@ -28,7 +29,7 @@ const SHADOWS = {
     '0px 8px 40px 7px',
     '0px 8px 42px 7px',
     '0px 9px 44px 8px',
-    '0px 9px 46px 8px'
+    '0px 9px 46px 8px',
   ],
   PENUMBRA: [
     '0px 0px 0px 0px',
@@ -55,7 +56,7 @@ const SHADOWS = {
     '0px 21px 33px 3px',
     '0px 22px 35px 3px',
     '0px 23px 36px 3px',
-    '0px 24px 38px 3px'
+    '0px 24px 38px 3px',
   ],
   UMBRA: [
     '0px 0px 0px 0px',
@@ -82,14 +83,14 @@ const SHADOWS = {
     '0px 10px 13px -6px',
     '0px 10px 14px -6px',
     '0px 11px 14px -7px',
-    '0px 11px 15px -7px'
-  ]
+    '0px 11px 15px -7px',
+  ],
 }
 
 const BLACK = {
   AMBIENT: 'hsla(215, 9%, 15%, 12%)',
   PENUMBRA: 'hsla(215, 9%, 15%, 14%)',
-  UMBRA: 'hsla(215, 9%, 15%, 20%)'
+  UMBRA: 'hsla(215, 9%, 15%, 20%)',
 }
 
 const clampLevel = R.clamp(1, 25)
@@ -104,14 +105,14 @@ export function box (level = 1) {
   const ambient = SHADOWS.AMBIENT[level]
 
   return css`
-    box-shadow: ${umbra} ${BLACK.UMBRA}, ${penumbra} ${BLACK.PENUMBRA},
-      ${ambient} ${BLACK.AMBIENT};
+    box-shadow: ${ umbra } ${ BLACK.UMBRA }, ${ penumbra } ${ BLACK.PENUMBRA },
+      ${ ambient } ${ BLACK.AMBIENT };
   `
 }
 
 box.animation = animationCSS({
   duration: AnimationDuration.Elevation,
-  properties: 'box-shadow'
+  properties: 'box-shadow',
 })
 
 export function text (level = 1) {
@@ -122,12 +123,12 @@ export function text (level = 1) {
   const ambient = dropSpread(SHADOWS.AMBIENT[level])
 
   return css`
-    text-shadow: ${umbra} ${BLACK.UMBRA}, ${penumbra} ${BLACK.PENUMBRA},
-      ${ambient} ${BLACK.AMBIENT};
+    text-shadow: ${ umbra } ${ BLACK.UMBRA }, ${ penumbra } ${ BLACK.PENUMBRA },
+      ${ ambient } ${ BLACK.AMBIENT };
   `
 }
 
 text.animation = animationCSS({
   duration: AnimationDuration.Elevation,
-  properties: 'text-shadow'
+  properties: 'text-shadow',
 })

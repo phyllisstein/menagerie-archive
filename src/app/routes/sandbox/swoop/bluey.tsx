@@ -1,12 +1,15 @@
-import { animate, useMotionValue, useSpring, useTransform } from 'framer-motion'
+import { useGesture } from '@use-gesture/react'
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
+import { animate, useMotionValue, useSpring, useTransform } from 'framer-motion'
 import { FunctionComponent, useEffect, useRef } from 'react'
+
 import { Layer, Root } from './swoop-styles'
+
 import Back from 'assets/swoops/pink-purple/back.svg'
 import Fore from 'assets/swoops/pink-purple/fore.svg'
 import Ground from 'assets/swoops/pink-purple/ground.svg'
 import Mid from 'assets/swoops/pink-purple/mid.svg'
-import { useGesture } from '@use-gesture/react'
+
 
 export const Bluey: FunctionComponent = () => {
   const wrapperRef = useRef<HTMLDivElement>(null)

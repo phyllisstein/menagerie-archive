@@ -2,20 +2,18 @@ import chroma from 'chroma-js'
 import R from 'ramda'
 
 export const js = {
-  burntSienna: chroma('#A02F03'),
-  chromeYellow: chroma('#FFFE20'),
-  cobalt: chroma('#0046B5'),
-  emerald: chroma('#036F24'),
-  // leadWhite: chroma('#E5E5E5'),
+  green: chroma.lab(57.88, -21.92, 43.99),
   leadWhite: chroma.lab(97.13, 0.06, 1.35),
-  ultramarine: chroma('#0B36FE'),
-  veridian: chroma('#008461'),
-  vermilion: chroma('#B70002'),
-  yellowOchre: chroma('#D47205'),
-  zincYellow: chroma('#E1C313'),
+  orange: chroma.lab(58.75, 15.05, 46.36),
+  yellow: chroma.lab(66.48, -0.62, 57.74),
 }
 
 export type JS = typeof js
+export type ColorNames = keyof JS
 export type CSS = { [k in keyof JS]: string }
 
 export const css: CSS = R.map(R.invoker(0, 'css'), js)
+export const lch: CSS = R.pipe(
+  R.map(R.invoker(0, 'lch')),
+  R.map(([l, c, h]) => `lch(${ l }% ${ c } ${ h })`),
+)(js) as unknown as CSS

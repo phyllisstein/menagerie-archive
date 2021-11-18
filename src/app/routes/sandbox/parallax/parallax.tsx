@@ -1,8 +1,10 @@
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
-import { Layer, Root, StoryWrapper } from './parallax-styles'
-import { ReactElement, useEffect, useRef } from 'react'
 import { useMotionValue, useTransform } from 'framer-motion'
+import { ReactElement, useEffect, useRef } from 'react'
 import { useGesture } from 'react-use-gesture'
+
+import { Layer, Root, StoryWrapper } from './parallax-styles'
+
 import wcBlack from 'assets/watercolors/black.png'
 import wcBlue from 'assets/watercolors/blue.png'
 import wcGreen from 'assets/watercolors/green.png'

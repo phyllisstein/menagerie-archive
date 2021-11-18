@@ -1,5 +1,6 @@
-import { Route, Routes } from 'react-router'
 import { ReactElement } from 'react'
+import { Route, Routes } from 'react-router'
+
 import { PalimpsestSandboxRoute } from './palimpsest'
 
 export function PalimpsestSandboxRouter (): ReactElement {

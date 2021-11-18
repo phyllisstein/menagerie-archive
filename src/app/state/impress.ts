@@ -5,18 +5,18 @@ export const animation = atomFamily({
     position: {
       x: 0,
       y: 0,
-      z: 0
+      z: 0,
     },
     relative: false,
     rotation: {
       x: 0,
       y: 0,
-      z: 0
+      z: 0,
     },
     scale: 1,
-    step: 0
+    step: 0,
   },
-  key: 'impress:animation'
+  key: 'impress:animation',
 })
 
 export const currentAndPreviousAnimation = selectorFamily({
@@ -34,5 +34,5 @@ export const currentAndPreviousAnimation = selectorFamily({
     if (newValue.previous != null) {
       set(animation(step - 1), newValue.previous)
     }
-  }
+  },
 })

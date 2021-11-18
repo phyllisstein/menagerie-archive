@@ -4,18 +4,18 @@ import { css as styledCSS } from 'styled-components'
 export interface CSSParams {
   curve?: AnimationCurve
   duration?: AnimationDuration
-  properties?: string | string[]
+  properties?: string[] | string
 }
 
 export function css ({
   curve = AnimationCurve.MaterialStandard,
   duration = AnimationDuration.Entering,
-  properties = ['all']
+  properties = ['all'],
 }: CSSParams = {}) {
   const property = Array.from(properties).join(',')
 
   return styledCSS`
-    transition: ${property} ${duration}ms ${curve};
+    transition: ${ property } ${ duration }ms ${ curve };
   `
 }
 

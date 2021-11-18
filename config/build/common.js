@@ -200,18 +200,19 @@ client.module
 
 client.resolve
   .enforceExtension(false)
-  .extensions.add('.ts')
-  .add('.tsx')
-  .add('.wasm')
-  .add('.mjs')
-  .add('.js')
-  .add('.jsx')
-  .add('.json')
-  .end()
+  .extensions
+    .add('.ts')
+    .add('.tsx')
+    .add('.wasm')
+    .add('.mjs')
+    .add('.js')
+    .add('.jsx')
+    .add('.json')
+    .end()
   .modules.add(path.resolve('src'))
-  .add(path.resolve('vendor'))
-  .add(path.resolve('node_modules'))
-  .end()
+    .add(path.resolve('vendor'))
+    .add(path.resolve('node_modules'))
+    .end()
 
 client.plugin('define').use(webpack.DefinePlugin, [
   {

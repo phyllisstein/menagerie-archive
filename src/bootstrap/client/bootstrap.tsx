@@ -12,34 +12,31 @@ const renderApp = async (): Promise<void> => {
   ])
 
   const main = document.querySelector('main')
+  const root = ReactDOM.createRoot(main)
 
   if (module.hot != null) {
     module.hot.accept(async (): Promise<void> => {
       const { App } = await import('app/routes')
 
-      await new Promise<void>(resolve => {
-        ReactDOM.render(
+      await new Promise<void>(() => {
+        root.render(
           <BrowserRouter>
             <HelmetProvider>
               <App />
             </HelmetProvider>
           </BrowserRouter>,
-          main,
-          resolve,
         )
       })
     })
   }
 
-  await new Promise<void>(resolve => {
-    ReactDOM.render(
+  await new Promise<void>(() => {
+    root.render(
       <BrowserRouter>
         <HelmetProvider>
           <App />
         </HelmetProvider>
       </BrowserRouter>,
-      main,
-      resolve,
     )
   })
 }

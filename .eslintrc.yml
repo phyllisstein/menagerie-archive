@@ -27,7 +27,7 @@
     - sort-destructure-keys
     - sort-keys-fix
   settings:
-    import/internal-regex: '^@/.+'
+    import/internal-regex: '^(app|assets|bootstrap)/?'
     react:
       version: '17'
 

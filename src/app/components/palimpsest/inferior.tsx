@@ -1,5 +1,5 @@
-import { animated, useSpring } from 'react-spring'
 import { ReactElement, useEffect, useRef, useState } from 'react'
+import { animated, useSpring } from 'react-spring'
 import styled from 'styled-components'
 
 const InferiorBase = styled(animated.span)`

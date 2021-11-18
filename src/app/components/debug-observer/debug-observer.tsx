@@ -21,7 +21,7 @@ export const DebugObserver = () => {
       '%cRECOIL ATOMS CHANGED\t\t%c%s',
       groupStyle,
       timestampStyle,
-      new Date().toISOString()
+      new Date().toISOString(),
     )
 
     for (const node of snapshot.getNodes_UNSTABLE()) {

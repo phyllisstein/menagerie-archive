@@ -1,6 +1,7 @@
-import styled, { css, keyframes } from 'styled-components'
-import { Entry as EntryBase } from 'app/components/matrix'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import styled, { css, keyframes } from 'styled-components'
+
+import { Entry as EntryBase } from 'app/components/matrix'
 
 export const Entry = styled(EntryBase)`
   width: min-content;
@@ -43,7 +44,7 @@ export const Label = styled.div`
   font-variant-caps: all-small-caps;
 `
 
-export const Line = styled.div<{ $axis: 'x' | 'y' }>`
+const Line = styled.div`
   position: absolute;
   top: 50%;
   left: 50%;
@@ -51,26 +52,19 @@ export const Line = styled.div<{ $axis: 'x' | 'y' }>`
   background-color: ${ ({ theme }) => theme.palette.css.gray800 };
   transform: translate(-50%, -50%);
   backface-visibility: visible;
+`
 
+export const LineX = styled(Line)`
   &::before {
-    display: block;
-    content: '';
+    width: 1000vw;
+    height: 5px;
+  }
+`
 
-    ${ ({ $axis }) => {
-    if ($axis === 'x') {
-      return css`
-          width: 1000vw;
-          height: 5px;
-        `
-    }
-
-    if ($axis === 'y') {
-      return css`
-          width: 5px;
-          height: 1000vh;
-        `
-    }
-  } }
+export const LineY = styled(Line)`
+  &::before {
+    width: 5px;
+    height: 1000vh;
   }
 `
 

@@ -1,3 +1,4 @@
+import R from 'ramda'
 import {
   Children,
   CSSProperties,
@@ -6,7 +7,7 @@ import {
   useContext,
   useEffect,
 } from 'react'
-import R from 'ramda'
+
 import { Root } from './scene-styles'
 import { StageTransform } from './stage'
 import { Transform } from './transform'

@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import {
   ReactChild,
   ReactElement,
@@ -6,7 +7,7 @@ import {
   useRef,
   useState,
 } from 'react'
-import { motion } from 'framer-motion'
+
 import { P } from '../markup'
 
 interface Props {

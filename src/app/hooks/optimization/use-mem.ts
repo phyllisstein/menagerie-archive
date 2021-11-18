@@ -1,7 +1,7 @@
-import { useMemo, useRef } from 'react'
 import DeepWeakMap from 'deep-weak-map'
 import mem from 'mem'
 import R from 'ramda'
+import { useMemo, useRef } from 'react'
 
 type Callback = (...args: unknown[]) => unknown
 

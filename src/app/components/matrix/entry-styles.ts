@@ -1,7 +1,8 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import styled, { css } from 'styled-components'
+
 import { DotPosition } from './entry'
 import { EntryText } from './entry-text'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 interface RootProps {
   $position?: DotPosition

@@ -5,7 +5,7 @@ export const Egyptienne = createGlobalStyle`
     font-weight: 700;
     font-family: 'Egyptienne';
     font-style: normal;
-    src: url("${require('./EgyptienneLT-BoldCondensed.woff2')}") format('woff2');
+    src: url("${ require('./EgyptienneLT-BoldCondensed.woff2') }") format('woff2');
 
     font-display: fallback;
   }

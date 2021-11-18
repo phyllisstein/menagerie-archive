@@ -1,5 +1,6 @@
-import { accent as plumberAccent, millerDisplay as plumberMillerDisplay, primary as plumberPrimary } from './plumber'
 import { css } from 'styled-components'
+
+import { accent as plumberAccent, millerDisplay as plumberMillerDisplay, primary as plumberPrimary } from './plumber'
 
 export const accent = (plumberOpts = {}) => css`
   ${ accentFamily }

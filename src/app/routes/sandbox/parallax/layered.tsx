@@ -1,12 +1,14 @@
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
-import { FunctionComponent, useEffect, useRef } from 'react'
-import { Layer, Root, StoryWrapper } from './layered-styles'
 import { useMotionValue, useTransform } from 'framer-motion'
+import { FunctionComponent, useEffect, useRef } from 'react'
+import { useGesture } from 'react-use-gesture'
+
+import { Layer, Root, StoryWrapper } from './layered-styles'
+
 import Background from 'assets/sunny/background.svg'
 import Green from 'assets/sunny/green.svg'
 import Orange from 'assets/sunny/orange.svg'
 import Sun from 'assets/sunny/sun.svg'
-import { useGesture } from 'react-use-gesture'
 import Yellow from 'assets/sunny/yellow.svg'
 
 export const Layered: FunctionComponent = () => {

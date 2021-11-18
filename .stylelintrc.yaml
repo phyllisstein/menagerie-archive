@@ -33,9 +33,11 @@ rules:
   function-name-case: null
   function-whitespace-after: null
   indentation: 2
+  no-empty-first-line: null
   no-eol-whitespace: null
   no-extra-semicolons: null
   no-missing-end-of-source-newline: null
   selector-max-empty-lines: 2
+  string-quotes: single
   value-keyword-case: null
   value-list-comma-newline-after: null

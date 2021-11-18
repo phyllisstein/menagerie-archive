@@ -1,14 +1,16 @@
-import { Entry, Grid, Image, Label, Line, PulsingIcon } from './approval-styles'
+import { duotone } from '@fortawesome/fontawesome-svg-core/import.macro'
 import { ReactElement, useCallback, useState } from 'react'
+import { Helmet } from 'react-helmet-async'
+
+import { Entry, Grid, Image, Label, LineX, LineY, PulsingIcon } from './approval-styles'
+
 import { Scene, Stage, Transform } from 'app/components/stage'
 import { css } from 'app/styles/theme/palette'
-import { duotone } from '@fortawesome/fontawesome-svg-core/import.macro'
 import dylan from 'assets/matrix/dylan.jpg'
 import gallo from 'assets/matrix/gallo.png'
 import ghery from 'assets/matrix/ghery.png'
 import ghostling from 'assets/matrix/ghostling.png'
 import gta from 'assets/matrix/gtasa.jpg'
-import { Helmet } from 'react-helmet-async'
 import housewives from 'assets/matrix/housewives.png'
 import locas from 'assets/matrix/locas.jpg'
 import madge from 'assets/matrix/madge.png'
@@ -45,8 +47,8 @@ export function ApprovalRoute (): ReactElement {
       <Stage step={ step }>
         <Scene layout>
           <Grid>
-            <Line $axis='x' />
-            <Line $axis='y' />
+            <LineX />
+            <LineY />
           </Grid>
         </Scene>
         <Scene layout>
@@ -91,7 +93,7 @@ export function ApprovalRoute (): ReactElement {
             </Entry.Text>
             <Image
               src={ madge }
-              style={{ clipPath: 'url("#madge_svg__madge")' }} />
+              style={{ clipPath: `url('#madge_svg__madge')` }} />
             <Madge />
           </Entry>
         </Scene>
@@ -297,7 +299,7 @@ export function ApprovalRoute (): ReactElement {
               <strong>Stolen Honor: Wounds That Never Heal:</strong>
               Sinclair flip-flops on anti-Kerry doc.
             </Entry.Text>
-            <Image src={ purpleHeart } style={{ width: 256, height: 'auto' }} />
+            <Image src={ purpleHeart } style={{ height: 'auto', width: 256 }} />
           </Entry>
         </Scene>
         <Scene onClick={ toggleCurrentStep(20) }>

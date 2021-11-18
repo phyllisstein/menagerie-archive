@@ -1,6 +1,7 @@
 import _ from 'lodash'
-import { css } from 'styled-components'
 import { getValueAndUnit } from 'polished'
+import { css } from 'styled-components'
+
 import { unitless } from './scale'
 
 // (UnitsPerEm − hhea.Ascender − hhea.Descender) / (2 × UnitsPerEm)

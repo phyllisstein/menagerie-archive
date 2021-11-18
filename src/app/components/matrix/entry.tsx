@@ -1,7 +1,9 @@
-import { DotIcon, Root } from './entry-styles'
-import { FunctionComponent, PropsWithChildren, ReactElement } from 'react'
-import { EntryText } from './entry-text'
 import { faDotCircle } from '@fortawesome/pro-duotone-svg-icons'
+import { FunctionComponent, PropsWithChildren, ReactElement } from 'react'
+
+import { DotIcon, Root } from './entry-styles'
+import { EntryText } from './entry-text'
+
 
 export enum DotPosition {
   Bottom,

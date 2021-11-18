@@ -1,7 +1,7 @@
-import { Body, Root, StageRoot } from './stage-styles'
-import { config, useChain, useSpring, useSpringRef } from 'react-spring'
-import { debounce, defaults } from 'lodash/fp'
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
+import { canUseDOM } from 'exenv'
+import { debounce, defaults } from 'lodash/fp'
+import R from 'ramda'
 import React, {
   Children,
   createContext,
@@ -12,9 +12,10 @@ import React, {
   useRef,
   useState,
 } from 'react'
-import { canUseDOM } from 'exenv'
-import R from 'ramda'
+import { config, useChain, useSpring, useSpringRef } from 'react-spring'
+
 import { Props as SceneProps } from './scene'
+import { Body, Root, StageRoot } from './stage-styles'
 
 type TransformRegistrationFn = (transform: Transform) => void
 export const StageTransform = createContext<TransformRegistrationFn | null>(
