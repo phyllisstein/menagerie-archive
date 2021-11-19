@@ -1,1 +1,1 @@
-export * from './router'
+export { VergeRoutes as default } from './routes'

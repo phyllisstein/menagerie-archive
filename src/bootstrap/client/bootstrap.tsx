@@ -1,3 +1,5 @@
+/* global Hyphenopoly:false */
+
 const renderApp = async (): Promise<void> => {
   const [
     { App },
@@ -5,7 +7,7 @@ const renderApp = async (): Promise<void> => {
     { HelmetProvider },
     { default: ReactDOM },
   ] = await Promise.all([
-    import('app/routes'),
+    import('~/app/routes'),
     import('react-router-dom'),
     import('react-helmet-async'),
     import('react-dom'),
@@ -13,22 +15,6 @@ const renderApp = async (): Promise<void> => {
 
   const main = document.querySelector('main')
   const root = ReactDOM.createRoot(main)
-
-  if (module.hot != null) {
-    module.hot.accept(async (): Promise<void> => {
-      const { App } = await import('app/routes')
-
-      await new Promise<void>(() => {
-        root.render(
-          <BrowserRouter>
-            <HelmetProvider>
-              <App />
-            </HelmetProvider>
-          </BrowserRouter>,
-        )
-      })
-    })
-  }
 
   await new Promise<void>(() => {
     root.render(
@@ -42,49 +28,38 @@ const renderApp = async (): Promise<void> => {
 }
 
 const bootstrapHyphenopoly = async (): Promise<void> => {
-  await Promise.all([
-    import('hyphenopoly/patterns/en-us.wasm'),
-    import('hyphenopoly/Hyphenopoly_Loader.js'),
-    import('hyphenopoly/Hyphenopoly.js'),
-  ])
-
   await new Promise((resolve, reject) => {
-    window.Hyphenopoly = {
-      paths: {
-        maindir: '/vendor/hyphenopoly/',
-        patterndir: '/vendor/hyphenopoly/',
-      },
-      require: {
-        'en-us': 'FORCEHYPHENOPOLY',
-      },
-      setup: {
-        defaultLanguage: 'en-us',
-        hide: 'false',
-        keepAlive: true,
-        normalize: true,
-        selectors: {
-          '.__default': {
-            compound: 'all',
-            hyphen: '\u00AD',
-            minWordLength: 0,
-            orphanControl: 3,
-          },
-        },
-        timeout: 1000,
-      },
-    }
+    const scpt = document.createElement('script')
+    scpt.src = '../../../node_modules/hyphenopoly/min/Hyphenopoly_Loader.js'
+    scpt.setAttribute('crossorigin', 'anonymous')
+    scpt.onload = resolve
+    scpt.onerror = reject
+    document.head.appendChild(scpt)
+  })
 
-    try {
-      const scpt = document.createElement('script')
-      scpt.async = true
-      scpt.defer = true
-      scpt.src = '/vendor/hyphenopoly/Hyphenopoly_Loader.js'
-      scpt.setAttribute('crossorigin', 'anonymous')
-      scpt.onload = resolve
-      document.body.appendChild(scpt)
-    } catch (err) {
-      reject(err)
-    }
+  Hyphenopoly.config({
+    paths: {
+      maindir: '../../../node_modules/hyphenopoly/',
+      patterndir: '../../../node_modules/hyphenopoly/patterns/',
+    },
+    require: {
+      'en-us': 'FORCEHYPHENOPOLY',
+    },
+    setup: {
+      defaultLanguage: 'en-us',
+      hide: 'false',
+      keepAlive: true,
+      normalize: true,
+      selectors: {
+        '.__default': {
+          compound: 'all',
+          hyphen: '\u00AD',
+          minWordLength: 0,
+          orphanControl: 3,
+        },
+      },
+      timeout: 1000,
+    },
   })
 }
 

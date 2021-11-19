@@ -1,11 +1,14 @@
 import { createGlobalStyle } from 'styled-components'
 
+import egyptienne from './EgyptienneLT-BoldCondensed.woff2'
+
 export const Egyptienne = createGlobalStyle`
   @font-face {
     font-weight: 700;
     font-family: 'Egyptienne';
     font-style: normal;
-    src: url("${ require('./EgyptienneLT-BoldCondensed.woff2') }") format('woff2');
+    font-stretch: condensed;
+    src: url('${ egyptienne }') format('woff2');
 
     font-display: fallback;
   }

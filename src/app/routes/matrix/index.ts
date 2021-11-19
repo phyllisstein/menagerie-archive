@@ -1,1 +1,1 @@
-export * from './approval'
+export { ApprovalRoute as default } from './approval'

@@ -1,26 +1,27 @@
-import { duotone } from '@fortawesome/fontawesome-svg-core/import.macro'
+import { faHeartBroken } from '@fortawesome/pro-duotone-svg-icons'
 import { ReactElement, useCallback, useState } from 'react'
 import { Helmet } from 'react-helmet-async'
 
 import { Entry, Grid, Image, Label, LineX, LineY, PulsingIcon } from './approval-styles'
 
-import { Scene, Stage, Transform } from 'app/components/stage'
-import { css } from 'app/styles/theme/palette'
-import dylan from 'assets/matrix/dylan.jpg'
-import gallo from 'assets/matrix/gallo.png'
-import ghery from 'assets/matrix/ghery.png'
-import ghostling from 'assets/matrix/ghostling.png'
-import gta from 'assets/matrix/gtasa.jpg'
-import housewives from 'assets/matrix/housewives.png'
-import locas from 'assets/matrix/locas.jpg'
-import madge from 'assets/matrix/madge.png'
-import Madge from 'assets/matrix/madge.svg'
-import malcolmGladwell from 'assets/matrix/MalcolmGladwell.png'
-import purpleHeart from 'assets/matrix/purple-heart.png'
-import reynolds from 'assets/matrix/reynolds.png'
-import trucker from 'assets/matrix/trucker.png'
-import twenty from 'assets/matrix/twenty.jpg'
-import washington from 'assets/matrix/washington.jpg'
+import { Scene, Stage, Transform } from '~/app/components/stage'
+import { css } from '~/app/styles/theme/palette'
+import dylan from '~/assets/matrix/dylan.jpg'
+import gallo from '~/assets/matrix/gallo.png'
+import ghery from '~/assets/matrix/ghery.png'
+import ghostling from '~/assets/matrix/ghostling.png'
+import gta from '~/assets/matrix/gtasa.jpg'
+import housewives from '~/assets/matrix/housewives.png'
+import locas from '~/assets/matrix/locas.jpg'
+import madge from '~/assets/matrix/madge.png'
+import { ReactComponent as Madge } from '~/assets/matrix/madge.svg'
+import malcolmGladwell from '~/assets/matrix/MalcolmGladwell.png'
+import purpleHeart from '~/assets/matrix/purple-heart.png'
+import reynolds from '~/assets/matrix/reynolds.png'
+import trucker from '~/assets/matrix/trucker.png'
+import twenty from '~/assets/matrix/twenty.jpg'
+import washington from '~/assets/matrix/washington.jpg'
+
 
 export function ApprovalRoute (): ReactElement {
   const [step, setStep] = useState(1)
@@ -219,7 +220,7 @@ export function ApprovalRoute (): ReactElement {
               pretentious glop.
             </Entry.Text>
             <PulsingIcon
-              icon={ duotone('heart-broken') }
+              icon={ faHeartBroken }
               size='3x'
               style={{ color: css.red700 }} />
           </Entry>

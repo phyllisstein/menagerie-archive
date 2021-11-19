@@ -1,5 +1,5 @@
 import chroma from 'chroma-js'
-import R from 'ramda'
+import * as R from 'ramda'
 
 export const js = {
   green: chroma.lab(57.88, -21.92, 43.99),

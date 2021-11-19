@@ -6,6 +6,7 @@
     "source.fixAll.eslint",
     "source.fixAll.stylelint"
   ],
+  "eslint.codeActionsOnSave.mode": "all",
   "stylelint.enable": true,
   "stylelint.validate": [
     "css",

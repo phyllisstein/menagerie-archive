@@ -1,1 +1,1 @@
-export * from './router'
+export { SandboxRoutes as default } from './routes'

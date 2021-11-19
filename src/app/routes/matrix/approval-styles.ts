@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import styled, { css, keyframes } from 'styled-components'
 
-import { Entry as EntryBase } from 'app/components/matrix'
+import { Entry as EntryBase } from '~/app/components/matrix'
 
 export const Entry = styled(EntryBase)`
   width: min-content;
@@ -44,7 +44,7 @@ export const Label = styled.div`
   font-variant-caps: all-small-caps;
 `
 
-const Line = styled.div`
+export const Line = styled.div`
   position: absolute;
   top: 50%;
   left: 50%;
@@ -56,15 +56,21 @@ const Line = styled.div`
 
 export const LineX = styled(Line)`
   &::before {
+    display: block;
     width: 1000vw;
     height: 5px;
+
+    content: '';
   }
 `
 
 export const LineY = styled(Line)`
   &::before {
+    display: block;
     width: 5px;
     height: 1000vh;
+
+    content: '';
   }
 `
 

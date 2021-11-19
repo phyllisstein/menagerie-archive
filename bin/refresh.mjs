@@ -4,7 +4,7 @@ import chroma from 'chroma-js'
 import { globby } from 'globby'
 import path from 'path'
 import PQueue from 'p-queue'
-import R from 'ramda'
+import * as R from 'ramda'
 import sharp from 'sharp'
 
 // sharp.concurrency(1)

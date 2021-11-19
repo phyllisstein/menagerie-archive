@@ -17,9 +17,8 @@
  * along with the Menagerie.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import 'core-js'
-import 'core-js/proposals'
-
 import bootstrap from './bootstrap'
 
-bootstrap()
+bootstrap().catch(err => {
+  throw err
+})

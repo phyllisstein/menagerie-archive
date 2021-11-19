@@ -2,7 +2,7 @@
 
 import { canUseDOM } from 'exenv'
 import pWaitFor from 'p-wait-for'
-import R from 'ramda'
+import * as R from 'ramda'
 import { useEffect } from 'react'
 
 export const useHyphenator = targetRef => {

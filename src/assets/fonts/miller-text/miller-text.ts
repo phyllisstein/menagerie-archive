@@ -1,39 +1,29 @@
 import { createGlobalStyle } from 'styled-components'
 
+const WEIGHT_MAP = {
+  Bold: 700,
+  Roman: 400,
+}
+
+const fontFiles = import.meta.globEager('./*.woff2')
+
+const styleString = Object.entries(fontFiles).reduce((acc, [fileName, fileImport]) => {
+  const { groups } = fileName.match(/MillerText-(?<weight>.+?)(?<italic>Italic)?\.woff2/)
+
+  const style = !!groups.italic
+    ? 'italic'
+    : 'normal'
+  const weight = WEIGHT_MAP[groups.weight]
+
+  return `${ acc }@font-face {
+    font-family: 'Adobe Clean';
+    src: url('${ fileImport.default }') format('woff2');
+    font-weight: ${ weight };
+    font-style: ${ style };
+    font-display: fallback;
+  }`
+}, '')
+
 export const MillerText = createGlobalStyle`
-  @font-face {
-    font-weight: 400;
-    font-family: 'Miller Text';
-    font-style: normal;
-    src: url("${ require('./MillerText-Roman.woff2') }") format('woff2');
-
-    font-display: fallback;
-  }
-
-  @font-face {
-    font-weight: 400;
-    font-family: 'Miller Text';
-    font-style: italic;
-    src: url("${ require('./MillerText-Italic.woff2') }") format('woff2');
-
-    font-display: fallback;
-  }
-
-  @font-face {
-    font-weight: 700;
-    font-family: 'Miller Text';
-    font-style: normal;
-    src: url("${ require('./MillerText-Bold.woff2') }") format('woff2');
-
-    font-display: fallback;
-  }
-
-  @font-face {
-    font-weight: 700;
-    font-family: 'Miller Text';
-    font-style: italic;
-    src: url("${ require('./MillerText-BoldItalic.woff2') }") format('woff2');
-
-    font-display: fallback;
-  }
+  ${ styleString }
 `

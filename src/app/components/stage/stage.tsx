@@ -1,8 +1,8 @@
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
 import { canUseDOM } from 'exenv'
 import { debounce, defaults } from 'lodash/fp'
-import R from 'ramda'
-import React, {
+import * as R from 'ramda'
+import {
   Children,
   createContext,
   FunctionComponentElement,
@@ -16,6 +16,7 @@ import { config, useChain, useSpring, useSpringRef } from 'react-spring'
 
 import { Props as SceneProps } from './scene'
 import { Body, Root, StageRoot } from './stage-styles'
+
 
 type TransformRegistrationFn = (transform: Transform) => void
 export const StageTransform = createContext<TransformRegistrationFn | null>(

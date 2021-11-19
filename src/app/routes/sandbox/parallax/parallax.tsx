@@ -5,12 +5,12 @@ import { useGesture } from 'react-use-gesture'
 
 import { Layer, Root, StoryWrapper } from './parallax-styles'
 
-import wcBlack from 'assets/watercolors/black.png'
-import wcBlue from 'assets/watercolors/blue.png'
-import wcGreen from 'assets/watercolors/green.png'
-import wcPurple from 'assets/watercolors/purple.png'
-import wcRed from 'assets/watercolors/red.png'
-import wcYellow from 'assets/watercolors/yellow.png'
+import wcBlack from '~/assets/watercolors/black.png'
+import wcBlue from '~/assets/watercolors/blue.png'
+import wcGreen from '~/assets/watercolors/green.png'
+import wcPurple from '~/assets/watercolors/purple.png'
+import wcRed from '~/assets/watercolors/red.png'
+import wcYellow from '~/assets/watercolors/yellow.png'
 
 export function ParallaxSandboxRoute (): ReactElement {
   const wrapperRef = useRef<HTMLDivElement>(null)

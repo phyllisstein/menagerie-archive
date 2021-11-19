@@ -1,1 +1,1 @@
-export * from './router'
+export { SundayRoute as default } from './routes'
