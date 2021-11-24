@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      args:
+        - FONT_AWESOME_NPM_TOKEN
+        - GSAP_NPM_TOKEN
+      context: .
+      dockerfile: Dockerfile
+    command: yarn start:dev
+    environment:
+      - VIRTUAL_HOST=menagerie.here
+    expose:
+      - "9090"
+    networks:
+      - default
+      - nginx-proxy
+    volumes:
+      - type: bind
+        source: .
+        target: /node/app
+      - type: volume
+        source: node_modules
+        target: /node/app/node_modules
+        volume:
+          nocopy: true
+
+volumes:
+  node_modules:
+
+networks:
+  default:
+  nginx-proxy:
+    external: true
+    name: nginx-proxy
