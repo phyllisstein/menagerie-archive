@@ -1,1 +1,1 @@
-export { SundayRoute as default } from './routes'
+export { SundayRoutes as default } from './routes'

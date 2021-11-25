@@ -23,7 +23,7 @@ import twenty from '~/assets/matrix/twenty.jpg'
 import washington from '~/assets/matrix/washington.jpg'
 
 
-export function ApprovalRoute (): ReactElement {
+export function ApprovalMatrix (): ReactElement {
   const [step, setStep] = useState(1)
 
   const toggleCurrentStep = useCallback(

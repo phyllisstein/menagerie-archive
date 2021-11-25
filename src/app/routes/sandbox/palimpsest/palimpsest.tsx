@@ -5,7 +5,7 @@ import { Original, Replacement } from './palimpsest-styles'
 import { P } from '~/app/components/markup'
 import { Palimpsest } from '~/app/components/palimpsest'
 
-export function PalimpsestSandboxRoute (): ReactElement {
+export function PalimpsestRoute (): ReactElement {
   return (
     <div style={{ margin: '1.778rem auto', width: '56.2%' }}>
       <Palimpsest>

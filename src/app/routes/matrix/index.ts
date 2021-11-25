@@ -1,1 +1,1 @@
-export { ApprovalRoute as default } from './approval'
+export { MatrixRoutes as default } from './routes'

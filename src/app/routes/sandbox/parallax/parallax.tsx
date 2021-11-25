@@ -12,7 +12,7 @@ import wcPurple from '~/assets/watercolors/purple.png'
 import wcRed from '~/assets/watercolors/red.png'
 import wcYellow from '~/assets/watercolors/yellow.png'
 
-export function ParallaxSandboxRoute (): ReactElement {
+export function Parallax (): ReactElement {
   const wrapperRef = useRef<HTMLDivElement>(null)
 
   const mainLayer = useMotionValue(0)
