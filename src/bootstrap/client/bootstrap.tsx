@@ -39,8 +39,8 @@ const bootstrapHyphenopoly = async (): Promise<void> => {
 
   Hyphenopoly.config({
     paths: {
-      maindir: '../../../node_modules/hyphenopoly/',
-      patterndir: '../../../node_modules/hyphenopoly/patterns/',
+      maindir: '/hyphenopoly/',
+      patterndir: '/hyphenopoly/',
     },
     require: {
       'en-us': 'FORCEHYPHENOPOLY',
