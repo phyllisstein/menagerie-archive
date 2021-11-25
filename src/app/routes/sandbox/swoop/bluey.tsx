@@ -5,10 +5,10 @@ import { FunctionComponent, useEffect, useRef } from 'react'
 
 import { Layer, Root } from './swoop-styles'
 
-import { ReactComponent as Back } from '~/assets/swoops/pink-purple/back.svg'
-import { ReactComponent as Fore } from '~/assets/swoops/pink-purple/fore.svg'
-import { ReactComponent as Ground } from '~/assets/swoops/pink-purple/ground.svg'
-import { ReactComponent as Mid } from '~/assets/swoops/pink-purple/mid.svg'
+import Back from 'assets/swoops/pink-purple/back.svg'
+import Fore from 'assets/swoops/pink-purple/fore.svg'
+import Ground from 'assets/swoops/pink-purple/ground.svg'
+import Mid from 'assets/swoops/pink-purple/mid.svg'
 
 
 export const Bluey: FunctionComponent = () => {

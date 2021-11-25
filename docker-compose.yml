@@ -7,27 +7,32 @@ services:
         - FONT_AWESOME_NPM_TOKEN
         - GSAP_NPM_TOKEN
       context: .
-      dockerfile: Dockerfile
-    command: yarn start:dev
+    command:
+      - /bin/sh
+      - -c
+      - yarn && yarn vite
     environment:
       - VIRTUAL_HOST=menagerie.here
     expose:
-      - "9090"
+      - "3000"
     networks:
       - default
       - nginx-proxy
     volumes:
       - type: bind
         source: .
-        target: /node/app
+        target: /app
       - type: volume
         source: node_modules
-        target: /node/app/node_modules
-        volume:
-          nocopy: true
+        target: /app/node_modules
+      - type: volume
+        source: dot_yarn
+        target: /app/.yarn
+
 
 volumes:
   node_modules:
+  dot_yarn:
 
 networks:
   default:

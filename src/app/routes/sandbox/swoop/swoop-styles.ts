@@ -8,4 +8,6 @@ export const Layer = styled(motion.div)`
   height: 50vh;
 `
 
-export const Root = styled.div``
+export const Root = styled.div`
+  overflow: auto !important;
+`

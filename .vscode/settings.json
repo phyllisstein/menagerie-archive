@@ -16,12 +16,15 @@
     "typescriptreact"
   ],
   "jupyter.jupyterServerType": "local",
-  "typescript.tsdk": "node_modules/typescript/lib",
   "licenser.license": "GPLv3",
   "licenser.projectName": "Menagerie",
   "licenser.author": "Daniel P. Shannon",
   "[python]": {
     "editor.defaultFormatter": "ms-python.python"
   },
-  "python.formatting.provider": "black"
+  "python.formatting.provider": "black",
+  "search.exclude": {
+    "**/.yarn": true,
+    "**/.pnp.*": true
+  }
 }

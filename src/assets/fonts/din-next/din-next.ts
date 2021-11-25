@@ -1,34 +1,130 @@
 import { createGlobalStyle } from 'styled-components'
 
-const WEIGHT_MAP = {
-  Black: 900,
-  Bold: 700,
-  Heavy: 800,
-  Light: 300,
-  Medium: 500,
-  Regular: 400,
-  UltraLight: 200,
-}
-
-const fontFiles = import.meta.globEager('./*.woff2')
-
-const styleString = Object.entries(fontFiles).reduce((acc, [fileName, fileImport]) => {
-  const { groups } = fileName.match(/DINNextLTPro-(?<weight>.+?)(?<italic>Italic)?\.woff2/)
-
-  const style = !!groups.italic
-    ? 'italic'
-    : 'normal'
-  const weight = WEIGHT_MAP[groups.weight]
-
-  return `${ acc }@font-face {
-    font-family: 'DIN Next LT Pro';
-    src: url('${ fileImport.default }') format('woff2');
-    font-weight: ${ weight };
-    font-style: ${ style };
-    font-display: fallback;
-  }`
-}, '')
-
 export const DINNext = createGlobalStyle`
-  ${ styleString }
+  @font-face {
+    font-weight: 200;
+    font-family: 'DIN Next LT Pro';
+    font-style: normal;
+    src: url("${ require('./DINNextLTPro-UltraLight.woff2') }");
+
+    font-display: fallback;
+  }
+
+  @font-face {
+    font-weight: 200;
+    font-family: 'DIN Next LT Pro';
+    font-style: italic;
+    src: url("${ require('./DINNextLTPro-UltraLightItalic.woff2') }");
+
+    font-display: fallback;
+  }
+
+  @font-face {
+    font-weight: 300;
+    font-family: 'DIN Next LT Pro';
+    font-style: normal;
+    src: url("${ require('./DINNextLTPro-Light.woff2') }");
+
+    font-display: fallback;
+  }
+
+  @font-face {
+    font-weight: 300;
+    font-family: 'DIN Next LT Pro';
+    font-style: italic;
+    src: url("${ require('./DINNextLTPro-LightItalic.woff2') }");
+
+    font-display: fallback;
+  }
+
+  @font-face {
+    font-weight: 400;
+    font-family: 'DIN Next LT Pro';
+    font-style: normal;
+    src: url("${ require('./DINNextLTPro-Regular.woff2') }");
+
+    font-display: fallback;
+  }
+
+  @font-face {
+    font-weight: 400;
+    font-family: 'DIN Next LT Pro';
+    font-style: italic;
+    src: url("${ require('./DINNextLTPro-RegularItalic.woff2') }");
+
+    font-display: fallback;
+  }
+
+  @font-face {
+    font-weight: 500;
+    font-family: 'DIN Next LT Pro';
+    font-style: normal;
+    src: url("${ require('./DINNextLTPro-Medium.woff2') }");
+
+    font-display: fallback;
+  }
+
+  @font-face {
+    font-weight: 500;
+    font-family: 'DIN Next LT Pro';
+    font-style: italic;
+    src: url("${ require('./DINNextLTPro-MediumItalic.woff2') }");
+
+    font-display: fallback;
+  }
+
+  @font-face {
+    font-weight: 700;
+    font-family: 'DIN Next LT Pro';
+    font-style: normal;
+    src: url("${ require('./DINNextLTPro-Bold.woff2') }");
+
+    font-display: fallback;
+  }
+
+  @font-face {
+    font-weight: 700;
+    font-family: 'DIN Next LT Pro';
+    font-style: italic;
+    src: url("${ require('./DINNextLTPro-BoldItalic.woff2') }");
+
+    font-display: fallback;
+  }
+
+  @font-face {
+    font-weight: 800;
+    font-family: 'DIN Next LT Pro';
+    font-style: normal;
+    src: url("${ require('./DINNextLTPro-Heavy.woff2') }");
+
+    font-display: fallback;
+  }
+
+  @font-face {
+    font-weight: 800;
+    font-family: 'DIN Next LT Pro';
+    font-style: italic;
+    src: url("${ require('./DINNextLTPro-HeavyItalic.woff2') }");
+
+    font-display: fallback;
+  }
+
+  @font-face {
+    font-weight: 900;
+    font-family: 'DIN Next LT Pro';
+    font-style: normal;
+    src: url("${ require('./DINNextLTPro-Black.woff2') }");
+
+    font-display: fallback;
+  }
+
+  @font-face {
+    font-weight: 900;
+    font-family: 'DIN Next LT Pro';
+    font-style: italic;
+    src: url("${ require('./DINNextLTPro-BlackItalic.woff2') }");
+
+    font-display: fallback;
+  }
+
 `

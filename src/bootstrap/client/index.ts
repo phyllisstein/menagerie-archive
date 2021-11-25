@@ -17,7 +17,11 @@
  * along with the Menagerie.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+import { gsap } from 'gsap'
+import ScrollTrigger from 'gsap/ScrollTrigger'
+
 import bootstrap from './bootstrap'
+gsap.registerPlugin(ScrollTrigger)
 
 bootstrap().catch(err => {
   throw err

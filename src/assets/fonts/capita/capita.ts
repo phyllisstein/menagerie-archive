@@ -1,32 +1,111 @@
 import { createGlobalStyle } from 'styled-components'
 
-const WEIGHT_MAP = {
-  Bold: 700,
-  ExtraBold: 800,
-  Light: 200,
-  Medium: 500,
-  Regular: 400,
-}
-
-const fontFiles = import.meta.globEager('./*.woff2')
-
-const styleString = Object.entries(fontFiles).reduce((acc, [fileName, fileImport]) => {
-  const { groups } = fileName.match(/Capita-(?<weight>.+?)(?<italic>Italic)?\.woff2/)
-
-  const style = !!groups.italic
-    ? 'italic'
-    : 'normal'
-  const weight = WEIGHT_MAP[groups.weight]
-
-  return `${ acc }@font-face {
-    font-family: 'Capita';
-    src: url('${ fileImport.default }') format('woff2');
-    font-weight: ${ weight };
-    font-style: ${ style };
-    font-display: fallback;
-  }`
-}, '')
-
 export const Capita = createGlobalStyle`
-  ${ styleString }
+  @font-face {
+    font-weight: 200;
+    font-family: 'Capita';
+    font-style: normal;
+    src: url("${ require('./Capita-ExtraLight.woff2') }") format('woff2');
+
+    font-display: fallback;
+  }
+
+  @font-face {
+    font-weight: 200;
+    font-family: 'Capita';
+    font-style: italic;
+    src: url("${ require('./Capita-ExtraLightItalic.woff2') }") format('woff2');
+
+    font-display: fallback;
+  }
+
+  @font-face {
+    font-weight: 300;
+    font-family: 'Capita';
+    font-style: normal;
+    src: url("${ require('./Capita-Light.woff2') }") format('woff2');
+
+    font-display: fallback;
+  }
+
+  @font-face {
+    font-weight: 300;
+    font-family: 'Capita';
+    font-style: italic;
+    src: url("${ require('./Capita-LightItalic.woff2') }") format('woff2');
+
+    font-display: fallback;
+  }
+
+  @font-face {
+    font-weight: 400;
+    font-family: 'Capita';
+    font-style: normal;
+    src: url("${ require('./Capita-Regular.woff2') }") format('woff2');
+
+    font-display: fallback;
+  }
+
+  @font-face {
+    font-weight: 400;
+    font-family: 'Capita';
+    font-style: italic;
+    src: url("${ require('./Capita-RegularItalic.woff2') }") format('woff2');
+
+    font-display: fallback;
+  }
+
+  @font-face {
+    font-weight: 500;
+    font-family: 'Capita';
+    font-style: normal;
+    src: url("${ require('./Capita-Medium.woff2') }") format('woff2');
+
+    font-display: fallback;
+  }
+
+  @font-face {
+    font-weight: 500;
+    font-family: 'Capita';
+    font-style: italic;
+    src: url("${ require('./Capita-MediumItalic.woff2') }") format('woff2');
+
+    font-display: fallback;
+  }
+
+  @font-face {
+    font-weight: 700;
+    font-family: 'Capita';
+    font-style: normal;
+    src: url("${ require('./Capita-Bold.woff2') }") format('woff2');
+
+    font-display: fallback;
+  }
+
+  @font-face {
+    font-weight: 700;
+    font-family: 'Capita';
+    font-style: italic;
+    src: url("${ require('./Capita-BoldItalic.woff2') }") format('woff2');
+
+    font-display: fallback;
+  }
+
+  @font-face {
+    font-weight: 800;
+    font-family: 'Capita';
+    font-style: normal;
+    src: url("${ require('./Capita-ExtraBold.woff2') }") format('woff2');
+
+    font-display: fallback;
+  }
+
+  @font-face {
+    font-weight: 800;
+    font-family: 'Capita';
+    font-style: italic;
+    src: url("${ require('./Capita-ExtraBoldItalic.woff2') }") format('woff2');
+
+    font-display: fallback;
+  }
 `

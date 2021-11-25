@@ -7,7 +7,7 @@ const renderApp = async (): Promise<void> => {
     { HelmetProvider },
     { default: ReactDOM },
   ] = await Promise.all([
-    import('~/app/routes'),
+    import('app/routes'),
     import('react-router-dom'),
     import('react-helmet-async'),
     import('react-dom'),
@@ -30,7 +30,7 @@ const renderApp = async (): Promise<void> => {
 const bootstrapHyphenopoly = async (): Promise<void> => {
   await new Promise((resolve, reject) => {
     const scpt = document.createElement('script')
-    scpt.src = '../../../node_modules/hyphenopoly/min/Hyphenopoly_Loader.js'
+    scpt.src = '/hyphenopoly/Hyphenopoly_Loader.js'
     scpt.setAttribute('crossorigin', 'anonymous')
     scpt.onload = resolve
     scpt.onerror = reject

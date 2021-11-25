@@ -4,16 +4,16 @@ import { Route, Routes } from 'react-router'
 import { RecoilRoot } from 'recoil'
 import { StyleSheetManager, ThemeProvider } from 'styled-components'
 
-import { Body, Reboot } from '~/app/styles/global'
-import { theme } from '~/app/styles/theme'
-import avatarFB from '~/assets/avatar-fb.jpg'
-import avatarTW from '~/assets/avatar-tw.jpg'
-import faviconPNG from '~/assets/favicon.png'
-import { AdobeClean, AdobeCleanSerif, MillerDisplay } from '~/assets/fonts'
+import { Body, Reboot } from 'app/styles/global'
+import { theme } from 'app/styles/theme'
+import avatarFB from 'assets/avatar-fb.jpg'
+import avatarTW from 'assets/avatar-tw.jpg'
+import faviconPNG from 'assets/favicon.png'
+import { AdobeClean, AdobeCleanSerif, MillerDisplay } from 'assets/fonts'
 
-const ApprovalRoute = lazy(() => import('~/app/routes/matrix/approval'))
-const SandboxRoute = lazy(() => import('~/app/routes/sandbox'))
-const SundayRoute = lazy(() => import('~/app/routes/sunday'))
+const MatrixRoute = lazy(() => import('app/routes/matrix'))
+const SandboxRoute = lazy(() => import('app/routes/sandbox'))
+const SundayRoute = lazy(() => import('app/routes/sunday'))
 
 const SITE_NAME = 'An Evening With…'
 
@@ -69,7 +69,7 @@ export function App (): ReactElement {
 
           <Suspense fallback='...'>
             <Routes>
-              <Route element={ <ApprovalRoute /> } path='matrix/*' />
+              <Route element={ <MatrixRoute /> } path='matrix/*' />
               <Route element={ <SandboxRoute /> } path='sandbox/*' />
               <Route element={ <SundayRoute /> } path='sunday/*' />
             </Routes>

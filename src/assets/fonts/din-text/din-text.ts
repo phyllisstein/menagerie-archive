@@ -1,35 +1,163 @@
 import { createGlobalStyle } from 'styled-components'
 
-const WEIGHT_MAP = {
-  Black: 800,
-  Bold: 700,
-  ExtraBlack: 900,
-  ExtraThin: 100,
-  Light: 300,
-  Medium: 500,
-  Regular: 400,
-  Thin: 200,
-}
-
-const fontFiles = import.meta.globEager('./*.woff2')
-
-const styleString = Object.entries(fontFiles).reduce((acc, [fileName, fileImport]) => {
-  const { groups } = fileName.match(/DINTextPro-(?<weight>.+?)(?<italic>Italic)?\.woff2/)
-
-  const style = !!groups.italic
-    ? 'italic'
-    : 'normal'
-  const weight = WEIGHT_MAP[groups.weight]
-
-  return `${ acc }@font-face {
-    font-family: 'DIN Text';
-    src: url('${ fileImport.default }') format('woff2');
-    font-weight: ${ weight };
-    font-style: ${ style };
-    font-display: fallback;
-  }`
-}, '')
-
 export const DINText = createGlobalStyle`
-  ${ styleString }
+  @font-face {
+    font-weight: 100;
+    font-family: 'DIN Text';
+    font-style: normal;
+    font-stretch: normal;
+    src: url("${ require('./DINTextPro-ExtraThin.woff2') }") format('woff2');
+
+    font-display: fallback;
+  }
+
+  @font-face {
+    font-weight: 100;
+    font-family: 'DIN Text';
+    font-style: italic;
+    font-stretch: normal;
+    src: url("${ require('./DINTextPro-ExtraThinItalic.woff2') }") format('woff2');
+
+    font-display: fallback;
+  }
+
+  @font-face {
+    font-weight: 200;
+    font-family: 'DIN Text';
+    font-style: normal;
+    font-stretch: normal;
+    src: url("${ require('./DINTextPro-Thin.woff2') }") format('woff2');
+
+    font-display: fallback;
+  }
+
+  @font-face {
+    font-weight: 200;
+    font-family: 'DIN Text';
+    font-style: italic;
+    font-stretch: normal;
+    src: url("${ require('./DINTextPro-ThinItalic.woff2') }") format('woff2');
+
+    font-display: fallback;
+  }
+
+  @font-face {
+    font-weight: 300;
+    font-family: 'DIN Text';
+    font-style: normal;
+    font-stretch: normal;
+    src: url("${ require('./DINTextPro-Light.woff2') }") format('woff2');
+
+    font-display: fallback;
+  }
+
+  @font-face {
+    font-weight: 300;
+    font-family: 'DIN Text';
+    font-style: italic;
+    font-stretch: normal;
+    src: url("${ require('./DINTextPro-LightItalic.woff2') }") format('woff2');
+
+    font-display: fallback;
+  }
+
+  @font-face {
+    font-weight: 400;
+    font-family: 'DIN Text';
+    font-style: normal;
+    font-stretch: normal;
+    src: url("${ require('./DINTextPro-Regular.woff2') }") format('woff2');
+
+    font-display: fallback;
+  }
+
+  @font-face {
+    font-weight: 400;
+    font-family: 'DIN Text';
+    font-style: italic;
+    font-stretch: normal;
+    src: url("${ require('./DINTextPro-RegularItalic.woff2') }") format('woff2');
+
+    font-display: fallback;
+  }
+
+  @font-face {
+    font-weight: 500;
+    font-family: 'DIN Text';
+    font-style: normal;
+    font-stretch: normal;
+    src: url("${ require('./DINTextPro-Medium.woff2') }") format('woff2');
+
+    font-display: fallback;
+  }
+
+  @font-face {
+    font-weight: 500;
+    font-family: 'DIN Text';
+    font-style: italic;
+    font-stretch: normal;
+    src: url("${ require('./DINTextPro-MediumItalic.woff2') }") format('woff2');
+
+    font-display: fallback;
+  }
+
+  @font-face {
+    font-weight: 700;
+    font-family: 'DIN Text';
+    font-style: normal;
+    font-stretch: normal;
+    src: url("${ require('./DINTextPro-Bold.woff2') }") format('woff2');
+
+    font-display: fallback;
+  }
+
+  @font-face {
+    font-weight: 700;
+    font-family: 'DIN Text';
+    font-style: italic;
+    font-stretch: normal;
+    src: url("${ require('./DINTextPro-BoldItalic.woff2') }") format('woff2');
+
+    font-display: fallback;
+  }
+
+  @font-face {
+    font-weight: 800;
+    font-family: 'DIN Text';
+    font-style: normal;
+    font-stretch: normal;
+    src: url("${ require('./DINTextPro-Black.woff2') }") format('woff2');
+
+    font-display: fallback;
+  }
+
+  @font-face {
+    font-weight: 800;
+    font-family: 'DIN Text';
+    font-style: italic;
+    font-stretch: normal;
+    src: url("${ require('./DINTextPro-BlackItalic.woff2') }") format('woff2');
+
+    font-display: fallback;
+  }
+
+  @font-face {
+    font-weight: 900;
+    font-family: 'DIN Text';
+    font-style: normal;
+    font-stretch: normal;
+    src: url("${ require('./DINTextPro-ExtraBlack.woff2') }") format('woff2');
+
+    font-display: fallback;
+  }
+
+  @font-face {
+    font-weight: 900;
+    font-family: 'DIN Text';
+    font-style: italic;
+    font-stretch: normal;
+    src: url("${ require('./DINTextPro-ExtraBlackItalic.woff2') }") format('woff2');
+
+    font-display: fallback;
+  }
 `

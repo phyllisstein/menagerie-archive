@@ -1,31 +1,66 @@
 import { createGlobalStyle } from 'styled-components'
 
-const WEIGHT_MAP = {
-  Bold: 700,
-  Light: 300,
-  Roman: 400,
-  SemiBold: 600,
-}
-
-const fontFiles = import.meta.globEager('./*.woff2')
-
-const styleString = Object.entries(fontFiles).reduce((acc, [fileName, fileImport]) => {
-  const { groups } = fileName.match(/MillerDisplay-(?<weight>.+?)(?<italic>Italic)?\.woff2/)
-
-  const style = !!groups.italic
-    ? 'italic'
-    : 'normal'
-  const weight = WEIGHT_MAP[groups.weight]
-
-  return `${ acc }@font-face {
-    font-family: 'Adobe Clean';
-    src: url('${ fileImport.default }') format('woff2');
-    font-weight: ${ weight };
-    font-style: ${ style };
-    font-display: fallback;
-  }`
-}, '')
-
 export const MillerDisplay = createGlobalStyle`
-  ${ styleString }
+  @font-face {
+    font-weight: 300;
+    font-family: 'Miller Display';
+    font-style: normal;
+    src: url("${ require('./MillerDisplay-Light.woff2') }") format('woff2');
+
+    font-display: fallback;
+  }
+
+  @font-face {
+    font-weight: 300;
+    font-family: 'Miller Display';
+    font-style: italic;
+    src: url("${ require('./MillerDisplay-LightItalic.woff2') }") format('woff2');
+
+    font-display: fallback;
+  }
+
+  @font-face {
+    font-weight: 400;
+    font-family: 'Miller Display';
+    font-style: normal;
+    src: url("${ require('./MillerDisplay-Roman.woff2') }") format('woff2');
+
+    font-display: fallback;
+  }
+
+  @font-face {
+    font-weight: 400;
+    font-family: 'Miller Display';
+    font-style: italic;
+    src: url("${ require('./MillerDisplay-RomanItalic.woff2') }") format('woff2');
+
+    font-display: fallback;
+  }
+
+  @font-face {
+    font-weight: 600;
+    font-family: 'Miller Display';
+    font-style: normal;
+    src: url("${ require('./MillerDisplay-SemiBold.woff2') }") format('woff2');
+
+    font-display: fallback;
+  }
+
+  @font-face {
+    font-weight: 600;
+    font-family: 'Miller Display';
+    font-style: italic;
+    src: url("${ require('./MillerDisplay-SemiBoldItalic.woff2') }") format('woff2');
+
+    font-display: fallback;
+  }
+
+  @font-face {
+    font-weight: 700;
+    font-family: 'Miller Display';
+    font-style: normal;
+    src: url("${ require('./MillerDisplay-Bold.woff2') }") format('woff2');
+
+    font-display: fallback;
+  }
 `
