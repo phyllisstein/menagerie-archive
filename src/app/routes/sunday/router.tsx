@@ -2,11 +2,11 @@ import { FunctionComponent } from 'react'
 import { Route, Routes } from 'react-router'
 
 import { Colors } from './colors'
-import { Sunday } from './sunday'
+import { Parasol } from './parasol'
 
 export const SundayRoutes: FunctionComponent = () => (
   <Routes>
-    <Route index element={ <Sunday /> } />
+    <Route element={ <Parasol /> } path='parasol' />
     <Route element={ <Colors /> } path='colors' />
   </Routes>
 )

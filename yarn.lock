@@ -3193,6 +3193,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/concurrently@npm:^6.4.0":
+  version: 6.4.0
+  resolution: "@types/concurrently@npm:6.4.0"
+  dependencies:
+    "@types/node": "*"
+    chalk: ^4.1.0
+  checksum: 49aa9206f11bffae0d40d57b12cfbb06537aa4fe0d2877bfd4b091d20e8c5fdf0d75928f8faddfb1cc555497fdd7b086352406be1e9fe1ef15863e0bdb84fa34
+  languageName: node
+  linkType: hard
+
 "@types/connect-history-api-fallback@npm:*, @types/connect-history-api-fallback@npm:^1.3.5":
   version: 1.3.5
   resolution: "@types/connect-history-api-fallback@npm:1.3.5"
@@ -3518,15 +3528,6 @@ __metadata:
     "@types/d3-transition": "*"
     "@types/d3-zoom": "*"
   checksum: a3062e95410e0bbe52f2ebddc6ca909050f3ed495c18dfda649d1a5a22d2bd69b54e288d45fb304765cc3c425422b381865f598fdb816989348477c96bb2430e
-  languageName: node
-  linkType: hard
-
-"@types/eslint-plugin-prettier@npm:^3.1.0":
-  version: 3.1.0
-  resolution: "@types/eslint-plugin-prettier@npm:3.1.0"
-  dependencies:
-    "@types/eslint": "*"
-  checksum: e8fc9991cc181967a961c344ab894b57122e54b5f36950373f42638bb05847caef89a0e12decbb5b4a42e4eefaeefe63053ee2cbf6e1dfce43d77a445bbae728
   languageName: node
   linkType: hard
 
@@ -3934,6 +3935,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/sass@npm:^1.43.0":
+  version: 1.43.0
+  resolution: "@types/sass@npm:1.43.0"
+  dependencies:
+    "@types/node": "*"
+  checksum: a362349c157fb319f2f27fa1fc0f2e0dee3d8fb249b6914047a227319f08197bc3f0a5e909a520478ed9048a241dbf53b75ecb58b299077bd3efd8324a44f297
+  languageName: node
+  linkType: hard
+
 "@types/scheduler@npm:*":
   version: 0.16.2
   resolution: "@types/scheduler@npm:0.16.2"
@@ -3957,6 +3967,15 @@ __metadata:
     "@types/mime": ^1
     "@types/node": "*"
   checksum: eaca858739483e3ded254cad7d7a679dc2c8b3f52c8bb0cd845b3b7eb1984bde0371fdcb0a5c83aa12e6daf61b6beb762545021f520f08a1fe882a3fa4ea5554
+  languageName: node
+  linkType: hard
+
+"@types/sharp@npm:^0.29.4":
+  version: 0.29.4
+  resolution: "@types/sharp@npm:0.29.4"
+  dependencies:
+    "@types/node": "*"
+  checksum: 155313a87f720248c0b14a0cd2eab44b3319a160133e308d3ec643a2b0e2a430dd54183eb4f349d7ccd1c10306c40dbd82752260812c87caea36749c3e0b186c
   languageName: node
   linkType: hard
 
@@ -6248,6 +6267,13 @@ __metadata:
   version: 3.0.10
   resolution: "csstype@npm:3.0.10"
   checksum: 20a8fa324f2b33ddf94aa7507d1b6ab3daa6f3cc308888dc50126585d7952f2471de69b2dbe0635d1fdc31223fef8e070842691877e725caf456e2378685a631
+  languageName: node
+  linkType: hard
+
+"culori@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "culori@npm:2.0.0"
+  checksum: 8f0d11b62c47aec47dbc4c55bfa2d3fcccb4e17ea24b143a4a14f81428278f6135cd940bd71ca66737489191d22c4ae2719d57ff4cc05f75628bc039cb1e56bf
   languageName: node
   linkType: hard
 
@@ -10668,13 +10694,13 @@ __metadata:
     "@types/body-scroll-lock": ^3.1.0
     "@types/chroma-js": ^2.1.3
     "@types/common-tags": ^1.8.1
+    "@types/concurrently": ^6.4.0
     "@types/connect-history-api-fallback": ^1.3.5
     "@types/copy-webpack-plugin": ^8.0.1
     "@types/core-js": ^2.5.5
     "@types/d3": ^7.1.0
     "@types/d3-scale": ^4.0.2
     "@types/eslint": ^8.2.0
-    "@types/eslint-plugin-prettier": ^3.1.0
     "@types/exenv": ^1.2.0
     "@types/express": ^4.17.13
     "@types/hammerjs": ^2.0.40
@@ -10692,6 +10718,8 @@ __metadata:
     "@types/react": ^17.0.36
     "@types/react-dom": ^17.0.11
     "@types/react-is": ^17.0.3
+    "@types/sass": ^1.43.0
+    "@types/sharp": ^0.29.4
     "@types/styled-components": ^5.1.15
     "@types/stylelint": ^13.13.3
     "@types/webpack-dev-middleware": ^5.0.2
@@ -10726,6 +10754,7 @@ __metadata:
     cross-env: ^7.0.3
     css-loader: ^6.5.1
     csstype: ^3.0.10
+    culori: ^2.0.0
     d3: ^7.1.1
     d3-scale: ^4.0.2
     deep-weak-map: ^1.0.2

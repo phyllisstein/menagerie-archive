@@ -1,6 +1,7 @@
+import { formatCss } from 'culori'
 import { FunctionComponent } from 'react'
 
-import { Root, SVG } from './color-styles'
+import { Root, SVG } from './colors-styles'
 import { COLORS } from './palette'
 
 export const Colors: FunctionComponent = () => {
@@ -14,7 +15,7 @@ export const Colors: FunctionComponent = () => {
             rx='64'
             ry='64'
             style={{
-              fill: COLORS.RED,
+              fill: formatCss(COLORS.RED),
             }} />
           <ellipse
             cx='192'
@@ -22,7 +23,7 @@ export const Colors: FunctionComponent = () => {
             rx='64'
             ry='64'
             style={{
-              fill: COLORS.YELLOW,
+              fill: formatCss(COLORS.YELLOW),
             }} />
           <ellipse
             cx='320'
@@ -30,7 +31,7 @@ export const Colors: FunctionComponent = () => {
             rx='64'
             ry='64'
             style={{
-              fill: COLORS.PINK,
+              fill: formatCss(COLORS.PINK),
             }} />
           <ellipse
             cx='448'
@@ -38,7 +39,7 @@ export const Colors: FunctionComponent = () => {
             rx='64'
             ry='64'
             style={{
-              fill: COLORS.BROWN,
+              fill: formatCss(COLORS.BROWN),
             }} />
           <ellipse
             cx='64'
@@ -46,7 +47,7 @@ export const Colors: FunctionComponent = () => {
             rx='64'
             ry='64'
             style={{
-              fill: COLORS.GREEN,
+              fill: formatCss(COLORS.GREEN),
             }} />
           { /* Blue */ }
           <ellipse
@@ -55,7 +56,7 @@ export const Colors: FunctionComponent = () => {
             rx='64'
             ry='64'
             style={{
-              fill: COLORS.BLUE,
+              fill: formatCss(COLORS.BLUE),
             }} />
           <ellipse
             cx='320'
@@ -63,7 +64,7 @@ export const Colors: FunctionComponent = () => {
             rx='64'
             ry='64'
             style={{
-              fill: COLORS.LIGHT_BLUE,
+              fill: formatCss(COLORS.LIGHT_BLUE),
             }} />
           <ellipse
             cx='448'
@@ -71,7 +72,7 @@ export const Colors: FunctionComponent = () => {
             rx='64'
             ry='64'
             style={{
-              fill: COLORS.LEAD_WHITE,
+              fill: formatCss(COLORS.LEAD_WHITE),
             }} />
           <ellipse
             cx='64'
@@ -79,7 +80,15 @@ export const Colors: FunctionComponent = () => {
             rx='64'
             ry='64'
             style={{
-              fill: COLORS.ORANGE,
+              fill: formatCss(COLORS.ORANGE),
+            }} />
+          <ellipse
+            cx='192'
+            cy='320'
+            rx='64'
+            ry='64'
+            style={{
+              fill: formatCss(COLORS.LIGHT_RED),
             }} />
         </SVG>
       </Root>
