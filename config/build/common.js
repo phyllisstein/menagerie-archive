@@ -190,14 +190,6 @@ client.module
       .loader('sass-loader')
       .end()
 
-client.module
-  .rule('hyphenopoly')
-    .test(/hyphenopoly/i)
-    .set('type', 'asset/resource')
-    .set('generator', {
-        filename: 'vendor/hyphenopoly/[name][ext]',
-    })
-
 client.resolve
   .enforceExtension(false)
   .extensions
@@ -240,6 +232,26 @@ client
       ],
     },
   ])
+
+client.cache({
+  buildDependencies: {
+    config: [
+      __filename,
+      path.resolve(__dirname, 'development.js'),
+      path.resolve(__dirname, 'staging.js'),
+      path.resolve(__dirname, 'production.js'),
+    ],
+  },
+  type: 'filesystem',
+})
+
+client
+  .merge({
+    experiments: {
+      outputModule: true,
+    },
+  })
+
 server.name('server').context(path.resolve('./src')).target('node')
 
 server.entry('main').add('./bootstrap/server')
@@ -347,14 +359,6 @@ server.module
     .use('null')
       .loader('null-loader')
 
-server.module
-  .rule('hyphenopoly')
-    .test(/hyphenopoly/i)
-    .set('type', 'asset/resource')
-    .set('generator', {
-        filename: 'vendor/hyphenopoly/[name][ext]',
-    })
-
 server.resolve
   .enforceExtension(false)
   .extensions.add('.ts')
@@ -387,5 +391,24 @@ server.externals([
   },
   nodeExternals(),
 ])
+
+server.cache({
+  buildDependencies: {
+    config: [
+      __filename,
+      path.resolve(__dirname, 'development.js'),
+      path.resolve(__dirname, 'staging.js'),
+      path.resolve(__dirname, 'production.js'),
+    ],
+  },
+  type: 'filesystem',
+})
+
+server
+  .merge({
+    experiments: {
+      outputModule: true,
+    },
+  })
 
 module.exports = { client, server }

@@ -69,7 +69,7 @@ client.plugin('html').use(HTMLPlugin, [
     chunks: ['main'],
     filename: 'index.html',
     hash: true,
-    scriptLoading: 'defer',
+    scriptLoading: 'module',
     template: './bootstrap/index.html',
   },
 ])
@@ -81,15 +81,5 @@ client
 client
   .plugin('fast-refresh')
   .use(ReactRefreshPlugin)
-
-client.cache({
-  buildDependencies: {
-    config: [
-      __filename,
-      path.resolve(__dirname, 'common.js'),
-    ],
-  },
-  type: 'filesystem',
-})
 
 exports.client = client

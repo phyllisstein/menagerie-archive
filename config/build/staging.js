@@ -3,6 +3,7 @@ const HTMLPlugin = require('html-webpack-plugin')
 const merge = require('merge-deep')
 const path = require('path')
 const TimeFixPlugin = require('time-fix-plugin')
+const TerserPlugin = require('terser-webpack-plugin')
 
 client
   .mode('production')
@@ -32,8 +33,8 @@ client.module
         [
           'styled-components',
           {
-            displayName: true,
-            fileName: true,
+            displayName: false,
+            fileName: false,
             ssr: false,
           },
         ],
@@ -44,23 +45,33 @@ client.module
 
 client
   .plugin('define')
-  .tap(([options]) => [merge(options, { __DEV__: JSON.stringify(true) })])
+  .tap(([options]) => [merge(options, { __DEV__: JSON.stringify(false) })])
 
 client.plugin('html').use(HTMLPlugin, [
   {
     chunks: ['main'],
     filename: 'index.html',
     hash: true,
-    scriptLoading: 'defer',
+    scriptLoading: 'module',
     template: './bootstrap/index.html',
   },
 ])
 
-client.merge({
-  experiments: {
-    futureDefaults: true,
-    outputModule: true,
-  },
-})
+client.optimization
+  .runtimeChunk('single')
+  .merge({
+    moduleIds: 'deterministic',
+  })
+
+client.optimization
+  .minimizer('terser')
+    .use(TerserPlugin, [
+      {
+        extractComments: /^$/,
+        terserOptions: {
+          ecma: '2020',
+        },
+      },
+    ])
 
 exports.client = client
