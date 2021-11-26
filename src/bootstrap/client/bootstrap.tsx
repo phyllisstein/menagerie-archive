@@ -32,6 +32,7 @@ const bootstrapHyphenopoly = async (): Promise<void> => {
     const scpt = document.createElement('script')
     scpt.src = '/hyphenopoly/Hyphenopoly_Loader.js'
     scpt.setAttribute('crossorigin', 'anonymous')
+    scpt.async = true
     scpt.onload = resolve
     scpt.onerror = reject
     document.head.appendChild(scpt)

@@ -222,6 +222,24 @@ client.plugin('define').use(webpack.DefinePlugin, [
 
 client.plugin('loadable').use(LoadablePlugin)
 
+client
+  .plugin('copy-hyphenopoly')
+  .use(CopyPlugin, [
+    {
+      patterns: [
+        {
+          from: path.resolve('node_modules/hyphenopoly/min/*.js'),
+          to: path.resolve('dist/hyphenopoly/[name][ext]'),
+          toType: 'template',
+        },
+        {
+          from: path.resolve('node_modules/hyphenopoly/min/patterns/en-us.wasm'),
+          to: path.resolve('dist/hyphenopoly/[name][ext]'),
+          toType: 'template',
+        },
+      ],
+    },
+  ])
 server.name('server').context(path.resolve('./src')).target('node')
 
 server.entry('main').add('./bootstrap/server')
