@@ -3,18 +3,11 @@ version: '3.8'
 services:
   app:
     build:
-      args:
-        - FONT_AWESOME_NPM_TOKEN
-        - GSAP_NPM_TOKEN
       context: .
-    command:
-      - /bin/sh
-      - -c
-      - yarn && yarn vite
     environment:
       - VIRTUAL_HOST=menagerie.here
     expose:
-      - "3000"
+      - "9090"
     networks:
       - default
       - nginx-proxy
@@ -25,17 +18,28 @@ services:
       - type: volume
         source: node_modules
         target: /app/node_modules
+        volume:
+          nocopy: true
       - type: volume
         source: dot_yarn
         target: /app/.yarn
-
+      - type: volume
+        source: yarn_cache
+        target: /var/cache/yarn
+    secrets:
+      - npm_credentials
 
 volumes:
   node_modules:
   dot_yarn:
+  yarn_cache:
 
 networks:
   default:
   nginx-proxy:
     external: true
     name: nginx-proxy
+
+secrets:
+  npm_credentials:
+    file: .env

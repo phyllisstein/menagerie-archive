@@ -1,10 +1,10 @@
-const { client } = require('./common')
-const HTMLPlugin = require('html-webpack-plugin')
-const merge = require('merge-deep')
-const path = require('path')
-const TimeFixPlugin = require('time-fix-plugin')
-const ReactRefreshPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
-const { HotModuleReplacementPlugin } = require('webpack')
+import { client } from './common.mjs'
+import HTMLPlugin from 'html-webpack-plugin'
+import merge from 'merge-deep'
+import path from 'path'
+import TimeFixPlugin from 'time-fix-plugin'
+import ReactRefreshPlugin from '@pmmmwh/react-refresh-webpack-plugin'
+import webpack from 'webpack'
 
 const enableWDYR = process.env.WHY_DID_YOU_RENDER != null
 
@@ -21,7 +21,6 @@ client.module
   .use('babel')
   .tap(options =>
     merge(options, {
-      cacheDirectory: true,
       presets: [
         [
           '@babel/react',
@@ -76,10 +75,10 @@ client.plugin('html').use(HTMLPlugin, [
 
 client
   .plugin('hmr')
-  .use(HotModuleReplacementPlugin)
+  .use(webpack.HotModuleReplacementPlugin)
 
 client
   .plugin('fast-refresh')
   .use(ReactRefreshPlugin)
 
-exports.client = client
+export { client }

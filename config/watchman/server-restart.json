@@ -1,0 +1,11 @@
+["trigger", "/app", {
+  "name": "server-restart",
+  "expression": [
+    "anyof",
+    ["name", "app.mjs", "wholename"],
+    ["name", "webpack.config.cjs", "wholename"],
+    ["dirname", "config/build"]
+  ],
+  "command": ["./bin/develop.sh"],
+  "append_files": false
+}]

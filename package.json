@@ -13,17 +13,17 @@
     "email": "daniel@try.works",
     "url": "https://try.works"
   },
+  "type": "module",
   "bugs": "https://github.com/phyllisstein/menagerie/issues",
   "scripts": {
     "build": "cross-env NODE_ENV=staging webpack",
     "clean": "concurrently \"yarn:clean:*\"",
     "clean:build": "del build dist",
     "clean:cache": "del node_modules/.cache",
-    "start:dev": "node app.cjs"
+    "start:dev": "node app.mjs"
   },
   "dependencies": {
     "@apollo/react-hooks": "^4.0.0",
-    "@apollo/react-ssr": "^4.0.0",
     "@babel/runtime-corejs3": "^7.16.3",
     "@fortawesome/fontawesome-common-types": "^0.3.0-beta3",
     "@fortawesome/fontawesome-pro": "next",
@@ -209,12 +209,15 @@
     "eslint-plugin-sort-destructure-keys": "^1.4.0",
     "eslint-plugin-sort-keys-fix": "latest",
     "express": "^4.17.1",
+    "fb-watchman": "^2.0.1",
     "html-webpack-plugin": "5.5.0",
     "imports-loader": "^3.1.1",
     "jest": "^27.3.1",
     "merge-deep": "^3.0.3",
     "mini-css-extract-plugin": "^2.4.5",
+    "nodemon": "^2.0.15",
     "null-loader": "^4.0.1",
+    "pnp-webpack-plugin": "^1.7.0",
     "postcss-jsx": "^0.36.4",
     "postcss-styled": "^0.34.0",
     "postcss-syntax": "^0.36.2",
@@ -251,7 +254,7 @@
     "webpack-hot-middleware": "^2.25.1",
     "webpack-node-externals": "^3.0.0"
   },
-  "packageManager": "yarn@3.1.0",
+  "packageManager": "yarn@3.1.1",
   "dependenciesMeta": {
     "@react-spring/core": {
       "built": false

@@ -1,17 +1,21 @@
-const Config = require('webpack-chain')
-const CopyPlugin = require('copy-webpack-plugin')
-const LoadablePlugin = require('@loadable/webpack-plugin')
-const merge = require('merge-deep')
-const nodeExternals = require('webpack-node-externals')
-const path = require('path')
-const webpack = require('webpack')
+import Config from 'webpack-chain'
+import CopyPlugin from 'copy-webpack-plugin'
+import { fileURLToPath } from 'url'
+import LoadablePlugin from '@loadable/webpack-plugin'
+import merge from 'merge-deep'
+import nodeExternals from 'webpack-node-externals'
+import path from 'path'
+import PNPPlugin from 'pnp-webpack-plugin'
+import webpack from 'webpack'
 
-const client = new Config()
-const server = new Config()
+export const client = new Config()
+export const server = new Config()
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 const BABEL_OPTIONS = {
   babelrc: false,
-  cacheDirectory: false,
+  cacheDirectory: true,
   ignore: [/node_modules/],
   presets: ['@babel/typescript'],
   plugins: [
@@ -236,10 +240,10 @@ client
 client.cache({
   buildDependencies: {
     config: [
-      __filename,
-      path.resolve(__dirname, 'development.js'),
-      path.resolve(__dirname, 'staging.js'),
-      path.resolve(__dirname, 'production.js'),
+      path.resolve(__dirname, 'common.mjs'),
+      path.resolve(__dirname, 'development.mjs'),
+      path.resolve(__dirname, 'staging.mjs'),
+      path.resolve(__dirname, 'production.mjs'),
     ],
   },
   type: 'filesystem',
@@ -395,10 +399,10 @@ server.externals([
 server.cache({
   buildDependencies: {
     config: [
-      __filename,
-      path.resolve(__dirname, 'development.js'),
-      path.resolve(__dirname, 'staging.js'),
-      path.resolve(__dirname, 'production.js'),
+      path.resolve(__dirname, 'common.mjs'),
+      path.resolve(__dirname, 'development.mjs'),
+      path.resolve(__dirname, 'staging.mjs'),
+      path.resolve(__dirname, 'production.mjs'),
     ],
   },
   type: 'filesystem',
@@ -410,5 +414,3 @@ server
       outputModule: true,
     },
   })
-
-module.exports = { client, server }

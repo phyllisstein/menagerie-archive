@@ -1,15 +1,51 @@
-FROM --platform=arm64 node:17-alpine
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Watchman Builder ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
+FROM alpine:3.9 AS watchman
 
-ARG FONT_AWESOME_NPM_TOKEN
-ARG GSAP_NPM_TOKEN
+RUN apk add --no-cache \
+  autoconf \
+  automake \
+  bash \
+  build-base \
+  libcrypto1.1 \
+  libgcc \
+  libstdc++ \
+  libtool \
+  linux-headers \
+  openssl-dev \
+  python-dev
+
+ENV WATCHMAN_VERSION=4.9.0 \
+  WATCHMAN_SHA256=1f6402dc70b1d056fffc3748f2fdcecff730d8843bb6936de395b3443ce05322
+
+RUN cd /tmp \
+  && wget -O watchman.tar.gz "https://github.com/facebook/watchman/archive/v${WATCHMAN_VERSION}.tar.gz" \
+  && echo "$WATCHMAN_SHA256 *watchman.tar.gz" | sha256sum -c - \
+  && tar -xz -f watchman.tar.gz -C /tmp/ \
+  && rm -rf watchman.tar.gz
+
+RUN cd /tmp/watchman-${WATCHMAN_VERSION} \
+  && ./autogen.sh \
+  && ./configure --enable-lenient \
+  && make \
+  && make install \
+  && cd $HOME \
+  && rm -rf /tmp/*
+
+RUN strip /usr/local/bin/watchman
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ App ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
+FROM node:17-alpine AS app
 
 WORKDIR /app
 
-COPY package.json yarn.lock .yarnrc.yml ./
-COPY .yarn ./.yarn
+RUN apk add --no-cache bash
 
-RUN FONT_AWESOME_NPM_TOKEN=${FONT_AWESOME_NPM_TOKEN} GSAP_NPM_TOKEN=${GSAP_NPM_TOKEN} yarn install && yarn cache clean --all
+COPY --from=watchman /usr/local/bin/watchman* /usr/local/bin/
+COPY --from=watchman /usr/local/var/run/watchman /usr/local/var/run/watchman
 
-COPY ./ ./
+COPY . ./
+RUN bin/watchman.sh
 
-CMD ["yarn"]
+ENV YARN_CACHE_FOLDER=/var/cache/yarn
+
+CMD ["/usr/local/bin/watchman", "--foreground", "--log-level=1"]
