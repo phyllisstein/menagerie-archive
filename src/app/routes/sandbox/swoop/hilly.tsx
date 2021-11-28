@@ -13,24 +13,32 @@ export const Hilly: FunctionComponent = () => {
   const tl = useRef<gsap.core.Timeline>()
 
   useEffect(() => {
-    tl.current ??= gsap.timeline({
+    const wrapper = wrapperRef.current
+    const localTL = tl.current ??= gsap.timeline({
       scrollTrigger: {
-        horizontal: true,
-        scroller: wrapperRef.current,
-        trigger: wrapperRef.current,
+        end: () => `+=${ window.innerWidth }`,
+        pin: true,
+        scrub: 1,
+        start: 'center center',
+        trigger: wrapper,
       },
     })
 
-    Array.from(wrapperRef?.current?.children).forEach((child, index) => {
-      tl.current.to(child, {
-        scrollTrigger: wrapperRef.current,
-        x: `+${ (index * 20) }`,
+    if (wrapper) {
+      Array.from(wrapper.children).forEach((layer, index) => {
+        localTL.to(layer, {
+          xPercent: `+=${ index * 20 }`,
+        }, '<')
       })
-    })
+    }
+
+    return () => {
+      localTL.kill()
+    }
   })
 
   return (
-    <div style={{ height: '100%', overflow: 'hidden', position: 'relative', width: '100%' }}>
+    <div style={{ height: '100vh', position: 'relative', width: '100vw' }}>
       <Root ref={ wrapperRef } className='hilly'>
         <Layer>
           <Ground
@@ -42,6 +50,7 @@ export const Hilly: FunctionComponent = () => {
           <Back
             height='100%'
             preserveAspectRatio='xMinYMin'
+            style={{ transform: 'translateX(-10%)' }}
             width={ 3 * window.innerWidth / 2 } />
         </Layer>
         <Layer>
@@ -54,6 +63,7 @@ export const Hilly: FunctionComponent = () => {
           <Fore
             height='100%'
             preserveAspectRatio='xMinYMin'
+            style={{ transform: 'translateX(10%)' }}
             width={ 3 * window.innerWidth / 2 } />
         </Layer>
       </Root>
