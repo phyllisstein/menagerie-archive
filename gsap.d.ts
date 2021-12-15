@@ -55,8 +55,8 @@ declare module '@gsap/shockingly/dist/gsap' {
 }
 
 declare module '@gsap/shockingly/all' {
-  export * from 'gsap'
-  export { gsap as default } from 'gsap'
+  export * from 'gsap/all'
+  export { gsap as default } from 'gsap/all'
 }
 
 declare module '@gsap/shockingly/src/all' {

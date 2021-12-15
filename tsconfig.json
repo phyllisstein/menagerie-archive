@@ -28,7 +28,11 @@
         "./src/*",
         "./vendor/*"
       ]
-    }
+    },
+    "types": [
+      "./global.d.ts",
+      "./gsap.d.ts"
+    ]
   },
   "exclude": [
     "node_modules"
@@ -37,7 +41,8 @@
     "**/*.ts",
     "**/*.tsx",
     "**/*.d.ts",
-    "./global.d.ts"
+    "./global.d.ts",
+    "./gsap.d.ts"
   ],
   "typeAcquisition": {
     "enable": true
