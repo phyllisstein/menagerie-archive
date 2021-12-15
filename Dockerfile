@@ -44,7 +44,7 @@ COPY --from=watchman /usr/local/bin/watchman* /usr/local/bin/
 COPY --from=watchman /usr/local/var/run/watchman /usr/local/var/run/watchman
 
 COPY . ./
-RUN bin/watchman.sh
+RUN bin/develop.sh watchman
 
 ENV YARN_CACHE_FOLDER=/var/cache/yarn
 

@@ -4,8 +4,9 @@
     "anyof",
     ["name", "app.mjs", "wholename"],
     ["name", "webpack.config.cjs", "wholename"],
-    ["dirname", "config/build"]
+    ["dirname", "config/build"],
+    ["dirname", "src/bootstrap"]
   ],
-  "command": ["./bin/develop.sh"],
+  "command": ["./bin/develop.sh", "serve"],
   "append_files": false
 }]

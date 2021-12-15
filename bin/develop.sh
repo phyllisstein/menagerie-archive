@@ -1,14 +1,34 @@
 #!/usr/bin/env bash
 
-echo $PWD
+echo "$PWD"
 
-args=("$@")
-if [[ "${args[0]}" == "install" && -e "/run/secrets/npm_credentials" ]]; then
-  source /run/secrets/npm_credentials
-  export FONT_AWESOME_NPM_TOKEN GSAP_NPM_TOKEN
-  yarn install
-fi
+args="$*"
 
-pkill -f node
-yarn start:dev &
-disown
+case $args in
+  serve)
+    echo "Starting development server"
+    pkill -f node
+    yarn start:dev 1>/dev/stdout 2>/dev/stderr &
+    disown
+    ;;
+
+  watchman)
+    echo "Configuring watches..."
+
+    for j in config/watchman/*.json; do
+      echo "Watching $j"
+      watchman -j < "$j"
+    done
+    ;;
+
+  yarn)
+    echo "Running yarn install..."
+    [[ -e "/run/secrets/npm_credentials" ]] || echo "No NPM credentials" && exit 1
+    source /run/secrets/npm_credentials && export FONT_AWESOME_NPM_TOKEN GSAP_NPM_TOKEN
+    yarn install
+    ;;
+
+  *)
+    echo "Unknown command: $args"
+    ;;
+esac
