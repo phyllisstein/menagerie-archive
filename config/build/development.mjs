@@ -10,7 +10,7 @@ const enableWDYR = process.env.WHY_DID_YOU_RENDER != null
 
 client
   .mode('development')
-  .devtool('eval-source-map')
+  .devtool('eval-cheap-module-source-map')
 
 client.output
   .chunkFilename('js/[name].[contenthash].js')
@@ -80,5 +80,7 @@ client
 client
   .plugin('fast-refresh')
   .use(ReactRefreshPlugin)
+
+client.optimization.usedExports(false)
 
 export { client }
