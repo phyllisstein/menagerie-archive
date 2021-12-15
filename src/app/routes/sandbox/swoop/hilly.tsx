@@ -3,10 +3,14 @@ import { FunctionComponent, useEffect, useRef } from 'react'
 
 import { Layer, Root } from './swoop-styles'
 
-import Back from 'assets/swoops/pink-purple/back.svg'
-import Fore from 'assets/swoops/pink-purple/fore.svg'
-import Ground from 'assets/swoops/pink-purple/ground.svg'
-import Mid from 'assets/swoops/pink-purple/mid.svg'
+import PinkBack from 'assets/swoops/pink/back.svg'
+import PinkFore from 'assets/swoops/pink/fore.svg'
+import PinkGround from 'assets/swoops/pink/ground.svg'
+import PinkMid from 'assets/swoops/pink/mid.svg'
+import PurpleBack from 'assets/swoops/purple/back.svg'
+import PurpleFore from 'assets/swoops/purple/fore.svg'
+import PurpleGround from 'assets/swoops/purple/ground.svg'
+import PurpleMid from 'assets/swoops/purple/mid.svg'
 
 export const Hilly: FunctionComponent = () => {
   const wrapperRef = useRef<HTMLDivElement>()
@@ -14,59 +18,82 @@ export const Hilly: FunctionComponent = () => {
 
   useEffect(() => {
     const wrapper = wrapperRef.current
-    const localTL = tl.current ??= gsap.timeline({
+
+    if (!wrapper) return
+
+    const localTL = (tl.current ??= gsap.timeline({
       scrollTrigger: {
-        end: () => `+=${ window.innerWidth }`,
+        end: () => `+=${ 2 * window.innerWidth }`,
         pin: true,
         scrub: 1,
         start: 'center center',
         trigger: wrapper,
       },
-    })
+    }))
 
-    if (wrapper) {
-      Array.from(wrapper.children).forEach((layer, index) => {
-        localTL.to(layer, {
-          xPercent: `+=${ index * 20 }`,
-        }, '<')
-      })
-    }
+    const layerStarts = [0, 0.5, 0.66, 0.8, 0.5, 0.66, 0.8]
+    Array.from(wrapper.children).forEach((layer, index) => {
+      localTL.fromTo(
+        layer,
+        {
+          xPercent: layerStarts[index] * 100,
+        },
+        {
+          xPercent: `+=${ layerStarts[index] * -100 }`,
+        },
+        '<',
+      )
+    })
 
     return () => {
       localTL.kill()
     }
-  })
+  }, [])
 
   return (
-    <div style={{ height: '100vh', position: 'relative', width: '100vw' }}>
-      <Root ref={ wrapperRef } className='hilly'>
-        <Layer>
-          <Ground
-            height='100%'
-            preserveAspectRatio='none'
-            width={ 10 * window.innerWidth / 2 } />
-        </Layer>
-        <Layer>
-          <Back
-            height='100%'
-            preserveAspectRatio='xMinYMin'
-            style={{ transform: 'translateX(-10%)' }}
-            width={ 3 * window.innerWidth / 2 } />
-        </Layer>
-        <Layer>
-          <Mid
-            height='100%'
-            preserveAspectRatio='xMinYMin'
-            width={ 3 * window.innerWidth / 2 } />
-        </Layer>
-        <Layer>
-          <Fore
-            height='100%'
-            preserveAspectRatio='xMinYMin'
-            style={{ transform: 'translateX(10%)' }}
-            width={ 3 * window.innerWidth / 2 } />
-        </Layer>
-      </Root>
-    </div>
+    <Root ref={ wrapperRef }>
+      <Layer>
+        <PurpleGround
+          height='100%'
+          preserveAspectRatio='none'
+          width={ window.innerWidth } />
+      </Layer>
+      <Layer>
+        <PurpleBack
+          height='100%'
+          preserveAspectRatio='xMinYMin'
+          width={ window.innerWidth } />
+      </Layer>
+      <Layer>
+        <PurpleMid
+          height='100%'
+          preserveAspectRatio='xMinYMin'
+          width={ window.innerWidth } />
+      </Layer>
+      <Layer>
+        <PurpleFore
+          height='100%'
+          preserveAspectRatio='xMinYMin'
+          width={ window.innerWidth } />
+      </Layer>
+      <Layer style={{ left: '-100%' }}>
+        <PinkBack
+          height='100%'
+          preserveAspectRatio='xMinYMin'
+          width={ window.innerWidth } />
+      </Layer>
+      <Layer style={{ left: '-100%' }}>
+        <PinkMid
+          height='100%'
+          preserveAspectRatio='xMinYMin'
+          width={ window.innerWidth } />
+      </Layer>
+      <Layer style={{ left: '-100%' }}>
+        <PinkFore
+          height='100%'
+          preserveAspectRatio='xMinYMin'
+          width={ window.innerWidth } />
+      </Layer>
+    </Root>
   )
 }

@@ -9,9 +9,12 @@ export const Layer = styled(motion.div)`
 `
 
 export const Root = styled.div`
-  position: relative;
+  position: absolute;
+  left: -50%;
 
   width: 100vw;
   height: 100vh;
   overflow-x: hidden;
+
+  transform: translateX(50%);
 `
