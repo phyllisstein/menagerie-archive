@@ -19,10 +19,8 @@ export const Parasol: FunctionComponent = () => {
 
     const els = gsap.utils.toArray(svg.children)
 
-    tl.from(els, { drawSVG: '0% 5%', duration: 1, stagger: 0.1 })
-      .to(els, { drawSVG: '95% 100%', duration: 1, stagger: 0.1 })
-
-    // gsap.fromTo(els, { drawSVG: '0%' }, { drawSVG: '100%', duration: 3, repeat: -1, stagger: 1, yoyo: true })
+    tl.from(els, { drawSVG: '0% 2%', duration: 1, stagger: 0.1 })
+      .to(els, { drawSVG: '98% 100%', duration: 1, stagger: 0.1 })
 
     return () => {
       tl.kill()
@@ -35,11 +33,11 @@ export const Parasol: FunctionComponent = () => {
   return (
     <Root>
       <SVG ref={ svgRef } style={{ height: '100vh', width: '100vw' }} viewBox='0 0 500 500'>
-        <path d='M 250 100 c -250 64, -300 100, -500 225 c -5 5, 0 5, -5 16' style={{ fill: 'none', stroke: toLCH(COLORS.ORANGE), strokeWidth: 10, transform: 'translate(250px, 250px) rotate(0deg) translate(-250px, -250px)' }} />
-        <path d='M 250 100 c -250 64, -300 100, -500 225 c -5 5, 0 5, -5 16' style={{ fill: 'none', stroke: toLCH(COLORS.RED), strokeWidth: 10, transform: 'translate(250px, 250px) rotate(-1deg) translate(-235px, -250px)' }} />
-        <path d='M 250 100 c -250 64, -300 100, -500 225 c -5 5, 0 5, -5 16' style={{ fill: 'none', stroke: toLCH(COLORS.YELLOW), strokeWidth: 10, transform: 'translate(250px, 250px) rotate(2deg) translate(-275px, -250px)' }} />
-        <path d='M 250 100 c -250 64, -300 100, -500 225 c -5 5, 0 5, -5 16' style={{ fill: 'none', stroke: toLCH(COLORS.LIGHT_RED), strokeWidth: 10, transform: 'translate(250px, 250px) rotate(1deg) translate(-260px, -250px)' }} />
-        <path d='M 250 100 c -250 64, -300 100, -500 225 c -5 5, 0 5, -5 16' style={{ fill: 'none', stroke: toLCH(COLORS.PINK), strokeWidth: 10, transform: 'translate(250px, 250px) rotate(-2deg) translate(-220px, -250px)' }} />
+        <path d='M 250 100 c -250 64, -300 100, -500 225 c -5 5, 0 5, 0 5' style={{ fill: 'none', stroke: toLCH(COLORS.ORANGE), strokeLinecap: 'round', strokeWidth: 10, transform: 'translate(250px, 250px) rotate(0deg) translate(-250px, -250px)' }} />
+        <path d='M 250 100 c -250 64, -300 100, -500 225 c -5 5, 0 5, 0 5' style={{ fill: 'none', stroke: toLCH(COLORS.RED), strokeLinecap: 'round', strokeWidth: 10, transform: 'translate(250px, 250px) rotate(-1deg) translate(-245px, -250px)' }} />
+        <path d='M 250 100 c -250 64, -300 100, -500 225 c -5 5, 0 5, 0 5' style={{ fill: 'none', stroke: toLCH(COLORS.YELLOW), strokeLinecap: 'round', strokeWidth: 10, transform: 'translate(250px, 250px) rotate(2deg) translate(-255px, -250px)' }} />
+        <path d='M 250 100 c -250 64, -300 100, -500 225 c -5 5, 0 5, 0 5' style={{ fill: 'none', stroke: toLCH(COLORS.LIGHT_RED), strokeLinecap: 'round', strokeWidth: 10, transform: 'translate(250px, 250px) rotate(1deg) translate(-255px, -250px)' }} />
+        <path d='M 250 100 c -250 64, -300 100, -500 225 c -5 5, 0 5, 0 5' style={{ fill: 'none', stroke: toLCH(COLORS.PINK), strokeLinecap: 'round', strokeWidth: 10, transform: 'translate(250px, 250px) rotate(-2deg) translate(-245px, -250px)' }} />
       </SVG>
     </Root>
   )
