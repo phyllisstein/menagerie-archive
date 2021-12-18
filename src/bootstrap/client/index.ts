@@ -21,8 +21,9 @@ import { gsap } from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 
 import bootstrap from './bootstrap'
+
 gsap.registerPlugin(ScrollTrigger)
 
 bootstrap().catch(err => {
-  throw err
+    throw err
 })

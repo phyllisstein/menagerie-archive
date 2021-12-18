@@ -12,22 +12,22 @@ import * as scale from './scale'
 import * as typeface from './typeface'
 
 export const theme = {
-  animation,
-  easing,
-  elevation,
-  measures,
-  palette,
-  paletteSpectrumDark,
-  paletteSpectrumLight,
-  paletteSunday,
-  plumber,
-  responsive,
-  scale,
-  typeface,
+    animation,
+    easing,
+    elevation,
+    measures,
+    palette,
+    paletteSpectrumDark,
+    paletteSpectrumLight,
+    paletteSunday,
+    plumber,
+    responsive,
+    scale,
+    typeface,
 }
 
 export type Theme = typeof theme
 
 declare module 'styled-components' {
-  export type DefaultTheme = Theme
+    export type DefaultTheme = Theme
 }

@@ -489,7 +489,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/helper-validator-identifier@npm:^7.15.7":
+"@babel/helper-validator-identifier@npm:^7.14.9, @babel/helper-validator-identifier@npm:^7.15.7":
   version: 7.15.7
   resolution: "@babel/helper-validator-identifier@npm:7.15.7"
   checksum: f041c28c531d1add5cc345b25d5df3c29c62bce3205b4d4a93dcd164ccf630350acba252d374fad8f5d8ea526995a215829f27183ba7ce7ce141843bf23068a6
@@ -1245,6 +1245,17 @@ __metadata:
   peerDependencies:
     "@babel/core": ^7.0.0-0
   checksum: bf5aea1f3188c9a507e16efe030efb996853ca3cadd6512c51db7233cc58f3ac89ff8c6bdfb01d30843b161cfe7d321e1bf28da82f7ab8d7e6bc5464666f354a
+  languageName: node
+  linkType: hard
+
+"@babel/plugin-syntax-jsx@npm:7.14.5":
+  version: 7.14.5
+  resolution: "@babel/plugin-syntax-jsx@npm:7.14.5"
+  dependencies:
+    "@babel/helper-plugin-utils": ^7.14.5
+  peerDependencies:
+    "@babel/core": ^7.0.0-0
+  checksum: 3a2ba87534b0f9ee70eba0754d2ae544825c25afd98efb8e42b41399e02de4cc5b1f70fc5ce444fb7a7e5b09972c289eed2f00917be5b88d67407f4cbde8e960
   languageName: node
   linkType: hard
 
@@ -2614,6 +2625,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@babel/types@npm:7.15.0":
+  version: 7.15.0
+  resolution: "@babel/types@npm:7.15.0"
+  dependencies:
+    "@babel/helper-validator-identifier": ^7.14.9
+    to-fast-properties: ^2.0.0
+  checksum: 6d6bcdfce94b5446520a24087c6dede453e28425af092965b304d4028e9bca79712fd691cdad031e3570c7667bf3206e5f642bcccbfccb33d42ca4a8203587f9
+  languageName: node
+  linkType: hard
+
 "@babel/types@npm:^7.0.0, @babel/types@npm:^7.0.0-beta.49, @babel/types@npm:^7.1.6, @babel/types@npm:^7.15.6, @babel/types@npm:^7.16.0, @babel/types@npm:^7.3.0, @babel/types@npm:^7.3.3, @babel/types@npm:^7.4.4, @babel/types@npm:^7.8.3":
   version: 7.16.0
   resolution: "@babel/types@npm:7.16.0"
@@ -2797,10 +2818,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@gsap/shockingly@npm:^3.8.0":
-  version: 3.8.0
-  resolution: "@gsap/shockingly@npm:3.8.0"
-  checksum: a46666ca7b2c4a0ea3a0dcf6b68fe43b7de9fe52787f4e2a4187c5e5f6e418da1175b269c40de8e8f4e43b8f6d7797bba8dc178dba04963df3ef1fa25dd29564
+"@gsap/shockingly@npm:^3.9.0":
+  version: 3.9.0
+  resolution: "@gsap/shockingly@npm:3.9.0"
+  checksum: 1d90f7f4c1ead93eb451929db2a953059855bc9719ae5a78040a3b5d49eb96e4bdd6485e556fd5abc41464cee8c86bd5d5b7f4e11d13380a3f2c297b48c70f55
   languageName: node
   linkType: hard
 
@@ -7040,6 +7061,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"convert-source-map@npm:1.7.0":
+  version: 1.7.0
+  resolution: "convert-source-map@npm:1.7.0"
+  dependencies:
+    safe-buffer: ~5.1.1
+  checksum: bcd2e3ea7d37f96b85a6e362c8a89402ccc73757256e3ee53aa2c22fe915adb854c66b1f81111be815a3a6a6ce3c58e8001858e883c9d5b4fe08a853fa865967
+  languageName: node
+  linkType: hard
+
 "convert-source-map@npm:^1.1.0, convert-source-map@npm:^1.4.0, convert-source-map@npm:^1.6.0, convert-source-map@npm:^1.7.0":
   version: 1.8.0
   resolution: "convert-source-map@npm:1.8.0"
@@ -8173,6 +8203,13 @@ __metadata:
   version: 8.0.0
   resolution: "emoji-regex@npm:8.0.0"
   checksum: d4c5c39d5a9868b5fa152f00cada8a936868fd3367f33f71be515ecee4c803132d11b31a6222b2571b1e5f7e13890156a94880345594d0ce7e3c9895f560f192
+  languageName: node
+  linkType: hard
+
+"emojis-list@npm:^2.0.0":
+  version: 2.1.0
+  resolution: "emojis-list@npm:2.1.0"
+  checksum: fb61fa6356dfcc9fbe6db8e334c29da365a34d3d82a915cb59621883d3023d804fd5edad5acd42b8eec016936e81d3b38e2faf921b32e073758374253afe1272
   languageName: node
   linkType: hard
 
@@ -9598,10 +9635,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gsap@npm:^3.8.0":
-  version: 3.8.0
-  resolution: "gsap@npm:3.8.0"
-  checksum: db7ca05441138e082cafb78b3fae981e2c5bd02dfa7caebd78e0a195f924822718e69475642ada42bebab6a17327acfb64b11dbeca5e955851dc2ff4896d1a8b
+"gsap@npm:^3.9.0":
+  version: 3.9.0
+  resolution: "gsap@npm:3.9.0"
+  checksum: 6a5ea2820f6f2dce4e780fa8f08214d4ae7d0027128ab2198cf74990572bcecb219ef491eb247da1acc3d4b98970ebd2b7c3cfa9c82971cd0724b6da5e200a97
   languageName: node
   linkType: hard
 
@@ -11633,6 +11670,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"loader-utils@npm:1.2.3":
+  version: 1.2.3
+  resolution: "loader-utils@npm:1.2.3"
+  dependencies:
+    big.js: ^5.2.2
+    emojis-list: ^2.0.0
+    json5: ^1.0.1
+  checksum: 385407fc2683b6d664276fd41df962296de4a15030bb24389de77b175570c3b56bd896869376ba14cf8b33a9e257e17a91d395739ba7e23b5b68a8749a41df7e
+  languageName: node
+  linkType: hard
+
 "loader-utils@npm:^1.4.0":
   version: 1.4.0
   resolution: "loader-utils@npm:1.4.0"
@@ -11949,7 +11997,7 @@ __metadata:
     "@fortawesome/pro-solid-svg-icons": next
     "@fortawesome/pro-thin-svg-icons": next
     "@fortawesome/react-fontawesome": ^0.1.16
-    "@gsap/shockingly": ^3.8.0
+    "@gsap/shockingly": ^3.9.0
     "@loadable/babel-plugin": ^5.13.2
     "@loadable/component": ^5.15.2
     "@loadable/server": ^5.15.2
@@ -12056,7 +12104,7 @@ __metadata:
     fb-watchman: ^2.0.1
     framer-motion: ^5.5.1
     globby: ^12.0.2
-    gsap: ^3.8.0
+    gsap: ^3.9.0
     hammerjs: ^2.0.8
     history: ^5.1.0
     html-webpack-plugin: 5.5.0
@@ -12109,6 +12157,8 @@ __metadata:
     sharp: ^0.29.3
     style-loader: ^3.3.1
     styled-components: ^5.3.3
+    styled-jsx: ^4.0.1
+    styled-jsx-plugin-stylus: ^0.0.4
     styled-media-query: ^2.1.2
     stylelint: ^14.1.0
     stylelint-config-rational-order: "github:phyllisstein/stylelint-config-rational-order#head=empty-line-threshold"
@@ -15108,17 +15158,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"source-map@npm:0.7.3, source-map@npm:^0.7.3, source-map@npm:~0.7.2":
+  version: 0.7.3
+  resolution: "source-map@npm:0.7.3"
+  checksum: cd24efb3b8fa69b64bf28e3c1b1a500de77e84260c5b7f2b873f88284df17974157cc88d386ee9b6d081f08fdd8242f3fc05c953685a6ad81aad94c7393dedea
+  languageName: node
+  linkType: hard
+
 "source-map@npm:^0.5.0":
   version: 0.5.7
   resolution: "source-map@npm:0.5.7"
   checksum: 5dc2043b93d2f194142c7f38f74a24670cd7a0063acdaf4bf01d2964b402257ae843c2a8fa822ad5b71013b5fcafa55af7421383da919752f22ff488bc553f4d
-  languageName: node
-  linkType: hard
-
-"source-map@npm:^0.7.3, source-map@npm:~0.7.2":
-  version: 0.7.3
-  resolution: "source-map@npm:0.7.3"
-  checksum: cd24efb3b8fa69b64bf28e3c1b1a500de77e84260c5b7f2b873f88284df17974157cc88d386ee9b6d081f08fdd8242f3fc05c953685a6ad81aad94c7393dedea
   languageName: node
   linkType: hard
 
@@ -15251,6 +15301,13 @@ __metadata:
   version: 1.5.0
   resolution: "statuses@npm:1.5.0"
   checksum: c469b9519de16a4bb19600205cffb39ee471a5f17b82589757ca7bd40a8d92ebb6ed9f98b5a540c5d302ccbc78f15dc03cc0280dd6e00df1335568a5d5758a5c
+  languageName: node
+  linkType: hard
+
+"string-hash@npm:1.1.3":
+  version: 1.1.3
+  resolution: "string-hash@npm:1.1.3"
+  checksum: 104b8667a5e0dc71bfcd29fee09cb88c6102e27bfb07c55f95535d90587d016731d52299380052e514266f4028a7a5172e0d9ac58e2f8f5001be61dc77c0754d
   languageName: node
   linkType: hard
 
@@ -15482,6 +15539,36 @@ __metadata:
   languageName: node
   linkType: hard
 
+"styled-jsx-plugin-stylus@npm:^0.0.4":
+  version: 0.0.4
+  resolution: "styled-jsx-plugin-stylus@npm:0.0.4"
+  peerDependencies:
+    stylus: "*"
+  checksum: 399860c70c42c5ae267378e3d1ba4af0183909af9b9a91310835f571b66173ed1d0faa90fc3e8b3633778d35bf13c643ddece7cc40c82c164e1120f040f9b626
+  languageName: node
+  linkType: hard
+
+"styled-jsx@npm:^4.0.1":
+  version: 4.0.1
+  resolution: "styled-jsx@npm:4.0.1"
+  dependencies:
+    "@babel/plugin-syntax-jsx": 7.14.5
+    "@babel/types": 7.15.0
+    convert-source-map: 1.7.0
+    loader-utils: 1.2.3
+    source-map: 0.7.3
+    string-hash: 1.1.3
+    stylis: 3.5.4
+    stylis-rule-sheet: 0.0.10
+  peerDependencies:
+    react: ">= 16.8.0 || 17.x.x || 18.x.x"
+  peerDependenciesMeta:
+    "@babel/core":
+      optional: true
+  checksum: a4260ba093086ed50c903ce1e4e564c4162d041238c02d8f9f8d1b259224f54ac49b49e9b4a6e3396c27e688dd870da7552c35ea9622c25aaa4777b2df64bb26
+  languageName: node
+  linkType: hard
+
 "styled-media-query@npm:^2.1.2":
   version: 2.1.2
   resolution: "styled-media-query@npm:2.1.2"
@@ -15622,6 +15709,22 @@ __metadata:
   bin:
     stylelint: bin/stylelint.js
   checksum: c7a016ce0c0737cc5fa9ab8ab025cba2e534eae4ba936fc41d90de7e13e0947b6a78d68d2644572c0f743822444a4cdc25bb2f0bf3e3f9a8993a08b209b13e1a
+  languageName: node
+  linkType: hard
+
+"stylis-rule-sheet@npm:0.0.10":
+  version: 0.0.10
+  resolution: "stylis-rule-sheet@npm:0.0.10"
+  peerDependencies:
+    stylis: ^3.5.0
+  checksum: 97ad016c64ecce8d4b2c2c1c3cf3260de3c0e2b151e78f90ded6cc1bfcca536625a77277af16a9c8a241236a9e4fd5b70d88dfa32e9b48afaddb8f102a95582d
+  languageName: node
+  linkType: hard
+
+"stylis@npm:3.5.4":
+  version: 3.5.4
+  resolution: "stylis@npm:3.5.4"
+  checksum: 3673a748ad236219bd77ca9c0a8730b8726812e612cbc844aa6f029f13666a10cf2825a5f8d41f05e8af02b5987d31b7d3ebe995e4b42e0255366fec23489b77
   languageName: node
   linkType: hard
 

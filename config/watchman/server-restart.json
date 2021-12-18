@@ -1,14 +1,43 @@
-["trigger", "/app", {
-  "name": "server-restart",
-  "expression": [
-    "anyof",
-    ["name", "app.mjs", "wholename"],
-    ["name", "webpack.config.cjs", "wholename"],
-    ["name", "package.json", "wholename"],
-    ["name", "yarn.lock", "wholename"],
-    ["dirname", "config/build"],
-    ["dirname", "src/bootstrap"]
-  ],
-  "command": ["./bin/develop.sh", "serve"],
-  "append_files": false
-}]
+[
+    "trigger",
+    "/app",
+    {
+        "name": "server-restart",
+        "expression": [
+            "anyof",
+            [
+                "name",
+                "app.mjs",
+                "wholename"
+            ],
+            [
+                "name",
+                "webpack.config.cjs",
+                "wholename"
+            ],
+            [
+                "name",
+                "package.json",
+                "wholename"
+            ],
+            [
+                "name",
+                "yarn.lock",
+                "wholename"
+            ],
+            [
+                "dirname",
+                "config/build"
+            ],
+            [
+                "dirname",
+                "src/bootstrap"
+            ]
+        ],
+        "command": [
+            "./bin/develop.sh",
+            "serve"
+        ],
+        "append_files": false
+    }
+]

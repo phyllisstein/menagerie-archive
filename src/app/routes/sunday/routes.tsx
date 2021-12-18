@@ -5,8 +5,8 @@ import { Colors } from './colors'
 import { Parasol } from './parasol'
 
 export const SundayRoutes: FunctionComponent = () => (
-  <Routes>
-    <Route element={ <Parasol /> } path='parasol' />
-    <Route element={ <Colors /> } path='colors' />
-  </Routes>
+    <Routes>
+        <Route element={ <Parasol /> } path='parasol' />
+        <Route element={ <Colors /> } path='colors' />
+    </Routes>
 )

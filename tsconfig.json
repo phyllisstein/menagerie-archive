@@ -1,50 +1,50 @@
 {
-  "compilerOptions": {
-    "allowJs": true,
-    "allowSyntheticDefaultImports": true,
-    "alwaysStrict": true,
-    "baseUrl": "./",
-    "checkJs": true,
-    "esModuleInterop": true,
-    "experimentalDecorators": true,
-    "forceConsistentCasingInFileNames": true,
-    "isolatedModules": true,
-    "jsx": "preserve",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
-    "module": "esnext",
-    "moduleResolution": "node",
-    "noEmit": true,
-    "resolveJsonModule": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "target": "esnext",
-    "paths": {
-      "*": [
-        "*",
-        "./src/*",
-        "./vendor/*"
-      ]
+    "compilerOptions": {
+        "allowJs": true,
+        "allowSyntheticDefaultImports": true,
+        "alwaysStrict": true,
+        "baseUrl": "./",
+        "checkJs": true,
+        "esModuleInterop": true,
+        "experimentalDecorators": true,
+        "forceConsistentCasingInFileNames": true,
+        "isolatedModules": true,
+        "jsx": "preserve",
+        "lib": [
+            "dom",
+            "dom.iterable",
+            "esnext"
+        ],
+        "module": "esnext",
+        "moduleResolution": "node",
+        "noEmit": true,
+        "resolveJsonModule": true,
+        "skipLibCheck": true,
+        "strict": true,
+        "target": "esnext",
+        "paths": {
+            "*": [
+                "./src/*",
+                "./vendor/*",
+                "*"
+            ]
+        },
+        "types": [
+            "./global.d.ts",
+            "./node_modules/gsap/types/index.d.ts",
+            "./node_modules/@gsap/shockingly/types/index.d.ts"
+        ]
     },
-    "types": [
-      "./global.d.ts",
-      "./gsap.d.ts"
-    ]
-  },
-  "exclude": [
-    "node_modules"
-  ],
-  "include": [
-    "**/*.ts",
-    "**/*.tsx",
-    "**/*.d.ts",
-    "./global.d.ts",
-    "./gsap.d.ts"
-  ],
-  "typeAcquisition": {
-    "enable": true
-  }
+    "exclude": [
+        "node_modules"
+    ],
+    "include": [
+        "**/*.ts",
+        "**/*.tsx",
+        "**/*.d.ts",
+        "./global.d.ts"
+    ],
+    "typeAcquisition": {
+        "enable": true
+    }
 }

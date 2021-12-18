@@ -6,11 +6,11 @@ import { Layered } from './layered'
 import { Parallax } from './parallax'
 
 export function ParallaxRoutes (): ReactElement {
-  return (
-    <Routes>
-      <Route index element={ <Parallax /> } />
-      <Route element={ <Layered /> } path='layered' />
-      <Route element={ <Kyar /> } path='kyar' />
-    </Routes>
-  )
+    return (
+        <Routes>
+            <Route index element={ <Parallax /> } />
+            <Route element={ <Layered /> } path='layered' />
+            <Route element={ <Kyar /> } path='kyar' />
+        </Routes>
+    )
 }
