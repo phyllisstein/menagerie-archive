@@ -1,17 +1,15 @@
-import Config from 'webpack-chain'
-import CopyPlugin from 'copy-webpack-plugin'
-import { fileURLToPath } from 'url'
-import LoadablePlugin from '@loadable/webpack-plugin'
-import merge from 'merge-deep'
-import nodeExternals from 'webpack-node-externals'
-import path from 'path'
-import PNPPlugin from 'pnp-webpack-plugin'
-import webpack from 'webpack'
+const Config = require('webpack-chain')
+const CopyPlugin = require('copy-webpack-plugin')
+const { fileURLToPath } = require('url')
+const LoadablePlugin = require('@loadable/webpack-plugin')
+const merge = require('merge-deep')
+const nodeExternals = require('webpack-node-externals')
+const path = require('path')
+const PNPPlugin = require('pnp-webpack-plugin')
+const webpack = require('webpack')
 
-export const client = new Config()
-export const server = new Config()
-
-const __dirname = path.dirname(fileURLToPath(import.meta.url))
+const client = new Config()
+const server = new Config()
 
 const BABEL_OPTIONS = {
     babelrc: false,
@@ -414,3 +412,5 @@ server
             outputModule: true,
         },
     })
+
+module.exports = { client, server }

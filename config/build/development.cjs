@@ -1,10 +1,10 @@
-import { client } from './common.mjs'
-import HTMLPlugin from 'html-webpack-plugin'
-import merge from 'merge-deep'
-import path from 'path'
-import TimeFixPlugin from 'time-fix-plugin'
-import ReactRefreshPlugin from '@pmmmwh/react-refresh-webpack-plugin'
-import webpack from 'webpack'
+const { client } = require('./common.cjs')
+const HTMLPlugin = require('html-webpack-plugin')
+const merge = require('merge-deep')
+const path = require('path')
+const TimeFixPlugin = require('time-fix-plugin')
+const ReactRefreshPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
+const webpack = require('webpack')
 
 const enableWDYR = process.env.WHY_DID_YOU_RENDER != null
 
@@ -83,4 +83,4 @@ client
 
 client.optimization.usedExports(false)
 
-export { client }
+module.exports = { client }

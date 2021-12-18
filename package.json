@@ -13,7 +13,6 @@
         "email": "daniel@try.works",
         "url": "https://try.works"
     },
-    "type": "module",
     "bugs": "https://github.com/phyllisstein/menagerie/issues",
     "scripts": {
         "build": "cross-env NODE_ENV=staging webpack",

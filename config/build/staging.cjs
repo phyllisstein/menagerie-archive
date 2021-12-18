@@ -1,9 +1,9 @@
-import { client } from './common'
-import HTMLPlugin from 'html-webpack-plugin'
-import merge from 'merge-deep'
-import path from 'path'
-import TimeFixPlugin from 'time-fix-plugin'
-import TerserPlugin from 'terser-webpack-plugin'
+const { client } = require('./common.cjs')
+const HTMLPlugin = require('html-webpack-plugin')
+const merge = require('merge-deep')
+const path = require('path')
+const TimeFixPlugin = require('time-fix-plugin')
+const TerserPlugin = require('terser-webpack-plugin')
 
 client
     .mode('production')
@@ -73,4 +73,4 @@ client.optimization
         },
     ])
 
-export { client }
+module.exports = { client }
