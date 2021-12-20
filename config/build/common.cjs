@@ -238,10 +238,10 @@ client
 client.cache({
     buildDependencies: {
         config: [
-            path.resolve(__dirname, 'common.mjs'),
-            path.resolve(__dirname, 'development.mjs'),
-            path.resolve(__dirname, 'staging.mjs'),
-            path.resolve(__dirname, 'production.mjs'),
+            path.resolve(__dirname, 'common.cjs'),
+            path.resolve(__dirname, 'development.cjs'),
+            path.resolve(__dirname, 'staging.cjs'),
+            // path.resolve(__dirname, 'production.cjs'),
         ],
     },
     type: 'filesystem',
@@ -397,10 +397,10 @@ server.externals([
 server.cache({
     buildDependencies: {
         config: [
-            path.resolve(__dirname, 'common.mjs'),
-            path.resolve(__dirname, 'development.mjs'),
-            path.resolve(__dirname, 'staging.mjs'),
-            path.resolve(__dirname, 'production.mjs'),
+            path.resolve(__dirname, 'common.cjs'),
+            path.resolve(__dirname, 'development.cjs'),
+            path.resolve(__dirname, 'staging.cjs'),
+            // path.resolve(__dirname, 'production.cjs'),
         ],
     },
     type: 'filesystem',

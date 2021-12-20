@@ -3,7 +3,7 @@
 /* global PhusionPassenger:false */
 
 import childProcess from 'child_process'
-import { client } from './config/build/development.mjs'
+import { client } from './config/build/development.cjs'
 import devMiddleware from 'webpack-dev-middleware'
 import { fileURLToPath } from 'url'
 import historyAPIFallback from 'connect-history-api-fallback'
