@@ -9,11 +9,9 @@
   parserOptions:
     ecmaFeatures:
       jsx: true
-    project: './tsconfig.json'
   extends:
     - 'eslint:recommended'
     - plugin:@typescript-eslint/recommended
-    - 'plugin:@typescript-eslint/recommended-requiring-type-checking'
     - plugin:ramda/recommended
     - plugin:react-hooks/recommended
     - plugin:react/recommended
