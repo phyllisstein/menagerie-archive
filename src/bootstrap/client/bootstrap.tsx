@@ -7,7 +7,7 @@ const renderApp = async (): Promise<void> => {
     { HelmetProvider },
     { default: ReactDOM },
   ] = await Promise.all([
-    import('app/routes'),
+    import('~/app/routes'),
     import('react-router-dom'),
     import('react-helmet-async'),
     import('react-dom'),
@@ -28,7 +28,7 @@ const renderApp = async (): Promise<void> => {
 
   if (module.hot) {
     module.hot.accept(async () => {
-      const { App } = await import('app/routes')
+      const { App } = await import('~/app/routes')
       root.render(
         <BrowserRouter>
           <HelmetProvider>

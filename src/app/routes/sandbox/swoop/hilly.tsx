@@ -3,14 +3,14 @@ import { FunctionComponent, useEffect, useRef } from 'react'
 
 import { Layer, Root } from './swoop-styles'
 
-import PinkBack from 'assets/swoops/pink/back.svg'
-import PinkFore from 'assets/swoops/pink/fore.svg'
-import PinkGround from 'assets/swoops/pink/ground.svg'
-import PinkMid from 'assets/swoops/pink/mid.svg'
-import PurpleBack from 'assets/swoops/purple/back.svg'
-import PurpleFore from 'assets/swoops/purple/fore.svg'
-import PurpleGround from 'assets/swoops/purple/ground.svg'
-import PurpleMid from 'assets/swoops/purple/mid.svg'
+import PinkBack from '~/assets/swoops/pink/back.svg'
+import PinkFore from '~/assets/swoops/pink/fore.svg'
+import PinkGround from '~/assets/swoops/pink/ground.svg'
+import PinkMid from '~/assets/swoops/pink/mid.svg'
+import PurpleBack from '~/assets/swoops/purple/back.svg'
+import PurpleFore from '~/assets/swoops/purple/fore.svg'
+import PurpleGround from '~/assets/swoops/purple/ground.svg'
+import PurpleMid from '~/assets/swoops/purple/mid.svg'
 
 export const Hilly: FunctionComponent = () => {
   const wrapperRef = useRef<HTMLDivElement>()

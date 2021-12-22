@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import styled, { css, keyframes } from 'styled-components'
 
-import { Entry as EntryBase } from 'app/components/matrix'
+import { Entry as EntryBase } from '~/app/components/matrix'
 
 export const Entry = styled(EntryBase)`
   width: min-content;
@@ -36,7 +36,7 @@ export const Label = styled.div`
   font-weight: 600;
   letter-spacing: 4px;
 
-  background-color: #fff;
+  background-color: #FFF;
   backface-visibility: hidden;
 
   pointer-events: none;

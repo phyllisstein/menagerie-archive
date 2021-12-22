@@ -203,10 +203,9 @@ client.resolve
   .add('.jsx')
   .add('.json')
   .end()
-  .modules.add(path.resolve('src'))
-  .add(path.resolve('vendor'))
-  .add(path.resolve('node_modules'))
-  .end()
+  .alias
+    .set('~', path.resolve('./src'))
+    .end()
 
 client.plugin('define').use(webpack.DefinePlugin, [
   {
@@ -371,10 +370,9 @@ server.resolve
   .add('.jsx')
   .add('.json')
   .end()
-  .modules.add(path.resolve('src'))
-  .add(path.resolve('vendor'))
-  .add(path.resolve('node_modules'))
-  .end()
+  .alias
+    .set('~', path.resolve('src'))
+    .end()
 
 server.plugin('define').use(webpack.DefinePlugin, [
   {

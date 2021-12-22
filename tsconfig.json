@@ -19,10 +19,9 @@
     "moduleResolution": "node",
     "noEmit": true,
     "paths": {
-      "*": [
+      "~/*": [
         "./src/*",
-        "./vendor/*",
-        "*"
+        "./vendor/*"
       ]
     },
     "plugins": [

@@ -1,22 +1,18 @@
-import { ReactElement, lazy, Suspense } from 'react'
+import { ReactElement, Suspense } from 'react'
 import { Helmet } from 'react-helmet-async'
 import { Route, Routes } from 'react-router'
 import { RecoilRoot } from 'recoil'
 import { StyleSheetManager, ThemeProvider } from 'styled-components'
 
-import MatrixRoutes from 'app/routes/matrix'
-import SandboxRoutes from 'app/routes/sandbox'
-import SundayRoutes from 'app/routes/sunday'
-import { Body, Reboot } from 'app/styles/global'
-import { theme } from 'app/styles/theme'
-import avatarFB from 'assets/avatar-fb.jpg'
-import avatarTW from 'assets/avatar-tw.jpg'
-import faviconPNG from 'assets/favicon.png'
-import { AdobeClean, AdobeCleanSerif, MillerDisplay } from 'assets/fonts'
-
-// const MatrixRoute = lazy(() => import('app/routes/matrix'))
-// const SandboxRoute = lazy(() => import('app/routes/sandbox'))
-// const SundayRoute = lazy(() => import('app/routes/sunday'))
+import MatrixRoutes from '~/app/routes/matrix'
+import SandboxRoutes from '~/app/routes/sandbox'
+import SundayRoutes from '~/app/routes/sunday'
+import { Body, Reboot } from '~/app/styles/global'
+import { theme } from '~/app/styles/theme'
+import avatarFB from '~/assets/avatar-fb.jpg'
+import avatarTW from '~/assets/avatar-tw.jpg'
+import faviconPNG from '~/assets/favicon.png'
+import { AdobeClean, AdobeCleanSerif, MillerDisplay } from '~/assets/fonts'
 
 const SITE_NAME = 'An Evening With…'
 
