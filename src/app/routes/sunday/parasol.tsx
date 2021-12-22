@@ -22,10 +22,10 @@ export const Parasol: FunctionComponent = () => {
 
         if (!primaryTL || !svg) return
 
-        const svgChildren = gsap.utils.toArray('path', svg.current)
-        const [primary, secondary] = R.splitAt(5, svgChildren)
+        const svgChildren = gsap.utils.toArray('path', svg)
+        if (!svgChildren.length) return
 
-        if (!primary || !primary.length) return
+        const [primary, secondary] = R.splitAt(5, svgChildren)
 
         primaryTL
             .from(primary, { drawSVG: '0% 0%', duration: 1, stagger: 1 })
@@ -43,13 +43,7 @@ export const Parasol: FunctionComponent = () => {
 
     return (
         <Root ref={ rootRef }>
-            <SVG
-                style={{
-                    background: 'transparent',
-                    height: '100vh',
-                    width: '100vw',
-                }}
-                viewBox='0 0 500 500'>
+            <SVG viewBox='0 0 500 500'>
                 <path
                     d='M 250 100 c -250 64, -300 100, -500 225 c -5 5, 0 5, 0 5'
                     style={{
@@ -57,17 +51,10 @@ export const Parasol: FunctionComponent = () => {
                         stroke: toLCH(COLORS.RED),
                         strokeLinecap: 'round',
                         strokeWidth: 5,
-                        transform:
-                            'translate(250px, 250px) rotate(-1deg) translate(-245px, -250px)',
+                        transform: 'translate(250px, 250px) rotate(-1deg) translate(-245px, -250px)',
                     }} />
             </SVG>
-            <SVG
-                style={{
-                    background: 'transparent',
-                    height: '100vh',
-                    width: '100vw',
-                }}
-                viewBox='0 0 500 500'>
+            <SVG viewBox='0 0 500 500'>
                 <path
                     d='M 250 100 c -250 64, -300 100, -500 225 c -5 5, 0 5, 0 5'
                     style={{
@@ -75,17 +62,10 @@ export const Parasol: FunctionComponent = () => {
                         stroke: toLCH(COLORS.ORANGE),
                         strokeLinecap: 'round',
                         strokeWidth: 5,
-                        transform:
-                            'translate(250px, 250px) rotate(0deg) translate(-250px, -250px)',
+                        transform: 'translate(250px, 250px) rotate(0deg) translate(-250px, -250px)',
                     }} />
             </SVG>
-            <SVG
-                style={{
-                    background: 'transparent',
-                    height: '100vh',
-                    width: '100vw',
-                }}
-                viewBox='0 0 500 500'>
+            <SVG viewBox='0 0 500 500'>
                 <path
                     d='M 250 100 c -250 64, -300 100, -500 225 c -5 5, 0 5, 0 5'
                     style={{
@@ -93,17 +73,10 @@ export const Parasol: FunctionComponent = () => {
                         stroke: toLCH(COLORS.YELLOW),
                         strokeLinecap: 'round',
                         strokeWidth: 5,
-                        transform:
-                            'translate(250px, 250px) rotate(2deg) translate(-255px, -250px)',
+                        transform: 'translate(250px, 250px) rotate(2deg) translate(-255px, -250px)',
                     }} />
             </SVG>
-            <SVG
-                style={{
-                    background: 'transparent',
-                    height: '100vh',
-                    width: '100vw',
-                }}
-                viewBox='0 0 500 500'>
+            <SVG viewBox='0 0 500 500'>
                 <path
                     d='M 250 100 c -250 64, -300 100, -500 225 c -5 5, 0 5, 0 5'
                     style={{
@@ -111,17 +84,10 @@ export const Parasol: FunctionComponent = () => {
                         stroke: toLCH(COLORS.LIGHT_RED),
                         strokeLinecap: 'round',
                         strokeWidth: 5,
-                        transform:
-                            'translate(250px, 250px) rotate(1deg) translate(-255px, -250px)',
+                        transform: 'translate(250px, 250px) rotate(1deg) translate(-255px, -250px)',
                     }} />
             </SVG>
-            <SVG
-                style={{
-                    background: 'transparent',
-                    height: '100vh',
-                    width: '100vw',
-                }}
-                viewBox='0 0 500 500'>
+            <SVG viewBox='0 0 500 500'>
                 <path
                     d='M 250 100 c -250 64, -300 100, -500 225 c -5 5, 0 5, 0 5'
                     style={{
@@ -129,8 +95,7 @@ export const Parasol: FunctionComponent = () => {
                         stroke: toLCH(COLORS.PINK),
                         strokeLinecap: 'round',
                         strokeWidth: 5,
-                        transform:
-                            'translate(250px, 250px) rotate(-2deg) translate(-245px, -250px)',
+                        transform: 'translate(250px, 250px) rotate(-2deg) translate(-245px, -250px)',
                     }} />
             </SVG>
         </Root>
