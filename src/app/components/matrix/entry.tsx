@@ -5,33 +5,33 @@ import { DotIcon, Root } from './entry-styles'
 import { EntryText } from './entry-text'
 
 export enum DotPosition {
-    Bottom,
-    BottomLeft,
-    BottomRight,
-    Left,
-    Right,
-    Top,
-    TopLeft,
-    TopRight,
+  Bottom,
+  BottomLeft,
+  BottomRight,
+  Left,
+  Right,
+  Top,
+  TopLeft,
+  TopRight,
 }
 
 interface Props extends FunctionComponent {
-    dot?: DotPosition
+  dot?: DotPosition
 }
 
 export const Entry = ({
-    children,
-    dot,
-    ...rest
+  children,
+  dot,
+  ...rest
 }: PropsWithChildren<Props>): ReactElement => {
-    return (
-        <Root { ...rest } $position={ dot }>
-            { dot != null && (
-                <DotIcon icon={ faDotCircle } style={{ position: 'absolute' }} />
-            ) }
-            { children }
-        </Root>
-    )
+  return (
+    <Root { ...rest } $position={ dot }>
+      { dot != null && (
+        <DotIcon icon={ faDotCircle } style={{ position: 'absolute' }} />
+      ) }
+      { children }
+    </Root>
+  )
 }
 
 Entry.Text = EntryText

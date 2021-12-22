@@ -1,27 +1,30 @@
 {
-    "configurations": [
-        {
-            "name": "Client",
-            "type": "pwa-chrome",
-            "request": "launch",
-            "url": "http://localhost:9090",
-            "webRoot": "${workspaceFolder}/src",
-            "runtimeExecutable": "dev"
-        },
-        {
-            "name": "Server",
-            "type": "pwa-node",
-            "request": "launch",
-            "runtimeExecutable": "node",
-            "args": [
-                "app.js"
-            ]
-        }
-    ],
-    "compounds": [
-        {
-            "name": "Client/Server",
-            "configurations": ["Server", "Client"]
-        }
-    ]
+  "configurations": [
+    {
+      "name": "Client",
+      "type": "pwa-chrome",
+      "request": "launch",
+      "url": "http://localhost:9090",
+      "webRoot": "${workspaceFolder}/src",
+      "runtimeExecutable": "dev"
+    },
+    {
+      "name": "Server",
+      "type": "pwa-node",
+      "request": "launch",
+      "runtimeExecutable": "node",
+      "args": [
+        "app.js"
+      ]
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Client/Server",
+      "configurations": [
+        "Server",
+        "Client"
+      ]
+    }
+  ]
 }

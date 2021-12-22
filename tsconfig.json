@@ -1,50 +1,50 @@
 {
-    "compilerOptions": {
-        "allowJs": true,
-        "allowSyntheticDefaultImports": true,
-        "alwaysStrict": true,
-        "baseUrl": "./",
-        "checkJs": true,
-        "esModuleInterop": true,
-        "experimentalDecorators": true,
-        "forceConsistentCasingInFileNames": true,
-        "isolatedModules": true,
-        "jsx": "preserve",
-        "lib": [
-            "dom",
-            "dom.iterable",
-            "esnext"
-        ],
-        "module": "esnext",
-        "moduleResolution": "node",
-        "noEmit": true,
-        "paths": {
-            "*": [
-                "./src/*",
-                "./vendor/*",
-                "*"
-            ]
-        },
-        "plugins": [
-            {
-                "name": "typescript-styled-plugin"
-            }
-        ],
-        "resolveJsonModule": true,
-        "skipLibCheck": true,
-        "strict": true,
-        "target": "esnext"
+  "compilerOptions": {
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "alwaysStrict": true,
+    "baseUrl": "./",
+    "checkJs": true,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "module": "esnext",
+    "moduleResolution": "node",
+    "noEmit": true,
+    "paths": {
+      "*": [
+        "./src/*",
+        "./vendor/*",
+        "*"
+      ]
     },
-    "exclude": [
-        "node_modules"
+    "plugins": [
+      {
+        "name": "typescript-styled-plugin"
+      }
     ],
-    "include": [
-        "./src/**/*.ts",
-        "./src/**/*.tsx",
-        "./src/**/*.d.ts",
-        "./global.d.ts"
-    ],
-    "typeAcquisition": {
-        "enable": true
-    }
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "target": "esnext"
+  },
+  "exclude": [
+    "node_modules"
+  ],
+  "include": [
+    "./src/**/*.ts",
+    "./src/**/*.tsx",
+    "./src/**/*.d.ts",
+    "./global.d.ts"
+  ],
+  "typeAcquisition": {
+    "enable": true
+  }
 }

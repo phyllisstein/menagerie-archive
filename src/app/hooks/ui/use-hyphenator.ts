@@ -6,38 +6,38 @@ import * as R from 'ramda'
 import { useEffect } from 'react'
 
 export const useHyphenator = targetRef => {
-    useEffect(() => {
-        const hyphenate = async () => {
-            if (!canUseDOM) {
-                return await Promise.resolve()
-            }
+  useEffect(() => {
+    const hyphenate = async () => {
+      if (!canUseDOM) {
+        return await Promise.resolve()
+      }
 
-            await pWaitFor(() => {
-                return (
-                    R.has('hyphenators', Hyphenopoly) &&
-                    R.hasPath(['hyphenators', 'HTML'], Hyphenopoly)
-                )
-            })
+      await pWaitFor(() => {
+        return (
+          R.has('hyphenators', Hyphenopoly) &&
+          R.hasPath(['hyphenators', 'HTML'], Hyphenopoly)
+        )
+      })
 
-            let hyphenator
+      let hyphenator
 
-            if (typeof targetRef.current === 'string') {
-                hyphenator = await Hyphenopoly.hyphenators['en-us']
-            }
+      if (typeof targetRef.current === 'string') {
+        hyphenator = await Hyphenopoly.hyphenators['en-us']
+      }
 
-            if (targetRef.current instanceof HTMLElement) {
-                hyphenator = await Hyphenopoly.hyphenators.HTML
-            }
+      if (targetRef.current instanceof HTMLElement) {
+        hyphenator = await Hyphenopoly.hyphenators.HTML
+      }
 
-            hyphenator(targetRef.current, '.__default')
-        }
+      hyphenator(targetRef.current, '.__default')
+    }
 
-        Promise.resolve()
-            .then(async () => {
-                return await hyphenate()
-            })
-            .catch(err => {
-                throw err
-            })
-    }, [targetRef])
+    Promise.resolve()
+      .then(async () => {
+        return await hyphenate()
+      })
+      .catch(err => {
+        throw err
+      })
+  }, [targetRef])
 }

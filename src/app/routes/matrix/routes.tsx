@@ -4,9 +4,9 @@ import { Route, Routes } from 'react-router'
 import { ApprovalMatrix } from './approval'
 
 export function MatrixRoutes (): ReactElement {
-    return (
-        <Routes>
-            <Route index element={ <ApprovalMatrix /> } />
-        </Routes>
-    )
+  return (
+    <Routes>
+      <Route index element={ <ApprovalMatrix /> } />
+    </Routes>
+  )
 }

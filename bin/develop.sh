@@ -5,30 +5,30 @@ echo "$PWD"
 args="$*"
 
 case $args in
-serve)
+  serve)
     echo "Starting development server"
     pkill -f node
-    yarn start:dev 1>/dev/stdout 2>/dev/stderr &
+    yarn start:dev 1> /dev/stdout 2> /dev/stderr &
     disown
     ;;
 
-watchman)
+  watchman)
     echo "Configuring watches..."
 
     for j in config/watchman/*.json; do
-        echo "Watching $j"
-        watchman -j <"$j"
+      echo "Watching $j"
+      watchman -j < "$j"
     done
     ;;
 
-yarn)
+  yarn)
     echo "Running yarn install..."
     [[ -e "/run/secrets/npm_credentials" ]] || echo "No NPM credentials" && exit 1
     source /run/secrets/npm_credentials && export FONT_AWESOME_NPM_TOKEN GSAP_NPM_TOKEN
     yarn install
     ;;
 
-*)
+  *)
     echo "Unknown command: $args"
     ;;
 esac

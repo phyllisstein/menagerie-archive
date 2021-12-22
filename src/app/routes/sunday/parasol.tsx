@@ -9,95 +9,100 @@ import { Root, SVG } from './parasol-styles'
 gsap.registerPlugin(DrawSVGPlugin, MorphSVGPlugin)
 
 export const Parasol: FunctionComponent = () => {
-    const rootRef = useRef()
-    const primaryTLRef = useRef(gsap.timeline({ repeat: -1 }))
-    const secondaryTLRef = useRef(gsap.timeline({ repeat: -1 }))
-    const combinedTLRef = useRef(gsap.timeline({ repeat: -1 }))
+  const rootRef = useRef()
+  const primaryTLRef = useRef(gsap.timeline({ repeat: -1 }))
+  const secondaryTLRef = useRef(gsap.timeline({ repeat: -1 }))
+  const combinedTLRef = useRef(gsap.timeline({ repeat: -1 }))
 
-    useEffect(() => {
-        const primaryTL = primaryTLRef.current
-        const secondaryTL = secondaryTLRef.current
-        const combinedTL = combinedTLRef.current
-        const svg = rootRef.current
+  useEffect(() => {
+    const primaryTL = primaryTLRef.current
+    const secondaryTL = secondaryTLRef.current
+    const combinedTL = combinedTLRef.current
+    const svg = rootRef.current
 
-        if (!primaryTL || !svg) return
+    if (!primaryTL || !svg) return
 
-        const svgChildren = gsap.utils.toArray('path', svg)
-        if (!svgChildren.length) return
+    const svgChildren = gsap.utils.toArray('path', svg)
+    if (!svgChildren.length) return
 
-        const [primary, secondary] = R.splitAt(5, svgChildren)
+    const [primary, secondary] = R.splitAt(5, svgChildren)
 
-        primaryTL
-            .from(primary, { drawSVG: '0% 0%', duration: 1, stagger: 1 })
-            .to(primary, { drawSVG: '100% 100%', duration: 1, stagger: 1 })
+    primaryTL
+      .from(primary, { drawSVG: '0% 0%', duration: 1, stagger: 1 })
+      .to(primary, { drawSVG: '100% 100%', duration: 1, stagger: 1 })
 
-        secondaryTL
-            .from(secondary, { drawSVG: '0% 100%', duration: 1, stagger: 1 })
-            .to(secondary, { drawSVG: '100% 100%', duration: 1, stagger: 1 })
+    secondaryTL
+      .from(secondary, { drawSVG: '0% 100%', duration: 1, stagger: 1 })
+      .to(secondary, { drawSVG: '100% 100%', duration: 1, stagger: 1 })
 
-        return () => {
-            primaryTL.clear()
-            secondaryTL.clear()
-        }
-    })
+    return () => {
+      primaryTL.clear()
+      secondaryTL.clear()
+    }
+  })
 
-    return (
-        <Root ref={ rootRef }>
-            <SVG viewBox='0 0 500 500'>
-                <path
-                    d='M 250 100 c -250 64, -300 100, -500 225 c -5 5, 0 5, 0 5'
-                    style={{
-                        fill: 'none',
-                        stroke: toLCH(COLORS.RED),
-                        strokeLinecap: 'round',
-                        strokeWidth: 5,
-                        transform: 'translate(250px, 250px) rotate(-1deg) translate(-245px, -250px)',
-                    }} />
-            </SVG>
-            <SVG viewBox='0 0 500 500'>
-                <path
-                    d='M 250 100 c -250 64, -300 100, -500 225 c -5 5, 0 5, 0 5'
-                    style={{
-                        fill: 'none',
-                        stroke: toLCH(COLORS.ORANGE),
-                        strokeLinecap: 'round',
-                        strokeWidth: 5,
-                        transform: 'translate(250px, 250px) rotate(0deg) translate(-250px, -250px)',
-                    }} />
-            </SVG>
-            <SVG viewBox='0 0 500 500'>
-                <path
-                    d='M 250 100 c -250 64, -300 100, -500 225 c -5 5, 0 5, 0 5'
-                    style={{
-                        fill: 'none',
-                        stroke: toLCH(COLORS.YELLOW),
-                        strokeLinecap: 'round',
-                        strokeWidth: 5,
-                        transform: 'translate(250px, 250px) rotate(2deg) translate(-255px, -250px)',
-                    }} />
-            </SVG>
-            <SVG viewBox='0 0 500 500'>
-                <path
-                    d='M 250 100 c -250 64, -300 100, -500 225 c -5 5, 0 5, 0 5'
-                    style={{
-                        fill: 'none',
-                        stroke: toLCH(COLORS.LIGHT_RED),
-                        strokeLinecap: 'round',
-                        strokeWidth: 5,
-                        transform: 'translate(250px, 250px) rotate(1deg) translate(-255px, -250px)',
-                    }} />
-            </SVG>
-            <SVG viewBox='0 0 500 500'>
-                <path
-                    d='M 250 100 c -250 64, -300 100, -500 225 c -5 5, 0 5, 0 5'
-                    style={{
-                        fill: 'none',
-                        stroke: toLCH(COLORS.PINK),
-                        strokeLinecap: 'round',
-                        strokeWidth: 5,
-                        transform: 'translate(250px, 250px) rotate(-2deg) translate(-245px, -250px)',
-                    }} />
-            </SVG>
-        </Root>
-    )
+  return (
+    <Root ref={ rootRef }>
+      <SVG viewBox='0 0 500 500'>
+        <path
+          d='M 250 100 c -250 64, -300 100, -500 225 c -5 5, 0 5, 0 5'
+          style={{
+            fill: 'none',
+            stroke: toLCH(COLORS.RED),
+            strokeLinecap: 'round',
+            strokeWidth: 5,
+            transform:
+              'translate(250px, 250px) rotate(-1deg) translate(-245px, -250px)',
+          }} />
+      </SVG>
+      <SVG viewBox='0 0 500 500'>
+        <path
+          d='M 250 100 c -250 64, -300 100, -500 225 c -5 5, 0 5, 0 5'
+          style={{
+            fill: 'none',
+            stroke: toLCH(COLORS.ORANGE),
+            strokeLinecap: 'round',
+            strokeWidth: 5,
+            transform:
+              'translate(250px, 250px) rotate(0deg) translate(-250px, -250px)',
+          }} />
+      </SVG>
+      <SVG viewBox='0 0 500 500'>
+        <path
+          d='M 250 100 c -250 64, -300 100, -500 225 c -5 5, 0 5, 0 5'
+          style={{
+            fill: 'none',
+            stroke: toLCH(COLORS.YELLOW),
+            strokeLinecap: 'round',
+            strokeWidth: 5,
+            transform:
+              'translate(250px, 250px) rotate(2deg) translate(-255px, -250px)',
+          }} />
+      </SVG>
+      <SVG viewBox='0 0 500 500'>
+        <path
+          d='M 250 100 c -250 64, -300 100, -500 225 c -5 5, 0 5, 0 5'
+          style={{
+            fill: 'none',
+            stroke: toLCH(COLORS.LIGHT_RED),
+            strokeLinecap: 'round',
+            strokeWidth: 5,
+            transform:
+              'translate(250px, 250px) rotate(1deg) translate(-255px, -250px)',
+          }} />
+      </SVG>
+      <SVG viewBox='0 0 500 500'>
+        <path
+          d='M 250 100 c -250 64, -300 100, -500 225 c -5 5, 0 5, 0 5'
+          style={{
+            fill: 'none',
+            stroke: toLCH(COLORS.PINK),
+            strokeLinecap: 'round',
+            strokeWidth: 5,
+            transform:
+              'translate(250px, 250px) rotate(-2deg) translate(-245px, -250px)',
+          }} />
+      </SVG>
+    </Root>
+  )
 }

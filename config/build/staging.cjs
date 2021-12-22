@@ -6,71 +6,71 @@ const TimeFixPlugin = require('time-fix-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
 
 client
-    .mode('production')
-    .devtool('source-map')
+  .mode('production')
+  .devtool('source-map')
 
 client.output
-    .chunkFilename('js/[name].[contenthash].js')
-    .filename('js/[name].[contenthash].js')
+  .chunkFilename('js/[name].[contenthash].js')
+  .filename('js/[name].[contenthash].js')
 
 client.module
-    .rule('babel')
-    .use('babel')
-    .tap(options =>
-        merge(options, {
-            presets: [
-                [
-                    '@babel/react',
-                    {
-                        development: false,
-                        runtime: 'automatic',
-                        useBuiltIns: true,
-                    },
-                ],
-            ],
-            plugins: [
-                [
-                    'styled-components',
-                    {
-                        displayName: false,
-                        fileName: false,
-                        ssr: false,
-                    },
-                ],
-            ],
-        }),
-    )
-    .end()
+  .rule('babel')
+  .use('babel')
+  .tap(options =>
+    merge(options, {
+      presets: [
+        [
+          '@babel/react',
+          {
+            development: false,
+            runtime: 'automatic',
+            useBuiltIns: true,
+          },
+        ],
+      ],
+      plugins: [
+        [
+          'styled-components',
+          {
+            displayName: false,
+            fileName: false,
+            ssr: false,
+          },
+        ],
+      ],
+    }),
+  )
+  .end()
 
 client
-    .plugin('define')
-    .tap(([options]) => [merge(options, { __DEV__: JSON.stringify(false) })])
+  .plugin('define')
+  .tap(([options]) => [merge(options, { __DEV__: JSON.stringify(false) })])
 
 client.plugin('html').use(HTMLPlugin, [
-    {
-        chunks: ['main'],
-        filename: 'index.html',
-        hash: true,
-        scriptLoading: 'module',
-        template: './bootstrap/index.html',
-    },
+  {
+    chunks: ['main'],
+    filename: 'index.html',
+    hash: true,
+    scriptLoading: 'module',
+    template: './bootstrap/index.html',
+  },
 ])
 
 client.optimization
-    .runtimeChunk('single')
-    .merge({
-        moduleIds: 'deterministic',
-    })
+  .runtimeChunk('single')
+  .merge({
+    moduleIds: 'deterministic',
+  })
 
 client.optimization
-    .minimizer('terser')
-    .use(TerserPlugin, [
-        {
-            extractComments: /^$/,
-            terserOptions: {
-                ecma: '2020',
-            },
-        },
-    ])
+  .minimizer('terser')
+  .use(TerserPlugin, [
+    {
+      extractComments: /^$/,
+      terserOptions: {
+        ecma: '2020',
+      },
+    },
+  ])
 
 module.exports = { client }
