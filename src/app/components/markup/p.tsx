@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { useHyphenator } from '~/app/hooks/ui'
 
 const BaseP = styled.p<{ $indent?: boolean }>`
-  ${ ({ theme }) => theme.typeface.primary({ fontSize: 4 }) }
+  ${ ({ theme }) => theme.typeface.primary({ fontSize: 5 }) }
 
   text-indent: ${ ({ $indent, theme }) =>
     $indent ? theme.measures.typography.textIndent : '0' };

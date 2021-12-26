@@ -69,11 +69,7 @@ export function Palimpsest ({ children }: Props): ReactElement {
         ref={ el => (container.current = el == null ? undefined : el) }
         animate={{ paddingTop: offset.top }}
         as={ motion.p }
-        initial={{ paddingTop: 0 }}
-        style={{
-          fontSize: '18px',
-          position: 'relative',
-        }}>
+        initial={{ paddingTop: 0 }}>
         <motion.span
           animate={{ marginLeft: offset.left }}
           initial={{ marginLeft: 0 }}>

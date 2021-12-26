@@ -19,8 +19,6 @@ export const Body = createGlobalStyle`
     margin: 0;
     padding: 0;
 
-    font-size: 62.5% !important;
-
     font-kerning: normal !important;
     font-variant-ligatures: common-ligatures !important;
     font-variant-numeric: oldstyle-nums proportional-nums !important;

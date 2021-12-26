@@ -18,7 +18,15 @@ const BASELINE = {
 
 const round = _.partial(_.round, _.partial.placeholder, 0)
 
-const getBaselineCorrection = ({ baseline, fontSize, lineHeight }) => {
+const getBaselineCorrection = ({
+  baseline,
+  fontSize,
+  lineHeight,
+}: {
+  baseline: number
+  fontSize: number
+  lineHeight: number
+}) => {
   const baselineFromBottom = (lineHeight - fontSize) / 2 + fontSize * baseline
   const correctedBaseline = baselineFromBottom
   const baselineDifference = correctedBaseline - baselineFromBottom
@@ -29,15 +37,25 @@ const getBaselineCorrection = ({ baseline, fontSize, lineHeight }) => {
   }
 }
 
+interface PlumberProps {
+  baseline: number
+  gridHeight?: string
+  fontSize?: number
+  leadingBottom?: number
+  leadingTop?: number
+  lineHeight?: number
+  useBaselineOrigin?: boolean
+}
+
 const getPlumber = ({
   baseline: B,
   fontSize: FONT_SIZE = 1,
   gridHeight: GRID_HEIGHT = '1rem',
   leadingBottom: LEADING_BOTTOM = 0,
   leadingTop: LEADING_TOP = 0,
-  lineHeight: LINE_HEIGHT,
+  lineHeight: LINE_HEIGHT = 5,
   useBaselineOrigin: USE_BASELINE_ORIGIN = false,
-}) => {
+}: PlumberProps) => {
   function plumber ({
     baseline = B,
     fontSize = FONT_SIZE,
@@ -46,7 +64,7 @@ const getPlumber = ({
     leadingTop = LEADING_TOP,
     lineHeight = LINE_HEIGHT,
     useBaselineOrigin = USE_BASELINE_ORIGIN,
-  } = {}) {
+  }: Partial<PlumberProps> = {}) {
     const [gridHeightValue, gridHeightUnit] = getValueAndUnit(gridHeight)
     const scaledFontSize = unitless(fontSize)
 
