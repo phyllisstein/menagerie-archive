@@ -1,4 +1,4 @@
-import { css } from 'styled-components'
+import { css, SimpleInterpolation } from 'styled-components'
 import { pxToRem } from 'styled-media-query'
 
 const breakpoints = pxToRem(
@@ -12,7 +12,13 @@ const breakpoints = pxToRem(
   16,
 )
 
-export const between = (start, end, style) => css`
+type Breakpoint = keyof typeof breakpoints
+
+export const between = (
+  start: Breakpoint,
+  end: Breakpoint,
+  style: SimpleInterpolation,
+) => css`
   @media screen and (min-width: ${ breakpoints[
     start
   ] }) and (max-width: ${ breakpoints[end] }) {
@@ -20,13 +26,19 @@ export const between = (start, end, style) => css`
   }
 `
 
-export const greaterThan = (breakpoint, style) => css`
+export const greaterThan = (
+  breakpoint: Breakpoint,
+  style: SimpleInterpolation,
+) => css`
   @media screen and (min-width: ${ breakpoints[breakpoint] }) {
     ${ style }
   }
 `
 
-export const lessThan = (breakpoint, style) => css`
+export const lessThan = (
+  breakpoint: Breakpoint,
+  style: SimpleInterpolation,
+) => css`
   @media screen and (max-width: ${ breakpoints[breakpoint] }) {
     ${ style }
   }
