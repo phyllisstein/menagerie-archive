@@ -1,4 +1,4 @@
-import { gsap } from 'gsap'
+import { gsap, ScrollTrigger } from '@gsap/shockingly/all'
 import { FunctionComponent, useEffect, useRef } from 'react'
 
 import { Layer, Root } from './swoop-styles'
@@ -11,6 +11,8 @@ import PurpleBack from '~/assets/swoops/purple/back.svg'
 import PurpleFore from '~/assets/swoops/purple/fore.svg'
 import PurpleGround from '~/assets/swoops/purple/ground.svg'
 import PurpleMid from '~/assets/swoops/purple/mid.svg'
+
+gsap.registerPlugin(ScrollTrigger)
 
 export const Hilly: FunctionComponent = () => {
   const wrapperRef = useRef<HTMLDivElement>()
