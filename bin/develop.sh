@@ -1,13 +1,11 @@
 #!/usr/bin/env bash
 
-echo "$PWD"
-
 args="$*"
 
 case $args in
   serve)
     echo "Starting development server"
-    pkill -f node
+    pkill -f "start:dev"
     yarn start:dev 1> /dev/stdout 2> /dev/stderr &
     disown
     ;;
