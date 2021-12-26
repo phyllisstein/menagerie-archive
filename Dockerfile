@@ -34,18 +34,19 @@ RUN cd /tmp/watchman-${WATCHMAN_VERSION} \
 RUN strip /usr/local/bin/watchman
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ App ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
-FROM node:17-alpine AS app
-
-WORKDIR /app
-
-RUN apk add --no-cache bash
+FROM node:16-alpine AS app
 
 COPY --from=watchman /usr/local/bin/watchman* /usr/local/bin/
 COPY --from=watchman /usr/local/var/run/watchman /usr/local/var/run/watchman
 
-COPY . ./
-RUN bin/develop.sh watchman
+RUN apk add --no-cache bash
 
 ENV YARN_CACHE_FOLDER=/var/cache/yarn
+WORKDIR /app
+
+COPY bin ./bin
+COPY config/watchman ./config/watchman
+
+RUN bin/develop.sh watchman
 
 CMD ["/usr/local/bin/watchman", "--foreground", "--log-level=1"]
