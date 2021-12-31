@@ -1,19 +1,27 @@
 #!/usr/bin/env node
 
+import * as R from 'ramda'
 import chroma from 'chroma-js'
+import DeltaE from 'delta-e'
 import { globby } from 'globby'
 import path from 'path'
 import PQueue from 'p-queue'
-import * as R from 'ramda'
 import sharp from 'sharp'
 
 // sharp.concurrency(1)
 
-const IN_SITU = {
+const toLABObject = c => {
+  const [L, A, B] = chroma(c).lab()
+  return { L, A, B }
+}
+
+const IN_SITU_RGB = {
   GREEN: chroma.rgb(106, 112, 75),
   ORANGE: chroma.rgb(133, 107, 75),
   YELLOW: chroma.rgb(134, 117, 73),
 }
+
+const IN_SITU_LAB = R.map(c => chroma.lab(c.lab()), IN_SITU_RGB)
 
 const AZINC = {
   GREEN: chroma.rgb(125, 148, 73),
@@ -21,10 +29,27 @@ const AZINC = {
   YELLOW: chroma.rgb(176, 159, 70),
 }
 
-const DELTA = {
+const AZINC_LAB = R.map(c => chroma.lab(c.lab()), AZINC)
+
+const DELTA_LAB = {
   GREEN: [12, -14, 21],
   ORANGE: [12, 4, 21],
   YELLOW: [16, -5, 27],
+}
+
+const DELTA_E = {
+  GREEN: DeltaE.getDeltaE00(
+    toLABObject(IN_SITU_LAB.GREEN),
+    toLABObject(AZINC_LAB.GREEN),
+  ),
+  ORANGE: DeltaE.getDeltaE00(
+    toLABObject(IN_SITU_LAB.ORANGE),
+    toLABObject(AZINC_LAB.ORANGE),
+  ),
+  YELLOW: DeltaE.getDeltaE00(
+    toLABObject(IN_SITU_LAB.YELLOW),
+    toLABObject(AZINC_LAB.YELLOW),
+  ),
 }
 
 export function refreshLightness(L) {
@@ -48,24 +73,38 @@ export function refreshB(b) {
 }
 
 function azinc(lab) {
-  let inSitu = chroma.lab(lab)
+  let inSitu = {
+    L: lab[0],
+    A: lab[1],
+    B: lab[2],
+  }
 
-  const sortedColors = Object.entries(IN_SITU).sort(
-    ([, color1], [, color2]) => {
-      const distance1 = chroma.distance(inSitu, color1)
-      const distance2 = chroma.distance(inSitu, color2)
-      return distance2 - distance1
+  const sortedColors = Object.entries(IN_SITU_LAB).sort(
+    ([name1, color1], [name2, color2]) => {
+      const color1Lab = {
+        L: color1.get('lab.l'),
+        A: color1.get('lab.a'),
+        B: color1.get('lab.b'),
+      }
+      const deltaE1 = DeltaE.getDeltaE00(color1Lab, inSitu)
+      const color2Lab = {
+        L: color2.get('lab.l'),
+        A: color2.get('lab.a'),
+        B: color2.get('lab.b'),
+      }
+      const deltaE2 = DeltaE.getDeltaE00(color2Lab, inSitu)
+      return deltaE1 - deltaE2
     },
   )
   const [colorName, _] = sortedColors.at(0)
 
-  if (chroma.distance(inSitu, IN_SITU[colorName]) <= 20) {
-    inSitu = inSitu.set('lab.l', `+${DELTA[colorName][0]}`)
-    inSitu = inSitu.set('lab.a', `+${DELTA[colorName][1]}`)
-    inSitu = inSitu.set('lab.b', `+${DELTA[colorName][2]}`)
+  if (DeltaE.getDeltaE00(toLABObject(IN_SITU_LAB[colorName]), inSitu) < 5) {
+    inSitu.L += DELTA_LAB[colorName][0]
+    inSitu.A += DELTA_LAB[colorName][1]
+    inSitu.B += DELTA_LAB[colorName][2]
   }
 
-  return inSitu
+  return chroma.lab(inSitu.L, inSitu.A, inSitu.B)
 }
 
 export async function processImage(imageFileName) {
