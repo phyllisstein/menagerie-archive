@@ -10,35 +10,22 @@ gsap.registerPlugin(DrawSVGPlugin, MorphSVGPlugin)
 
 export const Parasol: FunctionComponent = () => {
   const rootRef = useRef()
-  const primaryTLRef = useRef(gsap.timeline({ repeat: -1 }))
-  const secondaryTLRef = useRef(gsap.timeline({ repeat: -1 }))
-  const combinedTLRef = useRef(gsap.timeline({ repeat: -1 }))
 
   useEffect(() => {
-    const primaryTL = primaryTLRef.current
-    const secondaryTL = secondaryTLRef.current
-    const combinedTL = combinedTLRef.current
     const svg = rootRef.current
 
-    if (!primaryTL || !svg) return
+    if (!svg) return
 
     const svgChildren = gsap.utils.toArray('path', svg)
+
     if (!svgChildren.length) return
 
-    const [primary, secondary] = R.splitAt(5, svgChildren)
-
-    primaryTL
-      .from(primary, { drawSVG: '0% 0%', duration: 1, stagger: 1 })
-      .to(primary, { drawSVG: '100% 100%', duration: 1, stagger: 1 })
-
-    secondaryTL
-      .from(secondary, { drawSVG: '0% 100%', duration: 1, stagger: 1 })
-      .to(secondary, { drawSVG: '100% 100%', duration: 1, stagger: 1 })
-
-    return () => {
-      primaryTL.clear()
-      secondaryTL.clear()
-    }
+    gsap.to(svgChildren, {
+      drawSVG: '0% 0%',
+      repeat: -1,
+      stagger: 1,
+      yoyo: true,
+    })
   })
 
   return (
