@@ -20,7 +20,7 @@ const BABEL_OPTIONS = {
       bugfixes: true,
       modules: false,
       targets: {
-        browsers: 'last 2 major versions and not ie > 0 and safari > 13',
+        browsers: 'last 2 major versions and not ie > 0',
       },
     }],
     '@babel/typescript',
@@ -33,17 +33,9 @@ const BABEL_OPTIONS = {
       },
     }],
     '@babel/syntax-dynamic-import',
-    ['lodash', {
-      id: 'lodash-es',
-    }],
-    [
-      'ramda',
-      {
-        useES: true,
-      },
-    ],
+    'lodash',
+    'ramda',
     '@loadable/babel-plugin',
-    'macros',
   ],
 }
 
