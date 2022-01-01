@@ -1,4 +1,4 @@
-import { faDotCircle } from '@fortawesome/pro-duotone-svg-icons'
+import { faDotCircle } from '@fortawesome/pro-duotone-svg-icons/faDotCircle'
 import { FunctionComponent, PropsWithChildren, ReactElement } from 'react'
 
 import { DotIcon, Root } from './entry-styles'

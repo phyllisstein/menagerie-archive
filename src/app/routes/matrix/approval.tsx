@@ -1,4 +1,4 @@
-import { faHeartBroken } from '@fortawesome/pro-duotone-svg-icons'
+import { faHeartBroken } from '@fortawesome/pro-duotone-svg-icons/faHeartBroken'
 import { ReactElement, useCallback, useState } from 'react'
 import { Helmet } from 'react-helmet-async'
 
