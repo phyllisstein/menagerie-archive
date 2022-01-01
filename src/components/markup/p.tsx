@@ -1,7 +1,7 @@
 import { forwardRef, FunctionComponent, ReactHTML, Ref } from 'react'
 import styled from 'styled-components'
 
-import { useHyphenator } from '~/app/hooks/ui'
+import { useHyphenator } from '~/hooks/ui'
 
 const BaseP = styled.p<{ $indent?: boolean }>`
   ${ ({ theme }) => theme.typeface.primary({ fontSize: 5 }) }

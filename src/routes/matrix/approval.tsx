@@ -12,8 +12,6 @@ import {
   PulsingIcon,
 } from './approval-styles'
 
-import { Scene, Stage, Transform } from '~/app/components/stage'
-import { css } from '~/app/styles/theme/palette'
 import dylan from '~/assets/matrix/dylan.jpg'
 import gallo from '~/assets/matrix/gallo.png'
 import ghery from '~/assets/matrix/ghery.png'
@@ -29,6 +27,8 @@ import reynolds from '~/assets/matrix/reynolds.png'
 import trucker from '~/assets/matrix/trucker.png'
 import twenty from '~/assets/matrix/twenty.jpg'
 import washington from '~/assets/matrix/washington.jpg'
+import { Scene, Stage, Transform } from '~/components/stage'
+import { css } from '~/styles/theme/palette'
 
 export function ApprovalMatrix (): ReactElement {
   const [step, setStep] = useState(1)
