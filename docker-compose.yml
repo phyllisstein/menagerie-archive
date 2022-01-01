@@ -4,10 +4,11 @@ services:
   app:
     build:
       context: .
+    init: true
     environment:
       - VIRTUAL_HOST=menagerie.here
     expose:
-      - "9090"
+      - '9090'
     networks:
       - default
       - nginx-proxy
@@ -20,9 +21,6 @@ services:
         target: /app/node_modules
         volume:
           nocopy: true
-      - type: volume
-        source: dot_yarn
-        target: /app/.yarn
       - type: volume
         source: yarn_cache
         target: /var/cache/yarn

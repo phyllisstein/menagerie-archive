@@ -1,11 +1,13 @@
 #!/usr/bin/env bash
 
+set -euxo pipefail
+
 args="$*"
 
 case $args in
   serve)
     echo "Starting development server"
-    pkill -f "start:dev"
+    pkill -f "start:dev" || true
     yarn start:dev 1> /dev/stdout 2> /dev/stderr &
     disown
     ;;
@@ -21,7 +23,7 @@ case $args in
 
   yarn)
     echo "Running yarn install..."
-    [[ -e "/run/secrets/npm_credentials" ]] || echo "No NPM credentials" && exit 1
+    [[ -e "/run/secrets/npm_credentials" ]] || { echo "No NPM credentials" && exit 1; }
     source /run/secrets/npm_credentials && export FONT_AWESOME_NPM_TOKEN GSAP_NPM_TOKEN
     yarn install
     ;;
