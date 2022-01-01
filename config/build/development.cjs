@@ -30,7 +30,6 @@ client.module
               ? '@welldone-software/why-did-you-render'
               : 'react',
             runtime: 'automatic',
-            useBuiltIns: true,
           },
         ],
       ],

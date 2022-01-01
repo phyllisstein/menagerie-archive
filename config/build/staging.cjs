@@ -24,7 +24,6 @@ client.module
           {
             development: false,
             runtime: 'automatic',
-            useBuiltIns: true,
           },
         ],
       ],
