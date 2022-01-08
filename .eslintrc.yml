@@ -48,6 +48,8 @@ rules:
   '@typescript-eslint/no-extra-semi': warn
   '@typescript-eslint/no-inferrable-types': warn
   '@typescript-eslint/no-misused-promises': 'off'
+  '@typescript-eslint/no-use-before-define': warn
+  '@typescript-eslint/no-useless-constructor': 'warn'
   '@typescript-eslint/no-unused-expressions':
     - warn
     - allowShortCircuit: true
@@ -168,6 +170,8 @@ rules:
   no-trailing-spaces: 'off'
   no-unused-expressions: 'off' # @typescript-eslint/no-unused-expressions
   no-unused-vars: 'off' # @typescript-eslint/no-unused-vars
+  no-use-before-define: 'off' # @typescript-eslint/no-use-before-define
+  no-useless-constructor: 'off' # @typescript-eslint/no-useless-constructor
   no-var: warn
   object-curly-spacing:
     - warn
