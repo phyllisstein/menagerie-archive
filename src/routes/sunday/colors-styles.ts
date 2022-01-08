@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 
+import { COLORS_P3, COLORS_RGB } from './palette'
+
 export const Bar = styled.div`
   position: relative;
 
@@ -8,7 +10,21 @@ export const Bar = styled.div`
   align-items: center;
   justify-content: center;
   width: 512px;
-  height: 64px;
+  height: 128;
+`
+
+interface CircleProps {
+  $color: keyof typeof COLORS_P3
+}
+
+export const Ellipse = styled.ellipse<CircleProps>`
+  fill: ${ props => COLORS_RGB[props.$color] };
+  fill: ${ props => COLORS_P3[props.$color] };
+`
+
+export const Circle = styled.circle<CircleProps>`
+  fill: ${ props => COLORS_RGB[props.$color] };
+  fill: ${ props => COLORS_P3[props.$color] };
 `
 
 export const Root = styled.section`
