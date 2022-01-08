@@ -2,8 +2,7 @@ import gsap, { DrawSVGPlugin, MorphSVGPlugin } from '@gsap/shockingly/all'
 import R from 'ramda'
 import { FunctionComponent, useEffect, useRef } from 'react'
 
-import { toLCH } from './color-transformers'
-import { COLORS } from './palette'
+import { COLORS_P3 } from './palette'
 import { Root, SVG } from './parasol-styles'
 
 gsap.registerPlugin(DrawSVGPlugin, MorphSVGPlugin)
@@ -35,11 +34,10 @@ export const Parasol: FunctionComponent = () => {
           d='M 250 100 c -250 64, -300 100, -500 225 c -5 5, 0 5, 0 5'
           style={{
             fill: 'none',
-            stroke: toLCH(COLORS.RED),
+            stroke: COLORS_P3.RED,
             strokeLinecap: 'round',
             strokeWidth: 5,
-            transform:
-              'translate(250px, 250px) rotate(-1deg) translate(-245px, -250px)',
+            transform: 'translate(250px, 250px) rotate(-1deg) translate(-245px, -250px)',
           }} />
       </SVG>
       <SVG viewBox='0 0 500 500'>
@@ -47,11 +45,10 @@ export const Parasol: FunctionComponent = () => {
           d='M 250 100 c -250 64, -300 100, -500 225 c -5 5, 0 5, 0 5'
           style={{
             fill: 'none',
-            stroke: toLCH(COLORS.ORANGE),
+            stroke: COLORS_P3.ORANGE,
             strokeLinecap: 'round',
             strokeWidth: 5,
-            transform:
-              'translate(250px, 250px) rotate(0deg) translate(-250px, -250px)',
+            transform: 'translate(250px, 250px) rotate(0deg) translate(-250px, -250px)',
           }} />
       </SVG>
       <SVG viewBox='0 0 500 500'>
@@ -59,11 +56,10 @@ export const Parasol: FunctionComponent = () => {
           d='M 250 100 c -250 64, -300 100, -500 225 c -5 5, 0 5, 0 5'
           style={{
             fill: 'none',
-            stroke: toLCH(COLORS.YELLOW),
+            stroke: COLORS_P3.YELLOW,
             strokeLinecap: 'round',
             strokeWidth: 5,
-            transform:
-              'translate(250px, 250px) rotate(2deg) translate(-255px, -250px)',
+            transform: 'translate(250px, 250px) rotate(2deg) translate(-255px, -250px)',
           }} />
       </SVG>
       <SVG viewBox='0 0 500 500'>
@@ -71,11 +67,10 @@ export const Parasol: FunctionComponent = () => {
           d='M 250 100 c -250 64, -300 100, -500 225 c -5 5, 0 5, 0 5'
           style={{
             fill: 'none',
-            stroke: toLCH(COLORS.LIGHT_RED),
+            stroke: COLORS_P3.LIGHT_RED,
             strokeLinecap: 'round',
             strokeWidth: 5,
-            transform:
-              'translate(250px, 250px) rotate(1deg) translate(-255px, -250px)',
+            transform: 'translate(250px, 250px) rotate(1deg) translate(-255px, -250px)',
           }} />
       </SVG>
       <SVG viewBox='0 0 500 500'>
@@ -83,11 +78,10 @@ export const Parasol: FunctionComponent = () => {
           d='M 250 100 c -250 64, -300 100, -500 225 c -5 5, 0 5, 0 5'
           style={{
             fill: 'none',
-            stroke: toLCH(COLORS.PINK),
+            stroke: COLORS_P3.PINK,
             strokeLinecap: 'round',
             strokeWidth: 5,
-            transform:
-              'translate(250px, 250px) rotate(-2deg) translate(-245px, -250px)',
+            transform: 'translate(250px, 250px) rotate(-2deg) translate(-245px, -250px)',
           }} />
       </SVG>
     </Root>
