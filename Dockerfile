@@ -47,6 +47,7 @@ WORKDIR /app
 COPY bin ./bin
 COPY config/watchman ./config/watchman
 
-RUN bin/develop.sh watchman
+RUN /usr/local/bin/watchman watch-project /app \
+  && ./bin/develop.sh watchman
 
 CMD ["/usr/local/bin/watchman", "--foreground", "--log-level=1"]

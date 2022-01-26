@@ -6,6 +6,7 @@
     "source.fixAll.eslint",
     "source.fixAll.stylelint"
   ],
+  "eslint.enable": true,
   "stylelint.enable": true,
   "stylelint.validate": [
     "css",
