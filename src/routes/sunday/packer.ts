@@ -7,11 +7,7 @@ export class Packer {
 
   constructor (private maxWidth: number, private maxHeight: number) {}
 
-  private findFreeSpace (
-    node: Node,
-    width: number,
-    height: number,
-  ): Node | null {
+  private findFreeSpace (node: Node, width: number, height: number): Node {
     if (node.used) {
       return (
         this.findFreeSpace(node.right, width, height) ||
@@ -23,15 +19,64 @@ export class Packer {
       return node
     }
   }
+}
 
-  private growNode (width: number, height: number): Node {
-    const canGrowDown = width <= this.box.width
-    const canGrowRight = height <= this.box.height
+export class Node {
+  declare down?: Node
+  declare right?: Node
+
+  constructor (
+    public width: number = 0,
+    public height: number = 0,
+    public x: number = 0,
+    public y: number = 0,
+  ) {}
+
+  get empty (): boolean {
+    return this.down === undefined && this.right === undefined
+  }
+
+  copy (): Node {
+    const nextNode = new Node(this.x, this.y)
+
+    nextNode.width = this.width
+    nextNode.height = this.height
+    nextNode.down = this.down?.copy()
+    nextNode.right = this.right?.copy()
+
+    return nextNode
+  }
+
+  packChild (node: Node): Node {
+    if (this.empty && node.width <= this.width && node.height <= this.height) {
+      return this
+    }
+  }
+
+  fit (node: Node): Node | null {
+    if (this.right?.fitChild(node)) {
+      return this.right.split(node)
+    }
+
+    if (this.down?.fit(node)) {
+      return this.down
+    }
+
+    return this.split(node.width, node.height)
+  }
+
+  private fitChild (node: Node): boolean {
+    return node.width <= this.width && node.height <= this.height
+  }
+
+  growToFit (node: Node): Node {
+    const canGrowDown = node.width <= this.width
+    const canGrowRight = node.height <= this.height
 
     const shouldGrowRight =
-      canGrowRight && this.box.height >= this.box.width + width
+      canGrowRight && this.height >= this.width + node.width
     const shouldGrowDown =
-      canGrowDown && this.box.width >= this.box.height + height
+      canGrowDown && this.width >= this.height + node.height
 
     if (shouldGrowRight) {
       return this.growRight(width, height)
@@ -49,60 +94,34 @@ export class Packer {
       return this.growDown(width, height)
     }
 
-    return null
+    return this
   }
 
-  private growRight (width: number, height: number): Node {
-    const nextBox = new Node()
+  private growDown (node: Node): Node {
+    this.down = new Node(0, this.height, this.width, node.height)
+    this.right = this.copy()
 
-    nextBox.x = 0
-    nextBox.y = 0
+    this.x = 0
+    this.y = 0
+    this.height = this.height + node.height
 
-    nextBox.width = width + this.box.width
-    nextBox.height = this.box.height
-
-    nextBox.down = this.box.copy()
-    nextBox.right = new Node(this.box.width, 0, width, this.box.height)
-
-    this.box = nextBox
+    return this.split()
   }
 
-  private growDown (width: number, height: number): Node {
-    const nextBox = new Node()
-
-    nextBox.x = 0
-    nextBox.y = 0
-    nextBox.width = this.box.width
-    nextBox.height = height + this.box.height
-
-    nextBox.down = new Node(0, this.box.height, this.box.width, height)
-    nextBox.right = this.box.copy()
-
-    this.box = nextBox
-  }
-}
-
-export class Node {
-  declare down: Node
-  declare right: Node
-
-  constructor (
-    public x: number = 0,
-    public y: number = 0,
-    public width: number = 0,
-    public height: number = 0,
-    public used: boolean = false,
-  ) {}
-
-  copy (): Node {
-    return new Node(this.x, this.y, this.width, this.height, this.used)
+  private growRight (node: Node): Node {
+    this.right = new Node(this.width, 0, width, this.height)
+    this.down = this.copy()
+    return this.split(width, height)
   }
 
-  split (width: number, height: number): Node {
-    this.used = true
-
+  private split (width: number, height: number): Node {
     this.right = new Node(this.x + width, this.y, this.width - width, height)
-    this.down = new Node(this.x, this.y + height, width, this.height - height)
+    this.down = new Node(
+      this.x,
+      this.y + height,
+      this.width,
+      this.height - height,
+    )
 
     return this
   }
