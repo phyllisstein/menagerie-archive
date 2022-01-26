@@ -4,28 +4,44 @@ set -euxo pipefail
 
 args="$*"
 
+restart_server() {
+  echo "Starting development server"
+
+  pkill -f "start:dev" || true
+
+  /usr/local/bin/yarn start:dev &
+  disown
+}
+
+configure_watches() {
+  echo "Configuring watches..."
+
+  for j in config/watchman/*.json; do
+    echo "Watching $j"
+    /usr/local/bin/watchman -j < "$j"
+  done
+}
+
+yarn_install() {
+  echo "Running yarn install..."
+
+  [[ -e "/run/secrets/npm_credentials" ]] || { echo "No NPM credentials" && exit 1; }
+  source /run/secrets/npm_credentials && export FONT_AWESOME_NPM_TOKEN GSAP_NPM_TOKEN
+  /usr/local/bin/yarn install
+}
+
 case $args in
   serve)
-    echo "Starting development server"
-    pkill -f "start:dev" || true
-    yarn start:dev 1> /dev/stdout 2> /dev/stderr &
-    disown
+    restart_server
     ;;
 
   watchman)
-    echo "Configuring watches..."
-
-    for j in config/watchman/*.json; do
-      echo "Watching $j"
-      watchman -j < "$j"
-    done
+    configure_watches
     ;;
 
   yarn)
-    echo "Running yarn install..."
-    [[ -e "/run/secrets/npm_credentials" ]] || { echo "No NPM credentials" && exit 1; }
-    source /run/secrets/npm_credentials && export FONT_AWESOME_NPM_TOKEN GSAP_NPM_TOKEN
-    yarn install
+    yarn_install
+    restart_server
     ;;
 
   *)

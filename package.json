@@ -19,7 +19,7 @@
     "clean": "concurrently \"yarn:clean:*\"",
     "clean:build": "del build dist",
     "clean:cache": "del node_modules/.cache",
-    "start:dev": "node app.mjs"
+    "start:dev": "node app.cjs"
   },
   "dependencies": {
     "@apollo/react-hooks": "^4.0.0",

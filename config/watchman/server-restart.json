@@ -7,22 +7,12 @@
       "anyof",
       [
         "name",
-        "app.mjs",
+        "app.cjs",
         "wholename"
       ],
       [
         "name",
         "webpack.config.cjs",
-        "wholename"
-      ],
-      [
-        "name",
-        "package.json",
-        "wholename"
-      ],
-      [
-        "name",
-        "yarn.lock",
         "wholename"
       ],
       [
