@@ -1,12 +1,13 @@
-const Config = require('webpack-chain')
-const CopyPlugin = require('copy-webpack-plugin')
-const { fileURLToPath } = require('url')
-const LoadablePlugin = require('@loadable/webpack-plugin')
-const merge = require('merge-deep')
-const nodeExternals = require('webpack-node-externals')
 const path = require('path')
+const { fileURLToPath } = require('url')
+
+const LoadablePlugin = require('@loadable/webpack-plugin')
+const CopyPlugin = require('copy-webpack-plugin')
+const merge = require('merge-deep')
 const PNPPlugin = require('pnp-webpack-plugin')
 const webpack = require('webpack')
+const Config = require('webpack-chain')
+const nodeExternals = require('webpack-node-externals')
 
 const client = new Config()
 const server = new Config()
@@ -15,16 +16,6 @@ const BABEL_OPTIONS = {
   babelrc: false,
   cacheDirectory: true,
   ignore: [/node_modules/],
-  presets: [
-    ['@babel/env', {
-      bugfixes: true,
-      modules: false,
-      targets: {
-        browsers: 'last 2 major versions and not ie > 0',
-      },
-    }],
-    '@babel/typescript',
-  ],
   plugins: [
     ['@babel/transform-runtime', {
       corejs: {
@@ -36,6 +27,18 @@ const BABEL_OPTIONS = {
     'lodash',
     'ramda',
     '@loadable/babel-plugin',
+  ],
+  presets: [
+    ['@babel/env', {
+      bugfixes: true,
+      modules: false,
+      targets: {
+        browsers: 'last 2 major versions and not ie > 0',
+      },
+    }],
+    ['@babel/typescript', {
+      allowDeclareFields: true,
+    }],
   ],
 }
 
@@ -132,8 +135,8 @@ client.resolve
   .add('.json')
   .end()
   .alias
-    .set('~', path.resolve('./src'))
-    .end()
+  .set('~', path.resolve('./src'))
+  .end()
 
 client.plugin('define').use(webpack.DefinePlugin, [
   {
@@ -257,8 +260,8 @@ server.resolve
   .add('.json')
   .end()
   .alias
-    .set('~', path.resolve('src'))
-    .end()
+  .set('~', path.resolve('src'))
+  .end()
 
 server.plugin('define').use(webpack.DefinePlugin, [
   {
