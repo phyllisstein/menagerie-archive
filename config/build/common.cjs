@@ -174,13 +174,6 @@ client.cache({
   type: 'filesystem',
 })
 
-client
-  .merge({
-    experiments: {
-      outputModule: true,
-    },
-  })
-
 server.name('server').context(path.resolve('./src')).target('node')
 
 server.entry('main').add('./bootstrap/server')
@@ -289,12 +282,5 @@ server.cache({
   },
   type: 'filesystem',
 })
-
-server
-  .merge({
-    experiments: {
-      outputModule: true,
-    },
-  })
 
 module.exports = { client, server }

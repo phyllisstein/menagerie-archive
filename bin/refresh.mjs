@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import * as R from 'ramda'
+import R from 'ramda'
 import chroma from 'chroma-js'
 import DeltaE from 'delta-e'
 import { globby } from 'globby'
