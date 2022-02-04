@@ -75,8 +75,7 @@
     "p-queue": "^7.1.0",
     "p-reduce": "^3.0.0",
     "p-wait-for": "^4.1.0",
-    "polished": "^4.1.3",
-    "ramda": "^0.27.2",
+    "ramda": "0.27.2",
     "react": "beta",
     "react-dom": "beta",
     "react-helmet-async": "^1.2.2",
@@ -234,10 +233,16 @@
     "webpack-hot-middleware": "^2.25.1",
     "webpack-node-externals": "^3.0.0"
   },
+  "resolutions": {
+    "ramda": "0.27.2"
+  },
   "dependenciesMeta": {
     "@react-spring/core": {
       "built": false
     }
   },
-  "packageManager": "yarn@3.1.1"
+  "packageManager": "yarn@3.1.1",
+  "resolutions": {
+    "ramda": "^0.27.2"
+  }
 }
