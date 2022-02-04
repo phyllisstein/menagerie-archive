@@ -18,7 +18,7 @@ configure_watches() {
 
   for j in config/watchman/*.json; do
     echo "Watching $j"
-    /usr/local/bin/watchman -j < "$j"
+    /usr/local/bin/watchman -j <"$j"
   done
 }
 
@@ -31,20 +31,20 @@ yarn_install() {
 }
 
 case $args in
-  serve)
-    restart_server
-    ;;
+serve)
+  restart_server
+  ;;
 
-  watchman)
-    configure_watches
-    ;;
+watchman)
+  configure_watches
+  ;;
 
-  yarn)
-    yarn_install
-    restart_server
-    ;;
+yarn)
+  yarn_install
+  restart_server
+  ;;
 
-  *)
-    echo "Unknown command: $args"
-    ;;
+*)
+  echo "Unknown command: $args"
+  ;;
 esac

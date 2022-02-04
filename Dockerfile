@@ -41,13 +41,14 @@ COPY --from=watchman /usr/local/var/run/watchman /usr/local/var/run/watchman
 
 RUN apk add --no-cache bash
 
-ENV YARN_CACHE_FOLDER=/var/cache/yarn
+ENV YARN_CACHE_FOLDER=/var/cache/yarn \
+  YARN_CHECKSUM_BEHAVIOR=ignore \
+  PATH="/app/node_modules/.bin:$PATH"
 WORKDIR /app
 
 COPY bin ./bin
 COPY config/watchman ./config/watchman
 
-RUN /usr/local/bin/watchman watch-project /app \
-  && ./bin/develop.sh watchman
+RUN /usr/local/bin/watchman watch-project /app
 
 CMD ["/usr/local/bin/watchman", "--foreground", "--log-level=1"]
