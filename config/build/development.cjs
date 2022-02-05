@@ -1,10 +1,12 @@
-const { client } = require('./common.cjs')
+const path = require('path')
+
+const ReactRefreshPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
 const HTMLPlugin = require('html-webpack-plugin')
 const merge = require('merge-deep')
-const path = require('path')
 const TimeFixPlugin = require('time-fix-plugin')
-const ReactRefreshPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
 const webpack = require('webpack')
+
+const { client } = require('./common.cjs')
 
 const enableWDYR = process.env.WHY_DID_YOU_RENDER != null
 
@@ -13,14 +15,25 @@ client
   .devtool('source-map')
 
 client.output
-  .chunkFilename('js/[name].js?[chunkhash]')
-  .filename('js/[name].js?[chunkhash]')
+  .chunkFilename('js/[name].[chunkhash].js')
+  .filename('js/[name].[chunkhash].js')
 
 client.module
   .rule('babel')
   .use('babel')
   .tap(options =>
     merge(options, {
+      plugins: [
+        'react-refresh/babel',
+        [
+          'styled-components',
+          {
+            displayName: true,
+            fileName: true,
+            ssr: false,
+          },
+        ],
+      ],
       presets: [
         [
           '@babel/react',
@@ -30,17 +43,6 @@ client.module
               ? '@welldone-software/why-did-you-render'
               : 'react',
             runtime: 'automatic',
-          },
-        ],
-      ],
-      plugins: [
-        'react-refresh/babel',
-        [
-          'styled-components',
-          {
-            displayName: true,
-            fileName: true,
-            ssr: false,
           },
         ],
       ],
