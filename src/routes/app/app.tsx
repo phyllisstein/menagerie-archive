@@ -9,8 +9,11 @@ import avatarTW from '~/assets/avatar-tw.jpg'
 import faviconPNG from '~/assets/favicon.png'
 import { AdobeClean, AdobeCleanSerif, MillerDisplay } from '~/assets/fonts'
 import MatrixRoutes from '~/routes/matrix'
-import SandboxRoutes from '~/routes/sandbox'
+import PalimpsestRoutes from '~/routes/palimpsest'
+import ParallaxRoutes from '~/routes/parralax'
 import SundayRoutes from '~/routes/sunday'
+import SwoopRoutes from '~/routes/swoop'
+import VergeRoutes from '~/routes/verge'
 import { Body, Reboot } from '~/styles/global'
 import { theme } from '~/styles/theme'
 
@@ -69,8 +72,11 @@ export function App (): ReactElement {
           <Suspense fallback='...'>
             <Routes>
               <Route element={ <MatrixRoutes /> } path='matrix/*' />
-              <Route element={ <SandboxRoutes /> } path='sandbox/*' />
+              <Route element={ <PalimpsestRoutes /> } path='palimpsest/*' />
+              <Route element={ <ParallaxRoutes /> } path='parallax/*' />
               <Route element={ <SundayRoutes /> } path='sunday/*' />
+              <Route element={ <SwoopRoutes /> } path='swoop/*' />
+              <Route element={ <VergeRoutes /> } path='verge/*' />
             </Routes>
           </Suspense>
         </ThemeProvider>
