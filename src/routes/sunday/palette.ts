@@ -143,3 +143,77 @@ export const COLORS_P3 = {
    */
   YELLOW: 'color(display-p3 0.7364 0.5987 0)',
 }
+
+export const COLORS_LCH = {
+  /**
+   * lch(25% 60 285deg)
+   * rgb(0% 21.67% 55.88%)
+   * color(display-p3 0 0.2113 0.567)
+   */
+  BLUE: chroma.lch(25, 60, 285),
+
+  /**
+   * lch(30% 100 60deg)
+   * rgb(43.66% 21.31% 0%)
+   * color(display-p3 0.4284 0.2108 0)
+   */
+  BROWN: chroma.lch(30, 100, 60),
+
+  /**
+   * lch(25% 100 140deg)
+   * rgb(0% 27.43% 6.29%)
+   * color(display-p3 0 0.2797 0.0249)
+   */
+  GREEN: chroma.lch(25, 100, 140),
+
+  /**
+   * lch(98% 5 80deg)
+   * rgb(89.99% 95.15% 100%)
+   * color(display-p3 0.9928 0.975 0.9435)
+   */
+  LEAD_WHITE: chroma.lch(98, 5, 80),
+
+  /**
+   * lch(65% 100 285deg)
+   * rgb(73.55% 0% 15.3%)
+   * color(display-p3 0.7087 0 0.1581)
+   */
+  LIGHT_BLUE: chroma.lch(65, 100, 285),
+
+  /**
+   * lch(40% 100 40deg)
+   * rgb(82.84% 0% 2.09%)
+   * color(display-p3 0.7117 0 0.0672)
+   */
+  LIGHT_RED: chroma.lch(40, 100, 40),
+
+  /**
+   * lch(50% 90 60deg)
+   * rgb(71.78% 36.54% 0%)
+   * color(display-p3 0.7215 0.3475 0.0121)
+   */
+  ORANGE: chroma.lch(50, 90, 60),
+
+  /**
+   * lch(75% 100 10deg)
+   * rgb(100% 60.75% 68.15%)
+   * color(display-p3 0.993 0.5968 0.6746)
+   */
+  PINK: chroma.lch(75, 100, 10),
+
+  /**
+   * lch(35% 100 45deg)
+   * rgb(60.75% 13.8% 0%)
+   * color(display-p3 0.6037 0.1014 0)
+   */
+  RED: chroma.lch(35, 100, 45),
+
+  /**
+   * lch(65% 100 85deg)
+   * rgb(74.41% 59.75% 0%)
+   * color(display-p3 0.7364 0.5987 0)
+   */
+  YELLOW: chroma.lch(65, 100, 85),
+}
+
+export type ColorNames = keyof typeof COLORS_P3
