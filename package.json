@@ -76,7 +76,7 @@
     "p-reduce": "^3.0.0",
     "p-wait-for": "^4.1.0",
     "polished": "^4.1.4",
-    "ramda": "0.27.2",
+    "ramda": "0.26.1",
     "react": "beta",
     "react-dom": "beta",
     "react-helmet-async": "^1.2.2",
@@ -235,7 +235,7 @@
     "webpack-node-externals": "^3.0.0"
   },
   "resolutions": {
-    "ramda": "0.27.2"
+    "ramda": "0.26.1"
   },
   "dependenciesMeta": {
     "@react-spring/core": {
