@@ -26,7 +26,7 @@ plugins:
   - sort-destructure-keys
   - sort-keys-fix
 settings:
-  import/internal-regex: '^~\/'
+  import/internal-regex: '^(assets|bootstrap|components|hooks|routes|styles)/'
   react:
     version: '17'
 
@@ -210,4 +210,5 @@ overrides:
       sort-vars: 'off'
   - files: '**/*.js'
     rules:
+      '@typescript-eslint/indent': 'off'
       '@typescript-eslint/no-var-requires': 'off'

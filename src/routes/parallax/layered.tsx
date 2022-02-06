@@ -5,11 +5,11 @@ import { useGesture } from 'react-use-gesture'
 
 import { Layer, Root, StoryWrapper } from './layered-styles'
 
-import Background from '~/assets/sunny/background.svg'
-import Green from '~/assets/sunny/green.svg'
-import Orange from '~/assets/sunny/orange.svg'
-import Sun from '~/assets/sunny/sun.svg'
-import Yellow from '~/assets/sunny/yellow.svg'
+import Background from 'assets/sunny/background.svg'
+import Green from 'assets/sunny/green.svg'
+import Orange from 'assets/sunny/orange.svg'
+import Sun from 'assets/sunny/sun.svg'
+import Yellow from 'assets/sunny/yellow.svg'
 
 export const Layered: FunctionComponent = () => {
   const wrapperRef = useRef<HTMLDivElement>(null)

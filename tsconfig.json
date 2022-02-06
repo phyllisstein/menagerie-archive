@@ -19,9 +19,10 @@
     "moduleResolution": "node",
     "noEmit": true,
     "paths": {
-      "~/*": [
+      "*": [
         "./src/*",
-        "./vendor/*"
+        "./vendor/*",
+        "*"
       ]
     },
     "plugins": [
@@ -42,6 +43,9 @@
     "./src/**/*.ts",
     "./src/**/*.tsx",
     "./src/**/*.d.ts",
+    "./vendor/**/*.ts",
+    "./vendor/**/*.tsx",
+    "./vendor/**/*.d.ts",
     "./global.d.ts",
     "./gsap.d.ts"
   ],

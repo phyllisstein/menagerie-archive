@@ -2,8 +2,8 @@ import { ReactElement } from 'react'
 
 import { Original, Replacement } from './palimpsest-styles'
 
-import { P } from '~/components/markup'
-import { Palimpsest } from '~/components/palimpsest'
+import { P } from 'components/markup'
+import { Palimpsest } from 'components/palimpsest'
 
 export function PalimpsestRoute (): ReactElement {
   return (
