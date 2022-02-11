@@ -9,6 +9,7 @@ export const BlueSwoops: FunctionComponent<Props> = () => {
       xmlns='http://www.w3.org/2000/svg'
       xmlnsXlink='http://www.w3.org/1999/xlink'>
       <defs>
+        <Layer />
         <clipPath
           id='b79654d2-8762-44af-88be-966d2d7e2902'
           transform='translate(99.4 40.3)'>

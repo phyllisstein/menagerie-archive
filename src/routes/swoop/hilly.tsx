@@ -1,4 +1,5 @@
 import { gsap, ScrollTrigger } from '@gsap/shockingly/all'
+import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
 import { FunctionComponent, useEffect, useRef } from 'react'
 
 import { Layer, Root } from './swoop-styles'
@@ -23,37 +24,15 @@ export const Hilly: FunctionComponent = () => {
 
     if (!wrapper) return
 
-    const localTL = (tl.current ??= gsap.timeline({
-      scrollTrigger: {
-        end: () => `+=${ 2 * window.innerWidth }`,
-        pin: true,
-        scrub: 1,
-        start: 'center center',
-        trigger: wrapper,
-      },
-    }))
-
-    const layerStarts = [0, 0.5, 0.66, 0.8, 0.5, 0.66, 0.8]
-    Array.from(wrapper.children).forEach((layer, index) => {
-      localTL.fromTo(
-        layer,
-        {
-          xPercent: layerStarts[index] * 100,
-        },
-        {
-          xPercent: `+=${ layerStarts[index] * -100 }`,
-        },
-        '<',
-      )
-    })
+    disableBodyScroll(wrapper)
 
     return () => {
-      localTL.kill()
+      enableBodyScroll(wrapper)
     }
   }, [])
 
   return (
-    <Root ref={ wrapperRef }>
+    <div ref={ wrapperRef }>
       <Layer>
         <PurpleGround
           height='100%'
@@ -96,6 +75,6 @@ export const Hilly: FunctionComponent = () => {
           preserveAspectRatio='xMinYMin'
           width={ window.innerWidth } />
       </Layer>
-    </Root>
+    </div>
   )
 }

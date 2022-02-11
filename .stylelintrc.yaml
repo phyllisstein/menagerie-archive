@@ -1,7 +1,6 @@
 customSyntax: postcss-syntax
 extends:
   - stylelint-config-recommended
-  - stylelint-config-standard
   - stylelint-config-styled-components
 plugins:
   - stylelint-config-rational-order/plugin

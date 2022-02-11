@@ -14,7 +14,4 @@ export const Root = styled.div`
 
   width: 100vw;
   height: 100vh;
-  overflow-x: hidden;
-
-  transform: translateX(50%);
 `
