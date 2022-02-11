@@ -13,7 +13,6 @@ import PalimpsestRoutes from 'routes/palimpsest'
 import ParallaxRoutes from 'routes/parallax'
 import SundayRoutes from 'routes/sunday'
 import SwoopRoutes from 'routes/swoop'
-import VergeRoutes from 'routes/verge'
 import { Body, Reboot } from 'styles/global'
 import { theme } from 'styles/theme'
 
@@ -76,7 +75,6 @@ export function App (): ReactElement {
               <Route element={ <ParallaxRoutes /> } path='parallax/*' />
               <Route element={ <SundayRoutes /> } path='sunday/*' />
               <Route element={ <SwoopRoutes /> } path='swoop/*' />
-              <Route element={ <VergeRoutes /> } path='verge/*' />
             </Routes>
           </Suspense>
         </ThemeProvider>
