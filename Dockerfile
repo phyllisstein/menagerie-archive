@@ -51,4 +51,4 @@ COPY config/watchman ./config/watchman
 
 RUN /usr/local/bin/watchman watch-project /app
 
-CMD ["/usr/local/bin/watchman", "--foreground", "--log-level=1"]
+CMD ["./bin/develop.sh", "watch"]

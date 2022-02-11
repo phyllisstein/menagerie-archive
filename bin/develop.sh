@@ -30,9 +30,19 @@ yarn_install() {
   /usr/local/bin/yarn install
 }
 
+spawn_watchman() {
+  echo "Spawning watchman..."
+
+  exec /usr/local/bin/watchman --persistent watch-project /app
+}
+
 case $args in
 serve)
   restart_server
+  ;;
+
+watch)
+  spawn_watchman
   ;;
 
 watchman)
