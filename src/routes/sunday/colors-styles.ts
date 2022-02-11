@@ -10,7 +10,7 @@ export const Bar = styled.div`
   align-items: center;
   justify-content: center;
   width: 512px;
-  height: 128;
+  height: 128px;
 `
 
 interface CircleProps {
