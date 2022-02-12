@@ -9684,6 +9684,7 @@ __metadata:
     styled-jsx: ^5.0.0
     styled-jsx-plugin-stylus: ^0.0.4
     styled-media-query: ^2.1.2
+    styled-preflight: ^8.0.1
     stylelint: ^14.5.0
     stylelint-config-rational-order: "github:phyllisstein/stylelint-config-rational-order#head=empty-line-threshold"
     stylelint-config-recommended: ^7.0.0
@@ -12882,6 +12883,15 @@ __metadata:
   peerDependencies:
     styled-components: ">= 1"
   checksum: b8b20fc1667f98f0a7f55646486e936703f1a6530cd436c24038bf46c59eefe7a2988c850828a8d92615bc36515edcb2c5e3f9c0a9a28e206f14ab33ea95c364
+  languageName: node
+  linkType: hard
+
+"styled-preflight@npm:^8.0.1":
+  version: 8.0.1
+  resolution: "styled-preflight@npm:8.0.1"
+  peerDependencies:
+    styled-components: ^4.0.0
+  checksum: c7dd5399428c4951d2109621526429816e089db2683a347812abe0fb733f7fb294b3d904a93368885f5b84b74707776d46c0298ca073ee31f7b80130ccfbeb7b
   languageName: node
   linkType: hard
 

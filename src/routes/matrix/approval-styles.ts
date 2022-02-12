@@ -21,6 +21,7 @@ export const Grid = styled.div`
 
 export const Image = styled.img`
   width: 256px;
+  max-width: none;
   height: auto;
 `
 

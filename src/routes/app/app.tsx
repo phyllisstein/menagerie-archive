@@ -3,11 +3,13 @@ import { Helmet } from 'react-helmet-async'
 import { Route, Routes } from 'react-router'
 import { RecoilRoot } from 'recoil'
 import { StyleSheetManager, ThemeProvider } from 'styled-components'
+import { Preflight } from 'styled-preflight'
 
 import avatarFB from 'assets/avatar-fb.jpg'
 import avatarTW from 'assets/avatar-tw.jpg'
 import faviconPNG from 'assets/favicon.png'
 import { AdobeClean, AdobeCleanSerif, MillerDisplay } from 'assets/fonts'
+import AOCRoutes from 'routes/aoc'
 import MatrixRoutes from 'routes/matrix'
 import PalimpsestRoutes from 'routes/palimpsest'
 import ParallaxRoutes from 'routes/parallax'
@@ -35,7 +37,8 @@ export function App (): ReactElement {
     <RecoilRoot>
       <StyleSheetManager disableVendorPrefixes>
         <ThemeProvider theme={ theme }>
-          <Reboot />
+          { /* <Reboot /> */ }
+          <Preflight />
           <Body />
           <AdobeClean />
           <AdobeCleanSerif />
@@ -75,6 +78,7 @@ export function App (): ReactElement {
               <Route element={ <ParallaxRoutes /> } path='parallax/*' />
               <Route element={ <SundayRoutes /> } path='sunday/*' />
               <Route element={ <SwoopRoutes /> } path='swoop/*' />
+              <Route element={ <AOCRoutes /> } path='aoc/*' />
             </Routes>
           </Suspense>
         </ThemeProvider>
