@@ -27,7 +27,7 @@ export const Body = createGlobalStyle`
   body {
     ${ ({ theme }) => theme.typeface.primaryFamily }
 
-    background-color: #fff !important;
-    color: ${ ({ theme }) => theme.palette.css.text };
+    color: ${ ({ theme }) => theme.paletteSpectrumDark.css.gray900 };
+    background-color: ${ ({ theme }) => theme.paletteSpectrumDark.css.gray50 };
   }
 `

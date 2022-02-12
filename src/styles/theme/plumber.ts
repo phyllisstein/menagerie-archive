@@ -12,8 +12,8 @@ const BASELINE = {
   DIN_NEXT: 0.105,
   DIN_TEXT: 0.1,
   EGYPTIENNE: 0.1078,
-  MILLER_DISPLAY: 0.12,
-  MILLER_TEXT: 0.12,
+  MILLER_DISPLAY: 0.183,
+  MILLER_TEXT: 0.183,
 }
 
 const round = _.partial(_.round, _.partial.placeholder, 0)
@@ -53,7 +53,7 @@ const getPlumber = ({
   gridHeight: GRID_HEIGHT = '1rem',
   leadingBottom: LEADING_BOTTOM = 0,
   leadingTop: LEADING_TOP = 0,
-  lineHeight: LINE_HEIGHT = 5,
+  lineHeight: LINE_HEIGHT = 6,
   useBaselineOrigin: USE_BASELINE_ORIGIN = false,
 }: PlumberProps) => {
   function plumber ({
@@ -131,3 +131,4 @@ const getPlumber = ({
 export const primary = getPlumber({ baseline: BASELINE.ADOBE_CLEAN })
 export const accent = getPlumber({ baseline: BASELINE.ADOBE_CLEAN_SERIF })
 export const millerDisplay = getPlumber({ baseline: BASELINE.MILLER_DISPLAY })
+export const millerText = getPlumber({ baseline: BASELINE.MILLER_TEXT })
