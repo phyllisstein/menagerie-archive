@@ -15,7 +15,7 @@ import PalimpsestRoutes from 'routes/palimpsest'
 import ParallaxRoutes from 'routes/parallax'
 import SundayRoutes from 'routes/sunday'
 import SwoopRoutes from 'routes/swoop'
-import { Body, Reboot } from 'styles/global'
+import { Body } from 'styles/global'
 import { theme } from 'styles/theme'
 
 const SITE_NAME = 'An Evening With…'
@@ -37,7 +37,6 @@ export function App (): ReactElement {
     <RecoilRoot>
       <StyleSheetManager disableVendorPrefixes>
         <ThemeProvider theme={ theme }>
-          { /* <Reboot /> */ }
           <Preflight />
           <Body />
           <AdobeClean />
