@@ -17,12 +17,6 @@ const BABEL_OPTIONS = {
   cacheDirectory: true,
   ignore: [/node_modules/],
   plugins: [
-    ['@babel/transform-runtime', {
-      corejs: {
-        proposals: true,
-        version: 3,
-      },
-    }],
     '@babel/syntax-dynamic-import',
     'lodash',
     'ramda',
@@ -33,7 +27,8 @@ const BABEL_OPTIONS = {
       bugfixes: true,
       modules: false,
       targets: {
-        browsers: 'last 2 major versions and not ie > 0',
+        chrome: '98',
+        esmodules: true,
       },
     }],
     ['@babel/typescript', {

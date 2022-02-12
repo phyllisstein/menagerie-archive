@@ -12,7 +12,7 @@ const enableWDYR = process.env.WHY_DID_YOU_RENDER != null
 
 client
   .mode('development')
-  .devtool('source-map')
+  .devtool('cheap-module-source-map')
 
 client.output
   .chunkFilename('js/[name].[chunkhash].js')
