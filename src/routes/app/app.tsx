@@ -9,8 +9,8 @@ import avatarFB from 'assets/avatar-fb.jpg'
 import avatarTW from 'assets/avatar-tw.jpg'
 import faviconPNG from 'assets/favicon.png'
 import { AdobeClean, AdobeCleanSerif, MillerDisplay } from 'assets/fonts'
-import AOCRoutes from 'routes/aoc'
 import MatrixRoutes from 'routes/matrix'
+import MultiMobileRoutes from 'routes/multi-mobile'
 import PalimpsestRoutes from 'routes/palimpsest'
 import ParallaxRoutes from 'routes/parallax'
 import SundayRoutes from 'routes/sunday'
@@ -77,7 +77,7 @@ export function App (): ReactElement {
               <Route element={ <ParallaxRoutes /> } path='parallax/*' />
               <Route element={ <SundayRoutes /> } path='sunday/*' />
               <Route element={ <SwoopRoutes /> } path='swoop/*' />
-              <Route element={ <AOCRoutes /> } path='aoc/*' />
+              <Route element={ <MultiMobileRoutes /> } path='multi-mobile/*' />
             </Routes>
           </Suspense>
         </ThemeProvider>
