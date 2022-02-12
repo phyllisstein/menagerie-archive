@@ -7,6 +7,9 @@ import { useEffect } from 'react'
 
 export const useHyphenator = targetRef => {
   useEffect(() => {
+    const ref = targetRef?.current
+    if (!ref) return
+
     const hyphenate = async () => {
       if (!canUseDOM) {
         return await Promise.resolve()
@@ -14,8 +17,9 @@ export const useHyphenator = targetRef => {
 
       await pWaitFor(() => {
         return (
-          R.has('hyphenators', Hyphenopoly) &&
-          R.hasPath(['hyphenators', 'HTML'], Hyphenopoly)
+          typeof Hyphenopoly !== 'undefined' &&
+          typeof Hyphenopoly.hyphenators !== 'undefined' &&
+          typeof Hyphenopoly.hyphenators.HTML !== 'undefined'
         )
       })
 
