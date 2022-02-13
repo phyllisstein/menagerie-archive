@@ -44,11 +44,12 @@ RUN apk add --no-cache bash
 ENV YARN_CACHE_FOLDER=/var/cache/yarn \
   YARN_CHECKSUM_BEHAVIOR=ignore \
   PATH="/app/node_modules/.bin:$PATH"
+
 WORKDIR /app
 
 COPY bin ./bin
 COPY config/watchman ./config/watchman
 
-RUN /usr/local/bin/watchman watch-project /app
+RUN ./bin/develop.sh watchman
 
 CMD ["./bin/develop.sh", "watch"]
