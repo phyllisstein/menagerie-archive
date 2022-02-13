@@ -2,17 +2,37 @@ import { ReactElement } from 'react'
 
 import { Container, Content, Sidebar } from './aoc-styles'
 
+import { Gloss, Margin } from 'components/gloss'
 import { P } from 'components/markup'
 
 export function AOC (): ReactElement {
   return (
     <Container>
       <Content>
-        <P>
-          Ocasio-Cortez, like so many other people of color in her generation,
-          had been seduced by the promise that higher education would open up
-          opportunities.
-        </P>
+        <Gloss>
+          <P>
+            Ocasio-Cortez, like so many other people of color in her generation,
+            had been seduced by the promise that higher education would open up
+            opportunities.
+          </P>
+          <P>
+            It might serve at this moment to look away from the blinding star
+            she has become
+          </P>
+          <Margin>
+            <P>
+              Life’s auspicious moments are often only evident in retrospect.
+              Ocasio-Cortez was likely in the midst of something else when she
+              heard from Gabriel. Was she interested in running for Congress? “I
+              mean, it’s one of those things where it was like, ‘Eff it. Sure.
+              Whatever,’ ” she has said.
+            </P>
+            <P>
+              It might serve at this moment to look away from the blinding star
+              she has become
+            </P>
+          </Margin>
+        </Gloss>
         <P>
           But life out of college was a shock, as it was for millions of other
           millennials entering the postrecession job market. Her father, Sergio,
