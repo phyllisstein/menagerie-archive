@@ -49,11 +49,11 @@ interface PlumberProps {
 
 const getPlumber = ({
   baseline: B,
-  fontSize: FONT_SIZE = 1,
-  gridHeight: GRID_HEIGHT = '1rem',
+  fontSize: FONT_SIZE = 6,
+  gridHeight: GRID_HEIGHT = '0.5rem',
   leadingBottom: LEADING_BOTTOM = 0,
   leadingTop: LEADING_TOP = 0,
-  lineHeight: LINE_HEIGHT = 6,
+  lineHeight: LINE_HEIGHT,
   useBaselineOrigin: USE_BASELINE_ORIGIN = false,
 }: PlumberProps) => {
   function plumber ({
@@ -69,7 +69,9 @@ const getPlumber = ({
     const scaledFontSize = unitless(fontSize)
 
     lineHeight =
-      lineHeight == null ? unitless(1.333 * fontSize) : unitless(lineHeight)
+      lineHeight == null
+        ? unitless(fontSize) * gridHeightValue
+        : unitless(lineHeight) * gridHeightValue
 
     const { baselineDifference, correctedBaseline } = getBaselineCorrection({
       baseline,

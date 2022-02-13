@@ -4,7 +4,7 @@ import styled, { css, keyframes } from 'styled-components'
 import { Entry as EntryBase } from 'components/matrix'
 
 export const Entry = styled(EntryBase)`
-  width: min-content;
+  width: 256px;
   pointer-events: none;
 
   &&& * {
@@ -26,7 +26,8 @@ export const Image = styled.img`
 `
 
 export const Label = styled.div`
-  ${ ({ theme }) => theme.typeface.millerDisplay({ fontSize: 11 }) }
+  ${ ({ theme }) =>
+    theme.typeface.millerDisplay({ fontSize: 16, lineHeight: 16 }) }
 
   display: flex;
   align-items: center;
@@ -95,4 +96,18 @@ const pulse = keyframes`
 
 export const PulsingIcon = styled(FontAwesomeIcon)`
   animation: ${ pulse } 2s ease-in-out infinite;
+`
+
+export const Wrapper = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+
+  color: ${ ({ theme }) => theme.paletteSpectrumLight.css.gray800 };
+
+  background: ${ ({ theme }) => theme.paletteSpectrumLight.css.gray50 };
 `

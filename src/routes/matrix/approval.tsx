@@ -10,6 +10,7 @@ import {
   LineX,
   LineY,
   PulsingIcon,
+  Wrapper,
 } from './approval-styles'
 
 import dylan from 'assets/matrix/dylan.jpg'
@@ -48,7 +49,7 @@ export function ApprovalMatrix (): ReactElement {
   )
 
   return (
-    <>
+    <Wrapper>
       <Helmet>
         <title>The Approval Matrix</title>
       </Helmet>
@@ -325,6 +326,6 @@ export function ApprovalMatrix (): ReactElement {
           </Entry>
         </Scene>
       </Stage>
-    </>
+    </Wrapper>
   )
 }
