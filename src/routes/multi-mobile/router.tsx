@@ -9,6 +9,7 @@ import { Theme } from 'styles/theme'
 const setMillerTypeface = (parentTheme: Theme): Theme => {
   const mergedTheme = Object.assign({}, parentTheme, {
     typeface: {
+      ...parentTheme.typeface,
       accent: parentTheme.typeface.millerDisplay,
       accentFamily: parentTheme.typeface.millerDisplayFamily,
       primary: parentTheme.typeface.millerText,
