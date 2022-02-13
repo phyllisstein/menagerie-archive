@@ -1,13 +1,5 @@
+import styled from '@emotion/styled'
 import { animated } from 'react-spring'
-import styled, { createGlobalStyle } from 'styled-components'
-
-export const Body = createGlobalStyle`
-  body {
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
-  }
-`
 
 export const Root = styled(animated.div)`
   position: absolute;

@@ -1,5 +1,5 @@
+import styled from '@emotion/styled'
 import { ReactElement } from 'react'
-import styled from 'styled-components'
 
 const SuperiorBase = styled.span`
   padding: 0 1ex;

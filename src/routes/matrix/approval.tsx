@@ -28,6 +28,7 @@ import reynolds from 'assets/matrix/reynolds.png'
 import trucker from 'assets/matrix/trucker.png'
 import twenty from 'assets/matrix/twenty.jpg'
 import washington from 'assets/matrix/washington.jpg'
+import { DotPosition, EntryText } from 'components/matrix'
 import { Scene, Stage, Transform } from 'components/stage'
 import { css } from 'styles/theme/palette'
 
@@ -85,10 +86,10 @@ export function ApprovalMatrix (): ReactElement {
           <Transform x={ -512 } />
           <Transform y={ -80 } />
           <Transform scale={ 2 } />
-          <Entry dot={ Entry.DotPosition.Bottom }>
-            <Entry.Text>
+          <Entry dot={ DotPosition.Bottom }>
+            <EntryText>
               <strong>Ponchos.</strong>
-            </Entry.Text>
+            </EntryText>
           </Entry>
         </Scene>
         <Scene onClick={ toggleCurrentStep(3) }>
@@ -96,10 +97,10 @@ export function ApprovalMatrix (): ReactElement {
           <Transform y={ -256 } />
           <Transform z={ 512 } />
           <Transform scale={ 1.25 } />
-          <Entry dot={ Entry.DotPosition.Left }>
-            <Entry.Text style={{ marginRight: '-7rem' }}>
+          <Entry dot={ DotPosition.Left }>
+            <EntryText style={{ marginRight: '-7rem' }}>
               <strong>Madonna</strong>, Oxford student.
-            </Entry.Text>
+            </EntryText>
             <Image
               src={ madge }
               style={{ clipPath: `url('#madge_svg__madge')` }} />
@@ -110,23 +111,23 @@ export function ApprovalMatrix (): ReactElement {
           <Transform x={ -256 } />
           <Transform y={ -700 } />
           <Transform scale={ 1.5 } />
-          <Entry dot={ Entry.DotPosition.TopRight } style={{ minWidth: 256 }}>
-            <Entry.Text>
+          <Entry dot={ DotPosition.TopRight } style={{ minWidth: 256 }}>
+            <EntryText>
               <strong>PBS Broadway-musical documentary:</strong> Noble but
               misbegotten—and too many of the talking heads are dead.
-            </Entry.Text>
+            </EntryText>
           </Entry>
         </Scene>
         <Scene onClick={ toggleCurrentStep(5) }>
           <Transform x={ -1024 } />
           <Transform y={ -512 } />
-          <Entry dot={ Entry.DotPosition.BottomRight }>
-            <Entry.Text>
+          <Entry dot={ DotPosition.BottomRight }>
+            <EntryText>
               <strong>
                 <em>Tipping Point</em> author Malcolm Gladwell's
               </strong>{ ' ' }
               hair ignites: Geek schadenfreude erupts.
-            </Entry.Text>
+            </EntryText>
             <Image src={ malcolmGladwell } />
           </Entry>
         </Scene>
@@ -135,20 +136,20 @@ export function ApprovalMatrix (): ReactElement {
           <Transform y={ -128 } />
           <Transform z={ 512 } />
           <Transform scale={ 2 } />
-          <Entry dot={ Entry.DotPosition.TopLeft }>
-            <Entry.Text>
+          <Entry dot={ DotPosition.TopLeft }>
+            <EntryText>
               <strong>Tucker Carlson:</strong> His smugness boomerangs.
-            </Entry.Text>
+            </EntryText>
           </Entry>
         </Scene>
         <Scene onClick={ toggleCurrentStep(7) }>
           <Transform x={ -128 } />
           <Transform y={ -1100 } />
           <Transform scale={ 2 } />
-          <Entry dot={ Entry.DotPosition.Top }>
-            <Entry.Text>
+          <Entry dot={ DotPosition.Top }>
+            <EntryText>
               <strong>MoMA</strong> charges $20.
-            </Entry.Text>
+            </EntryText>
             <Image src={ twenty } />
           </Entry>
         </Scene>
@@ -157,11 +158,11 @@ export function ApprovalMatrix (): ReactElement {
           <Transform x={ 128 } />
           <Transform z={ -512 } />
           <Transform scale={ 1.5 } />
-          <Entry dot={ Entry.DotPosition.Top }>
-            <Entry.Text>
+          <Entry dot={ DotPosition.Top }>
+            <EntryText>
               <strong>Bob Dylan</strong> bio. Poignant! Idiosyncratic! And full
               of New York trivia.
-            </Entry.Text>
+            </EntryText>
             <Image src={ dylan } />
           </Entry>
         </Scene>
@@ -173,10 +174,10 @@ export function ApprovalMatrix (): ReactElement {
           <Transform rotateY={ 35 } />
           <Transform rotateX={ 10 } />
           <Transform rotateZ={ 5 } />
-          <Entry dot={ Entry.DotPosition.BottomLeft }>
-            <Entry.Text>
+          <Entry dot={ DotPosition.BottomLeft }>
+            <EntryText>
               <strong>Quickie marriages.</strong>
-            </Entry.Text>
+            </EntryText>
             <Image src={ trucker } />
           </Entry>
         </Scene>
@@ -184,21 +185,21 @@ export function ApprovalMatrix (): ReactElement {
           <Transform y={ 512 } />
           <Transform x={ -512 } />
           <Transform scale={ 2 } />
-          <Entry dot={ Entry.DotPosition.TopRight }>
-            <Entry.Text>
+          <Entry dot={ DotPosition.TopRight }>
+            <EntryText>
               <strong>Surviving Christmas:</strong> a Yuletide <em>Gigli</em>?
-            </Entry.Text>
+            </EntryText>
           </Entry>
         </Scene>
         <Scene onClick={ toggleCurrentStep(11) }>
           <Transform y={ 256 } />
           <Transform x={ 128 } />
           <Transform z={ 512 } />
-          <Entry dot={ Entry.DotPosition.Top }>
-            <Entry.Text>
+          <Entry dot={ DotPosition.Top }>
+            <EntryText>
               <strong>Halloween Parade:</strong> People think it's gross and
               tacky. (It's still fun.)
-            </Entry.Text>
+            </EntryText>
             <Image src={ ghostling } style={{ maxHeight: 256 }} />
           </Entry>
         </Scene>
@@ -207,10 +208,10 @@ export function ApprovalMatrix (): ReactElement {
           <Transform x={ 512 } />
           <Transform rotateY={ -45 } />
           <Transform scale={ 2 } />
-          <Entry dot={ Entry.DotPosition.BottomLeft }>
-            <Entry.Text>
+          <Entry dot={ DotPosition.BottomLeft }>
+            <EntryText>
               <strong>Grand Theft Auto: San Andreas.</strong> Vroom.
-            </Entry.Text>
+            </EntryText>
             <Image src={ gta } />
           </Entry>
         </Scene>
@@ -219,14 +220,14 @@ export function ApprovalMatrix (): ReactElement {
           <Transform y={ -960 } />
           <Transform scale={ 1.5 } />
           <Entry
-            dot={ Entry.DotPosition.Top }
+            dot={ DotPosition.Top }
             style={{
               minWidth: 256,
             }}>
-            <Entry.Text>
+            <EntryText>
               <strong>It's All About Love:</strong> Dogma + indie star power =
               pretentious glop.
-            </Entry.Text>
+            </EntryText>
             <PulsingIcon
               icon={ faHeartBroken }
               size='3x'
@@ -238,21 +239,21 @@ export function ApprovalMatrix (): ReactElement {
           <Transform y={ -1024 } />
           <Transform z={ 256 } />
           <Transform scale={ 2 } />
-          <Entry dot={ Entry.DotPosition.Right }>
-            <Entry.Text>
+          <Entry dot={ DotPosition.Right }>
+            <EntryText>
               <strong>His Excellency: George Washington</strong>, by{ ' ' }
               <em>Founding Brothers</em> author Joseph J. Ellis.
-            </Entry.Text>
+            </EntryText>
             <Image src={ washington } />
           </Entry>
         </Scene>
         <Scene onClick={ toggleCurrentStep(15) }>
           <Transform x={ 1024 } />
           <Transform y={ -360 } />
-          <Entry dot={ Entry.DotPosition.BottomRight }>
-            <Entry.Text>
+          <Entry dot={ DotPosition.BottomRight }>
+            <EntryText>
               <strong>Ghery</strong> picked for WTC performing-arts center.
-            </Entry.Text>
+            </EntryText>
             <Image src={ ghery } />
           </Entry>
         </Scene>
@@ -261,14 +262,14 @@ export function ApprovalMatrix (): ReactElement {
           <Transform y={ 1024 } />
           <Transform z={ -128 } />
           <Transform scale={ 1.5 } />
-          <Entry dot={ Entry.DotPosition.TopLeft }>
-            <Entry.Text>
+          <Entry dot={ DotPosition.TopLeft }>
+            <EntryText>
               <strong>
                 <em>Desperate Housewives:</em>
               </strong>{ ' ' }
               <em>Melrose</em>-like genius, plus a career boost for Felicity
               Huffman.
-            </Entry.Text>
+            </EntryText>
             <Image src={ housewives } />
           </Entry>
         </Scene>
@@ -276,26 +277,26 @@ export function ApprovalMatrix (): ReactElement {
           <Transform x={ 1440 } />
           <Transform y={ 384 } />
           <Transform z={ 128 } />
-          <Entry dot={ Entry.DotPosition.Top }>
-            <Entry.Text>
+          <Entry dot={ DotPosition.Top }>
+            <EntryText>
               Jaime Hernandez's{ ' ' }
               <strong>
                 <em>Locas: A Love & Rockets Book</em>
               </strong>
               .
-            </Entry.Text>
+            </EntryText>
             <Image src={ locas } />
           </Entry>
         </Scene>
         <Scene onClick={ toggleCurrentStep(18) }>
           <Transform x={ -256 } />
           <Transform y={ 900 } />
-          <Entry dot={ Entry.DotPosition.BottomRight }>
-            <Entry.Text>
+          <Entry dot={ DotPosition.BottomRight }>
+            <EntryText>
               <strong>Burt Reynolds</strong>
               as Boss Hogg in <em>Dukes of Hazzard</em> movie. Toupée makers,
               rejoice.
-            </Entry.Text>
+            </EntryText>
             <Image src={ reynolds } />
           </Entry>
         </Scene>
@@ -303,11 +304,11 @@ export function ApprovalMatrix (): ReactElement {
           <Transform y={ 1000 } />
           <Transform x={ -850 } />
           <Transform z={ 256 } />
-          <Entry dot={ Entry.DotPosition.TopLeft }>
-            <Entry.Text>
+          <Entry dot={ DotPosition.TopLeft }>
+            <EntryText>
               <strong>Stolen Honor: Wounds That Never Heal:</strong>
               Sinclair flip-flops on anti-Kerry doc.
-            </Entry.Text>
+            </EntryText>
             <Image src={ purpleHeart } style={{ height: 'auto', width: 256 }} />
           </Entry>
         </Scene>
@@ -317,11 +318,11 @@ export function ApprovalMatrix (): ReactElement {
           <Transform y={ -768 } />
           <Transform z={ 768 } />
           <Transform scale={ 2 } />
-          <Entry dot={ Entry.DotPosition.BottomRight }>
-            <Entry.Text>
+          <Entry dot={ DotPosition.BottomRight }>
+            <EntryText>
               <strong>Vincent Gallo</strong>, strutting, mutton-chopped Rasputin
               of indie cinema.
-            </Entry.Text>
+            </EntryText>
             <Image src={ gallo } />
           </Entry>
         </Scene>

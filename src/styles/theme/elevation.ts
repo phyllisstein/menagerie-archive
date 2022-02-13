@@ -1,11 +1,7 @@
+import { css } from '@emotion/react'
 import R from 'ramda'
-import { css } from 'styled-components'
 
-import {
-  css as animationCSS,
-  AnimationCurve,
-  AnimationDuration,
-} from './animation'
+import { css as animationCSS, AnimationDuration } from './animation'
 
 const SHADOWS = {
   AMBIENT: [

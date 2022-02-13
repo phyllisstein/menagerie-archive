@@ -15,7 +15,7 @@ import {
 import { config, useChain, useSpring, useSpringRef } from 'react-spring'
 
 import { Props as SceneProps } from './scene'
-import { Body, Root, StageRoot } from './stage-styles'
+import { Root, StageRoot } from './stage-styles'
 
 type TransformRegistrationFn = (transform: Transform) => void
 export const StageTransform = createContext<TransformRegistrationFn | null>(
@@ -168,7 +168,6 @@ export function Stage ({
 
   return (
     <>
-      <Body />
       <Root ref={ rootEl } style={ scaleSpring }>
         <StageRoot style={ translateSpring }>
           <StageTransform.Provider value={ registerTransform }>

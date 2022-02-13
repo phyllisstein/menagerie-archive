@@ -1,6 +1,6 @@
+import { css } from '@emotion/react'
 import _ from 'lodash'
 import { getValueAndUnit } from 'polished'
-import { css } from 'styled-components'
 
 import { unitless } from './scale'
 

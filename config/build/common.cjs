@@ -18,19 +18,31 @@ const BABEL_OPTIONS = {
   ignore: [/node_modules/],
   plugins: [
     '@babel/syntax-dynamic-import',
+    '@emotion/babel-plugin',
+    '@loadable/babel-plugin',
     'lodash',
     'ramda',
-    '@loadable/babel-plugin',
   ],
   presets: [
     ['@babel/env', {
       bugfixes: true,
+      corejs: {
+        version: 3,
+        proposals: true,
+      },
       modules: false,
       targets: {
         chrome: '98',
         esmodules: true,
       },
     }],
+    [
+      '@babel/react',
+      {
+        runtime: 'automatic',
+        importSource: '@emotion/react',
+      },
+    ],
     ['@babel/typescript', {
       allowDeclareFields: true,
     }],
@@ -283,13 +295,6 @@ server.cache({
     ],
   },
   type: 'filesystem',
-})
-
-server.merge({
-  experiments: {
-    cacheUnaffected: true,
-    outputModule: true,
-  },
 })
 
 module.exports = { client, server }

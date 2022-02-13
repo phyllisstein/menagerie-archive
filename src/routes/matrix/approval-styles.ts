@@ -1,5 +1,6 @@
+import { keyframes } from '@emotion/react'
+import styled from '@emotion/styled'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import styled, { css, keyframes } from 'styled-components'
 
 import { Entry as EntryBase } from 'components/matrix'
 

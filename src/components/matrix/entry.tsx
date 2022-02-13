@@ -33,6 +33,3 @@ export const Entry = ({
     </Root>
   )
 }
-
-Entry.Text = EntryText
-Entry.DotPosition = DotPosition

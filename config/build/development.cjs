@@ -12,7 +12,7 @@ const enableWDYR = process.env.WHY_DID_YOU_RENDER != null
 
 client
   .mode('development')
-  .devtool('cheap-module-source-map')
+  .devtool('source-map')
 
 client.output
   .chunkFilename('js/[name].[chunkhash].js')
@@ -25,26 +25,6 @@ client.module
     merge(options, {
       plugins: [
         'react-refresh/babel',
-        [
-          'styled-components',
-          {
-            displayName: true,
-            fileName: true,
-            ssr: false,
-          },
-        ],
-      ],
-      presets: [
-        [
-          '@babel/react',
-          {
-            development: true,
-            importSource: enableWDYR
-              ? '@welldone-software/why-did-you-render'
-              : 'react',
-            runtime: 'automatic',
-          },
-        ],
       ],
     }),
   )
@@ -66,7 +46,6 @@ client
 
 client.plugin('html').use(HTMLPlugin, [
   {
-    chunks: ['main'],
     filename: 'index.html',
     hash: true,
     scriptLoading: 'module',
@@ -81,7 +60,5 @@ client
 client
   .plugin('fast-refresh')
   .use(ReactRefreshPlugin)
-
-client.optimization.usedExports(false)
 
 module.exports = { client }

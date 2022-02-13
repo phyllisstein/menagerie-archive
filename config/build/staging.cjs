@@ -13,34 +13,6 @@ client.output
   .chunkFilename('js/[name].[contenthash].js')
   .filename('js/[name].[contenthash].js')
 
-client.module
-  .rule('babel')
-  .use('babel')
-  .tap(options =>
-    merge(options, {
-      presets: [
-        [
-          '@babel/react',
-          {
-            development: false,
-            runtime: 'automatic',
-          },
-        ],
-      ],
-      plugins: [
-        [
-          'styled-components',
-          {
-            displayName: false,
-            fileName: false,
-            ssr: false,
-          },
-        ],
-      ],
-    }),
-  )
-  .end()
-
 client
   .plugin('define')
   .tap(([options]) => [merge(options, { __DEV__: JSON.stringify(false) })])

@@ -1,11 +1,11 @@
-import { createGlobalStyle } from 'styled-components'
+import { css, Global } from '@emotion/react'
 
-export const AdobeCleanSerif = createGlobalStyle`
+export const adobeCleanSerif = css`
   @font-face {
     font-weight: 400;
     font-family: 'Adobe Clean Serif';
     font-style: normal;
-    src: url("${ require('./AdobeCleanSerif-Regular.woff2') }") format('woff2');
+    src: url('${ require('./AdobeCleanSerif-Regular.woff2') }') format('woff2');
 
     font-display: fallback;
   }
@@ -14,7 +14,7 @@ export const AdobeCleanSerif = createGlobalStyle`
     font-weight: 400;
     font-family: 'Adobe Clean Serif';
     font-style: italic;
-    src: url("${ require('./AdobeCleanSerif-RegularIt.woff2') }") format('woff2');
+    src: url('${ require('./AdobeCleanSerif-RegularIt.woff2') }') format('woff2');
 
     font-display: fallback;
   }
@@ -23,7 +23,7 @@ export const AdobeCleanSerif = createGlobalStyle`
     font-weight: 500;
     font-family: 'Adobe Clean Serif';
     font-style: normal;
-    src: url("${ require('./AdobeCleanSerif-Medium.woff2') }") format('woff2');
+    src: url('${ require('./AdobeCleanSerif-Medium.woff2') }') format('woff2');
 
     font-display: fallback;
   }
@@ -32,7 +32,7 @@ export const AdobeCleanSerif = createGlobalStyle`
     font-weight: 500;
     font-family: 'Adobe Clean Serif';
     font-style: italic;
-    src: url("${ require('./AdobeCleanSerif-MediumIt.woff2') }") format('woff2');
+    src: url('${ require('./AdobeCleanSerif-MediumIt.woff2') }') format('woff2');
 
     font-display: fallback;
   }
@@ -41,7 +41,7 @@ export const AdobeCleanSerif = createGlobalStyle`
     font-weight: 700;
     font-family: 'Adobe Clean Serif';
     font-style: normal;
-    src: url("${ require('./AdobeCleanSerif-Bold.woff2') }") format('woff2');
+    src: url('${ require('./AdobeCleanSerif-Bold.woff2') }') format('woff2');
 
     font-display: fallback;
   }
@@ -50,7 +50,7 @@ export const AdobeCleanSerif = createGlobalStyle`
     font-weight: 700;
     font-family: 'Adobe Clean Serif';
     font-style: italic;
-    src: url("${ require('./AdobeCleanSerif-BoldIt.woff2') }") format('woff2');
+    src: url('${ require('./AdobeCleanSerif-BoldIt.woff2') }') format('woff2');
 
     font-display: fallback;
   }
@@ -59,7 +59,7 @@ export const AdobeCleanSerif = createGlobalStyle`
     font-weight: 900;
     font-family: 'Adobe Clean Serif';
     font-style: normal;
-    src: url("${ require('./AdobeCleanSerif-Black.woff2') }") format('woff2');
+    src: url('${ require('./AdobeCleanSerif-Black.woff2') }') format('woff2');
 
     font-display: fallback;
   }
@@ -68,8 +68,10 @@ export const AdobeCleanSerif = createGlobalStyle`
     font-weight: 900;
     font-family: 'Adobe Clean Serif';
     font-style: italic;
-    src: url("${ require('./AdobeCleanSerif-BlackIt.woff2') }") format('woff2');
+    src: url('${ require('./AdobeCleanSerif-BlackIt.woff2') }') format('woff2');
 
     font-display: fallback;
   }
 `
+
+export const AdobeCleanSerif = () => <Global styles={ adobeCleanSerif } />

@@ -1,5 +1,5 @@
+import styled from '@emotion/styled'
 import { motion } from 'framer-motion'
-import styled from 'styled-components'
 
 export const Image = styled.img`
   width: auto;
@@ -10,13 +10,13 @@ interface LayerProps {
 }
 
 type Colors = Array<
-  | 'blue400'
-  | 'celery400'
-  | 'fuchsia400'
-  | 'indigo400'
-  | 'magenta400'
-  | 'orange400'
-  | 'seafoam400'
+| 'blue400'
+| 'celery400'
+| 'fuchsia400'
+| 'indigo400'
+| 'magenta400'
+| 'orange400'
+| 'seafoam400'
 >
 
 const DEPTH_COLORS: Colors = [

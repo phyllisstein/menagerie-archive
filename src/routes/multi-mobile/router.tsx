@@ -1,12 +1,12 @@
+import { ThemeProvider } from '@emotion/react'
 import { ReactElement } from 'react'
 import { Route, Routes } from 'react-router'
-import { ThemeProvider } from 'styled-components'
 
 import { AOC } from './aoc'
 
-import { Theme } from 'styles/theme'
+import { CustomTheme } from 'styles/theme'
 
-const setMillerTypeface = (parentTheme: Theme): Theme => {
+const setMillerTypeface = (parentTheme: CustomTheme): CustomTheme => {
   const mergedTheme = Object.assign({}, parentTheme, {
     typeface: {
       ...parentTheme.typeface,

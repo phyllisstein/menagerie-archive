@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from '@emotion/styled'
 
 import { COLORS_P3, COLORS_RGB } from './palette'
 
