@@ -9,48 +9,42 @@ export function AOC (): ReactElement {
     <Container>
       <Content>
         <P>
-          Even her haters call her a “generational talent,” a disparagement
-          candy-wrapped as a compliment, the implication being that the
-          astonishing rise of Alexandria Ocasio-Cortez was somehow encoded in
-          her DNA. Frame a thing as expected and it can be discounted. But
-          rewind five years and it becomes clear just how unprecedented her rise
-          has been. “Women like me aren’t supposed to run for office,” she said
-          at the start of her journey to Washington. She was only stating facts.
-          Months before AOC became the new face of the Democratic Party, she was
-          working in a bar where she was expected to look “hot,” riding the 6
-          train, fretting about health insurance, and not really sure what she
-          wanted to do with her life.
+          Ocasio-Cortez, like so many other people of color in her generation,
+          had been seduced by the promise that higher education would open up
+          opportunities.
         </P>
         <P>
-          Her victory on June 26, 2018, over her mainstream Democratic opponent,
-          Joe Crowley, was a marker delineating the moment after which American
-          politics would never be the same. It established AOC’s prodigious
-          political gifts while showcasing a new sort of Democratic candidate
-          and a new way of recruiting them. Barack Obama, previous holder of the
-          “generational talent” title, may have resembled Ocasio-Cortez in some
-          ways. Brown-skinned, good looking, with his own misadventures in the
-          postcollegiate wilderness, he challenged political convention even as
-          he titillated its guardians. But he had a résumé — the first Black
-          president of the Harvard Law Review, constitutional-law professor at
-          the University of Chicago — that the Democratic-consultant class could
-          easily recognize and safely admire. The Establishment didn’t know what
-          to make of AOC. As she put it in an interview then, “If a spaceship
-          landed in your backyard, it’s like, ‘What the fuck is that? Is it
-          going to hurt me?’ ”
+          But life out of college was a shock, as it was for millions of other
+          millennials entering the postrecession job market. Her father, Sergio,
+          who had died when she was a sophomore at Boston University, had told
+          her she was special, destined for greatness, capable through
+          intelligence and grit of attaining her dreams, and her education had
+          reinforced that notion. But upon graduating in 2011, she saw that it
+          didn’t matter how smart she was, what she knew, how ambitious or
+          imaginative her ideas were. It didn’t matter that she’d won science
+          prizes; been chosen to give speeches; immersed herself in economics,
+          music, and literature; and graduated cum laude. Sandy, as she was
+          sometimes known back then, was a petite young Puerto Rican woman with
+          bills to pay. She moved into an apartment in the Parkchester
+          development in the Bronx that had belonged to her father, with $25,000
+          in student loans and no health insurance. Up in Yorktown Heights in
+          Westchester, her family relied on food stamps.
         </P>
         <P>
-          Latina and working class, Ocasio-Cortez was demographically distinct
-          from her new colleagues in Congress. She also represented a new
-          generation. With the skills of a social-media influencer,
-          Ocasio-Cortez helped bring the millennials and their younger siblings
-          into battle. She was cool, gorgeous, a digital polyglot — she
-          streamed, she posted, she tweeted — but she also loved literature,
-          photography, and fashion. Her leftist mission, her savantlike
-          communication skills, and her moral ferocity propelled her rise, but
-          what people loved about her, at the beginning, was that she was
-          regular. Not, like Crowley and other career pols, ostentatiously
-          folksy. Ocasio-Cortez was really regular: vulnerable, fun, someone you
-          might actually know, like your friend’s roommate.
+          Throughout high school and college, she had attended the National
+          Hispanic Institute, a youth leadership organization, and now she was
+          given a paid fellowship there, helping the administrators develop
+          high-school curricula, traveling the country to set up and lead summer
+          programs, and receiving a grant to try to launch a series of
+          children’s books with Latino characters. She wanted to share the
+          pleasure of reading with young kids in the barrio, who, she thought,
+          might more easily take to it if they saw themselves reflected in the
+          books. But she wasn’t able to get the series off the ground. At around
+          the same time, she rented space at a small-business incubator in the
+          Bronx. People who knew her then remember her working on a tool to help
+          educators track kids’ emotional and mental health. She took meetings
+          and reached out through her networks, but that project was going
+          nowhere as well, and she became extremely discouraged.
         </P>
       </Content>
       <Sidebar />
