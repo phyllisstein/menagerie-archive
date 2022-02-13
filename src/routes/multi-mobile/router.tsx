@@ -12,8 +12,8 @@ const setMillerTypeface = (parentTheme: CustomTheme): CustomTheme => {
       ...parentTheme.typeface,
       accent: parentTheme.typeface.millerDisplay,
       accentFamily: parentTheme.typeface.millerDisplayFamily,
-      primary: parentTheme.typeface.millerText,
-      primaryFamily: parentTheme.typeface.millerTextFamily,
+      primary: parentTheme.typeface.caslon,
+      primaryFamily: parentTheme.typeface.caslonFamily,
     },
   })
 

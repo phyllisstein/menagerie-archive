@@ -1,3 +1,5 @@
+import 'assets/fonts'
+
 import { Global, ThemeProvider } from '@emotion/react'
 import emotionTailwindPreflight from 'emotion-tailwind-preflight'
 import { ReactElement, Suspense } from 'react'
@@ -8,12 +10,6 @@ import { RecoilRoot } from 'recoil'
 import avatarFB from 'assets/avatar-fb.jpg'
 import avatarTW from 'assets/avatar-tw.jpg'
 import faviconPNG from 'assets/favicon.png'
-import {
-  AdobeClean,
-  AdobeCleanSerif,
-  MillerDisplay,
-  MillerText,
-} from 'assets/fonts'
 import MatrixRoutes from 'routes/matrix'
 import MultiMobileRoutes from 'routes/multi-mobile'
 import PalimpsestRoutes from 'routes/palimpsest'
@@ -43,10 +39,6 @@ export function App (): ReactElement {
       <ThemeProvider theme={ theme }>
         <Global styles={ emotionTailwindPreflight } />
         <Body theme={ theme } />
-        <AdobeClean />
-        <AdobeCleanSerif />
-        <MillerDisplay />
-        <MillerText />
 
         <Helmet defaultTitle={ SITE_NAME } titleTemplate={ `${ SITE_NAME } %s` }>
           <html lang='en-us' />

@@ -2,6 +2,7 @@ import { css } from '@emotion/react'
 
 import {
   accent as plumberAccent,
+  caslon as plumberCaslon,
   millerDisplay as plumberMillerDisplay,
   millerText as plumberMillerText,
   primary as plumberPrimary,
@@ -15,6 +16,16 @@ export const accentFamily = css`
 export const accent = (plumberOpts = {}) => css`
   ${ accentFamily }
   ${ plumberAccent(plumberOpts) }
+`
+
+export const caslonFamily = css`
+  font-family: 'Adobe Caslon Pro', Georgia, Garamond, 'Times New Roman', 'Times',
+    serif !important;
+`
+
+export const caslon = (plumberOpts = {}) => css`
+  ${ caslonFamily }
+  ${ plumberCaslon(plumberOpts) }
 `
 
 export const millerDisplayFamily = css`

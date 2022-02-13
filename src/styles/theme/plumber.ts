@@ -6,6 +6,7 @@ import { unitless } from './scale'
 
 // (UnitsPerEm − hhea.Ascender − hhea.Descender) / (2 × UnitsPerEm)
 const BASELINE = {
+  ADOBE_CASLON: 0.265,
   ADOBE_CLEAN: 0.113,
   ADOBE_CLEAN_SERIF: 0.113,
   CAPITA: 0.138,
@@ -134,3 +135,4 @@ export const primary = getPlumber({ baseline: BASELINE.ADOBE_CLEAN })
 export const accent = getPlumber({ baseline: BASELINE.ADOBE_CLEAN_SERIF })
 export const millerDisplay = getPlumber({ baseline: BASELINE.MILLER_DISPLAY })
 export const millerText = getPlumber({ baseline: BASELINE.MILLER_TEXT })
+export const caslon = getPlumber({ baseline: BASELINE.ADOBE_CASLON })

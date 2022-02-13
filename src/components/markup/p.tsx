@@ -4,15 +4,15 @@ import { FunctionComponent, Ref, useRef } from 'react'
 import { useHyphenator } from 'hooks/ui'
 
 const BaseP = styled.p<{ $indent?: boolean }>`
-  ${ ({ theme }) => theme.typeface.primary({ fontSize: 8, lineHeight: 9 }) }
+  ${ ({ theme }) =>
+    theme.typeface.primary({
+      fontSize: 9,
+      leadingBottom: 1,
+      leadingTop: 1,
+      lineHeight: 10,
+    }) }
 
-  text-indent: ${ ({ $indent, theme }) =>
-    $indent ? theme.measures.typography.textIndent : '0' };
   hyphens: manual;
-
-  & + & {
-    text-indent: ${ ({ theme }) => theme.measures.typography.textIndent };
-  }
 `
 
 type Graf = JSX.IntrinsicElements['p']
