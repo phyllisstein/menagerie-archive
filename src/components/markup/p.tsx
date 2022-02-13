@@ -1,4 +1,4 @@
-import { forwardRef, FunctionComponent, Ref, useRef } from 'react'
+import { FunctionComponent, Ref, useRef } from 'react'
 import styled from 'styled-components'
 
 import { useHyphenator } from 'hooks/ui'
@@ -8,6 +8,7 @@ const BaseP = styled.p<{ $indent?: boolean }>`
 
   text-indent: ${ ({ $indent, theme }) =>
     $indent ? theme.measures.typography.textIndent : '0' };
+  hyphens: manual;
 
   & + & {
     text-indent: ${ ({ theme }) => theme.measures.typography.textIndent };

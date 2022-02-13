@@ -8,7 +8,7 @@ export const Container = styled.section`
 export const Content = styled.article`
   grid-column: span 2;
   min-height: 100vh;
-  padding: 0 1rem 0 0.5rem;
+  padding: 0 1rem 0 0;
 
   border-right: 1px solid
     ${ props => props.theme.paletteSpectrumDark.css.gray500 };
