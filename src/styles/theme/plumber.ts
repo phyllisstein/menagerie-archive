@@ -17,7 +17,7 @@ const BASELINE = {
   MILLER_TEXT: 0.183,
 }
 
-const round = _.partial(_.round, _.partial.placeholder, 0)
+const round = _.partial(_.round, _.partial.placeholder, 2)
 
 const getBaselineCorrection = ({
   baseline,
@@ -55,7 +55,7 @@ const getPlumber = ({
   leadingBottom: LEADING_BOTTOM = 0,
   leadingTop: LEADING_TOP = 0,
   lineHeight: LINE_HEIGHT,
-  useBaselineOrigin: USE_BASELINE_ORIGIN = false,
+  useBaselineOrigin: USE_BASELINE_ORIGIN = true,
 }: PlumberProps) => {
   function plumber ({
     baseline = B,
