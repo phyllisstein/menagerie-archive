@@ -90,10 +90,7 @@ export function AOC (): ReactElement {
         <P>From his car, Gabriel filled out the web form and hit SEND.</P>
         <Gloss left top={ 50 }>
           <Margin>
-            <img
-              alt='Bartending'
-              src={ bartending }
-              style={{ padding: '1rem 0' }} />
+            <img alt='Bartending' src={ bartending } />
             <MarginP>AOC tending bar.</MarginP>
           </Margin>
           <P>

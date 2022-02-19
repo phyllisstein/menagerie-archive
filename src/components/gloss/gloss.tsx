@@ -73,14 +73,17 @@ export const Gloss: FunctionComponent<Props> = ({ children, left, top = 50 }) =>
   console.log({ marginRect })
   console.log({ childrenRect })
   
-  const shapeTop = Math.floor(((childrenRect.height || 0) / 2) - ((marginRect.height || 0) / 2))
-  const shapeBottom = Math.floor(((marginRect.height || 0) / 2) + ((childrenRect.height || 0) / 2))
-  const shapeWidth = Math.floor((marginRect.width || 0) / 2)
-  const childrenRectHeight = Math.floor(childrenRect.height || 0)
-  const childrenRectMiddle = Math.floor(childrenRect.middle || 0)
+  let shapeTop = (((childrenRect.height || 0) / 2) - ((marginRect.height || 0) / 2))
+  shapeTop -= shapeTop % 8
+  let shapeBottom = (((marginRect.height || 0) / 2) + ((childrenRect.height || 0) / 2))
+  shapeBottom += shapeBottom % 8
+  
+  const shapeWidth = ((marginRect.width || 0)) + 16
+  const childrenRectHeight = (childrenRect.height || 0)
+  const childrenRectMiddle = (childrenRect.middle || 0)
   
   const path = left
-    ? `polygon(0 ${ shapeTop }px, ${(marginRect.width || 0) + 16}px ${shapeTop}px, ${(marginRect.width || 0) + 16}px ${shapeBottom}px, 0 ${shapeBottom}px)`
+    ? `polygon(0 ${ shapeTop }px, ${shapeWidth}px ${shapeTop}px, ${shapeWidth}px ${shapeBottom}px, 0 ${shapeBottom}px)`
     : `polygon(0 ${ shapeTop }px, 0 ${ shapeBottom }px, ${ shapeWidth }px ${ shapeBottom }px, ${ shapeWidth }px ${ shapeTop }px)`
   
   return (
@@ -91,7 +94,7 @@ export const Gloss: FunctionComponent<Props> = ({ children, left, top = 50 }) =>
             clipPath: path,
             float: left ? 'left' : 'right',
             shapeOutside: path,
-            width: left ? marginRect.width + 16 : (marginRect.width * 0.75) + 16,
+            width: shapeWidth,
             height: childrenRectHeight,
           }} />
         { childEls }
@@ -103,7 +106,7 @@ export const Gloss: FunctionComponent<Props> = ({ children, left, top = 50 }) =>
           position: 'absolute',
           right: left ? 'auto' : 0,
           top: childrenRectMiddle,
-          transform: left ? `translate(-5%, ${ top * -1 }%)` : `translate(25%, ${ top * -1 }%)`,
+          transform: left ? `translate(0, ${ top * -1 }%)` : `translate(0%, ${ top * -1 }%)`,
           width: '75%',
         }}>
         { marginEl }
