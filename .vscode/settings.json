@@ -4,7 +4,6 @@
   "editor.codeActionsOnSave": [
     "source.formatDocument",
     "source.fixAll.eslint",
-    "source.fixAll.stylelint"
   ],
   "eslint.enable": true,
   "stylelint.enable": true,
