@@ -6,7 +6,7 @@ export const Image = styled.img`
 `
 
 interface LayerProps {
-  $depth: number
+  depth: number
 }
 
 type Colors = Array<
@@ -38,7 +38,7 @@ export const Layer = styled(motion.div)<LayerProps>`
   width: 100%;
   height: 50vh;
 
-  color: ${ ({ $depth, theme }) => theme.palette.css[DEPTH_COLORS[$depth]] };
+  color: ${ ({ depth, theme }) => theme.palette.css[DEPTH_COLORS[depth]] };
   font-size: 8rem;
 
   transform-origin: center;
