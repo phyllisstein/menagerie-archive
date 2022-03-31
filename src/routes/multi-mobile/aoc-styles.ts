@@ -13,23 +13,23 @@ export const Content = styled.article`
   min-height: 100vh;
   padding: 0 1rem;
 
-  ${({ theme }) =>
+  ${ ({ theme }) =>
     theme.responsive.greaterThan(
       'md',
       css`
         padding: 2rem;
       `,
-    )}
+    ) }
 `
 
 export const MarginP = styled(P)`
-  ${({ theme }) =>
+  ${ ({ theme }) =>
     theme.typeface.primary({
-      fontSize: 8,
+      fontSize: 9,
       leadingBottom: 2,
       leadingTop: 2,
-      lineHeight: 10,
-    })}
+      lineHeight: 11,
+    }) }
 
   font-style: italic;
 

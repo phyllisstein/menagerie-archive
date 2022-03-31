@@ -6,10 +6,10 @@ import { useHyphenator } from 'hooks/ui'
 const BaseP = styled.p<{ $indent?: boolean }>`
   ${ ({ theme }) =>
     theme.typeface.primary({
-      fontSize: 9,
+      fontSize: 10,
       leadingBottom: 2,
       leadingTop: 2,
-      lineHeight: 10,
+      lineHeight: 12,
     }) }
 
   hyphens: manual;
