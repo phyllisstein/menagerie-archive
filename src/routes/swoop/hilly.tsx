@@ -1,4 +1,4 @@
-import { gsap, ScrollTrigger } from '@gsap/shockingly/all'
+import gsap, { ScrollTrigger } from '@gsap/shockingly/all'
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
 import { FunctionComponent, useEffect, useRef } from 'react'
 

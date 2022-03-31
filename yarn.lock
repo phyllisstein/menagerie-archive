@@ -3838,12 +3838,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/ramda@npm:^0.28.5":
-  version: 0.28.5
-  resolution: "@types/ramda@npm:0.28.5"
+"@types/ramda@npm:^0.28.6":
+  version: 0.28.6
+  resolution: "@types/ramda@npm:0.28.6"
   dependencies:
     ts-toolbelt: ^6.15.1
-  checksum: 9ef4ff8a6062d00372d3b305fc352f97152ce77ea3540700e3f25707eb641311bc1d45450d43f7037a327b4ccaed2aa4c1dd18bb933ca05e041980731f570240
+  checksum: 4016f80762a1059ecbe5b01468078b1892a457aa7e096ca002f3317bc70620ae72036d88d71a096e4acdac1700925a8b2a892410cb55a774bdbc78d8f168710e
   languageName: node
   linkType: hard
 
@@ -10057,7 +10057,7 @@ __metadata:
     "@types/nodemon": ^1.19.1
     "@types/prettier": ^2.4.4
     "@types/prettier-package-json": ^2.3.0
-    "@types/ramda": ^0.28.5
+    "@types/ramda": ^0.28.6
     "@types/react": ^17.0.43
     "@types/react-dom": ^17.0.14
     "@types/react-is": ^17.0.3
@@ -10153,7 +10153,7 @@ __metadata:
     prettier-config-standard: ^5.0.0
     prettier-package-json: ^2.6.3
     prettier-plugin-package: ^1.3.0
-    prettier-plugin-sh: ^0.8.1
+    prettier-plugin-sh: ^0.8.2
     ramda: 0.28.0
     react: ^18.0.0
     react-dom: ^18.0.0
@@ -11787,14 +11787,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier-plugin-sh@npm:^0.8.1":
-  version: 0.8.1
-  resolution: "prettier-plugin-sh@npm:0.8.1"
+"prettier-plugin-sh@npm:^0.8.2":
+  version: 0.8.2
+  resolution: "prettier-plugin-sh@npm:0.8.2"
   dependencies:
     mvdan-sh: ^0.5.0
   peerDependencies:
     prettier: ^2.0.0
-  checksum: a4fb3627ceedd5c6bc29d5339df323805a9ba999bd91e43f216619a316a5d01f12ed79e9f349b2479ccc76b34938b31a01fcb008078ffd58aac27449315cb020
+  checksum: 66297d52b4ed3b32fcf0a7256eaf627bcd3c7bbd8fcb919feb18e4ee3a6911022b53a6a2360bb9b1857286ce6b755327494b1874b764895c8bc3c386c207b17c
   languageName: node
   linkType: hard
 

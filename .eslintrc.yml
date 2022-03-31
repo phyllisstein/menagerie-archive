@@ -152,6 +152,9 @@ rules:
   sort-keys-fix/sort-keys-fix: warn
 
   accessor-pairs: 'off'
+  arrow-parens:
+    - warn
+    - as-needed
   comma-dangle:
     - warn
     - always-multiline

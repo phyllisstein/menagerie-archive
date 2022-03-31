@@ -2,13 +2,12 @@
   "compilerOptions": {
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
-    "alwaysStrict": true,
+    "alwaysStrict": false,
     "baseUrl": "./",
     "checkJs": true,
     "esModuleInterop": true,
     "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
-    "isolatedModules": true,
     "jsx": "preserve",
     "lib": [
       "dom",
@@ -33,8 +32,8 @@
     ],
     "resolveJsonModule": true,
     "skipLibCheck": true,
-    "strict": true,
-    "target": "esnext"
+    "strict": false,
+    "target": "ES6"
   },
   "exclude": [
     "node_modules"
