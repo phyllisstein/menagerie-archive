@@ -42,7 +42,6 @@ COPY --from=watchman /usr/local/var/run/watchman /usr/local/var/run/watchman
 RUN apk add --no-cache bash
 
 ENV YARN_CACHE_FOLDER=/var/cache/yarn \
-  YARN_CHECKSUM_BEHAVIOR=ignore \
   PATH="/app/node_modules/.bin:$PATH"
 
 WORKDIR /app
