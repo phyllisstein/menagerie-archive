@@ -42,9 +42,9 @@ export const Layered: FunctionComponent = () => {
 
     if (wrapper == null) return
 
-    enableBodyScroll(wrapper)
+    disableBodyScroll(wrapper)
 
-    return () => disableBodyScroll(wrapper)
+    return () => enableBodyScroll(wrapper)
   })
 
   return (

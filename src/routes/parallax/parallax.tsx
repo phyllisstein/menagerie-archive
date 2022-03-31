@@ -39,57 +39,57 @@ export function Parallax (): ReactElement {
 
     if (wrapper == null) return
 
-    enableBodyScroll(wrapper)
+    disableBodyScroll(wrapper)
 
-    return () => disableBodyScroll(wrapper)
+    return () => enableBodyScroll(wrapper)
   })
 
   return (
     <Root>
       <StoryWrapper ref={ wrapperRef }>
         <Layer
-          $depth={ 3 }
           className='backThreeLayer'
+          depth={ 3 }
           style={{
             x: backThreeLayer,
           }}>
           <img src={ wcPurple } />
         </Layer>
         <Layer
-          $depth={ 2 }
           className='backTwoLayer'
+          depth={ 2 }
           style={{
             x: backTwoLayer,
           }}>
           <img src={ wcGreen } />
         </Layer>
         <Layer
-          $depth={ 1 }
           className='backOneLayer'
+          depth={ 1 }
           style={{
             x: backOneLayer,
           }}>
           <img src={ wcBlue } />
         </Layer>
         <Layer
-          $depth={ 4 }
           className='frontOneLayer'
+          depth={ 4 }
           style={{
             x: frontOneLayer,
           }}>
           <img src={ wcRed } />
         </Layer>
         <Layer
-          $depth={ 5 }
           className='frontTwoLayer'
+          depth={ 5 }
           style={{
             x: frontTwoLayer,
           }}>
           <img src={ wcYellow } />
         </Layer>
         <Layer
-          $depth={ 6 }
           className='frontThreeLayer'
+          depth={ 6 }
           style={{
             x: frontThreeLayer,
           }}>
