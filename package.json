@@ -94,6 +94,8 @@
     "regenerator-runtime": "^0.13.9",
     "remeda": "^0.0.32",
     "sharp": "^0.30.1",
+    "styled-components": "^5.3.3",
+    "styled-preflight": "^8.0.1",
     "tslib": "^2.3.1",
     "use-memo-one": "^1.1.2"
   },
@@ -166,6 +168,7 @@
     "babel-plugin-polyfill-regenerator": "^0.3.1",
     "babel-plugin-ramda": "^2.0.0",
     "babel-plugin-react-local": "^0.7.1",
+    "babel-plugin-styled-components": "^2.0.3",
     "concurrently": "^7.0.0",
     "connect-history-api-fallback": "^1.6.0",
     "copy-webpack-plugin": "^10.2.4",

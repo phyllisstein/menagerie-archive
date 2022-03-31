@@ -35,12 +35,14 @@ const BABEL_OPTIONS = {
         chrome: '98',
         esmodules: true,
       },
+      useBuiltIns: 'usage',
     }],
     [
       '@babel/react',
       {
         runtime: 'automatic',
         importSource: '@emotion/react',
+        useBuiltIns: 'usage',
       },
     ],
     ['@babel/typescript', {
