@@ -5,16 +5,16 @@ const renderApp = async (): Promise<void> => {
     { App },
     { BrowserRouter },
     { HelmetProvider },
-    { default: ReactDOM },
+    { createRoot },
   ] = await Promise.all([
     import('routes'),
     import('react-router-dom'),
     import('react-helmet-async'),
-    import('react-dom'),
+    import('react-dom/client'),
   ])
 
   const main = document.querySelector('main')
-  const root = ReactDOM.createRoot(main)
+  const root = createRoot(main)
 
   await new Promise<void>(() => {
     root.render(
