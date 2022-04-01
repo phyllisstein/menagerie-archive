@@ -13,24 +13,27 @@ export const Content = styled.article`
   min-height: 100vh;
   padding: 0 1rem;
 
-  ${ ({ theme }) =>
+  ${({ theme }) =>
     theme.responsive.greaterThan(
       'md',
       css`
         padding: 2rem;
       `,
-    ) }
+    )}
 `
 
 export const MarginP = styled(P)`
-  ${ ({ theme }) =>
+  ${({ theme }) =>
     theme.typeface.primary({
-      fontSize: 9,
-      leadingBottom: 2,
-      leadingTop: 2,
-      lineHeight: 11,
-    }) }
+      fontSize: 8,
+      leadingBottom: 0,
+      leadingTop: 0,
+      lineHeight: 9,
+    })}
 
+  margin: 0;
+  padding: 0;
+  
   font-style: italic;
 
   & > em {

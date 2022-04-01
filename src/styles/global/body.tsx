@@ -28,6 +28,8 @@ export const Body: FunctionComponent<Props> = ({ theme }) => (
         margin: 0;
         padding: 0;
 
+        font-size: 16px;
+
         font-kerning: normal !important;
         font-variant-ligatures: common-ligatures !important;
         font-variant-numeric: oldstyle-nums proportional-nums !important;
