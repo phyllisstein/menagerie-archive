@@ -10,6 +10,7 @@ import { RecoilRoot } from 'recoil'
 import avatarFB from 'assets/avatar-fb.jpg'
 import avatarTW from 'assets/avatar-tw.jpg'
 import faviconPNG from 'assets/favicon.png'
+import DallowayRoutes from 'routes/dalloway'
 import MatrixRoutes from 'routes/matrix'
 import MultiMobileRoutes from 'routes/multi-mobile'
 import PalimpsestRoutes from 'routes/palimpsest'
@@ -74,6 +75,7 @@ export function App (): ReactElement {
             <Route element={ <SundayRoutes /> } path='sunday/*' />
             <Route element={ <SwoopRoutes /> } path='swoop/*' />
             <Route element={ <MultiMobileRoutes /> } path='multi-mobile/*' />
+            <Route element={ <DallowayRoutes /> } path='dalloway/*' />
           </Routes>
         </Suspense>
       </ThemeProvider>
