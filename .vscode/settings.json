@@ -4,6 +4,7 @@
   "editor.codeActionsOnSave": [
     "source.formatDocument",
     "source.fixAll.eslint",
+    "source.fixAll.stylelint"
   ],
   "eslint.enable": true,
   "stylelint.enable": true,
@@ -11,8 +12,7 @@
     "css",
     "less",
     "postcss",
-    "typescript",
-    "typescriptreact"
+    "typescript"
   ],
   "licenser.license": "GPLv3",
   "licenser.projectName": "Menagerie",
