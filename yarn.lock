@@ -2006,10 +2006,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@gsap/shockingly@npm:^3.10.1":
-  version: 3.10.1
-  resolution: "@gsap/shockingly@npm:3.10.1"
-  checksum: 80db4f72dfe83f9638d653f2d764d79c33bd3fa9ee993d8972f103ecd7822357c42584503c07e84063cd8316412ca673b038a204b74043258603a5f1dddb2bdc
+"@gsap/shockingly@npm:^3.10.2":
+  version: 3.10.2
+  resolution: "@gsap/shockingly@npm:3.10.2"
+  checksum: 7cc4e41c667782977fadc945a809e45d25567f4de47bf7eeffcd9228be2107a7921ecb94227830ca6d888d6fa9f73c2b67ef616e70560a40efc6891bab424f58
   languageName: node
   linkType: hard
 
@@ -4249,12 +4249,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/ramda@npm:^0.28.6":
-  version: 0.28.6
-  resolution: "@types/ramda@npm:0.28.6"
+"@types/ramda@npm:^0.28.7":
+  version: 0.28.7
+  resolution: "@types/ramda@npm:0.28.7"
   dependencies:
     ts-toolbelt: ^6.15.1
-  checksum: 4016f80762a1059ecbe5b01468078b1892a457aa7e096ca002f3317bc70620ae72036d88d71a096e4acdac1700925a8b2a892410cb55a774bdbc78d8f168710e
+  checksum: 0ee50cbd964d45ae75fdfc904113859d0abd7ceabd193ffaceeda3c80669a18fadc4680ea9f06f8ae2d3aa988513535dbff26fc6ee0a5b803c2106b1de8d0c4c
   languageName: node
   linkType: hard
 
@@ -4668,21 +4668,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@use-gesture/core@npm:10.2.10":
-  version: 10.2.10
-  resolution: "@use-gesture/core@npm:10.2.10"
-  checksum: 4b6bb27f734b110ad05b7e8d3a50943ba3dde6b11327c66f332ee1bd54179f05950fa4271c00141174e3fd16254983af5bc068df974eac174b88c14c2ec9cf36
+"@use-gesture/core@npm:10.2.11":
+  version: 10.2.11
+  resolution: "@use-gesture/core@npm:10.2.11"
+  checksum: 8631cabe6d1a0dae4436a2176cdb915e129c364b391a8914cfe95600098f6f5bc2d88cb255e7d858f6518ecd5b677104e7e4ef93c19b60ea94002f717dd9a915
   languageName: node
   linkType: hard
 
-"@use-gesture/react@npm:^10.2.10":
-  version: 10.2.10
-  resolution: "@use-gesture/react@npm:10.2.10"
+"@use-gesture/react@npm:^10.2.11":
+  version: 10.2.11
+  resolution: "@use-gesture/react@npm:10.2.11"
   dependencies:
-    "@use-gesture/core": 10.2.10
+    "@use-gesture/core": 10.2.11
   peerDependencies:
     react: ">= 16.8.0"
-  checksum: 9f821e10aa977801571ea4db187a72196799deada660eedab1e2e730b5915349c0c46d7e69f24be4b67414488004eca45204f8b053bafbea5b8830a001fd4199
+  checksum: 157b08a8588c49db49239a971f49954f2b6bcbbe296caf4562c3a4e61221ed071759144082b3dd55631f22afedc1b8f6b068b38e51bfe303ac18ed513f5f4f71
   languageName: node
   linkType: hard
 
@@ -8802,10 +8802,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gsap@npm:^3.10.1":
-  version: 3.10.1
-  resolution: "gsap@npm:3.10.1"
-  checksum: 4ea494566e6f56c355de4a5133f68d73a5809417aff6267d72ca18656f01c6790dedcc152d2c29aabdc0e318ba24c9da0146cc6eaffd60ce0c28524819ff1175
+"gsap@npm:^3.10.2":
+  version: 3.10.2
+  resolution: "gsap@npm:3.10.2"
+  checksum: 3b45abd343c7f40c0870a19b054a157a95300fae15505cb4ddc36ebbe63e945983aa0df4144504fcdd2745b7a6231601025146bc9ea96bb4759a6b3fdc7bb79e
   languageName: node
   linkType: hard
 
@@ -10446,7 +10446,7 @@ __metadata:
     "@fortawesome/pro-solid-svg-icons": next
     "@fortawesome/pro-thin-svg-icons": next
     "@fortawesome/react-fontawesome": ^0.1.18
-    "@gsap/shockingly": ^3.10.1
+    "@gsap/shockingly": ^3.10.2
     "@loadable/babel-plugin": ^5.13.2
     "@loadable/component": ^5.15.2
     "@loadable/server": ^5.15.2
@@ -10489,7 +10489,7 @@ __metadata:
     "@types/nodemon": ^1.19.1
     "@types/prettier": ^2.4.4
     "@types/prettier-package-json": ^2.3.0
-    "@types/ramda": ^0.28.6
+    "@types/ramda": ^0.28.7
     "@types/react": ^17.0.43
     "@types/react-dom": ^17.0.14
     "@types/react-is": ^17.0.3
@@ -10503,7 +10503,7 @@ __metadata:
     "@types/webpack-node-externals": ^2.5.3
     "@typescript-eslint/eslint-plugin": ^5.17.0
     "@typescript-eslint/parser": ^5.17.0
-    "@use-gesture/react": ^10.2.10
+    "@use-gesture/react": ^10.2.11
     "@welldone-software/why-did-you-render": ^6.2.3
     babel-eslint: 11.0.0-beta.2
     babel-loader: ^8.2.4
@@ -10553,7 +10553,7 @@ __metadata:
     fb-watchman: ^2.0.1
     framer-motion: ^6.2.8
     globby: ^13.1.1
-    gsap: ^3.10.1
+    gsap: ^3.10.2
     hammerjs: ^2.0.8
     history: ^5.3.0
     html-webpack-plugin: 5.5.0
@@ -10594,11 +10594,11 @@ __metadata:
     react-hotkeys-hook: ^3.4.4
     react-is: beta
     react-refresh: beta
-    react-router: ^6.2.2
-    react-router-dom: ^6.2.2
+    react-router: ^6.3.0
+    react-router-dom: ^6.3.0
     react-spring: ^9.4.4
     react-use-gesture: ^9.1.3
-    recoil: ^0.6.1
+    recoil: ^0.7.0
     regenerator-runtime: ^0.13.9
     remeda: ^0.0.32
     resolve-url-loader: ^5.0.0
@@ -12570,27 +12570,27 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-router-dom@npm:^6.2.2":
-  version: 6.2.2
-  resolution: "react-router-dom@npm:6.2.2"
+"react-router-dom@npm:^6.3.0":
+  version: 6.3.0
+  resolution: "react-router-dom@npm:6.3.0"
   dependencies:
     history: ^5.2.0
-    react-router: 6.2.2
+    react-router: 6.3.0
   peerDependencies:
     react: ">=16.8"
     react-dom: ">=16.8"
-  checksum: 83c5105af923c4f8af65a6de98283a95f46ffa643fd0c1a5005647c2c3deb946dae52dda32dc00cfcc3659517b08be806ff02ff03173361dba3d824850053e99
+  checksum: 77603a654f8a8dc7f65535a2e5917a65f8d9ffcb06546d28dd297e52adcc4b8a84377e0115f48dca330b080af2da3e78f29d590c89307094d36927d2b1751ec3
   languageName: node
   linkType: hard
 
-"react-router@npm:6.2.2, react-router@npm:^6.2.2":
-  version: 6.2.2
-  resolution: "react-router@npm:6.2.2"
+"react-router@npm:6.3.0, react-router@npm:^6.3.0":
+  version: 6.3.0
+  resolution: "react-router@npm:6.3.0"
   dependencies:
     history: ^5.2.0
   peerDependencies:
     react: ">=16.8"
-  checksum: 1a2e7006d4d56bfae8ff11dd5ec15e8049578864dfb2764652510eb0ce4af26a8949790a3732c4f7beb14bcb6500469ea18841b8cfc953e09828e4e4113922f0
+  checksum: 7be673f5e72104be01e6ab274516bdb932efd93305243170690f6560e3bd1035dd1df3d3c9ce1e0f452638a2529f43a1e77dcf0934fc8031c4783da657be13ca
   languageName: node
   linkType: hard
 
@@ -12740,9 +12740,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"recoil@npm:^0.6.1":
-  version: 0.6.1
-  resolution: "recoil@npm:0.6.1"
+"recoil@npm:^0.7.0":
+  version: 0.7.0
+  resolution: "recoil@npm:0.7.0"
   dependencies:
     hamt_plus: 1.0.2
   peerDependencies:
@@ -12752,7 +12752,7 @@ __metadata:
       optional: true
     react-native:
       optional: true
-  checksum: 823c098e30f9b711f6e5d73ae3bf3c6d43ae6342998825f00ee18b01c88f499f7216fd59b472bd5ad349c6475e698e2937ad73b82499e31535bd63e431244146
+  checksum: e190db5153e322ba8ca824e97701e756c41681080da23f3e87d104544da2e8c9eea44ada8a36857ef9a1ade368dfe6ea3af7d51796441b08c40272c0a1386c81
   languageName: node
   linkType: hard
 
