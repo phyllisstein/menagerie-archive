@@ -1,0 +1,15 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Local Dev" type="js.build_tools.npm" activateToolWindowBeforeRun="false">
+    <package-json value="$PROJECT_DIR$/package.json" />
+    <command value="run" />
+    <scripts>
+      <script value="start:dev" />
+    </scripts>
+    <node-interpreter value="project" />
+    <envs>
+      <env name="FONT_AWESOME_NPM_TOKEN" value="156B9D4C-5BEE-4A14-9CDE-9EF6FFCA6D64" />
+      <env name="GSAP_NPM_TOKEN" value="e8417e93-7552-4b33-a3ac-581bfafb5c69" />
+    </envs>
+    <method v="2" />
+  </configuration>
+</component>
