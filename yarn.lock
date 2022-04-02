@@ -4219,6 +4219,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/pixi.js@npm:^5.0.0":
+  version: 5.0.0
+  resolution: "@types/pixi.js@npm:5.0.0"
+  dependencies:
+    pixi.js: "*"
+  checksum: 6f305d2c7518888c5ab311f369dd8dc40899cfe3ffe90bca5fb7e74db0820a6d298d6328ebfa63836ebe05536121bebb409285e7a07df446e373d2801874e216
+  languageName: node
+  linkType: hard
+
 "@types/prettier-package-json@npm:^2.3.0":
   version: 2.3.0
   resolution: "@types/prettier-package-json@npm:2.3.0"
@@ -10487,6 +10496,7 @@ __metadata:
     "@types/lodash-es": ^4.17.6
     "@types/mini-css-extract-plugin": ^2.5.0
     "@types/nodemon": ^1.19.1
+    "@types/pixi.js": ^5.0.0
     "@types/prettier": ^2.4.4
     "@types/prettier-package-json": ^2.3.0
     "@types/ramda": ^0.28.7
@@ -10586,7 +10596,7 @@ __metadata:
     prettier-config-standard: ^5.0.0
     prettier-package-json: ^2.6.3
     prettier-plugin-package: ^1.3.0
-    prettier-plugin-sh: ^0.8.2
+    prettier-plugin-sh: ^0.9.0
     ramda: 0.28.0
     react: ^18.0.0
     react-dom: ^18.0.0
@@ -10602,7 +10612,7 @@ __metadata:
     regenerator-runtime: ^0.13.9
     remeda: ^0.0.32
     resolve-url-loader: ^5.0.0
-    sass: ^1.49.10
+    sass: ^1.49.11
     sass-loader: ^12.6.0
     sharp: ^0.30.3
     style-loader: ^3.3.1
@@ -10624,7 +10634,7 @@ __metadata:
     typescript-language-server: next
     typescript-styled-plugin: ^0.18.2
     use-memo-one: ^1.1.2
-    webpack: ^5.70.0
+    webpack: ^5.71.0
     webpack-chain: ^6.5.1
     webpack-cli: ^4.9.2
     webpack-dev-middleware: ^5.3.1
@@ -11036,13 +11046,6 @@ __metadata:
     arrify: ^2.0.1
     minimatch: ^3.0.4
   checksum: 82c8030a53af965cab48da22f1b0f894ef99e16ee680dabdfbd38d2dfacc3c8208c475203d747afd9e26db44118ed0221d5a0d65268c864f06d6efc7ac6df812
-  languageName: node
-  linkType: hard
-
-"mvdan-sh@npm:^0.5.0":
-  version: 0.5.0
-  resolution: "mvdan-sh@npm:0.5.0"
-  checksum: b662308861c8d77076513d7f154ec2e340b28f34bedcf413450381255408dd6749b92b51b56946945cf016887789decfe7e89f3b201a71e3d908f59bd9e77474
   languageName: node
   linkType: hard
 
@@ -11907,7 +11910,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pixi.js@npm:^6.3.0":
+"pixi.js@npm:*, pixi.js@npm:^6.3.0":
   version: 6.3.0
   resolution: "pixi.js@npm:6.3.0"
   dependencies:
@@ -12263,14 +12266,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier-plugin-sh@npm:^0.8.2":
-  version: 0.8.2
-  resolution: "prettier-plugin-sh@npm:0.8.2"
+"prettier-plugin-sh@npm:^0.9.0":
+  version: 0.9.0
+  resolution: "prettier-plugin-sh@npm:0.9.0"
   dependencies:
-    mvdan-sh: ^0.5.0
+    sh-syntax: ^0.0.2
+    synckit: ^0.6.1
   peerDependencies:
     prettier: ^2.0.0
-  checksum: 66297d52b4ed3b32fcf0a7256eaf627bcd3c7bbd8fcb919feb18e4ee3a6911022b53a6a2360bb9b1857286ce6b755327494b1874b764895c8bc3c386c207b17c
+  checksum: 30d2f8110d5854936f68afe88c4c6a6aa4eba18bbc32f5824b1a7b385ad2250a4dda409065608005fe0327c221720d9127bcef5bec935f0da15ca6bb4a4420d9
   languageName: node
   linkType: hard
 
@@ -13162,16 +13166,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sass@npm:^1.49.10":
-  version: 1.49.10
-  resolution: "sass@npm:1.49.10"
+"sass@npm:^1.49.11":
+  version: 1.49.11
+  resolution: "sass@npm:1.49.11"
   dependencies:
     chokidar: ">=3.0.0 <4.0.0"
     immutable: ^4.0.0
     source-map-js: ">=0.6.2 <2.0.0"
   bin:
     sass: sass.js
-  checksum: 7b767ece77df47382ac80ff279f5c1cff24dec6684ccaf3f9657f52a793e7ba7b85e4d30a45fb6c70f9fc46da507559fe83e771dcb804341d03af908ad6404c9
+  checksum: f81cabfc43d6baf710979d647e24019f7cfb68242f8421d20dfc8c864cf83512b0b74a89098331696f758756829cb736f7b8aca70a11cff365928393ae351bcc
   languageName: node
   linkType: hard
 
@@ -13363,6 +13367,15 @@ __metadata:
   version: 1.2.0
   resolution: "setprototypeof@npm:1.2.0"
   checksum: be18cbbf70e7d8097c97f713a2e76edf84e87299b40d085c6bf8b65314e994cc15e2e317727342fa6996e38e1f52c59720b53fe621e2eb593a6847bf0356db89
+  languageName: node
+  linkType: hard
+
+"sh-syntax@npm:^0.0.2":
+  version: 0.0.2
+  resolution: "sh-syntax@npm:0.0.2"
+  dependencies:
+    tslib: ^2.3.1
+  checksum: 302e1f7a48883406e16582fe8ae7f417417edd858cb0a27d231e655942dc6e1c415ef0ebe374da4d37be429d58036df57cb7285ee0cad8dac27b9eb7a28568cf
   languageName: node
   linkType: hard
 
@@ -14186,6 +14199,15 @@ __metadata:
   version: 4.0.0
   resolution: "symbol-observable@npm:4.0.0"
   checksum: 212c7edce6186634d671336a88c0e0bbd626c2ab51ed57498dc90698cce541839a261b969c2a1e8dd43762133d47672e8b62e0b1ce9cf4157934ba45fd172ba8
+  languageName: node
+  linkType: hard
+
+"synckit@npm:^0.6.1":
+  version: 0.6.1
+  resolution: "synckit@npm:0.6.1"
+  dependencies:
+    tslib: ^2.3.1
+  checksum: 015039b01b3ade9b01a118afb91dd0fd1c01b56e5d4b4943e092908207133ca84393da2fba729dd8b92fc91734c931c4fd9186d82d867c6bfd7dcb946afa95b3
   languageName: node
   linkType: hard
 
@@ -15220,9 +15242,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"webpack@npm:^5.70.0":
-  version: 5.70.0
-  resolution: "webpack@npm:5.70.0"
+"webpack@npm:^5.71.0":
+  version: 5.71.0
+  resolution: "webpack@npm:5.71.0"
   dependencies:
     "@types/eslint-scope": ^3.7.3
     "@types/estree": ^0.0.51
@@ -15253,7 +15275,7 @@ __metadata:
       optional: true
   bin:
     webpack: bin/webpack.js
-  checksum: 00439884a9cdd5305aed3ce93735635785a15c5464a6d2cfce87e17727a07585de02420913e82aa85ddd2ae7322175d2cfda6ac0878a17f061cb605e6a7db57a
+  checksum: 84b273a15180d45dafe4fc4a3ccccba2f72210f327a1af39713b3ef78148768afb0e18fa0cddaea4af5dd54ace199fbbdfcef9aec8da7e9c248f8b1b7cc413e1
   languageName: node
   linkType: hard
 

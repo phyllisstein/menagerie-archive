@@ -57,7 +57,13 @@ client
   .target('web')
   .stats('minimal')
 
-client.entry('main').add('./bootstrap/client').end()
+client
+  .entry('main')
+    .add('./bootstrap/client')
+    .end()
+  .entry('pixi')
+    .add('./pixi/index')
+    .end()
 
 client.output
   .path(path.resolve('dist'))

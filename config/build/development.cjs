@@ -15,8 +15,8 @@ client
   .devtool('source-map')
 
 client.output
-  .chunkFilename('js/[name].[chunkhash].js')
-  .filename('js/[name].[chunkhash].js')
+  .chunkFilename('js/[name].js?v=[contenthash]')
+  .filename('js/[name].js?v=[contenthash]')
 
 client.module
   .rule('babel')
@@ -30,6 +30,24 @@ client.module
   )
   .end()
 
+client.module
+  .rule('fonts')
+  .set('generator', {
+    filename: 'fonts/[name][ext]?v=[contenthash]'
+  })
+
+client.module
+  .rule('images')
+  .set('generator', {
+    filename: 'images/[name][ext]?v=[contenthash]'
+  })
+
+client.module
+  .rule('videos')
+  .set('generator', {
+    filename: 'videos/[name][ext]?v=[contenthash]'
+  })
+
 if (enableWDYR) {
   client
     .entry('main')
@@ -38,7 +56,11 @@ if (enableWDYR) {
 
 client
   .entry('main')
-  .prepend('webpack-hot-middleware/client')
+    .prepend('webpack-hot-middleware/client?reload=true')
+    .end()
+  .entry('pixi')
+    .prepend('webpack-hot-middleware/client?reload=true')
+    .end()
 
 client
   .plugin('define')
@@ -46,10 +68,21 @@ client
 
 client.plugin('html').use(HTMLPlugin, [
   {
+    chunks: ['main'],
     filename: 'index.html',
     hash: true,
     scriptLoading: 'module',
     template: './bootstrap/index.html',
+  },
+])
+
+client.plugin('pixi-html').use(HTMLPlugin, [
+  {
+    chunks: ['pixi'],
+    filename: 'pixi.html',
+    hash: true,
+    scriptLoading: 'module',
+    template: './pixi/index.html',
   },
 ])
 
@@ -60,5 +93,7 @@ client
 client
   .plugin('fast-refresh')
   .use(ReactRefreshPlugin)
+
+client.set('stats', 'detailed')
 
 module.exports = { client }

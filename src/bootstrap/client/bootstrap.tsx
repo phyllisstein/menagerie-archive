@@ -24,19 +24,11 @@ const renderApp = async (): Promise<void> => {
         </HelmetProvider>
       </BrowserRouter>,
     )
+    return Promise.resolve()
   })
 
-  if (module.hot) {
-    module.hot.accept(async () => {
-      const { App } = await import('routes')
-      root.render(
-        <BrowserRouter>
-          <HelmetProvider>
-            <App />
-          </HelmetProvider>
-        </BrowserRouter>,
-      )
-    })
+  if (import.meta.webpackHot) {
+    import.meta.webpackHot.accept()
   }
 }
 
