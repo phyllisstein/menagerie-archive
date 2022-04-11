@@ -87,6 +87,14 @@ client.plugin('pixi-html').use(HTMLPlugin, [
 ])
 
 client
+  .plugin('pixi-devtools')
+  .use(webpack.ProvidePlugin, [
+    {
+      PIXI: 'pixi.js',
+    },
+  ])
+
+client
   .plugin('hmr')
   .use(webpack.HotModuleReplacementPlugin)
 

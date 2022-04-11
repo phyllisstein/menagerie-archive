@@ -1,18 +1,30 @@
-import { Application, DisplayObject, Graphics, Sprite, Texture } from 'pixi.js'
+import {
+  Application,
+  Container,
+  DisplayObject,
+  Graphics,
+  Sprite,
+  Texture,
+} from 'pixi.js'
 
 import daub from 'assets/pixi/d.png'
+import daubMask from 'assets/pixi/daub-mask-reversed.png'
 
 const app = new Application({
+  antialias: true,
+  autoDensity: true,
+  backgroundAlpha: 0,
   backgroundColor: 0xffffff,
   height: 360,
+  resolution: window.devicePixelRatio || 1,
   width: 640,
 })
 const main = document.querySelector('main')
 main.appendChild(app.view)
 
-const daubSprite = Sprite.from(daub)
+// const daubSprite = Sprite.from(daub)
 
-const count = 1000
+const count = 10
 let cameraZ = 0
 const fieldOfView = 20
 const baseSpeed = 0.025
@@ -38,19 +50,48 @@ const randomizeDaub = (daub: Daub, initial?: boolean) => {
   daub.y = Math.sin(deg) * distance
 }
 
+const DAUB_COLORS = [
+  0x00378e, // BLUE
+  0x004610, // GREEN
+  0x9b2300, // RED
+]
+
+const container = new Container()
+container.x = 0
+container.y = 0
+app.stage.addChild(container)
+
 const daubs = Array(count)
   .fill(null)
-  .map(() => {
+  .map((_, idx) => {
+    const sprite = Sprite.from(daubMask)
+    const daubColor = new Graphics()
+    const colorIndex = Math.floor(Math.random() * DAUB_COLORS.length)
+    const color = DAUB_COLORS[colorIndex]
+    console.log(color)
+    daubColor
+      .beginTextureFill({
+        color,
+      })
+      .drawRect(0, 0, sprite.width, sprite.height)
+      .endFill()
+
     const daub = {
-      sprite: Sprite.from(daubSprite.texture),
+      mask: daubColor,
+      sprite,
       x: 0,
       y: 0,
       z: 0,
     }
-    daub.sprite.anchor.x = 0.5
-    daub.sprite.anchor.y = 0.7
+    // daub.sprite.mask = daubColor
+    daubColor.mask = daub.sprite
+    // daub.sprite.anchor.x = 0.5
+    // daub.sprite.anchor.y = 0.7
     randomizeDaub(daub, true)
-    app.stage.addChild(daub.sprite)
+    // container.addChild(daub.sprite)
+    daubColor.x = daub.sprite.x
+    daubColor.y = daub.sprite.y
+    container.addChild(daubColor)
     return daub
   })
 
@@ -68,22 +109,22 @@ app.ticker.add(delta => {
     }
 
     const z = daub.z - cameraZ
-    daub.sprite.x =
+    daub.mask.x =
       daub.x * (fieldOfView / z) * app.renderer.screen.width +
       app.renderer.screen.width / 2
-    daub.sprite.y =
+    daub.mask.y =
       daub.y * (fieldOfView / z) * app.renderer.screen.height +
       app.renderer.screen.height / 2
 
-    const dxCenter = daub.sprite.x - app.renderer.screen.width / 2
-    const dyCenter = daub.sprite.y - app.renderer.screen.height / 2
+    const dxCenter = daub.mask.x - app.renderer.screen.width / 2
+    const dyCenter = daub.mask.y - app.renderer.screen.height / 2
     const distanceCenter = Math.sqrt(dxCenter * dxCenter + dyCenter * dyCenter)
     const distanceScale = Math.max(0, (2000 - z) / 2000)
-    daub.sprite.scale.x = distanceScale * daubBaseSize
-    daub.sprite.scale.y =
+    daub.mask.scale.x = distanceScale * daubBaseSize
+    daub.mask.scale.y =
       distanceScale * daubBaseSize +
       (distanceScale * speed * daubStretch * distanceCenter) /
         app.renderer.screen.width
-    daub.sprite.rotation = Math.atan2(dyCenter, dxCenter) + Math.PI / 2
+    daub.mask.rotation = Math.atan2(dyCenter, dxCenter) + Math.PI / 2
   })
 })
