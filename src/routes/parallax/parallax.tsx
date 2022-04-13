@@ -16,17 +16,17 @@ export function Parallax (): ReactElement {
   const wrapperRef = useRef<HTMLDivElement>(null)
 
   const mainLayer = useMotionValue(0)
-  const backThreeLayer = useTransform(mainLayer, x => x * -1.44)
-  const backTwoLayer = useTransform(mainLayer, x => x * -1.2)
-  const backOneLayer = useTransform(mainLayer, x => x * -0.5)
-  const frontOneLayer = useTransform(mainLayer, x => x * 0.5)
-  const frontTwoLayer = useTransform(mainLayer, x => x * 1.2)
-  const frontThreeLayer = useTransform(mainLayer, x => x * 1.44)
+  const backThreeLayer = useTransform(mainLayer, x => `${ x * 0 }%`)
+  const backTwoLayer = useTransform(mainLayer, x => `${ x * 100 * 1.2 }%`)
+  const backOneLayer = useTransform(mainLayer, x => `${ x * 100 * 1.44 }%`)
+  const frontOneLayer = useTransform(mainLayer, x => `${ x * 100 * 1.728 }%`)
+  const frontTwoLayer = useTransform(mainLayer, x => `${ x * 100 * 2.0736 }%`)
+  const frontThreeLayer = useTransform(mainLayer, x => `${ x * 100 * 2.48832 }%`)
 
   useGesture(
     {
       onWheel: ({ direction: [dx], offset: [scroll] }) => {
-        mainLayer.set(scroll)
+        mainLayer.set(scroll / window.innerWidth)
       },
     },
     {

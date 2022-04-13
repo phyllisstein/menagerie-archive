@@ -15,25 +15,18 @@ export const Layered: FunctionComponent = () => {
   const wrapperRef = useRef<HTMLDivElement>(null)
 
   const mainLayer = useMotionValue(0)
-  const backOneLayer = useTransform(mainLayer, x => x / 1.2)
-  const backTwoLayer = useTransform(mainLayer, x => x / 1.728)
-  const backThreeLayer = useTransform(mainLayer, x => x / 2.986)
+  const backOneLayer = useTransform(mainLayer, x => `${ x * 1.44 }%`)
+  const backTwoLayer = useTransform(mainLayer, x => `${ x }%`)
+  const backThreeLayer = useTransform(mainLayer, x => `${ x * 0.5 }%`)
 
   useGesture(
     {
       onWheel: ({ direction: [dx], offset: [scroll] }) => {
-        mainLayer.set(scroll)
+        mainLayer.set(scroll / (window.innerWidth * 2) * 100)
       },
     },
     {
       domTarget: wrapperRef,
-      wheel: {
-        bounds: {
-          left: window.innerWidth / -2.986,
-          right: window.innerWidth / 2.986,
-          rubberBand: true,
-        },
-      },
     },
   )
 
