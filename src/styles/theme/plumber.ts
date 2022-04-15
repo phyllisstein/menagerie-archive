@@ -38,7 +38,7 @@ const getBaselineCorrection = ({
   }
 }
 
-interface PlumberProps {
+export interface PlumberProps {
   baseline: number
   gridHeight?: string
   fontSize?: number
@@ -94,13 +94,13 @@ const getPlumber = ({
     const marginBottom = (leadingBottom + shift - 1) * gridHeightValue
 
     return css`
-      margin-top: ${ marginTop }${ gridHeightUnit };
-      margin-bottom: ${ marginBottom }${ gridHeightUnit };
-      padding-top: ${ paddingTop }${ gridHeightUnit };
-      padding-bottom: ${ paddingBottom }${ gridHeightUnit };
+      margin-top: ${ round(marginTop) }${ gridHeightUnit };
+      margin-bottom: ${ round(marginBottom) }${ gridHeightUnit };
+      padding-top: ${ round(paddingTop) }${ gridHeightUnit };
+      padding-bottom: ${ round(paddingBottom) }${ gridHeightUnit };
 
-      font-size: ${ gridFontSize }${ gridHeightUnit };
-      line-height: ${ lineHeight }${ gridHeightUnit };
+      font-size: ${ round(gridFontSize) }${ gridHeightUnit };
+      line-height: ${ round(lineHeight) }${ gridHeightUnit };
     `
   }
 
@@ -121,10 +121,12 @@ const getPlumber = ({
     const [borderTop, borderBottom] = border
 
     return css`
-      margin-top: ${ marginTop }${ gridHeightUnit };
-      margin-bottom: ${ marginBottom }${ gridHeightUnit };
-      padding-top: calc(${ paddingTop }${ gridHeightUnit } - ${ borderTop });
-      padding-bottom: calc(${ paddingBottom }${ gridHeightUnit } - ${ borderBottom });
+      margin-top: ${ round(marginTop) }${ gridHeightUnit };
+      margin-bottom: ${ round(marginBottom) }${ gridHeightUnit };
+      padding-top: calc(${ round(paddingTop) }${ gridHeightUnit } - ${ borderTop });
+      padding-bottom: calc(
+        ${ round(paddingBottom) }${ gridHeightUnit } - ${ borderBottom }
+      );
     `
   }
 

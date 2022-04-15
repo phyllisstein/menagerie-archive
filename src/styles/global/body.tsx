@@ -19,7 +19,6 @@ export const Body: FunctionComponent<Props> = ({ theme }) => (
         -webkit-font-smoothing: antialiased;
 
         -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
-        -webkit-text-rendering: optimizeLegibility;
         text-rendering: optimizeLegibility;
       }
 
@@ -38,8 +37,8 @@ export const Body: FunctionComponent<Props> = ({ theme }) => (
       body {
         ${ theme.typeface.primaryFamily }
 
-        color: ${ theme.paletteSpectrumDark.css.gray900 };
-        background-color: ${ theme.paletteSpectrumDark.css.gray50 };
+        color: ${ theme.palette.css.gray700 };
+        background-color: ${ theme.palette.css.gray50 };
       }
     ` } />
 )

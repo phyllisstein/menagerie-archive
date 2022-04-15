@@ -39,7 +39,7 @@ export const Label = styled.div`
   font-weight: 600;
   letter-spacing: 4px;
 
-  background-color: #FFF;
+  background-color: ${ ({ theme }) => theme.palette.css.gray50 };
   backface-visibility: hidden;
 
   pointer-events: none;
@@ -108,7 +108,7 @@ export const Wrapper = styled.div`
   height: 100%;
   overflow: hidden;
 
-  color: ${ ({ theme }) => theme.paletteSpectrumLight.css.gray800 };
+  color: ${ ({ theme }) => theme.palette.css.gray800 };
 
-  background: ${ ({ theme }) => theme.paletteSpectrumLight.css.gray50 };
+  background: ${ ({ theme }) => theme.palette.css.gray50 };
 `
