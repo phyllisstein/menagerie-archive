@@ -3,6 +3,7 @@ import { ReactElement } from 'react'
 import { Container, Content, MarginP, Sidebar } from './aoc-styles'
 
 import bartending from 'assets/aoc/9a5eadebe5b6c9cf4b5c69cae42c0745a2-220131-NYMAGE-HIRES-JOSEALVARADOJR-01.jpg'
+import cover from 'assets/aoc/take-up-space-9781501166976_hr.jpg'
 import { Gloss, Margin } from 'components/gloss'
 import { P } from 'components/markup'
 
@@ -51,6 +52,7 @@ export function AOC (): ReactElement {
           </P>
           <Margin>
             <MarginP>
+              <img alt='Cover of a book' src={ cover } />
               Adapted from <em>Take Up Space: The Unprecedented AOC</em>, a
               book-length, kaleidoscopic biography by the editors of{ ' ' }
               <em>New York</em> Magazine, with contributions by Andrea

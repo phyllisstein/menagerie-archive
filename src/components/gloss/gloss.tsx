@@ -4,6 +4,7 @@ import { clearFix } from 'polished'
 import {
   Children,
   FunctionComponent,
+  useEffect,
   useLayoutEffect,
   useRef,
   useState,
@@ -16,6 +17,41 @@ import { Margin } from './margin'
 const ChildrenContainer = styled.div`
   ${ clearFix() }
 `
+
+interface OffsetRect {
+  bottom: number
+  height: number
+  left: number
+  middle: number
+  right: number
+  top: number
+  width: number
+}
+
+const getOffsetRect = (element?: HTMLElement): OffsetRect => {
+  if (!element) {
+    return {
+      bottom: 0,
+      height: 0,
+      left: 0,
+      middle: 0,
+      right: 0,
+      top: 0,
+      width: 0,
+    }
+  }
+
+  const top = element.offsetTop
+  const height = element.offsetHeight
+  const bottom = top + height
+  const left = element.offsetLeft
+  const width = element.offsetWidth
+  const right = left + width
+  const middle = height / 2
+
+  return { bottom, height, left, middle, right, top, width }
+}
+
 
 interface Props {
   left?: boolean
@@ -31,37 +67,18 @@ export const Gloss: FunctionComponent<Props> = ({
     c?.type === Margin ? 'marginEl' : 'childEls',
   )
 
-  const [childrenRect, setChildrenRect] = useState({})
-  const [marginRect, setMarginRect] = useState({})
+  const [childrenRect, setChildrenRect] = useState<OffsetRect>(getOffsetRect())
+  const [marginRect, setMarginRect] = useState<OffsetRect>(getOffsetRect())
 
-  const childElsRef = useRef(null)
-  const marginElsRef = useRef(null)
+  const childElsRef = useRef<HTMLDivElement | null>(null)
+  const marginElsRef = useRef<HTMLDivElement | null>(null)
 
   useLayoutEffect(() => {
     const childWrapper = childElsRef.current
 
     if (!childWrapper) return
 
-    const childResizeObserver = new ResizeObserver(([entry], observer) => {
-      let { bottom, height, right, top, width, y } = entry.contentRect
-      let middle = y + height / 2
-      bottom = _.round(bottom)
-      height = _.round(height)
-      right = _.round(right)
-      top = _.round(top)
-      width = _.round(width)
-      y = _.round(y)
-      middle = _.round(middle)
-
-      setChildrenRect({ bottom, height, middle, right, top, width, y })
-      // observer.disconnect()
-    })
-
-    childResizeObserver.observe(childWrapper, { box: 'border-box' })
-
-    return () => {
-      childResizeObserver.disconnect()
-    }
+    setChildrenRect(getOffsetRect(childWrapper))
   }, [childElsRef])
 
   useLayoutEffect(() => {
@@ -69,24 +86,7 @@ export const Gloss: FunctionComponent<Props> = ({
 
     if (!margin) return
 
-    const marginResizeObserver = new ResizeObserver(([entry], observer) => {
-      let { height, left, top, width, y } = entry.contentRect
-
-      height = _.round(height)
-      left = _.round(left)
-      top = _.round(top)
-      width = _.round(width)
-      y = _.round(y)
-
-      setMarginRect({ height, left, top, width, y })
-      // observer.disconnect()
-    })
-
-    marginResizeObserver.observe(margin, { box: 'border-box' })
-
-    return () => {
-      marginResizeObserver.disconnect()
-    }
+    setMarginRect(getOffsetRect(margin))
   }, [marginElsRef])
 
   console.log({ marginRect })
