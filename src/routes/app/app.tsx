@@ -18,6 +18,7 @@ import PalimpsestRoutes from 'routes/palimpsest'
 import ParallaxRoutes from 'routes/parallax'
 import SundayRoutes from 'routes/sunday'
 import SwoopRoutes from 'routes/swoop'
+import TalkRoutes from 'routes/talks'
 import { Body } from 'styles/global'
 import { theme } from 'styles/theme'
 
@@ -78,6 +79,7 @@ export function App (): ReactElement {
             <Route element={ <MultiMobileRoutes /> } path='multi-mobile/*' />
             <Route element={ <DallowayRoutes /> } path='dalloway/*' />
             <Route element={ <HockneyRoutes /> } path='hockney/*' />
+            <Route element={ <TalkRoutes /> } path='talks/*' />
           </Routes>
         </Suspense>
       </ThemeProvider>
