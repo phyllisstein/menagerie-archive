@@ -1,7 +1,7 @@
 import chroma from 'chroma-js'
 import R from 'ramda'
 
-import { js as spectrum } from './palette-spectrum-light'
+import { js as spectrum } from './palette-spectrum-dark'
 import { js as sunday } from './palette-sunday'
 
 export const js = {
