@@ -30,7 +30,7 @@ plugins:
 settings:
   import/internal-regex: '^(assets|bootstrap|components|hooks|routes|styles)/'
   react:
-    version: '17'
+    version: '18'
 
 rules:
   '@typescript-eslint/ban-types': warn
@@ -54,6 +54,8 @@ rules:
   '@typescript-eslint/no-misused-promises': 'off'
   '@typescript-eslint/no-use-before-define': warn
   '@typescript-eslint/no-useless-constructor': 'warn'
+  '@typescript-eslint/no-unsafe-assignment': 'warn'
+  '@typescript-eslint/no-unsafe-call': 'warn'
   '@typescript-eslint/no-unused-expressions':
     - warn
     - allowShortCircuit: true
