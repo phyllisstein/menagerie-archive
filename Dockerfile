@@ -34,12 +34,12 @@ RUN cd /tmp/watchman-${WATCHMAN_VERSION} \
 RUN strip /usr/local/bin/watchman
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ App ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
-FROM node:16-alpine AS app
+FROM node:17-alpine AS app
 
 COPY --from=watchman /usr/local/bin/watchman* /usr/local/bin/
 COPY --from=watchman /usr/local/var/run/watchman /usr/local/var/run/watchman
 
-RUN apk add --no-cache bash
+RUN apk add --no-cache bash git
 
 ENV YARN_CACHE_FOLDER=/var/cache/yarn \
   PATH="/app/node_modules/.bin:$PATH"

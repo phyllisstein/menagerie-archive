@@ -19,9 +19,10 @@
     "noEmit": true,
     "paths": {
       "*": [
-        "./src/*",
-        "./vendor/*",
-        "*"
+        "*",
+        "src/*",
+        "vendor/*",
+        "node_modules/*"
       ]
     },
     "plugins": [
