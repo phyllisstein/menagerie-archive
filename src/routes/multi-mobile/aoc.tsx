@@ -1,6 +1,6 @@
 import { ReactElement } from 'react'
 
-import { Container, Content, MarginP, Sidebar } from './aoc-styles'
+import { Container, Content, Image, MarginP, Sidebar } from './aoc-styles'
 
 import bartending from 'assets/aoc/9a5eadebe5b6c9cf4b5c69cae42c0745a2-220131-NYMAGE-HIRES-JOSEALVARADOJR-01.jpg'
 import cover from 'assets/aoc/take-up-space-9781501166976_hr.jpg'
@@ -51,8 +51,8 @@ export function AOC (): ReactElement {
             was going nowhere as well, and she became extremely discouraged.
           </P>
           <Margin>
+            <Image alt='Cover of a book' src={ cover } />
             <MarginP>
-              <img alt='Cover of a book' src={ cover } />
               Adapted from <em>Take Up Space: The Unprecedented AOC</em>, a
               book-length, kaleidoscopic biography by the editors of{ ' ' }
               <em>New York</em> Magazine, with contributions by Andrea
@@ -91,10 +91,6 @@ export function AOC (): ReactElement {
         </P>
         <P>From his car, Gabriel filled out the web form and hit SEND.</P>
         <Gloss left top={ 50 }>
-          <Margin>
-            <img alt='Bartending' src={ bartending } />
-            <MarginP>AOC tending bar.</MarginP>
-          </Margin>
           <P>
             Exhausted, Ocasio-Cortez turned to waitressing, which was at least
             reliable. “Working with young people, as immensely fulfilling as it
@@ -110,6 +106,10 @@ export function AOC (): ReactElement {
             deeply unhappy,” she has said. “And when I started focusing more on
             how I want to be, I was much happier, even when I was a waitress.”
           </P>
+          <Margin>
+            <Image alt='Bartending' src={ bartending } />
+            <MarginP>AOC tending bar.</MarginP>
+          </Margin>
         </Gloss>
       </Content>
       <Sidebar />

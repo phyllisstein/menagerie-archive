@@ -13,26 +13,28 @@ export const Content = styled.article`
   min-height: 100vh;
   padding: 0 1rem;
 
-  ${({ theme }) =>
+  ${ ({ theme }) =>
     theme.responsive.greaterThan(
       'md',
       css`
         padding: 2rem;
       `,
-    )}
+    ) }
+`
+
+export const Image = styled.img`
+  max-width: 100%;
+  height: auto;
 `
 
 export const MarginP = styled(P)`
-  ${({ theme }) =>
+  ${ ({ theme }) =>
     theme.typeface.primary({
-      fontSize: 8,
-      leadingBottom: 0,
-      leadingTop: 0,
+      fontSize: 7,
+      leadingBottom: 1,
+      leadingTop: 3,
       lineHeight: 9,
-    })}
-
-  margin: 0;
-  padding: 0;
+    }) }
   
   font-style: italic;
 

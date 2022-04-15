@@ -1,5 +1,9 @@
-import { FunctionComponent } from 'react'
+import { ReactNode } from 'react'
 
-export const Margin: FunctionComponent = ({ children }) => {
+interface Props {
+  children?: ReactNode
+}
+
+export function Margin ({ children }: Props) {
   return children
 }

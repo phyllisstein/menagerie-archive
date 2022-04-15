@@ -3,9 +3,8 @@ import _ from 'lodash'
 import { clearFix } from 'polished'
 import {
   Children,
-  FunctionComponent,
+  ReactNode,
   useEffect,
-  useLayoutEffect,
   useRef,
   useState,
 } from 'react'
@@ -41,12 +40,14 @@ const getOffsetRect = (element?: HTMLElement): OffsetRect => {
     }
   }
 
-  const top = element.offsetTop
-  const height = element.offsetHeight
-  const bottom = top + height
-  const left = element.offsetLeft
-  const width = element.offsetWidth
-  const right = left + width
+  const { bottom, height, left, right, top, width } = element.getBoundingClientRect()
+
+  // const top = element.offsetTop
+  // const height = element.offsetHeight
+  // const bottom = top + height
+  // const left = element.offsetLeft
+  // const width = element.offsetWidth
+  // const right = left + width
   const middle = height / 2
 
   return { bottom, height, left, middle, right, top, width }
@@ -54,15 +55,16 @@ const getOffsetRect = (element?: HTMLElement): OffsetRect => {
 
 
 interface Props {
+  children: ReactNode
   left?: boolean
   top?: number
 }
 
-export const Gloss: FunctionComponent<Props> = ({
+export function Gloss ({
   children,
   left,
   top = 50,
-}) => {
+}: Props) {
   const { childEls, marginEl } = R.groupBy(Children.toArray(children), c =>
     c?.type === Margin ? 'marginEl' : 'childEls',
   )
@@ -72,21 +74,30 @@ export const Gloss: FunctionComponent<Props> = ({
 
   const childElsRef = useRef<HTMLDivElement | null>(null)
   const marginElsRef = useRef<HTMLDivElement | null>(null)
+  const glossRef = useRef<HTMLDivElement | null>(null)
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const childWrapper = childElsRef.current
 
     if (!childWrapper) return
 
-    setChildrenRect(getOffsetRect(childWrapper))
+    const af = requestAnimationFrame(() => {
+      setChildrenRect(getOffsetRect(childWrapper))
+    })
+
+    return () => cancelAnimationFrame(af)
   }, [childElsRef])
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const margin = marginElsRef.current
 
     if (!margin) return
 
-    setMarginRect(getOffsetRect(margin))
+    const af = requestAnimationFrame(() => {
+      setMarginRect(getOffsetRect(margin))
+    })
+
+    return () => cancelAnimationFrame(af)
   }, [marginElsRef])
 
   console.log({ marginRect })
@@ -107,7 +118,7 @@ export const Gloss: FunctionComponent<Props> = ({
     : `polygon(0 ${ shapeTop }px, 0 ${ shapeBottom }px, ${ shapeWidth }px ${ shapeBottom }px, ${ shapeWidth }px ${ shapeTop }px)`
 
   return (
-    <div style={{ position: 'relative' }}>
+    <div ref={ glossRef } style={{ position: 'relative' }}>
       <div ref={ childElsRef }>
         <div
           style={{
