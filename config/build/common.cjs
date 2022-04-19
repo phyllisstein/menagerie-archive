@@ -61,8 +61,8 @@ client
   .entry('main')
     .add('./bootstrap/client')
     .end()
-  .entry('pixi')
-    .add('./pixi/index')
+  .entry('three')
+    .add('./three-js/index')
     .end()
 
 client.output

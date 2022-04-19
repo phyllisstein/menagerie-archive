@@ -58,7 +58,7 @@ client
   .entry('main')
     .prepend('webpack-hot-middleware/client?reload=true')
     .end()
-  .entry('pixi')
+  .entry('three')
     .prepend('webpack-hot-middleware/client?reload=true')
     .end()
 
@@ -76,23 +76,15 @@ client.plugin('html').use(HTMLPlugin, [
   },
 ])
 
-client.plugin('pixi-html').use(HTMLPlugin, [
+client.plugin('three-html').use(HTMLPlugin, [
   {
-    chunks: ['pixi'],
-    filename: 'pixi.html',
+    chunks: ['three'],
+    filename: 'three.html',
     hash: true,
     scriptLoading: 'module',
-    template: './pixi/index.html',
+    template: './three-js/index.html',
   },
 ])
-
-client
-  .plugin('pixi-devtools')
-  .use(webpack.ProvidePlugin, [
-    {
-      PIXI: 'pixi.js',
-    },
-  ])
 
 client
   .plugin('hmr')

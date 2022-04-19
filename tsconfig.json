@@ -2,7 +2,7 @@
   "compilerOptions": {
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
-    "alwaysStrict": false,
+    "alwaysStrict": true,
     "baseUrl": "./",
     "checkJs": true,
     "esModuleInterop": true,
@@ -33,7 +33,7 @@
     ],
     "resolveJsonModule": true,
     "skipLibCheck": true,
-    "strict": false,
+    "strict": true,
     "target": "ES6"
   },
   "exclude": [
