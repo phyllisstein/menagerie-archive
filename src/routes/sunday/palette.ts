@@ -1,5 +1,3 @@
-import chroma from 'chroma-js'
-
 export const COLORS_RGB = {
   /**
    * lch(25% 60 285deg)
@@ -31,10 +29,10 @@ export const COLORS_RGB = {
 
   /**
    * lch(65% 100 285deg)
-   * rgb(73.55% 0% 15.3%)
-   * color(display-p3 0.7087 0 0.1581)
+   * rgb(53.15% 59.65% 100%)
+   * color(display-p3 0.5327 0.5927 1)
    */
-  LIGHT_BLUE: 'rgb(73.55% 0% 15.3%)',
+  LIGHT_BLUE: 'rgb(53.15% 59.65% 100%)',
 
   /**
    * lch(40% 100 40deg)
@@ -103,10 +101,10 @@ export const COLORS_P3 = {
 
   /**
    * lch(65% 100 285deg)
-   * rgb(73.55% 0% 15.3%)
-   * color(display-p3 0.7087 0 0.1581)
+   * rgb(53.15% 59.65% 100%)
+   * color(display-p3 0.5327 0.5927 1)
    */
-  LIGHT_BLUE: 'color(display-p3 0.7087 0 0.1581)',
+  LIGHT_BLUE: 'color(display-p3 0.5327 0.5927 1)',
 
   /**
    * lch(40% 100 40deg)
