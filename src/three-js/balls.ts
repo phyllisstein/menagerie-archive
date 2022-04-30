@@ -22,7 +22,7 @@ function main () {
     0.1,
     100,
   )
-  camera.position.set(0, 0, 45)
+  camera.position.set(0, 0, 40)
 
   const scene = new THREE.Scene()
 
@@ -33,7 +33,7 @@ function main () {
     })
     const geometry = new THREE.SphereGeometry(1, 64, 64)
     const mesh = new THREE.Mesh(geometry, material)
-    mesh.position.x = index * 3 - 15
+    mesh.position.x = index * 2 - 10
     mesh.position.z = 0
     scene.add(mesh)
     return mesh
