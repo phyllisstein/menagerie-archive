@@ -13,7 +13,8 @@
     "css",
     "less",
     "postcss",
-    "typescript"
+    "typescript",
+    "scss"
   ],
   "licenser.license": "GPLv3",
   "licenser.projectName": "Menagerie",
