@@ -1,5 +1,3 @@
-import './rwd.scss'
-
 import * as THREE from 'three'
 
 function main () {

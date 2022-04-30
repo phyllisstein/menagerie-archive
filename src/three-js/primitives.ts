@@ -1,5 +1,3 @@
-import './primitives.scss'
-
 import * as THREE from 'three'
 
 function main () {
@@ -57,6 +55,7 @@ function main () {
 
   const objects = []
   const spread = 15
+
   function addObject (x: number, y: number, obj) {
     obj.position.x = x * spread
     obj.position.y = y * spread
@@ -84,6 +83,7 @@ function main () {
   const width = 8
   const height = 8
   const depth = 8
+
   // addSolidGeometry(-2, -2, new THREE.BoxGeometry(width, height, depth))
 
   function resizeRendererToDisplaySize (renderer: THREE.WebGLRenderer) {
