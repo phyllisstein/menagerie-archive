@@ -4,8 +4,15 @@
   {
     "name": "watchman-bootstrap",
     "expression": [
-      "dirname",
-      "config/watchman"
+      "anyof",
+      [
+        "dirname",
+        "config/watchman"
+      ],
+      [
+        "name",
+        "develop.sh"
+      ]
     ],
     "command": [
       "./bin/develop.sh",
