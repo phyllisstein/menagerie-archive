@@ -16,7 +16,7 @@ export const between = (
   style: SerializedStyles,
 ) => css`
   @media screen and (min-width: ${ breakpoints[
-  start
+    start
   ] }) and (max-width: ${ breakpoints[end] }) {
     ${ style }
   }
