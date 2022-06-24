@@ -1,5 +1,3 @@
-import 'assets/fonts'
-
 import { Global, ThemeProvider } from '@emotion/react'
 import emotionTailwindPreflight from 'emotion-tailwind-preflight'
 import { ReactElement, Suspense } from 'react'
@@ -43,7 +41,9 @@ export function App (): ReactElement {
         <Body theme={ theme } />
 
         <Helmet defaultTitle={ SITE_NAME } titleTemplate={ `${ SITE_NAME } %s` }>
-          <html lang='en-us' />
+          <html
+            className='spectrum spectrum--large spectrum--dark spectrum-Body spectrum-Body--sizeM'
+            lang='en-us' />
           <meta charSet='utf-8' />
           <meta
             content='width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no, user-scalable=no'
